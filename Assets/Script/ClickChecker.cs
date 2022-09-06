@@ -22,6 +22,7 @@ public class ClickChecker : MonoBehaviour
                 if (hit.transform.name == "wholescreen")
                 {
                     hit.collider.GetComponent<ColliderGO>().CallPlayerMethod();
+                    hit.collider.GetComponent<ColliderGO>().CallRingMethod();
                 }
                 /*
                 if (hit.transform.name == "LeftSide")
