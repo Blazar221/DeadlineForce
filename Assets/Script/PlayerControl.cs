@@ -6,7 +6,8 @@ public class PlayerControl : MonoBehaviour
 {
     private Rigidbody2D rb2D;
     // private float moveSpeed;
-    private float jumpForce;
+    [SerializeField]
+    private float jumpForce = 10f;
     private bool isJumping;
     // private float moveHorizontal;
     private float moveVertical;
@@ -14,9 +15,7 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         rb2D = gameObject.GetComponent<Rigidbody2D>();
-        // moveSpeed = 3f;
         // To adjust the height of jumping, change the value of jumpForce
-        jumpForce = 2f;
         isJumping = false;
     }
 
@@ -28,12 +27,6 @@ public class PlayerControl : MonoBehaviour
     }
     void FixedUpdate()
     {
-        /*
-        if(moveHorizontal > 0.1f || moveHorizontal < -0.1f)
-        {
-            rb2D.AddForce(new Vector2(moveHorizontal * moveSpeed, 0f), ForceMode2D.Impulse);
-        }
-        */
         if(!isJumping && moveVertical > 0.1f)
         {
             rb2D.AddForce(new Vector2(0f, moveVertical * jumpForce), ForceMode2D.Impulse);
