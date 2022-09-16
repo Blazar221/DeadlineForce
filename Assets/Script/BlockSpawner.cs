@@ -39,8 +39,6 @@ public class BlockSpawner : MonoBehaviour
             spawnPos = new Vector3(13, -3, 0);
             newBlock = Instantiate(block, spawnPos, Quaternion.identity);
             rend = newBlock.GetComponent<SpriteRenderer>();
-            rend.color = new Color(Random.Range(0,2), Random.Range(0,2), Random.Range(0,2), 1f);
-            print("at time" + timeArr[ind+1]);
             ind++;
         }
 
