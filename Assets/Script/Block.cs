@@ -9,20 +9,23 @@ public class Block : MonoBehaviour
     private float speed;
 
     private Rigidbody2D rb;
-    private Vector3 prevPos;
+    private Vector3 pos;
     
     // Start is called before the first frame update
     void Start()
     {
-        prevPos = transform.position;
-        Destroy(gameObject, 6f);
+        pos = transform.position;
+        Destroy(gameObject, 8f);
     }
     
     // Update is called once per frame
     void Update()
     {
-        Vector3 curPos = new Vector3(prevPos.x - speed, prevPos.y);
-        transform.position = curPos;
-        prevPos = curPos;
+        transform.position = pos;
+    }
+
+    private void FixedUpdate()
+    {
+        pos.x -= speed;
     }
 }

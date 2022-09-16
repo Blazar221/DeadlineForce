@@ -15,6 +15,7 @@ public class BlockSpawner : MonoBehaviour
     {
         0, 0.31f, 1.27f, 2.24f, 3.19f, 4.15f, 5.12f, 6.07f, 7.03f, 8.00f, 8.95f, 9.91f, 10.87f, 11.82f, 12.79f, 13.75f, 14.71f, 15.67f, 16.63f, 17.60f, 18.55f, 19.52f, 20.47f, 21.44f, 22.39f, 23.35f, 24.31f, 25.27f
     };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +28,9 @@ public class BlockSpawner : MonoBehaviour
         while (ind < len - 1)
         {
             yield return new WaitForSeconds(timeArr[ind+1]-timeArr[ind]);
-            spawnPos = new Vector3(13, -3, 0);
+            spawnPos = new Vector3(13, -4, 0);
             newBlock = Instantiate(block, spawnPos, Quaternion.identity);
             rend = newBlock.GetComponent<SpriteRenderer>();
-            rend.color = new Color(Random.Range(0,2), Random.Range(0,2), Random.Range(0,2), 1f);
-            print("at time" + timeArr[ind+1]);
             ind++;
         }
 
