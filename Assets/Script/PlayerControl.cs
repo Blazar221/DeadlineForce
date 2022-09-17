@@ -7,45 +7,60 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D rb2D;
     // private float moveSpeed;
     [SerializeField]
-    private float jumpForce = 10f;
-    private bool isJumping;
-    // private float moveHorizontal;
-    private float moveVertical;
+
+    private bool canChangeGravity;
+    private Animator animator;
+    private bool isUpsideDown;
     // Start is called before the first frame update
     void Start()
     {
+        isUpsideDown = false;
         rb2D = gameObject.GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         // To adjust the height of jumping, change the value of jumpForce
-        isJumping = false;
+        canChangeGravity = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // moveHorizontal = Input.GetAxisRaw("Horizontal");
-        moveVertical = Input.GetAxisRaw("Vertical");
-    }
-    void FixedUpdate()
-    {
-        if(!isJumping && moveVertical > 0.1f)
-        {
-            rb2D.AddForce(new Vector2(0f, moveVertical * jumpForce), ForceMode2D.Impulse);
-        }
+        if (canChangeGravity && Input.GetKeyDown (KeyCode.Space))
+		{
+            isUpsideDown = !isUpsideDown;
+            animator.SetBool("UpsideDown",isUpsideDown);
+            rb2D.gravityScale *= -1;
+		}
+
+        if (Input.GetKey(KeyCode.P))
+		{
+            animator.SetBool("isEating",true);
+		}
+        if (Input.GetKeyUp (KeyCode.P))
+		{
+            animator.SetBool("isEating",false);
+		}	
+
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Platform")
-        {
-            isJumping = false;
-        }
-    }
 
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Platform")
-        {
-            isJumping = true;
-        }
-    }
+
+
+
+    //The following two functions can be used to set the changing gravity point.
+
+    // void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if(collision.gameObject.tag == "changingPoint")
+    //     {
+    //         canChangeGravity = true;
+    //     }
+    // }
+
+    // void OnTriggerExit2D(Collider2D collision)
+    // {
+    //     if(collision.gameObject.tag == "changingPoint")
+    //     {
+    //         canChangeGravity = false;
+    //     }
+    // }
 }
