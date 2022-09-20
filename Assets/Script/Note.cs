@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Block : MonoBehaviour
+public class Note : MonoBehaviour
 {
     [SerializeField]
-    private float speed;
+    public float speed;
 
     private Rigidbody2D rb;
     private Vector3 pos;
@@ -15,7 +15,7 @@ public class Block : MonoBehaviour
     void Start()
     {
         pos = transform.position;
-        Destroy(gameObject, 8f);
+        Destroy(gameObject, 3f);
     }
     
     // Update is called once per frame
