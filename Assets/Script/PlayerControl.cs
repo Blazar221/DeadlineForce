@@ -8,9 +8,14 @@ public class PlayerControl : MonoBehaviour
     // private float moveSpeed;
     [SerializeField]
 
+    // Healthbar
+    public int maxHealth = 100; 
+    public int currentHealth;
+    public HealthBar healthBar;
+
     //这些是其他class需要调用的变量
     public int score;
-    public int health;
+    
 
 
     private Animator animator;
@@ -25,7 +30,9 @@ public class PlayerControl : MonoBehaviour
     {
         score = 0;
         canChangeGravity = false;
-        health = 100;
+
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
 
         isUpsideDown = false;
         nextTime = Time.time;
@@ -48,6 +55,12 @@ public class PlayerControl : MonoBehaviour
             rb2D.gravityScale *= -1;
 		}
 
+        // If the player click space on the wrong point, it will take damage.
+        if (canChangeGravity == false && Input.GetKeyDown (KeyCode.Space))
+        {
+            TakeDamage(5);
+        }
+
         if (Input.GetKeyDown(KeyCode.P))
 		{
             animator.SetBool("isEating",true);
@@ -58,8 +71,14 @@ public class PlayerControl : MonoBehaviour
         Debug.Log(score);
     }
 
+    // TakeDamage function
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+    }
 
-    //The following two functions can be used to set the changing gravity point.
+    // The following two functions can be used to set the changing gravity point.
 
     void OnTriggerEnter2D(Collider2D collision)
     {
