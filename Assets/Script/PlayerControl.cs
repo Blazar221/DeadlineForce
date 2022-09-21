@@ -8,17 +8,25 @@ public class PlayerControl : MonoBehaviour
     // private float moveSpeed;
     [SerializeField]
 
-    private bool canChangeGravity;
+    //这些是其他class需要调用的变量
+    public bool canChangeGravity;
+    public int score;
+    public int health;
+
+
     private Animator animator;
     private bool isUpsideDown;
     // Start is called before the first frame update
     void Start()
     {
+        score = 0;
+        canChangeGravity = false;
+        health = 100;
+
         isUpsideDown = false;
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        // To adjust the height of jumping, change the value of jumpForce
-        canChangeGravity = true;
+        
     }
 
     // Update is called once per frame
@@ -43,24 +51,32 @@ public class PlayerControl : MonoBehaviour
     }
 
 
-
-
-
     //The following two functions can be used to set the changing gravity point.
 
-    // void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if(collision.gameObject.tag == "changingPoint")
-    //     {
-    //         canChangeGravity = true;
-    //     }
-    // }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "GravSwitch")
+        {
+            canChangeGravity = true;
+        }
+        
+        if(collision.gameObject.tag == "food")
+        {
+            canChangeGravity = true;
+        }
+        
+    }
 
-    // void OnTriggerExit2D(Collider2D collision)
-    // {
-    //     if(collision.gameObject.tag == "changingPoint")
-    //     {
-    //         canChangeGravity = false;
-    //     }
-    // }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "GravSwitch")
+        {
+            
+        }
+
+        if(collision.gameObject.tag == "food")
+        {
+            
+        }
+    }
 }

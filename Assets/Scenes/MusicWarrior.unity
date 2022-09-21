@@ -291,6 +291,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canChangeGravity: 0
+  score: 0
+  health: 0
 --- !u!95 &178061453
 Animator:
   serializedVersion: 4
