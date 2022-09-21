@@ -2513,8 +2513,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1263625828}
-        m_TargetAssemblyTypeName: Reset, Assembly-CSharp
+      - m_Target: {fileID: 1709288263}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
