@@ -1934,6 +1934,7 @@ GameObject:
   - component: {fileID: 1263625825}
   - component: {fileID: 1263625824}
   - component: {fileID: 1263625827}
+  - component: {fileID: 1263625828}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2040,6 +2041,18 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &1263625828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263625823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4099ead52ff8f4c0c972e32f6aa9c258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1374945328
 GameObject:
   m_ObjectHideFlags: 0
@@ -2500,8 +2513,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1709288263}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 1263625828}
+        m_TargetAssemblyTypeName: Reset, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
@@ -2567,7 +2580,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1673928225
 MonoBehaviour:
   m_ObjectHideFlags: 0
