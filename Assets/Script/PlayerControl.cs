@@ -8,22 +8,39 @@ public class PlayerControl : MonoBehaviour
     // private float moveSpeed;
     [SerializeField]
 
-    private bool canChangeGravity;
+    //这些是其他class需要调用的变量
+    public int score;
+    public int health;
+
+
     private Animator animator;
     private bool isUpsideDown;
+    private bool isEating;
+    private float nextTime;
+    private bool canGetScore;
+    private bool canChangeGravity;
+
     // Start is called before the first frame update
     void Start()
     {
+        score = 0;
+        canChangeGravity = false;
+        health = 100;
+
         isUpsideDown = false;
+        nextTime = Time.time;
+        canGetScore = false;
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        // To adjust the height of jumping, change the value of jumpForce
-        canChangeGravity = true;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Time.time >= nextTime) {
+            animator.SetBool("isEating",false);
+        }
         if (canChangeGravity && Input.GetKeyDown (KeyCode.Space))
 		{
             isUpsideDown = !isUpsideDown;
@@ -31,36 +48,43 @@ public class PlayerControl : MonoBehaviour
             rb2D.gravityScale *= -1;
 		}
 
-        if (Input.GetKey(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
 		{
             animator.SetBool("isEating",true);
+            nextTime = Time.time + 0.1f; //Eating time lasts for 0.2s
+            if (canGetScore) score++;
+            else score--;
 		}
-        if (Input.GetKeyUp (KeyCode.P))
-		{
-            animator.SetBool("isEating",false);
-		}	
-
+        Debug.Log(score);
     }
-
-
-
 
 
     //The following two functions can be used to set the changing gravity point.
 
-    // void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if(collision.gameObject.tag == "changingPoint")
-    //     {
-    //         canChangeGravity = true;
-    //     }
-    // }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "GravSwitch")
+        {
+            canChangeGravity = true;
+        }
+        
+        if(collision.gameObject.tag == "food")
+        {
+            canGetScore = true;
+        }
+        
+    }
 
-    // void OnTriggerExit2D(Collider2D collision)
-    // {
-    //     if(collision.gameObject.tag == "changingPoint")
-    //     {
-    //         canChangeGravity = false;
-    //     }
-    // }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "GravSwitch")
+        {
+            canChangeGravity = false;
+        }
+
+        if(collision.gameObject.tag == "food")
+        {
+            canGetScore = false;
+        }
+    }
 }

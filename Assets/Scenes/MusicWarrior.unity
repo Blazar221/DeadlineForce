@@ -290,7 +290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313060cfa0f906e45bed8b75a9f9b82c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canChangeGravity: 0
+  score: 0
+  health: 0
 --- !u!95 &178061453
 Animator:
   serializedVersion: 4
@@ -371,7 +372,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178061451}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.2, y: -0.74, z: 0}
+  m_LocalPosition: {x: -7.04, y: -3.46, z: 0}
   m_LocalScale: {x: 9.815627, y: 9.815627, z: 9.815627}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -394,7 +395,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.008361399, y: -0.0010451674}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -405,7 +406,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.24, y: 0.24}
+  m_Size: {x: 0.17310876, y: 0.20028326}
   m_EdgeRadius: 0
 --- !u!50 &178061457
 Rigidbody2D:
