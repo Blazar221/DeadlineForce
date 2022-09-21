@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - GravSwitch
+  - food
   layers:
   - Default
   - TransparentFX

@@ -9,13 +9,17 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
 
     //这些是其他class需要调用的变量
-    public bool canChangeGravity;
     public int score;
     public int health;
 
 
     private Animator animator;
     private bool isUpsideDown;
+    private bool isEating;
+    private float nextTime;
+    private bool canGetScore;
+    private bool canChangeGravity;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +28,8 @@ public class PlayerControl : MonoBehaviour
         health = 100;
 
         isUpsideDown = false;
+        nextTime = Time.time;
+        canGetScore = false;
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         
@@ -32,6 +38,9 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.time >= nextTime) {
+            animator.SetBool("isEating",false);
+        }
         if (canChangeGravity && Input.GetKeyDown (KeyCode.Space))
 		{
             isUpsideDown = !isUpsideDown;
@@ -39,15 +48,14 @@ public class PlayerControl : MonoBehaviour
             rb2D.gravityScale *= -1;
 		}
 
-        if (Input.GetKey(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
 		{
             animator.SetBool("isEating",true);
+            nextTime = Time.time + 0.1f; //Eating time lasts for 0.2s
+            if (canGetScore) score++;
+            else score--;
 		}
-        if (Input.GetKeyUp (KeyCode.P))
-		{
-            animator.SetBool("isEating",false);
-		}	
-
+        Debug.Log(score);
     }
 
 
@@ -62,7 +70,7 @@ public class PlayerControl : MonoBehaviour
         
         if(collision.gameObject.tag == "food")
         {
-            canChangeGravity = true;
+            canGetScore = true;
         }
         
     }
@@ -71,12 +79,12 @@ public class PlayerControl : MonoBehaviour
     {
         if(collision.gameObject.tag == "GravSwitch")
         {
-            
+            canChangeGravity = false;
         }
 
         if(collision.gameObject.tag == "food")
         {
-            
+            canGetScore = false;
         }
     }
 }
