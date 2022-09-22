@@ -84,7 +84,7 @@ public class PlayerControl : MonoBehaviour
         hitScore++;
         Destroy(toHit);
         // Update hit times
-        ScoreManager.instance.AddPoint();
+        ScoreManager.instance.AddHit();
     }
 
     void MissSingle()

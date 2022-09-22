@@ -8,6 +8,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
 
     public Text scoreText;
+    public Text totalScore;
     
     int hit = 0;
 
@@ -21,9 +22,10 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = hit.ToString() + "  " + "HIT";
     }
 
-    public void AddPoint()
+    public void AddHit()
     {
         hit += 1;
         scoreText.text = hit.ToString() + "  " + "HIT";
     }
+
 }
