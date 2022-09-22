@@ -36,7 +36,7 @@ public class NoteSpawnerDown : MonoBehaviour
         {
             yield return new WaitForSeconds(timeArr[ind, 0]-timeArr[ind-1, 0]);
             Debug.Log("Note Down:" + time[ind, 0]);
-            spawnPos = new Vector3(13, -4, 0);
+            spawnPos = new Vector3(0, -4, 0);
             newNote = Instantiate(note, spawnPos, Quaternion.identity);
             if (timeArr[ind, 1] - timeArr[ind, 0] != 0)
             {

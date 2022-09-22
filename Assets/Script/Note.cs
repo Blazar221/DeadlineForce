@@ -15,7 +15,7 @@ public class Note : MonoBehaviour
     void Start()
     {
         pos = transform.position;
-        Destroy(gameObject, 1.5f);
+        Destroy(gameObject, 3f);
     }
     
     // Update is called once per frame
