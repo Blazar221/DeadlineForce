@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     private Rigidbody2D rb2D;
+
+    public static event Action OnPlayerDeath;
 
     // Healthbar
     [SerializeField]
@@ -103,10 +106,16 @@ public class PlayerControl : MonoBehaviour
     }
 
     // TakeDamage function
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        if(currentHealth <= 0) 
+        {
+            currentHealth = 0;
+            Debug.Log("You are dead!");
+            OnPlayerDeath?.Invoke();
+        }
     }
 
     // The following two functions can be used to set the changing gravity point.
