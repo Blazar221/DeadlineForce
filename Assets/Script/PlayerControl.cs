@@ -90,12 +90,16 @@ public class PlayerControl : MonoBehaviour
         Instantiate(hitEffect, transform.position + new Vector3(-2.0f,0,0), hitEffect.transform.rotation);
         // Update hit times
         ScoreManager.instance.AddHit();
+        // Update final score
+        GameOverScreen.instance.IncreaseScore();
     }
 
     void MissSingle()
     {
         missScore++;
         Instantiate(missEffect, transform.position + new Vector3(-2.0f,0,0), missEffect.transform.rotation);
+        // Update final score
+        GameOverScreen.instance.DecreaseScore();
     }
 
     // TakeDamage function
