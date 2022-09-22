@@ -10,11 +10,16 @@ public class GlobalSpawner : MonoBehaviour
 
     [SerializeField] 
     private GameObject note;
+    
+    [SerializeField] 
+    private GameObject player;
 
     private GameObject newItem;
     private SpriteRenderer rend;
     private Vector3 spawnPos;
-    private Note nodeHandler; 
+    private Note nodeHandler;
+    private PlayerControl playerHadler;
+    private float playerX;
 
     //IMPORTANT: length of 2d time will have one more element {0, 0}, be aware of index!
     private float[,] time = new float[,]
@@ -55,11 +60,14 @@ public class GlobalSpawner : MonoBehaviour
     private void Awake()
     {
         nodeHandler = note.GetComponent<Note>();
+        playerHadler = player.GetComponent<PlayerControl>();
     }
     
     // Start is called before the first frame update
     void Start()
     {
+        playerX = playerHadler.transform.localScale.x;
+        Debug.Log(playerX);
         StartCoroutine(SpawnNewItem(time, posType, itemType));
     }
 
@@ -79,7 +87,7 @@ public class GlobalSpawner : MonoBehaviour
             {
                 yPos = 4;
             }
-            spawnPos = new Vector3(23.5f, yPos, 0);
+            spawnPos = new Vector3(playerX+18.5f, yPos, 0);
 
             if (itemArr[ind-1] == 0)
             {

@@ -1725,6 +1725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravSwitch: {fileID: 291549460440404176, guid: 7a974bf84f38f744fa1547b2eaf2f0e6, type: 3}
   note: {fileID: 6793344568998294521, guid: 1537c2e41d7e3804c88126d1a0ce9cb5, type: 3}
+  player: {fileID: 178061451}
 --- !u!4 &719575094
 Transform:
   m_ObjectHideFlags: 0
