@@ -5,18 +5,20 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     private Rigidbody2D rb2D;
-    // private float moveSpeed;
-    [SerializeField]
 
     // Healthbar
+    [SerializeField]
     public int maxHealth = 100; 
     public int currentHealth;
     public HealthBar healthBar;
 
     //这些是其他class需要调用的变量
-    public int score;
-    
+    public int hitScore;
+    public int missScore;
 
+    // The diamond to destory
+    private GameObject toHit;
+    
 
     private Animator animator;
     private bool isUpsideDown;
@@ -28,7 +30,8 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;
+        hitScore = 0;
+        missScore = 0;
         canChangeGravity = false;
 
         currentHealth = maxHealth;
@@ -65,10 +68,26 @@ public class PlayerControl : MonoBehaviour
 		{
             animator.SetBool("isEating",true);
             nextTime = Time.time + 0.1f; //Eating time lasts for 0.2s
-            if (canGetScore) score++;
-            else score--;
+            if (canGetScore){
+                ScoreSingle();
+            }
+            else {
+                MissSingle();
+            }
 		}
-        Debug.Log(score);
+        Debug.Log(hitScore + "/" + missScore);
+    }
+
+    // Score on single diamond function
+    void ScoreSingle()
+    {
+        hitScore++;
+        Destroy(toHit);
+    }
+
+    void MissSingle()
+    {
+        missScore++;
     }
 
     // TakeDamage function
@@ -89,6 +108,7 @@ public class PlayerControl : MonoBehaviour
         
         if(collision.gameObject.tag == "food")
         {
+            toHit = collision.gameObject;
             canGetScore = true;
         }
         
@@ -103,6 +123,7 @@ public class PlayerControl : MonoBehaviour
 
         if(collision.gameObject.tag == "food")
         {
+            toHit = null;
             canGetScore = false;
         }
     }
