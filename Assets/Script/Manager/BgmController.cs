@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BgmManager : MonoBehaviour
+public class BgmController : MonoBehaviour
 {
     [SerializeField]
     AudioSource audioSource;
