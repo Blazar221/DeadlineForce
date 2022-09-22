@@ -1,30 +1,29 @@
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class GlobalSpawner : MonoBehaviour
 {
-    [SerializeField] 
-    private GameObject gravSwitch;
+    [SerializeField] private GameObject gravSwitch;
+    [SerializeField] private GameObject note;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject block;
 
-    [SerializeField] 
-    private GameObject note;
-    
-    [SerializeField] 
-    private GameObject player;
-
-    private GameObject newItem;
-    private SpriteRenderer rend;
+    private GameObject newItem, newBlock;
     private Vector3 spawnPos;
+    private Block spawnedObjHandler;
     private Note noteHandler;
     private PlayerControl playerHadler;
     private float playerX, xLen;
+    private int ind = 1, i;
+    private List<int> gravSwitchIndLs = new List<int>();
 
     //IMPORTANT: length of 2d time will have one more element {0, 0}, be aware of index!
-    private float[,] time = new float[,]
+    private float[,] timeArr = new float[,]
     {
-        { 0.0f, 0.0f }, { 0.75f, 0.75f }, { 1.5f, 1.5f }, { 2.25f, 2.25f }, { 3.0f, 3.0f }, { 3.75f, 3.75f },
+        { 0.0f, 0.0f }, { 0.0f, 0.0f }, { 0.75f, 0.75f }, { 1.5f, 1.5f }, { 2.25f, 2.25f }, { 3.0f, 3.0f }, { 3.75f, 3.75f },
         { 4.5f, 4.5f }, { 5.25f, 5.25f }, { 6.0f, 6.0f }, { 6.75f, 6.75f }, { 7.5f, 7.5f }, { 8.25f, 8.25f },
         { 9.0f, 9.0f }, { 9.75f, 9.75f }, { 10.5f, 10.5f }, { 11.25f, 11.25f }, { 12.0f, 12.0f }, { 12.75f, 12.75f },
         { 13.5f, 13.5f }, { 14.25f, 14.25f }, { 15.0f, 15.0f }, { 15.75f, 15.75f }, { 16.5f, 16.5f },
@@ -40,17 +39,19 @@ public class GlobalSpawner : MonoBehaviour
         { 57.42f, 57.42f }, { 58.47f, 58.47f }, { 59.07f, 59.07f }, { 59.67f, 59.67f }, { 60.87f, 60.87f },
         { 62.07f, 62.07f }, { 62.67f, 62.67f }, { 63.27f, 63.27f }, { 63.87f, 63.87f }, { 64.47f, 64.47f },
         { 65.07f, 65.07f }, { 65.67f, 65.67f }, { 66.27f, 66.27f }, { 66.87f, 66.87f }, { 67.47f, 67.47f },
-        { 68.07f, 70.04f }, { 70.47f, 70.47f }, { 71.67f, 71.67f }, { 72.27f, 72.27f }, { 74.07f, 79.75f }
+        { 68.07f, 70.04f }, { 70.47f, 70.47f }, { 71.67f, 71.67f }, { 72.27f, 72.27f }, { 73.25f, 80.75f }
     };
     
-    private short[] posType = new short[]
+    // 0 - lower, 1 - upper
+    private short[] posArr = new short[]
     {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1,
         1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1,
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0
     };
 
-    private short[] itemType = new short[]
+    // 0 - change, 1 - short, 2 - long
+    private short[] itemArr = new short[]
     {
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 1, 1, 1, 1, 1, 1, 1,
         1, 1, 1, 2, 0, 1, 1, 2, 0, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 2, 0, 2, 1, 2, 0, 1, 1, 1, 0, 1,
@@ -61,6 +62,13 @@ public class GlobalSpawner : MonoBehaviour
     {
         noteHandler = note.GetComponent<Note>();
         playerHadler = player.GetComponent<PlayerControl>();
+        for (i = 0; i < itemArr.Length; i++)
+        {
+            if (itemArr[i] == 0)
+            {
+                gravSwitchIndLs.Add(i);
+            }
+        }
     }
     
     // Start is called before the first frame update
@@ -68,14 +76,39 @@ public class GlobalSpawner : MonoBehaviour
     {
         playerX = playerHadler.transform.localScale.x;
         Debug.Log(playerX);
-        StartCoroutine(SpawnNewItem(time, posType, itemType));
+        StartCoroutine(SpawnNewItem());
+        StartCoroutine(SpawnNewBlock());
     }
 
-    private IEnumerator SpawnNewItem(float[,] timeArr, short[] posArr, short[] itemArr)
+    private IEnumerator SpawnNewBlock()
     {
-        int len = timeArr.Length, ind = 1;
+        int nxtGravSwitchInd = 0, minePosY = 0;
+        while (ind < timeArr.Length)
+        {
+            yield return new WaitForSeconds(Random.Range(1f, 4f));
+            //当前重力转换点已被generate，要在另一平面生成障碍
+            if (ind-1 > gravSwitchIndLs[nxtGravSwitchInd])
+            {
+                nxtGravSwitchInd++;
+            }
+
+            if (posArr[gravSwitchIndLs[nxtGravSwitchInd]] == 0)
+            {
+                minePosY = 4;
+            }
+            else if (posArr[gravSwitchIndLs[nxtGravSwitchInd]] == 1)
+            {
+                minePosY = -4;
+            }
+            spawnPos = new Vector3(playerX+26f, minePosY, 0);
+            newBlock = Instantiate(block, spawnPos, Quaternion.identity);
+        }
+    }
+
+    private IEnumerator SpawnNewItem()
+    {
         float yPos = 0;
-        while (ind < len)
+        while (ind < timeArr.Length/2)
         {
             yield return new WaitForSeconds(timeArr[ind, 0]-timeArr[ind-1, 0]);
             xLen = noteHandler.transform.localScale.x;
