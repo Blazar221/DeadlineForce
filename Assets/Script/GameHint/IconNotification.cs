@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class iconNotification : MonoBehaviour
+public class IconNotification : MonoBehaviour
 {
     private Image notification;
     private Color colorOri;

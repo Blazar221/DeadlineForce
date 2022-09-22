@@ -39,21 +39,8 @@ public class TextNotification : MonoBehaviour
         }
 
         if(Time.time>10){
-            notification.enabled=false;
-            
-        }
-
-        // if (Input.GetKeyDown (KeyCode.Space)&&notification.name=="SpaceBar")
-		// {
-        //     notification.enabled=false;
-		// }
-
-        //  if (Input.GetKeyDown (KeyCode.P)&&notification.name=="P")
-		// {
-        //     notification.enabled=false;
-		// }
-
-       
+            notification.enabled=false;   
+        }       
     }
 
 }
