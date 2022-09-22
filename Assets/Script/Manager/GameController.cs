@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
         if(timeCount > endTime)
         {
             gameIsEnd = true;
-            gameOverMenu.SetActive(gameIsEnd);
+            EnableGameOverMenu();
         }
     }
 
@@ -38,5 +38,6 @@ public class GameController : MonoBehaviour
     public void EnableGameOverMenu()
     {
         gameOverMenu.SetActive(true);
+        Time.timeScale = 0f;
     }
 }
