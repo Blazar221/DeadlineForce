@@ -18,18 +18,18 @@ public class GameOverScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pointsText.text = score.ToString() + " POINTS";
+        pointsText.text = score.ToString() + " " + " POINTS";
     }
 
     public void IncreaseScore() 
     {
         score += 1;
-        pointsText.text = score.ToString() + "POINTS";
+        pointsText.text = score.ToString() + " " + "POINTS";
     }
 
     public void DecreaseScore()
     {
         score -= 1;
-        pointsText.text = score.ToString() + "POINTS";
+        pointsText.text = score.ToString() + " " + "POINTS";
     }
 }
