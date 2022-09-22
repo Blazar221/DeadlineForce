@@ -14,7 +14,6 @@ public class GravSwitch : MonoBehaviour
     void Start()
     {
         pos = transform.position;
-        Destroy(gameObject, 3f);
     }
     
     // Update is called once per frame

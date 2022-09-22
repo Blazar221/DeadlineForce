@@ -27,6 +27,10 @@ public class PlayerControl : MonoBehaviour
     private bool canGetScore;
     private bool canChangeGravity;
 
+    // for hitting effect
+    public GameObject hitEffect, goodEffect, perfectEffect ,missEffect;
+    // for hitting effect
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,7 +79,7 @@ public class PlayerControl : MonoBehaviour
                 MissSingle();
             }
 		}
-        Debug.Log(hitScore + "/" + missScore);
+        //Debug.Log(hitScore + "/" + missScore);
     }
 
     // Score on single diamond function
@@ -83,11 +87,15 @@ public class PlayerControl : MonoBehaviour
     {
         hitScore++;
         Destroy(toHit);
+        Instantiate(hitEffect, transform.position + new Vector3(-2.0f,0,0), hitEffect.transform.rotation);
+        // Update hit times
+        ScoreManager.instance.AddHit();
     }
 
     void MissSingle()
     {
         missScore++;
+        Instantiate(missEffect, transform.position + new Vector3(-2.0f,0,0), missEffect.transform.rotation);
     }
 
     // TakeDamage function

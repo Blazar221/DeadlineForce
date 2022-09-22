@@ -10,14 +10,14 @@ public class Note : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector3 pos;
-    
+
     // Start is called before the first frame update
     void Start()
     {
         pos = transform.position;
-        Destroy(gameObject, 3f);
+        //(gameObject, 3f);
     }
-    
+
     // Update is called once per frame
     void Update()
     {

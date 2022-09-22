@@ -17,9 +17,9 @@ public class GlobalSpawner : MonoBehaviour
     private GameObject newItem;
     private SpriteRenderer rend;
     private Vector3 spawnPos;
-    private Note nodeHandler;
+    private Note noteHandler;
     private PlayerControl playerHadler;
-    private float playerX;
+    private float playerX, xLen;
 
     //IMPORTANT: length of 2d time will have one more element {0, 0}, be aware of index!
     private float[,] time = new float[,]
@@ -59,7 +59,7 @@ public class GlobalSpawner : MonoBehaviour
 
     private void Awake()
     {
-        nodeHandler = note.GetComponent<Note>();
+        noteHandler = note.GetComponent<Note>();
         playerHadler = player.GetComponent<PlayerControl>();
     }
     
@@ -78,6 +78,7 @@ public class GlobalSpawner : MonoBehaviour
         while (ind < len)
         {
             yield return new WaitForSeconds(timeArr[ind, 0]-timeArr[ind-1, 0]);
+            xLen = noteHandler.transform.localScale.x;
             //Debug.Log("Note Up:" + time[ind, 0]);
             if (posArr[ind-1] == 0)
             {
@@ -87,7 +88,11 @@ public class GlobalSpawner : MonoBehaviour
             {
                 yPos = 4;
             }
-            spawnPos = new Vector3(playerX+18.5f, yPos, 0);
+            if (timeArr[ind, 1] - timeArr[ind, 0] != 0)
+            {
+                xLen = (timeArr[ind, 1] - timeArr[ind, 0]) * noteHandler.speed * (1 / Time.fixedDeltaTime);
+            }
+            spawnPos = new Vector3(playerX+16f+xLen-xLen/2.46f*0.9f, yPos, 0);
 
             if (itemArr[ind-1] == 0)
             {
@@ -97,13 +102,16 @@ public class GlobalSpawner : MonoBehaviour
             {
                 newItem = Instantiate(note, spawnPos, Quaternion.identity);
             }
-            if (timeArr[ind, 1] - timeArr[ind, 0] != 0 && !newItem.IsDestroyed())
+            if (timeArr[ind, 1] - timeArr[ind, 0] != 0)
             {
-                //Debug.Log("length: " + (timeArr[ind, 1]-timeArr[ind, 0])/nodeHandler.speed);
-                newItem.transform.localScale =
-                    new Vector3((timeArr[ind, 1]-timeArr[ind, 0])/nodeHandler.speed, nodeHandler.transform.localScale.y, 0);
+                Destroy(newItem, 3f/noteHandler.transform.localScale.x * xLen);
             }
-            rend = newItem.GetComponent<SpriteRenderer>();
+            else
+            {
+                Destroy(newItem, 3f);
+            }
+
+            newItem.transform.localScale = new Vector3(xLen, noteHandler.transform.localScale.y, 0);
             ind++;
         }
     }
