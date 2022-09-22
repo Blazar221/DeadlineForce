@@ -79,7 +79,7 @@ public class PlayerControl : MonoBehaviour
                 MissSingle();
             }
 		}
-        Debug.Log(hitScore + "/" + missScore);
+        //Debug.Log(hitScore + "/" + missScore);
     }
 
     // Score on single diamond function
