@@ -88,6 +88,8 @@ public class PlayerControl : MonoBehaviour
         hitScore++;
         Destroy(toHit);
         Instantiate(hitEffect, transform.position + new Vector3(-2.0f,0,0), hitEffect.transform.rotation);
+        // Update hit times
+        ScoreManager.instance.AddPoint();
     }
 
     void MissSingle()
