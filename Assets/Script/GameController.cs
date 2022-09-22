@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject gameOverMenu;
+
+    private void OnEnable()
     {
-        
+        PlayerControl.OnPlayerDeath += EnableGameOverMenu;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        PlayerControl.OnPlayerDeath -= EnableGameOverMenu;
+    }
+
+    public void EnableGameOverMenu()
+    {
+        gameOverMenu.SetActive(true);
     }
 }
