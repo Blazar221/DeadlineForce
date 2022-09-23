@@ -11,6 +11,8 @@ public class IconNotification : MonoBehaviour
     private Color colorOri;
     private float Alpha = 1.0f;
     private bool fading=true;
+
+    private float showTime = 25f;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +40,7 @@ public class IconNotification : MonoBehaviour
         //     }
         // }
 
-        if(Time.time>10){
+        if(Time.time>showTime){
             notification.enabled=false;
             
         }

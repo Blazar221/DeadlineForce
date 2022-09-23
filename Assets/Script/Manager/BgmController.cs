@@ -35,6 +35,11 @@ public class BgmController : MonoBehaviour
         audioSource.Pause();
     }
 
+    public void StopBgm()
+    {
+        audioSource.Stop();
+    }
+
     public void ContinuePlayBgm()
     {
         audioSource.Play();
