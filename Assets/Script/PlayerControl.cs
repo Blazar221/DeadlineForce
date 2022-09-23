@@ -27,7 +27,12 @@ public class PlayerControl : MonoBehaviour
     private bool isUpsideDown;
     private bool isEating;
     private float nextTime;
-    private bool canGetScore;
+
+    private float keepLongScoreTime = 0f;
+    private float longScoreTimeBar = 0.7f;
+    
+    private bool canGetSingleScore;
+    private bool canGetLongScore;
     private bool canAvoidDamage;
     private bool canChangeGravity;
     private bool missFood;
@@ -49,7 +54,7 @@ public class PlayerControl : MonoBehaviour
 
         isUpsideDown = false;
         nextTime = Time.time;
-        canGetScore = false;
+        canGetSingleScore = false;
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         
@@ -80,7 +85,7 @@ public class PlayerControl : MonoBehaviour
             missFood = false;
             animator.SetBool("isEating",true);
             nextTime = Time.time + 0.1f; //Eating time lasts for 0.2s
-            if (canGetScore){
+            if (canGetSingleScore){
                 ScoreSingle();
             }
             else if (!canAvoidDamage){
@@ -90,6 +95,16 @@ public class PlayerControl : MonoBehaviour
                 avoidMine();
             }
 		}
+
+        if (Input.GetKey(KeyCode.O))
+		{
+            animator.SetBool("isEating",true);
+            keepLongScoreTime += Time.fixedDeltaTime;
+            if (canGetLongScore){
+                ScoreLong();
+            }
+		}
+        
         //Debug.Log(hitScore + "/" + missScore);
     }
 
@@ -103,6 +118,21 @@ public class PlayerControl : MonoBehaviour
         ScoreManager.instance.AddHit();
         // Update final score
         GameOverScreen.instance.IncreaseScore();
+    }
+
+    void ScoreLong()
+    {
+        if(keepLongScoreTime > longScoreTimeBar){
+            keepLongScoreTime = 0f;
+
+            hitScore++;
+            
+            Instantiate(hitEffect, transform.position + new Vector3(-2.0f,0,0), hitEffect.transform.rotation);
+            // Update hit times
+            ScoreManager.instance.AddHit();
+            // Update final score
+            GameOverScreen.instance.IncreaseScore();
+        }
     }
 
     void MissSingle()
@@ -157,7 +187,12 @@ public class PlayerControl : MonoBehaviour
         {
             missFood = true;
             toHit = collision.gameObject;
-            canGetScore = true;
+            canGetSingleScore = true;
+        }
+
+        if(collision.gameObject.tag == "LongNote")
+        {
+            canGetLongScore = true;
         }
 
         if(collision.gameObject.tag == "Mine")
@@ -182,7 +217,7 @@ public class PlayerControl : MonoBehaviour
             }
             missFood = false;
             toHit = null;
-            canGetScore = false;
+            canGetSingleScore = false;
         }
 
         if(collision.gameObject.tag == "Mine")
