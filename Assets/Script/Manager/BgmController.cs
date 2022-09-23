@@ -23,9 +23,14 @@ public class BgmController : MonoBehaviour
         audioSource.Play();
     }
 
-    void StopBgm()
+    public void StopBgm()
     {
         audioSource.Stop();
+    }
+
+    public void ResumeBgm()
+    {
+        audioSource.Play();
     }
 
     // Update is called once per frame
