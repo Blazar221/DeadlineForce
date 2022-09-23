@@ -228,6 +228,11 @@ public class PlayerControl : MonoBehaviour
             canGetSingleScore = false;
         }
 
+        if(collision.gameObject.tag == "LongNote")
+        {
+            canGetLongScore = false;
+        }
+
         if(collision.gameObject.tag == "Mine")
         {
             if (missMine){
