@@ -40,5 +40,6 @@ public class GameController : MonoBehaviour
         SendAnalytics.instance.Send(GameOverScreen.instance.getScore());
         gameOverMenu.SetActive(true);
         Time.timeScale = 0f;
+        BgmController.instance.StopBgm();
     }
 }

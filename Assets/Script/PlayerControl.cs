@@ -75,10 +75,10 @@ public class PlayerControl : MonoBehaviour
 		}
 
         // If the player click space on the wrong point, it will take damage.
-        if (canChangeGravity == false && Input.GetKeyDown (KeyCode.Space))
-        {
-            TakeDamage(5);
-        }
+        // if (canChangeGravity == false && Input.GetKeyDown (KeyCode.Space))
+        // {
+        //     TakeDamage(5);
+        // }
 
         if (Input.GetKeyDown(KeyCode.P))
 		{
