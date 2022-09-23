@@ -28,7 +28,10 @@ public class PlayerControl : MonoBehaviour
     private bool isEating;
     private float nextTime;
     private bool canGetScore;
+    private bool canAvoidDamage;
     private bool canChangeGravity;
+    private bool missFood;
+    private bool missMine;
 
     // for hitting effect
     public GameObject hitEffect, goodEffect, perfectEffect ,missEffect;
@@ -57,6 +60,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (Time.time >= nextTime) {
             animator.SetBool("isEating",false);
+            animator.SetBool("isDamaged",false);
         }
         if (canChangeGravity && Input.GetKeyDown (KeyCode.Space))
 		{
@@ -73,13 +77,17 @@ public class PlayerControl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
 		{
+            missFood = false;
             animator.SetBool("isEating",true);
             nextTime = Time.time + 0.1f; //Eating time lasts for 0.2s
             if (canGetScore){
                 ScoreSingle();
             }
-            else {
+            else if (!canAvoidDamage){
                 MissSingle();
+            }
+            if (canAvoidDamage){
+                avoidMine();
             }
 		}
         //Debug.Log(hitScore + "/" + missScore);
@@ -103,6 +111,24 @@ public class PlayerControl : MonoBehaviour
         Instantiate(missEffect, transform.position + new Vector3(-2.0f,0,0), missEffect.transform.rotation);
         // Update final score
         GameOverScreen.instance.DecreaseScore();
+    }
+
+    // Mine collision functions
+    void avoidMine()
+    {
+        missMine = false;
+        Destroy(toHit);
+        Instantiate(hitEffect, transform.position + new Vector3(-2.0f,0,0), hitEffect.transform.rotation);
+    }
+
+    void collideMine()
+    {
+        nextTime = Time.time + 0.3f;
+        animator.SetBool("isDamaged",true);
+        Instantiate(missEffect, transform.position + new Vector3(-2.0f,0,0), missEffect.transform.rotation);
+        Destroy(toHit);
+        // damage
+        TakeDamage(10);
     }
 
     // TakeDamage function
@@ -129,10 +155,17 @@ public class PlayerControl : MonoBehaviour
         
         if(collision.gameObject.tag == "food")
         {
+            missFood = true;
             toHit = collision.gameObject;
             canGetScore = true;
         }
-        
+
+        if(collision.gameObject.tag == "Mine")
+        {
+            missMine = true;
+            toHit = collision.gameObject;
+            canAvoidDamage = true;
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -144,8 +177,21 @@ public class PlayerControl : MonoBehaviour
 
         if(collision.gameObject.tag == "food")
         {
+            if (missFood){
+                MissSingle();
+            }
+            missFood = false;
             toHit = null;
             canGetScore = false;
+        }
+
+        if(collision.gameObject.tag == "Mine")
+        {
+            if (missMine){
+                collideMine();
+            }
+            toHit = null;
+            canAvoidDamage = false;
         }
     }
 }
