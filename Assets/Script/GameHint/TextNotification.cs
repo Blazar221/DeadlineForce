@@ -22,21 +22,21 @@ public class TextNotification : MonoBehaviour
     void Update()
     {
 
-        if(fading){
-            Alpha = Alpha - (Time.deltaTime)/2;
-            colorOri.a = Alpha;
-            notification.color = colorOri;
-            if(Alpha<=0){
-                fading=false;
-            }
-        }else{
-            Alpha = Alpha + (Time.deltaTime)/2;
-            colorOri.a = Alpha;
-            notification.color = colorOri;
-            if(Alpha>=1){
-                fading=true;
-            }
-        }
+        // if(fading){
+        //     Alpha = Alpha - (Time.deltaTime)/2;
+        //     colorOri.a = Alpha;
+        //     notification.color = colorOri;
+        //     if(Alpha<=0){
+        //         fading=false;
+        //     }
+        // }else{
+        //     Alpha = Alpha + (Time.deltaTime)/2;
+        //     colorOri.a = Alpha;
+        //     notification.color = colorOri;
+        //     if(Alpha>=1){
+        //         fading=true;
+        //     }
+        // }
 
         if(Time.time>10){
             notification.enabled=false;   

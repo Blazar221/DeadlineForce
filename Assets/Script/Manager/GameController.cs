@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour
 
     public void EnableGameOverMenu()
     {
+        SendAnalytics.instance.Send(GameOverScreen.instance.getScore());
         gameOverMenu.SetActive(true);
         Time.timeScale = 0f;
     }

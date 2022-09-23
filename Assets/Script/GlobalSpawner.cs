@@ -8,6 +8,7 @@ public class GlobalSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject gravSwitch;
     [SerializeField] private GameObject note;
+    [SerializeField] private GameObject longNote;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject block;
 
@@ -135,20 +136,26 @@ public class GlobalSpawner : MonoBehaviour
             {
                 newItem = Instantiate(gravSwitch, spawnPos, Quaternion.identity);
             }
-            else if(itemArr[ind-1] != 0)
+            else if(itemArr[ind-1] == 1)
             {
                 newItem = Instantiate(note, spawnPos, Quaternion.identity);
             }
-            if (timeArr[ind, 1] - timeArr[ind, 0] != 0)
+            else{
+                newItem = Instantiate(longNote, spawnPos, Quaternion.identity);
+                LongNote newLongNote = newItem.GetComponent<LongNote>();
+                float timeDiff = timeArr[ind, 1] - timeArr[ind, 0];
+                newLongNote.SetLength(timeDiff * 10);
+            }
+            if (itemArr[ind-1] == 2)
             {
-                Destroy(newItem, 3f/noteHandler.transform.localScale.x * xLen);
+                // Destroy(newItem, 3f/noteHandler.transform.localScale.x * xLen);
             }
             else
             {
                 Destroy(newItem, 3f);
+                newItem.transform.localScale = new Vector3(xLen, noteHandler.transform.localScale.y, 0);
             }
 
-            newItem.transform.localScale = new Vector3(xLen, noteHandler.transform.localScale.y, 0);
             ind++;
         }
     }

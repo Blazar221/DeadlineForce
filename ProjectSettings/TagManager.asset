@@ -8,6 +8,7 @@ TagManager:
   - GravSwitch
   - food
   - Mine
+  - LongNote
   layers:
   - Default
   - TransparentFX
