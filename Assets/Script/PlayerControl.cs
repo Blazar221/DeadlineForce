@@ -33,8 +33,8 @@ public class PlayerControl : MonoBehaviour
     private bool missFood;
     private bool missMine;
 
-    // for hitting effect
-    public GameObject hitEffect, goodEffect, perfectEffect ,missEffect;
+    // for hitting and blood effect
+    public GameObject hitEffect, goodEffect, perfectEffect ,missEffect, bloodEffectCeil, bloodEffectFloor;
     // for hitting effect
 
     // Start is called before the first frame update
@@ -90,6 +90,7 @@ public class PlayerControl : MonoBehaviour
                 avoidMine();
             }
 		}
+
         //Debug.Log(hitScore + "/" + missScore);
     }
 
@@ -129,6 +130,14 @@ public class PlayerControl : MonoBehaviour
         Destroy(toHit);
         // damage
         TakeDamage(10);
+        // add blood effect
+        if (isUpsideDown){
+            Instantiate(bloodEffectCeil, transform.position + new Vector3(0, -0.2f, 0), bloodEffectCeil.transform.rotation);
+        }
+        else
+        {
+            Instantiate(bloodEffectFloor, transform.position + new Vector3(0,0.2f,0), bloodEffectFloor.transform.rotation);
+        }
     }
 
     // TakeDamage function
