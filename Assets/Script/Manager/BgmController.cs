@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BgmController : MonoBehaviour
 {
+    public static BgmController instance;
+
     [SerializeField]
     AudioSource audioSource;
 
@@ -11,6 +13,11 @@ public class BgmController : MonoBehaviour
     [SerializeField]
     private float waitTime = 1f;
 
+
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -23,11 +30,16 @@ public class BgmController : MonoBehaviour
         audioSource.Play();
     }
 
-    void StopBgm()
+    public void PauseBgm()
     {
-        audioSource.Stop();
+        audioSource.Pause();
     }
 
+    public void ContinuePlayBgm()
+    {
+        audioSource.Play();
+    }
+    
     // Update is called once per frame
     void Update()
     {

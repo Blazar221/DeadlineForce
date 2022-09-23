@@ -29,6 +29,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+        BgmController.instance.ContinuePlayBgm();
         isGamePaused = false;
     }
     
@@ -44,6 +45,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
+        BgmController.instance.PauseBgm();
         isGamePaused = true;
     }
 
@@ -58,7 +60,7 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
-        Debug.Log("Quit!");
+        // Debug.Log("Quit!");
     }
 
 }
