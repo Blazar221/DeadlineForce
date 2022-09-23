@@ -92,6 +92,10 @@ public class GlobalSpawner : MonoBehaviour
                 nxtGravSwitchInd++;
             }
 
+            if (nxtGravSwitchInd == gravSwitchIndLs.Count)
+            {
+                break;
+            }
             if (posArr[gravSwitchIndLs[nxtGravSwitchInd]] == 0)
             {
                 minePosY = 4;
