@@ -32,4 +32,9 @@ public class GameOverScreen : MonoBehaviour
         score -= 1;
         pointsText.text = score.ToString() + " " + "POINTS";
     }
+
+    public int getScore()
+    {
+        return score;
+    }
 }
