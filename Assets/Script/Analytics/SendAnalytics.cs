@@ -14,6 +14,7 @@ public class SendAnalytics : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         _sessionId = DateTime.Now.Ticks;
     }
 
