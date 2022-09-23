@@ -130,7 +130,16 @@ public class GlobalSpawner : MonoBehaviour
             {
                 xLen = (timeArr[ind, 1] - timeArr[ind, 0]) * noteHandler.speed * (1 / Time.fixedDeltaTime);
             }
-            spawnPos = new Vector3(playerX+16f+xLen-xLen/2.46f*0.9f, yPos, 0);
+
+            if (itemArr[ind - 1] != 2)
+            {
+                spawnPos = new Vector3(playerX+16f+xLen-xLen/2.46f*0.9f, yPos, 0);
+            }
+            else
+            {
+                spawnPos = new Vector3(playerX+9.5f+xLen, yPos, 0);
+            }
+            
 
             if (itemArr[ind-1] == 0)
             {
@@ -143,8 +152,7 @@ public class GlobalSpawner : MonoBehaviour
             else{
                 newItem = Instantiate(longNote, spawnPos, Quaternion.identity);
                 LongNote newLongNote = newItem.GetComponent<LongNote>();
-                float timeDiff = timeArr[ind, 1] - timeArr[ind, 0];
-                newLongNote.SetLength(timeDiff * 10);
+                newLongNote.SetLength(xLen);
             }
             if (itemArr[ind-1] == 2)
             {
