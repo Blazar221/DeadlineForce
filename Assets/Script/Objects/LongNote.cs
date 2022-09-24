@@ -54,10 +54,10 @@ public class LongNote : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("here");
-        Debug.Log(pos.x);
-        Debug.Log(pos1.x);
-        Debug.Log(pos2.x);
+        //Debug.Log("here");
+        //Debug.Log(pos.x);
+        //Debug.Log(pos1.x);
+        //Debug.Log(pos2.x);
         transform.position = pos;
 
         lineRenderer.SetPosition(0, pos1);

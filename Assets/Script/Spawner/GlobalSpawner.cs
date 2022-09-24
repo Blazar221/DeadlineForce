@@ -133,8 +133,9 @@ public class GlobalSpawner : MonoBehaviour
 
             spawnPos = itemArr[ind - 1] switch
             {
-                2 => new Vector3(playerX + 16f + xLen - xLen / 2.46f * 0.9f, yPos, 0),
-                _ => new Vector3(playerX + 9.5f + xLen, yPos, 0),
+                //2 => new Vector3(playerX + 16f + xLen - xLen / 2.46f * 0.9f, yPos, 0),
+                2 => new Vector3(playerX + xLen, yPos, 0),
+                _ => new Vector3(playerX + 16.5f + xLen, yPos, 0),
             };
 
             // start spawn
@@ -153,6 +154,7 @@ public class GlobalSpawner : MonoBehaviour
                     Destroy(newItem, 3f);
                     break;
                 case 2:
+                    Debug.Log("time:"+ timeArr[ind, 0]);
                     newItem = Instantiate(longNote, spawnPos, Quaternion.identity);
                     var newLongNote = newItem.GetComponent<LongNote>();
                     newLongNote.SetLength(xLen);
