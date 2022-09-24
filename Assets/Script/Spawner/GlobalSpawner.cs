@@ -76,14 +76,14 @@ public class GlobalSpawner : MonoBehaviour
     void Start()
     {
         playerX = playerHadler.transform.localScale.x;
-        Debug.Log(playerX);
+        //Debug.Log(playerX);
         StartCoroutine(SpawnNewItem());
         StartCoroutine(SpawnNewBlock());
     }
 
     private IEnumerator SpawnNewBlock()
     {
-        int nxtGravSwitchInd = 0, minePosY = 0;
+        var nxtGravSwitchInd = 0;
         while (ind < timeArr.Length)
         {
             yield return new WaitForSeconds(Random.Range(1f, 4f));
@@ -97,73 +97,68 @@ public class GlobalSpawner : MonoBehaviour
             {
                 break;
             }
-            if (posArr[gravSwitchIndLs[nxtGravSwitchInd]] == 0)
+
+            var minePosY = posArr[gravSwitchIndLs[nxtGravSwitchInd]] switch
             {
-                minePosY = 4;
-            }
-            else if (posArr[gravSwitchIndLs[nxtGravSwitchInd]] == 1)
-            {
-                minePosY = -4;
-            }
+                0 => 4,
+                1 => -4,
+                _ => 0,
+            };
+            
             spawnPos = new Vector3(playerX+26f, minePosY, 0);
             newBlock = Instantiate(block, spawnPos, Quaternion.identity);
+            Destroy(newBlock, 3f);
         }
     }
 
     private IEnumerator SpawnNewItem()
     {
-        float yPos = 0;
         while (ind < timeArr.Length/2)
         {
             yield return new WaitForSeconds(timeArr[ind, 0]-timeArr[ind-1, 0]);
             xLen = noteHandler.transform.localScale.x;
             //Debug.Log("Note Up:" + time[ind, 0]);
-            if (posArr[ind-1] == 0)
+
+            float yPos = posArr[ind - 1] switch
             {
-                yPos = -4;
-            }
-            else if (posArr[ind-1] == 1)
-            {
-                yPos = 4;
-            }
+                0 => -4,
+                1 => 4,
+                _ => 0,
+            };
+
             if (timeArr[ind, 1] - timeArr[ind, 0] != 0)
             {
                 xLen = (timeArr[ind, 1] - timeArr[ind, 0]) * noteHandler.speed * (1 / Time.fixedDeltaTime);
             }
 
-            if (itemArr[ind - 1] != 2)
+            spawnPos = itemArr[ind - 1] switch
             {
-                spawnPos = new Vector3(playerX+16f+xLen-xLen/2.46f*0.9f, yPos, 0);
-            }
-            else
-            {
-                spawnPos = new Vector3(playerX+9.5f+xLen, yPos, 0);
-            }
-            
+                2 => new Vector3(playerX + 16f + xLen - xLen / 2.46f * 0.9f, yPos, 0),
+                _ => new Vector3(playerX + 9.5f + xLen, yPos, 0),
+            };
 
-            if (itemArr[ind-1] == 0)
+            // start spawn
+            switch (itemArr[ind - 1])
             {
-                newItem = Instantiate(gravSwitch, spawnPos, Quaternion.identity);
+                case 0:
+                    newItem = Instantiate(gravSwitch, spawnPos, Quaternion.identity);
+                    Destroy(newItem, 3f);
+                    if (posArr[ind - 1] == 1)
+                    {
+                        newItem.transform.localScale = new Vector3(1, -1, 1);
+                    }
+                    break;
+                case 1:
+                    newItem = Instantiate(note, spawnPos, Quaternion.identity);
+                    Destroy(newItem, 3f);
+                    break;
+                case 2:
+                    newItem = Instantiate(longNote, spawnPos, Quaternion.identity);
+                    var newLongNote = newItem.GetComponent<LongNote>();
+                    newLongNote.SetLength(xLen);
+                    Destroy(newItem, 3f/2.46f*xLen);
+                    break;
             }
-            else if(itemArr[ind-1] == 1)
-            {
-                newItem = Instantiate(note, spawnPos, Quaternion.identity);
-            }
-            else{
-                newItem = Instantiate(longNote, spawnPos, Quaternion.identity);
-                LongNote newLongNote = newItem.GetComponent<LongNote>();
-                newLongNote.SetLength(xLen);
-            }
-            if (itemArr[ind-1] == 2)
-            {
-                // Destroy(newItem, 3f/noteHandler.transform.localScale.x * xLen);
-            }
-            else
-            {
-                Destroy(newItem, 3f);
-                newItem.transform.localScale = new Vector3(xLen, noteHandler.transform.localScale.y, 0);
-            }
-
             ind++;
         }
     }
