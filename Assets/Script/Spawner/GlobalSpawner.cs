@@ -75,8 +75,7 @@ public class GlobalSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerX = playerHadler.transform.localScale.x;
-        //Debug.Log(playerX);
+        playerX = playerHadler.transform.position.x;
         StartCoroutine(SpawnNewItem());
         StartCoroutine(SpawnNewBlock());
     }
@@ -117,7 +116,6 @@ public class GlobalSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(timeArr[ind, 0]-timeArr[ind-1, 0]);
             xLen = noteHandler.transform.localScale.x;
-            //Debug.Log("Note Up:" + time[ind, 0]);
 
             float yPos = posArr[ind - 1] switch
             {
@@ -131,12 +129,7 @@ public class GlobalSpawner : MonoBehaviour
                 xLen = (timeArr[ind, 1] - timeArr[ind, 0]) * noteHandler.speed * (1 / Time.fixedDeltaTime);
             }
 
-            spawnPos = itemArr[ind - 1] switch
-            {
-                //2 => new Vector3(playerX + 16f + xLen - xLen / 2.46f * 0.9f, yPos, 0),
-                2 => new Vector3(playerX + xLen, yPos, 0),
-                _ => new Vector3(playerX + 16.5f + xLen, yPos, 0),
-            };
+            spawnPos = new Vector3(playerX + noteHandler.speed * (2f / Time.fixedDeltaTime) + xLen / 2, yPos, 0);
 
             // start spawn
             switch (itemArr[ind - 1])
@@ -154,7 +147,6 @@ public class GlobalSpawner : MonoBehaviour
                     Destroy(newItem, 3f);
                     break;
                 case 2:
-                    Debug.Log("time:"+ timeArr[ind, 0]);
                     newItem = Instantiate(longNote, spawnPos, Quaternion.identity);
                     var newLongNote = newItem.GetComponent<LongNote>();
                     newLongNote.SetLength(xLen);
