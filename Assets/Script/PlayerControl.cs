@@ -113,7 +113,7 @@ public class PlayerControl : MonoBehaviour
     {
         hitScore++;
         Destroy(toHit);
-        Instantiate(hitEffect, transform.position + new Vector3(-2.0f,0,0), hitEffect.transform.rotation);
+        addHitEffect(hitEffect);
         // Update hit times
         ScoreManager.instance.AddHit();
         // Update final score
@@ -127,7 +127,7 @@ public class PlayerControl : MonoBehaviour
 
             hitScore++;
             
-            Instantiate(hitEffect, transform.position + new Vector3(-2.0f,0,0), hitEffect.transform.rotation);
+            addHitEffect(hitEffect);
             // Update hit times
             ScoreManager.instance.AddHit();
             // Update final score
@@ -138,7 +138,7 @@ public class PlayerControl : MonoBehaviour
     void MissSingle()
     {
         missScore++;
-        Instantiate(missEffect, transform.position + new Vector3(-2.0f,0,0), missEffect.transform.rotation);
+        addHitEffect(missEffect);
         // Update final score
         GameOverScreen.instance.DecreaseScore();
     }
@@ -148,14 +148,14 @@ public class PlayerControl : MonoBehaviour
     {
         missMine = false;
         Destroy(toHit);
-        Instantiate(hitEffect, transform.position + new Vector3(-2.0f,0,0), hitEffect.transform.rotation);
+        addHitEffect(hitEffect);
     }
 
     void collideMine()
     {
         nextTime = Time.time + 0.3f;
         animator.SetBool("isDamaged",true);
-        Instantiate(missEffect, transform.position + new Vector3(-2.0f,0,0), missEffect.transform.rotation);
+        addHitEffect(missEffect);
         Destroy(toHit);
         // damage
         TakeDamage(10);
@@ -179,6 +179,18 @@ public class PlayerControl : MonoBehaviour
             currentHealth = 0;
             Debug.Log("You are dead!");
             OnPlayerDeath?.Invoke();
+        }
+    }
+
+    void addHitEffect(GameObject effectType)
+    {
+        if (isUpsideDown)
+        {
+            Instantiate(effectType, transform.position + new Vector3(-2.0f,-1.0f,0), effectType.transform.rotation);
+        }
+        else
+        {
+            Instantiate(effectType, transform.position + new Vector3(-2.0f,1.0f,0), effectType.transform.rotation);
         }
     }
 
