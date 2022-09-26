@@ -10,11 +10,14 @@ public class TextTutorial : MonoBehaviour
 {
 
     ///private Text shortNoteInstruction;
+    [SerializeField] private GameObject Player;
     [SerializeField] private TextMeshProUGUI shortNoteInstruction;
     [SerializeField] private TextMeshProUGUI longNoteInstruction;
     [SerializeField] private TextMeshProUGUI gravSwitchInstruction;
     [SerializeField] private TextMeshProUGUI blockInstruction;
     [SerializeField] private TextMeshProUGUI finishInstruction;
+    
+    private PlayerControl playerControl;
     
     private bool shortNoteLearned = false;
     private bool longNoteLearned = false;
@@ -24,6 +27,7 @@ public class TextTutorial : MonoBehaviour
     private float firstShortNoteTime = 2f;
     private float firstLongNoteTime = 2.75f;
     private float firstGravSwitchTime = 5.5f;
+    private float disableGravSwitchTime = 6.00f;
     private float firstBlockTime = 7.5f;
     private float finishTime = 8.5f;
     
@@ -93,6 +97,10 @@ public class TextTutorial : MonoBehaviour
                 blockInstruction.enabled = false;
                 Time.timeScale = 1f;
             }
+        }
+        if(Time.timeSinceLevelLoad >= disableGravSwitchTime){
+            playerControl = Player.GetComponent<PlayerControl>();
+            playerControl.canChangeGravity = false;
         }
         if(Time.timeSinceLevelLoad >= finishTime){
             Time.timeScale = 0f;

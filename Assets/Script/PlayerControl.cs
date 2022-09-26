@@ -34,7 +34,7 @@ public class PlayerControl : MonoBehaviour
     private bool canGetSingleScore;
     private bool canGetLongScore;
     private bool canAvoidDamage;
-    private bool canChangeGravity;
+    public bool canChangeGravity;
     private bool missFood;
     private bool missMine;
 
