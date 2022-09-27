@@ -104,7 +104,10 @@ public class PlayerControl : MonoBehaviour
                 ScoreLong();
             }
 		}
-        
+        // Update the final score
+        GameOverScreen.instance.getScore();
+        ScoreManager.instance.GetTotalScore();
+
         //Debug.Log(hitScore + "/" + missScore);
     }
 
@@ -132,6 +135,9 @@ public class PlayerControl : MonoBehaviour
             ScoreManager.instance.AddHit();
             // Update final score
             GameOverScreen.instance.IncreaseScore();
+            // Update hit rate
+            ScoreManager.instance.CalHitRate();
+            GameOverScreen.instance.CalHitRate();
         }
     }
 
@@ -139,8 +145,13 @@ public class PlayerControl : MonoBehaviour
     {
         missScore++;
         addHitEffect(missEffect);
+        // Update miss times
+        ScoreManager.instance.AddMiss();
         // Update final score
         GameOverScreen.instance.DecreaseScore();
+        // Update hit rate
+        ScoreManager.instance.CalHitRate();
+        GameOverScreen.instance.CalHitRate();
     }
 
     // Mine collision functions
