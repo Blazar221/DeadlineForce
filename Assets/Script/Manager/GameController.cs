@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         timeCount += Time.deltaTime;
-        if(timeCount > endTime)
+        if(timeCount > endTime && !IsGameEnd())
         {
             gameIsEnd = true;
             EnableCongratsMenu();
@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour
     // 血量掉光游戏结束
     public void EnableGameOverMenu()
     {
-        SendAnalytics.instance.Send(GameOverScreen.instance.getScore());
+        //SendAnalytics.instance.Send(GameOverScreen.instance.getScore());
         gameOverMenu.SetActive(true);
         Time.timeScale = 0f;
         BgmController.instance.StopBgm();
