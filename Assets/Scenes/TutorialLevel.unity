@@ -1666,13 +1666,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628627588}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49c441ac596664b1bad060449a2f69ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   totalScoreText: {fileID: 0}
-  hitTimesText: {fileID: 0}
+  hitTimesText: {fileID: 864449717}
   hitScoreText: {fileID: 0}
   hitRateText: {fileID: 0}
 --- !u!114 &628627592
@@ -2297,7 +2297,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &864449717
 MonoBehaviour:
   m_ObjectHideFlags: 0

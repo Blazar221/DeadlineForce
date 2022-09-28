@@ -50,6 +50,7 @@ public class GameController : MonoBehaviour
     {
         ScoreManager.instance.GetTotalScore();
         congratsMenu.SetActive(true);
+        Time.timeScale = 0f;
         BgmController.instance.StopBgm();
     }
 }
