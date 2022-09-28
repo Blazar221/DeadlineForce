@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public GameObject gameOverMenu;
+    public GameObject congratsMenu;
 
     private float endTime = 84f;
     private float timeCount = 0f;
@@ -13,10 +14,10 @@ public class GameController : MonoBehaviour
     void Update()
     {
         timeCount += Time.deltaTime;
-        if(timeCount > endTime)
+        if(timeCount > endTime && !IsGameEnd())
         {
             gameIsEnd = true;
-            EnableGameOverMenu();
+            EnableCongratsMenu();
         }
     }
 
@@ -35,11 +36,20 @@ public class GameController : MonoBehaviour
         PlayerControl.OnPlayerDeath -= EnableGameOverMenu;
     }
 
+    // 血量掉光游戏结束
     public void EnableGameOverMenu()
     {
-        SendAnalytics.instance.Send(GameOverScreen.instance.getScore());
+        //SendAnalytics.instance.Send(GameOverScreen.instance.getScore());
         gameOverMenu.SetActive(true);
         Time.timeScale = 0f;
+        BgmController.instance.StopBgm();
+    }
+
+    // 通关游戏结束
+    public void EnableCongratsMenu()
+    {
+        ScoreManager.instance.GetTotalScore();
+        congratsMenu.SetActive(true);
         BgmController.instance.StopBgm();
     }
 }

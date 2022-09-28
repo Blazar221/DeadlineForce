@@ -34,7 +34,7 @@ public class PlayerControl : MonoBehaviour
     private bool canGetSingleScore;
     private bool canGetLongScore;
     private bool canAvoidDamage;
-    private bool canChangeGravity;
+    public bool canChangeGravity;
     private bool missFood;
     private bool missMine;
 
@@ -67,11 +67,16 @@ public class PlayerControl : MonoBehaviour
             animator.SetBool("isEating",false);
             animator.SetBool("isDamaged",false);
         }
-        if (canChangeGravity && Input.GetKeyDown (KeyCode.Space))
+        if (canChangeGravity)
 		{
-            isUpsideDown = !isUpsideDown;
+            if (Input.GetKeyDown (KeyCode.W)){
+                isUpsideDown = true;
+                rb2D.gravityScale *= -1;
+            } else if (Input.GetKeyDown (KeyCode.S)) {
+                isUpsideDown = false;
+                rb2D.gravityScale *= -1;
+            }
             animator.SetBool("UpsideDown",isUpsideDown);
-            rb2D.gravityScale *= -1;
 		}
 
         // If the player click space on the wrong point, it will take damage.
@@ -80,7 +85,7 @@ public class PlayerControl : MonoBehaviour
         //     TakeDamage(5);
         // }
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.J))
 		{
             missFood = false;
             animator.SetBool("isEating",true);
@@ -96,7 +101,7 @@ public class PlayerControl : MonoBehaviour
             }
 		}
 
-        if (Input.GetKey(KeyCode.O))
+        if (Input.GetKey(KeyCode.K))
 		{
             animator.SetBool("isEating",true);
             keepLongScoreTime += Time.fixedDeltaTime;
@@ -104,7 +109,10 @@ public class PlayerControl : MonoBehaviour
                 ScoreLong();
             }
 		}
-        
+        // Update the final score
+        GameOverScreen.instance.getScore();
+        ScoreManager.instance.GetTotalScore();
+
         //Debug.Log(hitScore + "/" + missScore);
     }
 
@@ -113,7 +121,7 @@ public class PlayerControl : MonoBehaviour
     {
         hitScore++;
         Destroy(toHit);
-        Instantiate(hitEffect, transform.position + new Vector3(-2.0f,0,0), hitEffect.transform.rotation);
+        addHitEffect(hitEffect);
         // Update hit times
         ScoreManager.instance.AddHit();
         // Update final score
@@ -127,20 +135,28 @@ public class PlayerControl : MonoBehaviour
 
             hitScore++;
             
-            Instantiate(hitEffect, transform.position + new Vector3(-2.0f,0,0), hitEffect.transform.rotation);
+            addHitEffect(hitEffect);
             // Update hit times
             ScoreManager.instance.AddHit();
             // Update final score
             GameOverScreen.instance.IncreaseScore();
+            // Update hit rate
+            ScoreManager.instance.CalHitRate();
+            GameOverScreen.instance.CalHitRate();
         }
     }
 
     void MissSingle()
     {
         missScore++;
-        Instantiate(missEffect, transform.position + new Vector3(-2.0f,0,0), missEffect.transform.rotation);
+        addHitEffect(missEffect);
+        // Update miss times
+        ScoreManager.instance.AddMiss();
         // Update final score
         GameOverScreen.instance.DecreaseScore();
+        // Update hit rate
+        ScoreManager.instance.CalHitRate();
+        GameOverScreen.instance.CalHitRate();
     }
 
     // Mine collision functions
@@ -148,14 +164,14 @@ public class PlayerControl : MonoBehaviour
     {
         missMine = false;
         Destroy(toHit);
-        Instantiate(hitEffect, transform.position + new Vector3(-2.0f,0,0), hitEffect.transform.rotation);
+        addHitEffect(hitEffect);
     }
 
     void collideMine()
     {
         nextTime = Time.time + 0.3f;
         animator.SetBool("isDamaged",true);
-        Instantiate(missEffect, transform.position + new Vector3(-2.0f,0,0), missEffect.transform.rotation);
+        addHitEffect(missEffect);
         Destroy(toHit);
         // damage
         TakeDamage(10);
@@ -179,6 +195,18 @@ public class PlayerControl : MonoBehaviour
             currentHealth = 0;
             Debug.Log("You are dead!");
             OnPlayerDeath?.Invoke();
+        }
+    }
+
+    void addHitEffect(GameObject effectType)
+    {
+        if (isUpsideDown)
+        {
+            Instantiate(effectType, transform.position + new Vector3(-2.0f,-1.0f,0), effectType.transform.rotation);
+        }
+        else
+        {
+            Instantiate(effectType, transform.position + new Vector3(-2.0f,1.0f,0), effectType.transform.rotation);
         }
     }
 

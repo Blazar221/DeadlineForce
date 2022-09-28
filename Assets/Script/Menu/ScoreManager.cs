@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameOverScreen : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
-    public static GameOverScreen instance;
+    public static ScoreManager instance;
 
-    public Text totalPointsText;
+    public Text totalScoreText;
+    public Text hitTimesText;
     public Text hitScoreText;
     public Text hitRateText;
-
-    int score = 0;
+    
+    int totalScore = 0;
     double hit = 0;
     double miss = 0;
     double hitRate = 0;
@@ -23,24 +24,26 @@ public class GameOverScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        totalPointsText.text = score.ToString() + " " + " POINTS";
+        totalScoreText.text = "Total Score:" + " " + totalScore.ToString();
+        hitTimesText.text = hit.ToString() + "  " + "HIT";
         hitScoreText.text = "Hit Score:" + " " + hit.ToString();
         hitRateText.text = "Hit Rate:" + " " + hitRate.ToString() + "%";
     }
 
-    public void IncreaseScore() 
+    public void AddHit()
     {
-        score += 1;
         hit += 1;
+        totalScore += 1;
+        totalScoreText.text = "Total Score:" + " " + totalScore.ToString();
+        hitTimesText.text = hit.ToString() + "  " + "HIT";
         hitScoreText.text = "Hit Score:" + " " + hit.ToString();
-        totalPointsText.text = score.ToString() + " " + "POINTS";
     }
 
-    public void DecreaseScore()
+    public void AddMiss()
     {
-        score -= 1;
         miss += 1;
-        totalPointsText.text = score.ToString() + " " + "POINTS";
+        totalScore -= 1;
+        totalScoreText.text = "Total Score:" + " " + totalScore.ToString();
     }
 
     public void CalHitRate()
@@ -48,17 +51,17 @@ public class GameOverScreen : MonoBehaviour
         hitRate = hit / (hit + miss)*100;
         hitRateText.text = "Hit Rate:" + " " + hitRate.ToString("f2") + "%";
     }
-    
-    public int getScore()
+
+    public int GetTotalScore()
     {
-        if(score <= 0)
+        if(totalScore <= 0)
         {
-            score = 0;
+            totalScore = 0;
             return 0;
         }
-        else 
+        else
         {
-            return score;
+            return totalScore;
         }
     }
 }

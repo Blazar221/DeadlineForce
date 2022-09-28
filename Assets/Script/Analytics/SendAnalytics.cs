@@ -29,9 +29,9 @@ public class SendAnalytics : MonoBehaviour
     {
         // Create the form and enter responses
         WWWForm form = new WWWForm();
-        form.AddField("entry.331597584", sessionId);
-        form.AddField("entry.1063281025", playtime);
-        form.AddField("entry.298718684", score);
+        form.AddField("entry.1448716951", sessionId);
+        form.AddField("entry.1190083204", playtime);
+        form.AddField("entry.39244634", score);
 
         // Send responses and verify result
         using (UnityWebRequest www = UnityWebRequest.Post(formURL, form))
