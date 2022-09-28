@@ -13,7 +13,8 @@ public class TextTutorial : MonoBehaviour
     [SerializeField] private GameObject Player;
     [SerializeField] private TextMeshProUGUI shortNoteInstruction;
     [SerializeField] private TextMeshProUGUI longNoteInstruction;
-    [SerializeField] private TextMeshProUGUI gravSwitchInstruction;
+    [SerializeField] private TextMeshProUGUI upSwitchInstruction;
+    [SerializeField] private TextMeshProUGUI downSwitchInstruction;
     [SerializeField] private TextMeshProUGUI blockInstruction;
     [SerializeField] private TextMeshProUGUI finishInstruction;
     
@@ -37,7 +38,8 @@ public class TextTutorial : MonoBehaviour
         //shortNoteInstruction=GetComponent<Text>();
         shortNoteInstruction.enabled = false;
         longNoteInstruction.enabled = false;
-        gravSwitchInstruction.enabled = false;
+        upSwitchInstruction.enabled = false;
+        downSwitchInstruction.enabled = false;
         blockInstruction.enabled = false;
         finishInstruction.enabled = false;
     }
@@ -65,7 +67,7 @@ public class TextTutorial : MonoBehaviour
         if(!shortNoteLearned && Time.timeSinceLevelLoad >= firstShortNoteTime){
             Time.timeScale = 0f;
             shortNoteInstruction.enabled = true;
-            if (Input.GetKeyDown(KeyCode.P)) {
+            if (Input.GetKeyDown(KeyCode.J)) {
                 shortNoteLearned = true;
                 shortNoteInstruction.enabled = false;
                 Time.timeScale = 1f;
@@ -74,7 +76,7 @@ public class TextTutorial : MonoBehaviour
         if(!longNoteLearned && Time.timeSinceLevelLoad >= firstLongNoteTime){
             Time.timeScale = 0f;
             longNoteInstruction.enabled = true;
-            if (Input.GetKeyDown(KeyCode.O)) {
+            if (Input.GetKeyDown(KeyCode.K)) {
                 longNoteLearned = true;
                 longNoteInstruction.enabled = false;
                 Time.timeScale = 1f;
@@ -82,17 +84,19 @@ public class TextTutorial : MonoBehaviour
         }
         if(!gravSwitchLearned && Time.timeSinceLevelLoad >= firstGravSwitchTime){
             Time.timeScale = 0f;
-            gravSwitchInstruction.enabled = true;
-            if (Input.GetKeyDown(KeyCode.Space)) {
+            upSwitchInstruction.enabled = true;
+            downSwitchInstruction.enabled = true;
+            if (Input.GetKeyDown(KeyCode.W)) {
                 gravSwitchLearned = true;
-                gravSwitchInstruction.enabled = false;
+                upSwitchInstruction.enabled = false;
+                downSwitchInstruction.enabled = false;
                 Time.timeScale = 1f;
             }
         }
         if(!blockLearned && Time.timeSinceLevelLoad >= firstBlockTime){
             Time.timeScale = 0f;
             blockInstruction.enabled = true;
-            if (Input.GetKeyDown(KeyCode.P)) {
+            if (Input.GetKeyDown(KeyCode.J)) {
                 blockLearned = true;
                 blockInstruction.enabled = false;
                 Time.timeScale = 1f;
