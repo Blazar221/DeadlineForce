@@ -71,10 +71,12 @@ public class PlayerControl : MonoBehaviour
 		{
             if (Input.GetKeyDown (KeyCode.W)){
                 isUpsideDown = true;
-                rb2D.gravityScale *= -1;
+                rb2D.gravityScale = -5;
+                canChangeGravity = false;
             } else if (Input.GetKeyDown (KeyCode.S)) {
                 isUpsideDown = false;
-                rb2D.gravityScale *= -1;
+                rb2D.gravityScale = 5;
+                canChangeGravity = false;
             }
             animator.SetBool("UpsideDown",isUpsideDown);
 		}
