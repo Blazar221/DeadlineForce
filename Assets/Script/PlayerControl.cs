@@ -67,11 +67,16 @@ public class PlayerControl : MonoBehaviour
             animator.SetBool("isEating",false);
             animator.SetBool("isDamaged",false);
         }
-        if (canChangeGravity && Input.GetKeyDown (KeyCode.Space))
+        if (canChangeGravity)
 		{
-            isUpsideDown = !isUpsideDown;
+            if (Input.GetKeyDown (KeyCode.W)){
+                isUpsideDown = true;
+                rb2D.gravityScale *= -1;
+            } else if (Input.GetKeyDown (KeyCode.S)) {
+                isUpsideDown = false;
+                rb2D.gravityScale *= -1;
+            }
             animator.SetBool("UpsideDown",isUpsideDown);
-            rb2D.gravityScale *= -1;
 		}
 
         // If the player click space on the wrong point, it will take damage.
@@ -80,7 +85,7 @@ public class PlayerControl : MonoBehaviour
         //     TakeDamage(5);
         // }
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.J))
 		{
             missFood = false;
             animator.SetBool("isEating",true);
@@ -96,7 +101,7 @@ public class PlayerControl : MonoBehaviour
             }
 		}
 
-        if (Input.GetKey(KeyCode.O))
+        if (Input.GetKey(KeyCode.K))
 		{
             animator.SetBool("isEating",true);
             keepLongScoreTime += Time.fixedDeltaTime;
