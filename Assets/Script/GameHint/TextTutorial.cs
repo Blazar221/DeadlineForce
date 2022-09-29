@@ -26,11 +26,11 @@ public class TextTutorial : MonoBehaviour
     private bool blockLearned = false;
 
     private float firstShortNoteTime = 2f;
-    private float firstLongNoteTime = 2.75f;
-    private float firstGravSwitchTime = 5.5f;
-    private float disableGravSwitchTime = 6.00f;
-    private float firstBlockTime = 7.5f;
-    private float finishTime = 8.5f;
+    private float firstLongNoteTime = 3.75f;
+    private float firstGravSwitchTime = 7.5f;
+    private float disableGravSwitchTime = 9.0f;
+    private float firstBlockTime = 12.0f;
+    private float finishTime = 13.5f;
     
     // Start is called before the first frame update
     void Start()
