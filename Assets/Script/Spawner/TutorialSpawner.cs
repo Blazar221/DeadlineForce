@@ -24,8 +24,8 @@ public class TutorialSpawner : MonoBehaviour
     //IMPORTANT: length of 2d time will have one more element {0, 0}, be aware of index!
     private float[,] timeArr = new float[,]
     {
-        { 0.0f, 0.0f }, { 0.0f, 0.0f }, { 0.75f, 2.75f }, { 3.5f, 3.5f }, { 4.00f, 4.00f }, { 4.75f, 4.75f },
-        { 5.25f, 5.25f }, { 5.5f, 5.5f }, { 6.0f, 6.0f }
+        { 0.0f, 0.0f }, { 0.0f, 0.0f }, { 1.75f, 3.75f }, { 5.5f, 5.5f }, { 7.0f, 7.0f }, { 8.75f, 8.75f },
+        { 9.25f, 9.25f }, { 10.0f, 10.0f }, { 10.5f, 10.5f }
     };
     
     // 0 - lower, 1 - upper

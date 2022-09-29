@@ -64,4 +64,14 @@ public class ScoreManager : MonoBehaviour
             return totalScore;
         }
     }
+
+    public double GetTotalHit()
+    {
+        return hit;
+    }
+
+    public double GetTotalMiss()
+    {
+        return miss;
+    }
 }
