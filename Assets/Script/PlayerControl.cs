@@ -103,6 +103,14 @@ public class PlayerControl : MonoBehaviour
             }
 		}
 
+        // Update the final score
+        GameOverScreen.instance.getScore();
+        ScoreManager.instance.GetTotalScore();
+
+        //Debug.Log(hitScore + "/" + missScore);
+    }
+
+    void FixedUpdate() {
         if (Input.GetKey(KeyCode.K))
 		{
             animator.SetBool("isEating",true);
@@ -111,11 +119,6 @@ public class PlayerControl : MonoBehaviour
                 ScoreLong();
             }
 		}
-        // Update the final score
-        GameOverScreen.instance.getScore();
-        ScoreManager.instance.GetTotalScore();
-
-        //Debug.Log(hitScore + "/" + missScore);
     }
 
     // Score on single diamond function
