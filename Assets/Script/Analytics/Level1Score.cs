@@ -14,6 +14,8 @@ public class Level1Score : MonoBehaviour
     private int[] hit = new int[9];
     private bool[] hasUpdate = new bool[9];
     private int totalHit = 0;
+    private int lastTotalHit = 0;
+    private float currentTime;
 
     // Start is called before the first frame update
     void Start()
@@ -31,52 +33,53 @@ public class Level1Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!hasUpdate[0] && Time.timeSinceLevelLoad >= checkpoint[0])
+        currentTime = Time.timeSinceLevelLoad;
+        totalHit = (int)ScoreManager.instance.GetTotalHit();
+        if (!hasUpdate[0] && currentTime >= checkpoint[0])
         {
-            totalHit = (int)ScoreManager.instance.GetTotalHit();
             hit[0] = totalHit;
             hasUpdate[0] = true;
         }
-        else if(!hasUpdate[1] && Time.timeSinceLevelLoad >= checkpoint[1])
+        else if(!hasUpdate[1] && currentTime >= checkpoint[1])
         {
-            hit[1] = (int)ScoreManager.instance.GetTotalHit() - totalHit;
-            totalHit = (int)ScoreManager.instance.GetTotalHit();
+            hit[1] = totalHit - lastTotalHit;
+            lastTotalHit = totalHit;
             hasUpdate[1] = true;
         }
-        else if (!hasUpdate[2] && Time.timeSinceLevelLoad >= checkpoint[2])
+        else if (!hasUpdate[2] && currentTime >= checkpoint[2])
         {
-            hit[2] = (int)ScoreManager.instance.GetTotalHit() - totalHit;
-            totalHit = (int)ScoreManager.instance.GetTotalHit();
+            hit[2] = totalHit - lastTotalHit;
+            lastTotalHit = totalHit;
             hasUpdate[2] = true;
         }
-        else if (!hasUpdate[3] && Time.timeSinceLevelLoad >= checkpoint[3])
+        else if (!hasUpdate[3] && currentTime >= checkpoint[3])
         {
-            hit[3] = (int)ScoreManager.instance.GetTotalHit() - totalHit;
-            totalHit = (int)ScoreManager.instance.GetTotalHit();
+            hit[3] = totalHit - lastTotalHit;
+            lastTotalHit = totalHit;
             hasUpdate[3] = true;
         }
-        else if (!hasUpdate[4] && Time.timeSinceLevelLoad >= checkpoint[4])
+        else if (!hasUpdate[4] && currentTime >= checkpoint[4])
         {
-            hit[4] = (int)ScoreManager.instance.GetTotalHit() - totalHit;
-            totalHit = (int)ScoreManager.instance.GetTotalHit();
+            hit[4] = totalHit - lastTotalHit;
+            lastTotalHit = totalHit;
             hasUpdate[4] = true;
         }
-        else if (!hasUpdate[5] && Time.timeSinceLevelLoad >= checkpoint[5])
+        else if (!hasUpdate[5] && currentTime >= checkpoint[5])
         {
-            hit[5] = (int)ScoreManager.instance.GetTotalHit() - totalHit;
-            totalHit = (int)ScoreManager.instance.GetTotalHit();
+            hit[5] = totalHit - lastTotalHit;
+            lastTotalHit = totalHit;
             hasUpdate[5] = true;
         }
-        else if (!hasUpdate[6] && Time.timeSinceLevelLoad >= checkpoint[6])
+        else if (!hasUpdate[6] && currentTime >= checkpoint[6])
         {
-            hit[6] = (int)ScoreManager.instance.GetTotalHit() - totalHit;
-            totalHit = (int)ScoreManager.instance.GetTotalHit();
+            hit[6] = totalHit - lastTotalHit;
+            lastTotalHit = totalHit;
             hasUpdate[6] = true;
         }
-        else if (!hasUpdate[7] && Time.timeSinceLevelLoad >= checkpoint[7])
+        else if (!hasUpdate[7] && currentTime >= checkpoint[7])
         {
-            hit[7] = (int)ScoreManager.instance.GetTotalHit() - totalHit;
-            totalHit = (int)ScoreManager.instance.GetTotalHit();
+            hit[7] = totalHit - lastTotalHit;
+            lastTotalHit = totalHit;
             hasUpdate[7] = true;
         }
     }
@@ -88,7 +91,7 @@ public class Level1Score : MonoBehaviour
         {
             if (!hasUpdate[i])
             {
-                hit[i] = (int)ScoreManager.instance.GetTotalHit() - totalHit;
+                hit[i] = (int)ScoreManager.instance.GetTotalHit() - lastTotalHit;
                 break;
             }
         }
