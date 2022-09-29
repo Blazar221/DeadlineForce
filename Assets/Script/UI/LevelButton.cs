@@ -25,5 +25,6 @@ public class LevelButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void IsClicked()
     {
         SceneManager.LoadScene(ChosenLevel);
+        Time.timeScale = 1f;
     }
 }
