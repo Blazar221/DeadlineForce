@@ -39,7 +39,11 @@ public class GameController : MonoBehaviour
     // 血量掉光游戏结束
     public void EnableGameOverMenu()
     {
-        Level1Score.instance.Send();
+        if(Application.isEditor){
+            Level1Editor.instance.Send();
+        } else{
+            Level1Score.instance.Send();
+        }
         gameOverMenu.SetActive(true);
         Time.timeScale = 0f;
         BgmController.instance.StopBgm();
@@ -48,7 +52,11 @@ public class GameController : MonoBehaviour
     // 通关游戏结束
     public void EnableCongratsMenu()
     {
-        Level1Score.instance.Send();
+        if(Application.isEditor){
+            Level1Editor.instance.Send();
+        } else{
+            Level1Score.instance.Send();
+        }
         ScoreManager.instance.GetTotalScore();
         congratsMenu.SetActive(true);
         Time.timeScale = 0f;
