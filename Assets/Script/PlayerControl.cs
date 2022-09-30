@@ -37,14 +37,16 @@ public class PlayerControl : MonoBehaviour
     public bool canChangeGravity;
     private bool missFood;
     private bool missMine;
-
+    private bool pressingK;
+    
     // for hitting and blood effect
     public GameObject hitEffect, goodEffect, perfectEffect ,missEffect, bloodEffectCeil, bloodEffectFloor;
     // for hitting effect
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        pressingK = false;
         hitScore = 0;
         missScore = 0;
         canChangeGravity = false;
@@ -63,7 +65,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= nextTime) {
+        if (Time.time >= nextTime && !pressingK) {
             animator.SetBool("isEating",false);
             animator.SetBool("isDamaged",false);
         }
@@ -103,6 +105,9 @@ public class PlayerControl : MonoBehaviour
             }
 		}
 
+        if (Input.GetKeyUp(KeyCode.K)){
+            pressingK = false;
+        }
         // Update the final score
         GameOverScreen.instance.getScore();
         ScoreManager.instance.GetTotalScore();
@@ -112,12 +117,14 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate() {
         if (Input.GetKey(KeyCode.K))
-		{
+		{  
+            pressingK = true;
             animator.SetBool("isEating",true);
             keepLongScoreTime += Time.fixedDeltaTime;
             if (canGetLongScore){
                 ScoreLong();
             }
+            
 		}
     }
 
