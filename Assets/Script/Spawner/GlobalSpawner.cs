@@ -8,18 +8,26 @@ using Object = Script.Object;
 
 public class GlobalSpawner : MonoBehaviour
 {
+    [SerializeField] private GameObject platform;
     [SerializeField] private GameObject gravSwitch;
     [SerializeField] private GameObject note;
     [SerializeField] private GameObject longNote;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject block;
 
-    private GameObject newItem;
+    private GameObject newItem,newPlatform;
     private Vector3 spawnPos;
     private Note noteHandler;
     private PlayerControl playerHandler;
     private float playerX, xLen;
     private int ind = 1;
+    private int ind_platform = 1;
+
+    private float[,] PlatformArr = new float[,]
+    {
+        { 0.0f, 0.0f }, { 0.0f, 0.0f }, { 0.0f, 22f }, { 24f, 31.5f }, {33f,41f},{ 42.5f, 50f },{ 51f, 53f },
+        { 54f, 57f } ,{ 58f, 60f },{ 61.6f, 70f } ,{ 71f, 90f }, 
+    };
 
     private Object[] objArr = new Object[]
     {
@@ -99,6 +107,7 @@ public class GlobalSpawner : MonoBehaviour
     {
         playerX = playerHandler.transform.position.x;
         StartCoroutine(SpawnNewItem());
+        StartCoroutine(SpawnNewPlatform());
     }
 
     private IEnumerator SpawnNewItem()
@@ -149,6 +158,31 @@ public class GlobalSpawner : MonoBehaviour
                     break;
             }
             ind++;
+        }
+    }
+    private IEnumerator SpawnNewPlatform()
+    {
+        while (ind_platform < PlatformArr.Length/2)
+        {
+            yield return new WaitForSeconds(PlatformArr[ind_platform, 0]-PlatformArr[ind_platform-1, 0]);
+
+            float yPos = 0;
+            
+
+            if (PlatformArr[ind_platform, 1] - PlatformArr[ind_platform, 0] != 0)
+            {
+                xLen = (PlatformArr[ind_platform, 1] - PlatformArr[ind_platform, 0]) * noteHandler.speed * (1 / Time.fixedDeltaTime);
+            }
+
+            spawnPos = new Vector3(playerX + noteHandler.speed * (2f / Time.fixedDeltaTime) + xLen / 2, yPos, 0);
+
+            newPlatform = Instantiate(platform, spawnPos, Quaternion.identity);
+            var newPlatform_ = newPlatform.GetComponent<platform>();
+            newPlatform_.SetLength(xLen);
+            Destroy(newPlatform, 3f/2.46f*xLen);
+            
+            
+            ind_platform++;
         }
     }
 }
