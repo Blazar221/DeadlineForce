@@ -1,6 +1,9 @@
 changePoint = [13.5, 25.8, 33.6, 38.4, 49.5]
 
-一共48个操作点，5个重力转换，21个短音符，22个长音符
+total 48 checkpoints
+- 5 gravity change points
+- 21 short notes
+- 22 long notes
 
 0-13.5: short 8, long 5
 13.5-25.8: short 6, long 5
@@ -9,7 +12,8 @@ changePoint = [13.5, 25.8, 33.6, 38.4, 49.5]
 38.4-49.5: short 2, long 2
 49.5-60: short 4, long 3
 
-一共20个地雷
+
+total 20 bombs
 
 0-13.5: 0
 13.5-25.8: 6
