@@ -3474,8 +3474,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1203535962}
-  - component: {fileID: 1203535961}
   - component: {fileID: 1203535963}
+  - component: {fileID: 1203535964}
   m_Layer: 0
   m_Name: AnalyticManager
   m_TagString: Untagged
@@ -3483,19 +3483,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1203535961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203535960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 043f42797e3ed034abe83332cea18958, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSfntoc7lURYSJVhW0yGCWvtf6Anm-O1P4zwGTL519Jtc7laBA/formResponse
 --- !u!4 &1203535962
 Transform:
   m_ObjectHideFlags: 0
@@ -3524,6 +3511,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSePxRWGYbqNQTvQqzZ8-tNrJP6a0PG7Kk4OiF0VgM7jRo945A/formResponse
+--- !u!114 &1203535964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203535960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 242f120d3961af740ae4ad6940549e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSfntoc7lURYSJVhW0yGCWvtf6Anm-O1P4zwGTL519Jtc7laBA/formResponse
 --- !u!1 &1237845008
 GameObject:
   m_ObjectHideFlags: 0
