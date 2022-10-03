@@ -51,7 +51,7 @@ public class PlayerControl : MonoBehaviour
         pressingK = false;
         hitScore = 0;
         missScore = 0;
-        canChangeGravity = false;
+        canChangeGravity = true;
         numOfFood = 0;
 
         currentHealth = maxHealth;
@@ -231,11 +231,16 @@ public class PlayerControl : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "GravSwitch")
+        // if(collision.gameObject.tag == "GravSwitch")
+        // {
+        //     canChangeGravity = true;
+        // }
+        
+        if(collision.gameObject.tag == "Platform")
         {
             canChangeGravity = true;
         }
-        
+
         if(collision.gameObject.tag == "food")
         {
             missFood = true;
@@ -258,10 +263,10 @@ public class PlayerControl : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "GravSwitch")
-        {
-            canChangeGravity = false;
-        }
+        // if(collision.gameObject.tag == "GravSwitch")
+        // {
+        //     canChangeGravity = false;
+        // }
 
         if(collision.gameObject.tag == "food")
         {
