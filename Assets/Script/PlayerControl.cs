@@ -18,6 +18,8 @@ public class PlayerControl : MonoBehaviour
     //这些是其他class需要调用的变量
     public int hitScore;
     public int missScore;
+    // num of eaten diamond
+    public static int numOfFood;
 
     // The diamond to destory
     private GameObject toHit;
@@ -50,6 +52,7 @@ public class PlayerControl : MonoBehaviour
         hitScore = 0;
         missScore = 0;
         canChangeGravity = false;
+        numOfFood = 0;
 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
@@ -138,6 +141,8 @@ public class PlayerControl : MonoBehaviour
         ScoreManager.instance.AddHit();
         // Update final score
         GameOverScreen.instance.IncreaseScore();
+        // add one when eating one
+        numOfFood++;
     }
 
     void ScoreLong()
