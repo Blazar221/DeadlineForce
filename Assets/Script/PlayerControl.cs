@@ -29,7 +29,7 @@ public class PlayerControl : MonoBehaviour
     private bool isUpsideDown;
     private bool isEating;
     private float nextTime;
-
+    private float collsionTime;
     private float keepLongScoreTime = 0f;
     private float longScoreTimeBar = 0.7f;
     
@@ -74,11 +74,11 @@ public class PlayerControl : MonoBehaviour
         }
         if (canChangeGravity)
 		{
-            if (Input.GetKeyDown (KeyCode.W)){
+            if (Input.GetKeyDown (KeyCode.W) && !isUpsideDown){
                 isUpsideDown = true;
                 rb2D.gravityScale = -5;
                 canChangeGravity = false;
-            } else if (Input.GetKeyDown (KeyCode.S)) {
+            } else if (Input.GetKeyDown (KeyCode.S) && isUpsideDown) {
                 isUpsideDown = false;
                 rb2D.gravityScale = 5;
                 canChangeGravity = false;
@@ -96,9 +96,9 @@ public class PlayerControl : MonoBehaviour
 		{
             missFood = false;
             animator.SetBool("isEating",true);
-            nextTime = Time.time + 0.1f; //Eating time lasts for 0.2s
+            nextTime = Time.time + 0.1f; //Eating time lasts for 0.1s
             if (canGetSingleScore){
-                ScoreSingle();
+                ScoreSingle(Time.time);
             }
             else if (!canAvoidDamage){
                 MissSingle();
@@ -132,11 +132,17 @@ public class PlayerControl : MonoBehaviour
     }
 
     // Score on single diamond function
-    void ScoreSingle()
+    void ScoreSingle(float scoreTime)
     {
         hitScore++;
         Destroy(toHit);
-        addHitEffect(hitEffect);
+        if (scoreTime - collsionTime < 0.03f){
+            addHitEffect(hitEffect);
+        } else if (scoreTime - collsionTime < 0.07f){
+            addHitEffect(goodEffect);
+        } else {
+            addHitEffect(perfectEffect);
+        }
         // Update hit times
         ScoreManager.instance.AddHit();
         // Update final score
@@ -246,6 +252,7 @@ public class PlayerControl : MonoBehaviour
             missFood = true;
             toHit = collision.gameObject;
             canGetSingleScore = true;
+            collsionTime = Time.time;
         }
 
         if(collision.gameObject.tag == "LongNote")
