@@ -812,7 +812,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &347516609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1985,7 +1985,6 @@ MonoBehaviour:
   shortNoteInstruction: {fileID: 1877642286}
   longNoteInstruction: {fileID: 1469601813}
   upSwitchInstruction: {fileID: 1651571888}
-  downSwitchInstruction: {fileID: 347516609}
   blockInstruction: {fileID: 778739771}
   finishInstruction: {fileID: 1306293580}
 --- !u!1 &687258579
@@ -2279,10 +2278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'If you miss the flipping point, roadblocks will appear
-
-    Press <sprite
-    index= 0> to destroy roadblocks'
+  m_text: Press <sprite index= 0> to destroy roadblocks...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
   m_sharedMaterial: {fileID: -1571771168669490468, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
@@ -5665,7 +5661,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press <sprite index= 0> to flip onto ceiling
+  m_text: ...or press <sprite index= 0> to switch gravity and avoid roadblocks
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
   m_sharedMaterial: {fileID: -1571771168669490468, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
@@ -5759,8 +5755,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 200}
-  m_SizeDelta: {x: 1346.1403, y: 50}
+  m_AnchoredPosition: {x: -74.16655, y: 200}
+  m_SizeDelta: {x: 1197.807, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1711736581
 GameObject:

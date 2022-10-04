@@ -70,9 +70,9 @@ public class GlobalSpawner : MonoBehaviour
         new Object(new float[]{ 49.17f, 49.17f },1,1), new Object(new float[]{ 49.47f, 49.47f }, 1,1), 
         new Object(new float[]{ 49.77f, 49.77f }, 1,1), new Object(new float[]{ 50.07f, 50.07f }, 1,1), 
         new Object(new float[]{ 50.37f, 50.37f }, 1,1), new Object(new float[]{ 50.67f, 50.67f },1,0), 
-        new Object(new float[]{ 51.0f, 53.0f }, 2, 4),
+        new Object(new float[]{ 51.5f, 53.0f }, 2, 4),
         new Object(new float[]{ 51.2f, 53.24f }, 0,2), new Object(new float[]{52.5f, 52.5f}, 1, 3),
-        new Object(new float[]{ 53.67f, 53.67f }, 0,0), new Object(new float[]{ 54.0f, 57.0f }, 2, 4),
+        new Object(new float[]{ 53.67f, 53.67f }, 0,0), new Object(new float[]{ 54.5f, 57.0f }, 2, 4),
         new Object(new float[]{ 53.9f, 55.64f }, 1,2), new Object(new float[]{56.0f, 56.0f}, 0, 3),
         new Object(new float[]{ 56.07f, 56.07f }, 1,1), 
         new Object(new float[]{ 56.3f, 57.14f },1,2), new Object(new float[]{ 57.42f, 57.42f }, 1,0), 
@@ -116,6 +116,7 @@ public class GlobalSpawner : MonoBehaviour
         while (ind < objArr.Length)
         {
             yield return new WaitForSeconds(objArr[ind].TimeStamp[0]-objArr[ind-1].TimeStamp[0]);
+            //Debug.Log("loop start:"+Time.time);
             xLen = noteHandler.transform.localScale.x;
 
             float yPos = objArr[ind].Pos switch
@@ -130,7 +131,7 @@ public class GlobalSpawner : MonoBehaviour
                 xLen = (objArr[ind].TimeStamp[1] - objArr[ind].TimeStamp[0]) * noteHandler.speed * (1 / Time.fixedDeltaTime);
             }
 
-            spawnPos = new Vector3(playerX + noteHandler.speed * (2f / Time.fixedDeltaTime) + xLen / 2, yPos, 0);
+            spawnPos = new Vector3(playerX + noteHandler.speed * (1.8f / Time.fixedDeltaTime) + xLen / 2, yPos, 0);
 
             // start spawn
             switch (objArr[ind].Type)
@@ -165,6 +166,7 @@ public class GlobalSpawner : MonoBehaviour
                     break;
             }
             ind++;
+            //Debug.Log("loop end:"+Time.time);
         }
     }
     // private IEnumerator SpawnNewPlatform()
