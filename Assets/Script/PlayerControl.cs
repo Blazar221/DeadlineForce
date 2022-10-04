@@ -74,11 +74,11 @@ public class PlayerControl : MonoBehaviour
         }
         if (canChangeGravity)
 		{
-            if (Input.GetKeyDown (KeyCode.W)){
+            if (Input.GetKeyDown (KeyCode.W) && !isUpsideDown){
                 isUpsideDown = true;
                 rb2D.gravityScale = -5;
                 canChangeGravity = false;
-            } else if (Input.GetKeyDown (KeyCode.S)) {
+            } else if (Input.GetKeyDown (KeyCode.S) && isUpsideDown) {
                 isUpsideDown = false;
                 rb2D.gravityScale = 5;
                 canChangeGravity = false;
