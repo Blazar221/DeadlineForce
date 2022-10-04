@@ -14,7 +14,7 @@ public class TextTutorial : MonoBehaviour
     [SerializeField] private TextMeshProUGUI shortNoteInstruction;
     [SerializeField] private TextMeshProUGUI longNoteInstruction;
     [SerializeField] private TextMeshProUGUI upSwitchInstruction;
-    [SerializeField] private TextMeshProUGUI downSwitchInstruction;
+    //[SerializeField] private TextMeshProUGUI downSwitchInstruction;
     [SerializeField] private TextMeshProUGUI blockInstruction;
     [SerializeField] private TextMeshProUGUI finishInstruction;
     
@@ -27,19 +27,17 @@ public class TextTutorial : MonoBehaviour
 
     private float firstShortNoteTime = 2f;
     private float firstLongNoteTime = 3.75f;
-    private float firstGravSwitchTime = 7.5f;
-    private float disableGravSwitchTime = 9.0f;
-    private float firstBlockTime = 12.0f;
-    private float finishTime = 13.5f;
+    private float firstGravSwitchTime = 9.15f;
+    private float firstBlockTime = 7.5f;
+    private float finishTime = 12.0f;
     
     // Start is called before the first frame update
     void Start()
     {
-        //shortNoteInstruction=GetComponent<Text>();
         shortNoteInstruction.enabled = false;
         longNoteInstruction.enabled = false;
         upSwitchInstruction.enabled = false;
-        downSwitchInstruction.enabled = false;
+        //downSwitchInstruction.enabled = false;
         blockInstruction.enabled = false;
         finishInstruction.enabled = false;
     }
@@ -82,17 +80,6 @@ public class TextTutorial : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
-        if(!gravSwitchLearned && Time.timeSinceLevelLoad >= firstGravSwitchTime){
-            Time.timeScale = 0f;
-            upSwitchInstruction.enabled = true;
-            downSwitchInstruction.enabled = true;
-            if (Input.GetKeyDown(KeyCode.W)) {
-                gravSwitchLearned = true;
-                upSwitchInstruction.enabled = false;
-                downSwitchInstruction.enabled = false;
-                Time.timeScale = 1f;
-            }
-        }
         if(!blockLearned && Time.timeSinceLevelLoad >= firstBlockTime){
             Time.timeScale = 0f;
             blockInstruction.enabled = true;
@@ -102,9 +89,22 @@ public class TextTutorial : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
-        if(Time.timeSinceLevelLoad >= disableGravSwitchTime){
+        if (Time.timeSinceLevelLoad < firstGravSwitchTime) {
             playerControl = Player.GetComponent<PlayerControl>();
             playerControl.canChangeGravity = false;
+        }
+        if(!gravSwitchLearned && Time.timeSinceLevelLoad >= firstGravSwitchTime){
+            Time.timeScale = 0f;
+            upSwitchInstruction.enabled = true;
+            //downSwitchInstruction.enabled = true;
+            playerControl = Player.GetComponent<PlayerControl>();
+            playerControl.canChangeGravity = true;
+            if (Input.GetKeyDown(KeyCode.W)) {
+                gravSwitchLearned = true;
+                upSwitchInstruction.enabled = false;
+                //downSwitchInstruction.enabled = false;
+                Time.timeScale = 1f;
+            }
         }
         if(Time.timeSinceLevelLoad >= finishTime){
             Time.timeScale = 0f;

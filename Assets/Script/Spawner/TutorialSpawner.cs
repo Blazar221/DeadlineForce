@@ -24,20 +24,20 @@ public class TutorialSpawner : MonoBehaviour
     //IMPORTANT: length of 2d time will have one more element {0, 0}, be aware of index!
     private float[,] timeArr = new float[,]
     {
-        { 0.0f, 0.0f }, { 0.0f, 0.0f }, { 1.75f, 3.75f }, { 5.5f, 5.5f }, { 7.0f, 7.0f }, { 8.75f, 8.75f },
-        { 9.25f, 9.25f }, { 10.0f, 10.0f }, { 10.5f, 10.5f }
+        { 0.0f, 0.0f }, { 0.0f, 0.0f }, { 1.75f, 3.75f }, { 5.5f, 5.5f }, { 7.75f, 7.75f }, { 7.75f, 7.75f },
+        { 8.25f, 8.25f }
     };
     
     // 0 - lower, 1 - upper
     private short[] posArr = new short[]
     {
-        0, 0, 0, 0, 1, 1, 1, 0
+        0, 0, 0, 1, 0, 1
     };
 
     // 0 - change, 1 - short, 2 - long, 3 - block
     private short[] itemArr = new short[]
     {
-        1, 2, 0, 3, 1, 0, 3, 1
+        1, 2, 3, 1, 3, 1
     };
 
     private void Awake()
