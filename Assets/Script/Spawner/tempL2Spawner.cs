@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Object = Script.Object;
 
-public class L2Spawner : MonoBehaviour
+public class tempL2Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject gravSwitch;
     [SerializeField] private GameObject note;

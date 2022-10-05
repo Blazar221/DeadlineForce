@@ -8,7 +8,7 @@ using Stopwatch = System.Diagnostics.Stopwatch;
 using Object = Script.Object;
 
 
-public class WhatSpawner : MonoBehaviour
+public class L2Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject platform;
     [SerializeField] private GameObject gravSwitch;
@@ -16,6 +16,7 @@ public class WhatSpawner : MonoBehaviour
     [SerializeField] private GameObject longNote;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject block;
+    [SerializeField] private GameObject bgm;
 
     private GameObject newItem,newPlatform;
     private Vector3 spawnPos;
