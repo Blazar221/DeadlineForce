@@ -2050,6 +2050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 871c95dba941da04b8ca2042e5cff9e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platform: {fileID: 0}
   gravSwitch: {fileID: 291549460440404176, guid: 7a974bf84f38f744fa1547b2eaf2f0e6, type: 3}
   note: {fileID: 6793344568998294521, guid: 1537c2e41d7e3804c88126d1a0ce9cb5, type: 3}
   longNote: {fileID: 2771948807783451587, guid: cac2db766bd50074682ddc967bc4714f, type: 3}
@@ -2563,7 +2564,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bab0ff98a4572ba46a684bc04b063688, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d8ce0d7cdb32841c89c13e02bfb59926, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
