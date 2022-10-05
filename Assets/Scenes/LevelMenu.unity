@@ -351,7 +351,7 @@ MonoBehaviour:
   _compressClip: {fileID: 8300000, guid: 89e53216301ec724487853bdadebce4c, type: 3}
   _uncompressClip: {fileID: 8300000, guid: 7f3011fbe18293447a818246ee12a81d, type: 3}
   _source: {fileID: 730103881}
-  ChosenLevel: MusicWarrior
+  ChosenLevel: Level2
 --- !u!114 &730103883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -839,7 +839,7 @@ MonoBehaviour:
   _compressClip: {fileID: 8300000, guid: 89e53216301ec724487853bdadebce4c, type: 3}
   _uncompressClip: {fileID: 8300000, guid: 7f3011fbe18293447a818246ee12a81d, type: 3}
   _source: {fileID: 1117131553}
-  ChosenLevel: MusicWarrior
+  ChosenLevel: Level1
 --- !u!114 &1117131555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1603,7 +1603,7 @@ MonoBehaviour:
   _compressClip: {fileID: 8300000, guid: 89e53216301ec724487853bdadebce4c, type: 3}
   _uncompressClip: {fileID: 8300000, guid: 7f3011fbe18293447a818246ee12a81d, type: 3}
   _source: {fileID: 2133751122}
-  ChosenLevel: MusicWarrior
+  ChosenLevel: Level3
 --- !u!114 &2133751124
 MonoBehaviour:
   m_ObjectHideFlags: 0
