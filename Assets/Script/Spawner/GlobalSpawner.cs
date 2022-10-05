@@ -58,7 +58,7 @@ public class GlobalSpawner : MonoBehaviour
         new Object(new []{ 19.5f, 19.5f }, 0,1, true), 
         new Object(new []{ 20.25f, 20.25f },0,1, true), 
         new Object(new []{20.5f, 20.5f}, 1, 3, false),
-        new Object(new []{ 21.0f, 22.35f }, 0,2, true), 
+        new Object(new []{ 21.0f, 22.35f }, 0,2, true), // long
         new Object(new []{ 22.77f, 22.77f }, 0,0, true),
         new Object(new []{ 23.67f, 23.67f }, 1,1, true),
         new Object(new []{ 24.0f, 31.5f }, 2, 4, false), 
@@ -73,20 +73,20 @@ public class GlobalSpawner : MonoBehaviour
         new Object(new []{28.0f, 28.0f}, 0, 3, false),
         new Object(new []{ 28.47f, 28.47f }, 1,1, true), 
         new Object(new []{ 29.07f, 29.07f }, 1,1, true), 
-        new Object(new []{ 29.6f, 31.64f }, 1,2, true), 
+        new Object(new []{ 29.67f, 31.64f }, 1,2, true), // long
         new Object(new []{30.5f, 30.5f}, 0, 3, false),
         new Object(new []{ 32.07f, 32.07f }, 1,0, true), 
         new Object(new []{ 33.0f, 41f }, 2, 4, false),
         new Object(new []{ 33.27f, 33.27f },0,1, true), 
         new Object(new []{ 33.87f, 33.87f }, 0,1, true), 
-        new Object(new []{ 34.4f, 41.0f }, 0,2, true), 
+        new Object(new []{ 34.47f, 41.0f }, 0,2, true), // long
         new Object(new []{35.5f, 35.5f}, 1, 3, false), 
         new Object(new []{38.0f, 38.0f}, 1, 3, false),
         new Object(new []{ 41.37f, 41.37f }, 0,0, true), 
         new Object(new []{ 42.5f, 50.0f }, 2, 4, false),
-        new Object(new []{ 41.6f, 43.64f }, 1,2, true), 
+        new Object(new []{ 41.67f, 43.64f }, 1,2, true), // long
         new Object(new []{43.0f, 43.0f}, 0, 3, false),
-        new Object(new []{ 44.05f, 46.05f },1,2, true), 
+        new Object(new []{ 44.07f, 46.04f },1,2, true), // long
         new Object(new []{ 46.47f, 46.47f }, 1,1, true), 
         new Object(new []{ 46.77f, 46.77f }, 1,1, true), 
         new Object(new []{ 47.07f, 47.07f }, 1,1, true), 
@@ -104,14 +104,14 @@ public class GlobalSpawner : MonoBehaviour
         new Object(new []{ 50.37f, 50.37f }, 1,1, true), 
         new Object(new []{ 50.67f, 50.67f },1,0, true), 
         new Object(new []{ 51.5f, 53.0f }, 2, 4, false),
-        new Object(new []{ 51.2f, 53.24f }, 0,2, true), 
+        new Object(new []{ 51.27f, 53.24f }, 0,2, true), // long
         new Object(new []{52.5f, 52.5f}, 1, 3, false),
         new Object(new []{ 53.67f, 53.67f }, 0,0, true), 
         new Object(new []{ 54.5f, 57.0f }, 2, 4, false),
-        new Object(new []{ 53.9f, 55.64f }, 1,2, true), 
+        new Object(new []{ 53.97f, 55.64f }, 1,2, true), // long
         new Object(new []{56.0f, 56.0f}, 0, 3, false),
         new Object(new []{ 56.07f, 56.07f }, 1,1, true), 
-        new Object(new []{ 56.3f, 57.14f },1,2, true), 
+        new Object(new []{ 56.37f, 57.14f },1,2, true), // long
         new Object(new []{ 57.42f, 57.42f }, 1,0, true), 
         new Object(new []{ 58.0f, 60.0f }, 2, 4, false),
         new Object(new []{ 58.47f, 58.47f }, 0,1, true), 
@@ -133,13 +133,13 @@ public class GlobalSpawner : MonoBehaviour
         new Object(new []{ 66.87f, 66.87f }, 1,1, true), 
         new Object(new []{ 67.47f, 67.47f },1,1, true), 
         new Object(new []{67.5f, 67.5f}, 0, 3, false),
-        new Object(new []{ 68.0f, 70.04f }, 1,2, true), 
+        new Object(new []{ 68.07f, 70.04f }, 1,2, true), // long
         new Object(new []{ 70.47f, 70.47f }, 1,0, true), 
         new Object(new []{ 71.0f, 90.0f }, 2, 4, false),
         new Object(new []{ 71.67f, 71.67f }, 0,1, true), 
         new Object(new []{ 72.27f, 72.27f }, 0,1, true), 
         new Object(new []{72.5f, 72.5f}, 1, 3, false),
-        new Object(new []{ 73.25f, 79.75f },0,2, true), 
+        new Object(new []{ 73.25f, 79.75f },0,2, true), // long
         new Object(new []{75.0f, 75.0f}, 1, 3, false), 
         new Object(new []{77.5f, 77.5f}, 1, 3, false),
     };
