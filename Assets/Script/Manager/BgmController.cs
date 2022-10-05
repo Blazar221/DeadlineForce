@@ -6,6 +6,14 @@ public class BgmController : MonoBehaviour
 {
     public static BgmController instance;
 
+    //Current song position, in seconds
+    public float songPosition;
+
+    //How many seconds have passed since the song started
+    private float dspSongTime;
+
+    public bool started = false;
+    
     [SerializeField]
     AudioSource audioSource;
 
@@ -21,13 +29,17 @@ public class BgmController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(PlayBgm());
+        Invoke("PlayBgm", waitTime);
     }
 
-    IEnumerator PlayBgm()
+    void PlayBgm()
     {
-        yield return new WaitForSeconds(waitTime);
+        audioSource = GetComponent<AudioSource>();
+        //Record the time when the music starts
+        dspSongTime = (float)AudioSettings.dspTime;
+        Debug.Log("in music init:" + dspSongTime + "   "+ songPosition);
         audioSource.Play();
+        started = true;
     }
 
     public void PauseBgm()
@@ -46,8 +58,10 @@ public class BgmController : MonoBehaviour
     }
     
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
+        //determine how many seconds since the song started
+        songPosition = (float)(AudioSettings.dspTime - dspSongTime);
     }
 }
