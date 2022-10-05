@@ -302,8 +302,8 @@ public class L3Spawner : MonoBehaviour
             float yPos = objArr[ind].Pos switch
             {
                 0 => 4,
-                1 => 2,
-                2 => -2,
+                1 => 1,
+                2 => -1,
                 _ => -4,
             };
 
