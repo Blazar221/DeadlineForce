@@ -83,8 +83,9 @@ public class GlobalSpawner : MonoBehaviour
         new Object(new []{35.5f, 35.5f}, 1, 3, false), 
         new Object(new []{38.0f, 38.0f}, 1, 3, false),
         new Object(new []{ 41.37f, 41.37f }, 0,0, true), 
-        new Object(new []{ 42.5f, 50.0f }, 2, 4, false),
+        
         new Object(new []{ 41.6f, 43.64f }, 1,2, true), 
+        new Object(new []{ 42.5f, 50.0f }, 2, 4, false),
         new Object(new []{43.0f, 43.0f}, 0, 3, false),
         new Object(new []{ 44.05f, 46.05f },1,2, true), 
         new Object(new []{ 46.47f, 46.47f }, 1,1, true), 
@@ -107,8 +108,9 @@ public class GlobalSpawner : MonoBehaviour
         new Object(new []{ 51.2f, 53.24f }, 0,2, true), 
         new Object(new []{52.5f, 52.5f}, 1, 3, false),
         new Object(new []{ 53.67f, 53.67f }, 0,0, true), 
-        new Object(new []{ 54.5f, 57.0f }, 2, 4, false),
+        
         new Object(new []{ 53.9f, 55.64f }, 1,2, true), 
+        new Object(new []{ 54.5f, 57.0f }, 2, 4, false),
         new Object(new []{56.0f, 56.0f}, 0, 3, false),
         new Object(new []{ 56.07f, 56.07f }, 1,1, true), 
         new Object(new []{ 56.3f, 57.14f },1,2, true), 
@@ -155,7 +157,7 @@ public class GlobalSpawner : MonoBehaviour
     void Start()
     {
         _playerX = _playerHandler.transform.position.x;
-        //StartCoroutine(SpawnnewItem());
+        // StartCoroutine(SpawnnewItem());
         // StartCoroutine(SpawnNewPlatform());
     }
 
@@ -206,10 +208,10 @@ public class GlobalSpawner : MonoBehaviour
                     Destroy(_newItem, 3f);
                     break;
                 case 4:
-                    newPlatform = Instantiate(platform, _spawnPos, Quaternion.identity);
-                    var newPlatform_ = newPlatform.GetComponent<platform>();
+                    _newItem = Instantiate(platform, _spawnPos, Quaternion.identity);
+                    var newPlatform_ = _newItem.GetComponent<platform>();
                     newPlatform_.SetLength(_xLen);
-                    Destroy(newPlatform, 3f/2.46f*_xLen);
+                    Destroy(_newItem, 3f/2.46f*_xLen);
                     break;
             }
             _ind++;
