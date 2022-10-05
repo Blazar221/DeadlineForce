@@ -5,7 +5,6 @@ using Object = Script.Object;
 
 public class GlobalSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject platform;
     [SerializeField] private GameObject gravSwitch;
     [SerializeField] private GameObject note;
     [SerializeField] private GameObject longNote;
@@ -13,7 +12,7 @@ public class GlobalSpawner : MonoBehaviour
     [SerializeField] private GameObject block;
     [SerializeField] private GameObject bgm;
 
-    private GameObject _newItem, newPlatform;
+    private GameObject _newItem;
     private Vector3 _spawnPos;
     private Note _noteHandler;
     private PlayerControl _playerHandler;
@@ -25,7 +24,6 @@ public class GlobalSpawner : MonoBehaviour
     private Object[] objArr = 
     {
         new Object(new []{ 0.0f, 0.0f }, 0, 0, false), // index zero doesn't spawn
-        new Object(new []{ 0.0f, 22.5f }, 2, 4, false),
         new Object(new []{ 0.0f, 0.0f }, 0, 1, true),
         new Object(new []{ 0.75f, 0.75f },0, 1, true), 
         new Object(new []{ 1.5f, 1.5f }, 0,1, true), 
@@ -61,7 +59,6 @@ public class GlobalSpawner : MonoBehaviour
         new Object(new []{ 21.0f, 22.35f }, 0,2, true), // long
         new Object(new []{ 22.77f, 22.77f }, 0,0, true),
         new Object(new []{ 23.67f, 23.67f }, 1,1, true),
-        new Object(new []{ 24.0f, 31.5f }, 2, 4, false), 
         new Object(new []{ 24.27f, 24.27f }, 1,1, true), 
         new Object(new []{ 24.87f, 24.87f },1,1, true), 
         new Object(new []{ 25.47f, 25.47f }, 1,1, true), 
@@ -76,14 +73,12 @@ public class GlobalSpawner : MonoBehaviour
         new Object(new []{ 29.67f, 31.64f }, 1,2, true), // long
         new Object(new []{30.5f, 30.5f}, 0, 3, false),
         new Object(new []{ 32.07f, 32.07f }, 1,0, true), 
-        new Object(new []{ 33.0f, 41f }, 2, 4, false),
         new Object(new []{ 33.27f, 33.27f },0,1, true), 
         new Object(new []{ 33.87f, 33.87f }, 0,1, true), 
         new Object(new []{ 34.47f, 41.0f }, 0,2, true), // long
         new Object(new []{35.5f, 35.5f}, 1, 3, false), 
         new Object(new []{38.0f, 38.0f}, 1, 3, false),
         new Object(new []{ 41.37f, 41.37f }, 0,0, true), 
-        new Object(new []{ 42.5f, 50.0f }, 2, 4, false),
         new Object(new []{ 41.67f, 43.64f }, 1,2, true), // long
         new Object(new []{43.0f, 43.0f}, 0, 3, false),
         new Object(new []{ 44.07f, 46.04f },1,2, true), // long
@@ -103,23 +98,19 @@ public class GlobalSpawner : MonoBehaviour
         new Object(new []{ 50.07f, 50.07f }, 1,1, true), 
         new Object(new []{ 50.37f, 50.37f }, 1,1, true), 
         new Object(new []{ 50.67f, 50.67f },1,0, true), 
-        new Object(new []{ 51.5f, 53.0f }, 2, 4, false),
         new Object(new []{ 51.27f, 53.24f }, 0,2, true), // long
         new Object(new []{52.5f, 52.5f}, 1, 3, false),
         new Object(new []{ 53.67f, 53.67f }, 0,0, true), 
-        new Object(new []{ 54.5f, 57.0f }, 2, 4, false),
         new Object(new []{ 53.97f, 55.64f }, 1,2, true), // long
         new Object(new []{56.0f, 56.0f}, 0, 3, false),
         new Object(new []{ 56.07f, 56.07f }, 1,1, true), 
         new Object(new []{ 56.37f, 57.14f },1,2, true), // long
         new Object(new []{ 57.42f, 57.42f }, 1,0, true), 
-        new Object(new []{ 58.0f, 60.0f }, 2, 4, false),
         new Object(new []{ 58.47f, 58.47f }, 0,1, true), 
         new Object(new []{59.0f, 59.0f}, 1, 3, false),
         new Object(new []{ 59.07f, 59.07f }, 0,1, true), 
         new Object(new []{ 59.67f, 59.67f }, 0,1, true), 
         new Object(new []{ 60.87f, 60.87f },0,0, true), 
-        new Object(new []{ 61.6f, 70.0f }, 2, 4, false),
         new Object(new []{ 62.07f, 62.07f }, 1,1, true), 
         new Object(new []{62.5f, 62.5f}, 0, 3, false),
         new Object(new []{ 62.67f, 62.67f }, 1,1, true), 
@@ -135,7 +126,6 @@ public class GlobalSpawner : MonoBehaviour
         new Object(new []{67.5f, 67.5f}, 0, 3, false),
         new Object(new []{ 68.07f, 70.04f }, 1,2, true), // long
         new Object(new []{ 70.47f, 70.47f }, 1,0, true), 
-        new Object(new []{ 71.0f, 90.0f }, 2, 4, false),
         new Object(new []{ 71.67f, 71.67f }, 0,1, true), 
         new Object(new []{ 72.27f, 72.27f }, 0,1, true), 
         new Object(new []{72.5f, 72.5f}, 1, 3, false),
@@ -156,7 +146,6 @@ public class GlobalSpawner : MonoBehaviour
     {
         _playerX = _playerHandler.transform.position.x;
         //StartCoroutine(SpawnnewItem());
-        // StartCoroutine(SpawnNewPlatform());
     }
 
     void FixedUpdate()
@@ -204,12 +193,6 @@ public class GlobalSpawner : MonoBehaviour
                 case 3:
                     _newItem = Instantiate(block, _spawnPos, Quaternion.identity);
                     Destroy(_newItem, 3f);
-                    break;
-                case 4:
-                    newPlatform = Instantiate(platform, _spawnPos, Quaternion.identity);
-                    var newPlatform_ = newPlatform.GetComponent<platform>();
-                    newPlatform_.SetLength(_xLen);
-                    Destroy(newPlatform, 3f/2.46f*_xLen);
                     break;
             }
             _ind++;
@@ -263,41 +246,9 @@ public class GlobalSpawner : MonoBehaviour
                     _newItem = Instantiate(block, _spawnPos, Quaternion.identity);
                     Destroy(_newItem, 3f);
                     break;
-                case 4:
-                    newPlatform = Instantiate(platform, _spawnPos, Quaternion.identity);
-                    var newPlatform_ = newPlatform.GetComponent<platform>();
-                    newPlatform_.SetLength(_xLen);
-                    Destroy(newPlatform, 3f/2.46f*_xLen);
-                    break;
             }
             _ind++;
             //Debug.Log("loop end:"+Time.time);
         }
     }
-    // private IEnumerator SpawnNewPlatform()
-    // {
-    //     while (_ind_platform < PlatformArr.Length/2)
-    //     {
-    //         yield return new WaitForSeconds(PlatformArr[_ind_platform, 0]-PlatformArr[_ind_platform-1, 0]);
-
-    //         float yPos = 0;
-            
-
-    //         if (PlatformArr[_ind_platform, 1] - PlatformArr[_ind_platform, 0] != 0)
-    //         {
-    //             _xLen = (PlatformArr[_ind_platform, 1] - PlatformArr[_ind_platform, 0]) * _noteHandler.speed * (1 / Time.fixedDeltaTime);
-    //         }
-
-    //         _spawnPos = new Vector3(_playerX + _noteHandler.speed * (2f / Time.fixedDeltaTime) + _xLen / 2, yPos, 0);
-
-    //         newPlatform = Instantiate(platform, _spawnPos, Quaternion.identity);
-    //         Debug.Log(Time.)
-    //         var newPlatform_ = newPlatform.GetComponent<platform>();
-    //         newPlatform_.SetLength(_xLen);
-    //         Destroy(newPlatform, 3f/2.46f*_xLen);
-            
-            
-    //         _ind_platform++;
-    //     }
-    // }
 }
