@@ -28,7 +28,7 @@ public class L2Spawner : MonoBehaviour
     private Object[] objArr = new Object[]
     {
         // best lane
-        new Object(new float[]{0f, 0f}, 0, 1, true), // index zero doesn't spawn
+        new Object(new float[]{0f, 0f}, 0, 1, false), // index zero doesn't spawn
         new Object(new float[]{0.545f, 0.545f}, 2, 1, true),
         new Object(new float[]{0.818f, 0.818f}, 2, 3, true),
         new Object(new float[]{1.091f, 1.091f}, 2, 1, true),
@@ -193,7 +193,7 @@ public class L2Spawner : MonoBehaviour
         new Object(new float[]{51.545f, 51.545f}, 3, 1, true),
         new Object(new float[]{51.818f, 51.818f}, 3, 1, true),
         new Object(new float[]{52.091f, 52.091f}, 3, 1, true),
-        new Object(new float[]{52.364f, 52.364f}, 3, 0, true), // gravity
+        new Object(new float[]{52.364f, 52.364f}, 3, 0, true), // gravity switch
         new Object(new float[]{53.454f, 53.454f}, 0, 1, true),
         new Object(new float[]{53.727f, 53.727f}, 0, 1, true),
         new Object(new float[]{54.0f, 54.0f}, 0, 1, true),
