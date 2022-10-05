@@ -104,8 +104,9 @@ public class GlobalSpawner : MonoBehaviour
         new Object(new []{ 50.07f, 50.07f }, 1,1, true), 
         new Object(new []{ 50.37f, 50.37f }, 1,1, true), 
         new Object(new []{ 50.67f, 50.67f },1,0, true), 
-        new Object(new []{ 51.5f, 53.0f }, 2, 4, false),
+        
         new Object(new []{ 51.2f, 53.24f }, 0,2, true), 
+        new Object(new []{ 51.5f, 53.0f }, 2, 4, false),
         new Object(new []{52.5f, 52.5f}, 1, 3, false),
         new Object(new []{ 53.67f, 53.67f }, 0,0, true), 
         
