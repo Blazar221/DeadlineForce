@@ -6,7 +6,7 @@
         private int type, pos;
         private bool isMain;
 
-        public Object(float[] timeStamp, int pos, int type, bool isMain)
+        public Object(float[] timeStamp, int pos, int type, bool isMain = false)
         {
             this.timeStamp = timeStamp;
             this.type = type;
