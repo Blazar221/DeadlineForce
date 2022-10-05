@@ -294,7 +294,9 @@ public class L3Spawner : MonoBehaviour
     {
         while (ind < objArr.Length)
         {
-            yield return new WaitForSeconds(objArr[ind].TimeStamp[0]-objArr[ind-1].TimeStamp[0]);
+            if(objArr[ind].TimeStamp[0]-objArr[ind-1].TimeStamp[0] != 0){
+                yield return new WaitForSeconds(objArr[ind].TimeStamp[0]-objArr[ind-1].TimeStamp[0]);
+            }
             xLen = noteHandler.transform.localScale.x;
 
             float yPos = objArr[ind].Pos switch

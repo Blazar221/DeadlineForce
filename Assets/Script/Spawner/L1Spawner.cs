@@ -507,8 +507,10 @@ new Object(new []{69.818f, 69.818f}, 3, 3),
     {
         var ind = 1;
         while (ind < objArr.Length)
-        {
-            yield return new WaitForSeconds(objArr[ind].TimeStamp[0]-objArr[ind-1].TimeStamp[0]);
+        {   
+            if(objArr[ind].TimeStamp[0]-objArr[ind-1].TimeStamp[0] != 0){
+                yield return new WaitForSeconds(objArr[ind].TimeStamp[0]-objArr[ind-1].TimeStamp[0]);
+            }
             xLen = noteHandler.transform.localScale.x;
 
             float yPos = objArr[ind].Pos switch
