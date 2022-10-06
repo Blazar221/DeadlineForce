@@ -2538,7 +2538,7 @@ MonoBehaviour:
   songPosition: 0
   started: 0
   audioSource: {fileID: 0}
-  waitTime: 2
+  waitTime: 1.875
 --- !u!4 &1006874502
 Transform:
   m_ObjectHideFlags: 0
@@ -4348,6 +4348,7 @@ MonoBehaviour:
   hitTimesText: {fileID: 1353258435}
   hitScoreText: {fileID: 1000051071}
   hitRateText: {fileID: 1123000105}
+  rankText: {fileID: 0}
 --- !u!1 &1726089750
 GameObject:
   m_ObjectHideFlags: 0
