@@ -111,11 +111,15 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.K)){
             pressingK = false;
         }
+        // // Update hit rate
+        // GameOverScreen.instance.GetHitRate();
+        // ScoreManager.instance.GetHitRate();
         // Update the final score
         GameOverScreen.instance.getScore();
         ScoreManager.instance.GetTotalScore();
         // Update the rank
-        // ScoreManager.instance.GetRank();
+        GameOverScreen.instance.GetRank();
+        ScoreManager.instance.GetRank();
         //Debug.Log(hitScore + "/" + missScore);
     }
 
