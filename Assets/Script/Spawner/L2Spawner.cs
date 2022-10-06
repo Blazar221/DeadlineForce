@@ -487,6 +487,19 @@ public class L2Spawner : MonoBehaviour
         new Object(new float[]{69.818f, 69.818f}, 3, 1, false),
         new Object(new float[]{69.818f, 69.818f}, 1, 1, false),
 
+        //platform
+        new Object(new float[]{0.0f, 17.45f}, 4, 4, true),
+        new Object(new float[]{18.5f, 34.909f}, 4, 4, true),
+        new Object(new float[]{36.00f, 38.00f}, 4, 4, true),
+        new Object(new float[]{40.00f, 42.00f}, 5, 4, true),
+        new Object(new float[]{44.00f, 46.00f}, 4, 4, true),
+        new Object(new float[]{48.00f, 50.00f}, 5, 4, true),
+        new Object(new float[]{53.50f, 54.00f}, 4, 4, true),
+        new Object(new float[]{56.00f, 58.00f}, 5, 4, true),
+        new Object(new float[]{60.00f, 62.00f}, 4, 4, true),
+        new Object(new float[]{64.00f, 66.00f}, 5, 4, true),
+        new Object(new float[]{68.00f, 70.00f}, 4, 4, true),
+
     };
 
 
@@ -523,6 +536,8 @@ public class L2Spawner : MonoBehaviour
                 0 => 4,
                 1 => 1,
                 2 => -1,
+                4 => 0,
+                5 => 2,
                 _ => -4,
             };
 

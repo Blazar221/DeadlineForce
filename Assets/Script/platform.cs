@@ -47,7 +47,7 @@ public class platform : MonoBehaviour
         lineRenderer.SetPosition(1, pos2);
 
         boxCollider = GetComponent<BoxCollider2D>();
-        boxCollider.size = new Vector3(length, height/2);
+        boxCollider.size = new Vector3(length, height/6);
     }
 
     // Update is called once per frame
