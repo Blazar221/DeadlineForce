@@ -55,13 +55,13 @@ public class ScoreManager : MonoBehaviour
         hitRateText.text = "Hit Rate:" + " " + hitRate.ToString("f2") + "%";
     }
 
-    public string GetRank()
-    {
-        if(hitRate > 90 ) 
-        {
+    // public string GetRank()
+    // {
+    //     if(hitRate > 90 ) 
+    //     {
             
-        }
-    }
+    //     }
+    // }
 
     public int GetTotalScore()
     {
