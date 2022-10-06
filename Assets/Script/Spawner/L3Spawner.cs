@@ -383,6 +383,10 @@ public class L3Spawner : MonoBehaviour
                     break;
                 case 1:
                     newItem = Instantiate(note, spawnPos, Quaternion.identity);
+                    if(objArr[ind].IsMain){
+                        newItem.GetComponent<SpriteRenderer>().color = new Color32(6,248,230,255);
+                        newItem.transform.localScale = new Vector3(1.2f, 1.2f);
+                    }
                     Destroy(newItem, 3f);
                     break;
                 case 2:
