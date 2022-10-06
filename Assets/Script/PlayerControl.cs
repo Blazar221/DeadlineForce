@@ -114,7 +114,8 @@ public class PlayerControl : MonoBehaviour
         // Update the final score
         GameOverScreen.instance.getScore();
         ScoreManager.instance.GetTotalScore();
-
+        // Update the rank
+        // ScoreManager.instance.GetRank();
         //Debug.Log(hitScore + "/" + missScore);
     }
 
