@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -40,11 +41,7 @@ public class GameController : MonoBehaviour
     // 血量掉光游戏结束
     public void EnableGameOverMenu()
     {
-        if(Application.isEditor){
-            Level1Editor.instance.Send();
-        } else{
-            Level1Score.instance.Send();
-        }
+        SendAnalytics();
         gameOverMenu.SetActive(true);
         Time.timeScale = 0f;
         BgmController.instance.StopBgm();
@@ -53,14 +50,35 @@ public class GameController : MonoBehaviour
     // 通关游戏结束
     public void EnableCongratsMenu()
     {
-        if(Application.isEditor){
-            Level1Editor.instance.Send();
-        } else{
-            Level1Score.instance.Send();
-        }
+        SendAnalytics();
         ScoreManager.instance.GetTotalScore();
         congratsMenu.SetActive(true);
         Time.timeScale = 0f;
         BgmController.instance.StopBgm();
+    }
+
+    public void SendAnalytics()
+    {
+        if (Application.isEditor)
+        {
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "Level1":
+                    Level1Editor.instance.Send();
+                    break;
+                case "Level2":
+                    Level2Editor.instance.Send();
+                    break;
+            }
+        }
+        else
+        {
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "Level1":
+                    Level1Score.instance.Send();
+                    break;
+            }
+        }
     }
 }

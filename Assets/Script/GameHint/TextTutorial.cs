@@ -14,7 +14,7 @@ public class TextTutorial : MonoBehaviour
     [SerializeField] private TextMeshProUGUI shortNoteInstruction;
     [SerializeField] private TextMeshProUGUI longNoteInstruction;
     [SerializeField] private TextMeshProUGUI upSwitchInstruction;
-    //[SerializeField] private TextMeshProUGUI downSwitchInstruction;
+    [SerializeField] private TextMeshProUGUI downSwitchInstruction;
     [SerializeField] private TextMeshProUGUI blockInstruction;
     [SerializeField] private TextMeshProUGUI finishInstruction;
     
@@ -22,14 +22,16 @@ public class TextTutorial : MonoBehaviour
     
     private bool shortNoteLearned = false;
     private bool longNoteLearned = false;
-    private bool gravSwitchLearned = false;
+    private bool upSwitchLearned = false;
+    private bool downSwitchLearned = false;
     private bool blockLearned = false;
 
     private float firstShortNoteTime = 2f;
     private float firstLongNoteTime = 3.75f;
-    private float firstGravSwitchTime = 9.15f;
     private float firstBlockTime = 7.5f;
-    private float finishTime = 12.0f;
+    private float firstUpSwitchTime = 9.15f;
+    private float firstDownSwitchTime = 10.75f;
+    private float finishTime = 12.5f;
     
     // Start is called before the first frame update
     void Start()
@@ -37,7 +39,7 @@ public class TextTutorial : MonoBehaviour
         shortNoteInstruction.enabled = false;
         longNoteInstruction.enabled = false;
         upSwitchInstruction.enabled = false;
-        //downSwitchInstruction.enabled = false;
+        downSwitchInstruction.enabled = false;
         blockInstruction.enabled = false;
         finishInstruction.enabled = false;
     }
@@ -89,20 +91,30 @@ public class TextTutorial : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
-        if (Time.timeSinceLevelLoad < firstGravSwitchTime) {
+        if (Time.timeSinceLevelLoad < firstUpSwitchTime) {
             playerControl = Player.GetComponent<PlayerControl>();
             playerControl.canChangeGravity = false;
         }
-        if(!gravSwitchLearned && Time.timeSinceLevelLoad >= firstGravSwitchTime){
+        if(!upSwitchLearned && Time.timeSinceLevelLoad >= firstUpSwitchTime){
             Time.timeScale = 0f;
             upSwitchInstruction.enabled = true;
-            //downSwitchInstruction.enabled = true;
             playerControl = Player.GetComponent<PlayerControl>();
             playerControl.canChangeGravity = true;
             if (Input.GetKeyDown(KeyCode.W)) {
-                gravSwitchLearned = true;
+                upSwitchLearned = true;
                 upSwitchInstruction.enabled = false;
-                //downSwitchInstruction.enabled = false;
+                playerControl.canChangeGravity = false;
+                Time.timeScale = 1f;
+            }
+        }
+        if(!downSwitchLearned && Time.timeSinceLevelLoad >= firstDownSwitchTime){
+            Time.timeScale = 0f;
+            downSwitchInstruction.enabled = true;
+            playerControl = Player.GetComponent<PlayerControl>();
+            playerControl.canChangeGravity = true;
+            if (Input.GetKeyDown(KeyCode.S)) {
+                downSwitchLearned = true;
+                downSwitchInstruction.enabled = false;
                 Time.timeScale = 1f;
             }
         }

@@ -147,13 +147,10 @@ public class PlayerControl : MonoBehaviour
             GameOverScreen.instance.IncreaseScore();
         } else if (scoreTime - collsionTime < 0.07f){
             addHitEffect(goodEffect);
-            GameOverScreen.instance.IncreaseScore();
-            GameOverScreen.instance.IncreaseScore();
+            GameOverScreen.instance.DoubleScore();
         } else {
             addHitEffect(perfectEffect);
-            GameOverScreen.instance.IncreaseScore();
-            GameOverScreen.instance.IncreaseScore();
-            GameOverScreen.instance.IncreaseScore();
+            GameOverScreen.instance.TripleScore();
         }
         // Update hit times
         ScoreManager.instance.AddHit();

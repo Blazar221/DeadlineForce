@@ -13,6 +13,8 @@ public class GameOverScreen : MonoBehaviour
     public Text rankText;
 
     int score = 0;
+    int perfect = 0;
+    int good = 0;
     double hit = 0;
     double miss = 0;
     double hitRate = 0;
@@ -33,6 +35,24 @@ public class GameOverScreen : MonoBehaviour
     public void IncreaseScore() 
     {
         score += 1;
+        hit += 1;
+        hitScoreText.text = "Hit Score:" + " " + hit.ToString();
+        totalPointsText.text = score.ToString() + " " + "POINTS";
+    }
+
+    public void DoubleScore()
+    {
+        score += 2;
+        good += 1;
+        hit += 1;
+        hitScoreText.text = "Hit Score:" + " " + hit.ToString();
+        totalPointsText.text = score.ToString() + " " + "POINTS";
+    }
+
+    public void TripleScore()
+    {
+        score += 3;
+        perfect += 1;
         hit += 1;
         hitScoreText.text = "Hit Score:" + " " + hit.ToString();
         totalPointsText.text = score.ToString() + " " + "POINTS";
@@ -91,5 +111,15 @@ public class GameOverScreen : MonoBehaviour
         {
             return score;
         }
+    }
+    
+    public int GetPerfect()
+    {
+        return perfect;
+    }
+
+    public int GetGood()
+    {
+        return good;
     }
 }
