@@ -11,11 +11,13 @@ public class ScoreManager : MonoBehaviour
     public Text hitTimesText;
     public Text hitScoreText;
     public Text hitRateText;
+    public Text rankText;
     
     int totalScore = 0;
     double hit = 0;
     double miss = 0;
     double hitRate = 0;
+    string rank = "SABC";
 
     private void Awake()
     {
@@ -28,6 +30,7 @@ public class ScoreManager : MonoBehaviour
         hitTimesText.text = hit.ToString() + "  " + "HIT";
         hitScoreText.text = "Hit Score:" + " " + hit.ToString();
         hitRateText.text = "Hit Rate:" + " " + hitRate.ToString() + "%";
+        rankText.text = "Your Rank:" + " " + rank + " ";
     }
 
     public void AddHit()
@@ -52,6 +55,30 @@ public class ScoreManager : MonoBehaviour
         hitRateText.text = "Hit Rate:" + " " + hitRate.ToString("f2") + "%";
     }
 
+    public void GetRank()
+    {
+        if(hitRate >= 90) 
+        {
+            rank = "S";
+            rankText.text = "Your Rank:" + " " + rank;
+        } 
+        else if(hitRate < 90 && hitRate >= 75)
+        {
+            rank = "A";
+            rankText.text = "Your Rank:" + " " + rank;
+        } 
+        else if(hitRate < 80 && hitRate >=60)
+        {
+            rank = "B";
+            rankText.text = "Your Rank:" + " " + rank;
+        } 
+        else 
+        {
+            rank = "C";
+            rankText.text = "Your Rank:" + " " + rank;
+        }
+    }
+
     public int GetTotalScore()
     {
         if(totalScore <= 0)
@@ -63,6 +90,11 @@ public class ScoreManager : MonoBehaviour
         {
             return totalScore;
         }
+    }
+
+    public double GetHitRate()
+    {
+        return hitRate;
     }
 
     public double GetTotalHit()
