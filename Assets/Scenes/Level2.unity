@@ -3024,7 +3024,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1203535962}
-  - component: {fileID: 1203535964}
   - component: {fileID: 1203535963}
   m_Layer: 0
   m_Name: AnalyticManager
@@ -3057,23 +3056,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1203535960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 242f120d3961af740ae4ad6940549e82, type: 3}
+  m_Script: {fileID: 11500000, guid: e6f699ca867c1a44095709b6ac27ac93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSfntoc7lURYSJVhW0yGCWvtf6Anm-O1P4zwGTL519Jtc7laBA/formResponse
---- !u!114 &1203535964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203535960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48895d644d57bea40b27727473ef0c09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSePxRWGYbqNQTvQqzZ8-tNrJP6a0PG7Kk4OiF0VgM7jRo945A/formResponse
+  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSdl4DxQQvCkrAy4uAwxfDkplZFRlgc1zKRPS9lvE972EvMuVQ/formResponse
 --- !u!1 &1237845008
 GameObject:
   m_ObjectHideFlags: 0
