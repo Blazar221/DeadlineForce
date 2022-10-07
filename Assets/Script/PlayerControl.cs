@@ -31,7 +31,8 @@ public class PlayerControl : MonoBehaviour
     private float nextTime;
     private float collsionTime;
     private float keepLongScoreTime = 0f;
-    private float longScoreTimeBar = 0.7f;
+    [SerializeField]
+    private float longScoreTimeBar = 0.07f;
     
     private bool canGetSingleScore;
     private bool canGetLongScore;

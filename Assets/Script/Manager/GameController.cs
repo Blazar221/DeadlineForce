@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public GameObject gameOverMenu;
     public GameObject congratsMenu;
 
+    [SerializeField]
     private float endTime = 84f;
     private float timeCount = 0f;
     private bool gameIsEnd = false;

@@ -447,6 +447,7 @@ MonoBehaviour:
   healthBar: {fileID: 1104769712}
   hitScore: 0
   missScore: 0
+  longScoreTimeBar: 0.07
   canChangeGravity: 0
   hitEffect: {fileID: 7385447010465876087, guid: 5f5019da551236a46a2e361d2bd1fd06, type: 3}
   goodEffect: {fileID: 2802313049072304034, guid: c146c70ad0350f743a6620b8cc363bbd, type: 3}
@@ -2299,6 +2300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverMenu: {fileID: 801338847}
   congratsMenu: {fileID: 341597719}
+  endTime: 74
 --- !u!1 &781608905
 GameObject:
   m_ObjectHideFlags: 0
