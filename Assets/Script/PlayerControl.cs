@@ -143,15 +143,21 @@ public class PlayerControl : MonoBehaviour
         Destroy(toHit);
         if (scoreTime - collsionTime < 0.03f){
             addHitEffect(hitEffect);
+            GameOverScreen.instance.IncreaseScore();
         } else if (scoreTime - collsionTime < 0.07f){
             addHitEffect(goodEffect);
+            GameOverScreen.instance.IncreaseScore();
+            GameOverScreen.instance.IncreaseScore();
         } else {
             addHitEffect(perfectEffect);
+            GameOverScreen.instance.IncreaseScore();
+            GameOverScreen.instance.IncreaseScore();
+            GameOverScreen.instance.IncreaseScore();
         }
         // Update hit times
         ScoreManager.instance.AddHit();
-        // Update final score
-        GameOverScreen.instance.IncreaseScore();
+        // // Update final score
+        // GameOverScreen.instance.IncreaseScore();
         // add one when eating one
         numOfFood++;
     }

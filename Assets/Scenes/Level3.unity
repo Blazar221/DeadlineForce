@@ -2580,7 +2580,7 @@ MonoBehaviour:
   totalPointsText: {fileID: 1791007903}
   hitScoreText: {fileID: 1754926884}
   hitRateText: {fileID: 670535660}
-  rankText: {fileID: 0}
+  rankText: {fileID: 2095189153}
 --- !u!114 &736575769
 MonoBehaviour:
   m_ObjectHideFlags: 0
