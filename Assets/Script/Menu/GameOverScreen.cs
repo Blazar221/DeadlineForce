@@ -38,6 +38,22 @@ public class GameOverScreen : MonoBehaviour
         totalPointsText.text = score.ToString() + " " + "POINTS";
     }
 
+    public void DoubleScore()
+    {
+        score += 2;
+        hit += 1;
+        hitScoreText.text = "Hit Score:" + " " + hit.ToString();
+        totalPointsText.text = score.ToString() + " " + "POINTS";
+    }
+
+    public void TripleScore()
+    {
+        score += 3;
+        hit += 1;
+        hitScoreText.text = "Hit Score:" + " " + hit.ToString();
+        totalPointsText.text = score.ToString() + " " + "POINTS";
+    }
+
     public void DecreaseScore()
     {
         score -= 1;
