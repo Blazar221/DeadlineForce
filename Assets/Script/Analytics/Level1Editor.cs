@@ -16,6 +16,7 @@ public class Level1Editor : MonoBehaviour
     private int totalHit = 0;
     private int lastTotalHit = 0;
     private float currentTime;
+    private int index = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -27,60 +28,21 @@ public class Level1Editor : MonoBehaviour
             hit[i] = -1;
             hasUpdate[i] = false;
         }
-        totalHit = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentTime = Time.timeSinceLevelLoad;
-        totalHit = (int)ScoreManager.instance.GetTotalHit();
-        if (!hasUpdate[0] && currentTime >= checkpoint[0])
-        {
-            hit[0] = totalHit;
-            hasUpdate[0] = true;
-        }
-        else if(!hasUpdate[1] && currentTime >= checkpoint[1])
-        {
-            hit[1] = totalHit - lastTotalHit;
-            lastTotalHit = totalHit;
-            hasUpdate[1] = true;
-        }
-        else if (!hasUpdate[2] && currentTime >= checkpoint[2])
-        {
-            hit[2] = totalHit - lastTotalHit;
-            lastTotalHit = totalHit;
-            hasUpdate[2] = true;
-        }
-        else if (!hasUpdate[3] && currentTime >= checkpoint[3])
-        {
-            hit[3] = totalHit - lastTotalHit;
-            lastTotalHit = totalHit;
-            hasUpdate[3] = true;
-        }
-        else if (!hasUpdate[4] && currentTime >= checkpoint[4])
-        {
-            hit[4] = totalHit - lastTotalHit;
-            lastTotalHit = totalHit;
-            hasUpdate[4] = true;
-        }
-        else if (!hasUpdate[5] && currentTime >= checkpoint[5])
-        {
-            hit[5] = totalHit - lastTotalHit;
-            lastTotalHit = totalHit;
-            hasUpdate[5] = true;
-        }
-        else if (!hasUpdate[6] && currentTime >= checkpoint[6])
-        {
-            hit[6] = totalHit - lastTotalHit;
-            lastTotalHit = totalHit;
-            hasUpdate[6] = true;
-        }
-        else if (!hasUpdate[7] && currentTime >= checkpoint[7])
-        {
-            hit[7] = totalHit - lastTotalHit;
-            lastTotalHit = totalHit;
-            hasUpdate[7] = true;
+        if(index<=7){
+            currentTime = Time.timeSinceLevelLoad;
+            totalHit = (int)ScoreManager.instance.GetTotalHit();
+            
+            if (currentTime >= checkpoint[index]){
+                hit[index] = totalHit - lastTotalHit;
+                lastTotalHit = totalHit;
+                hasUpdate[index] = true;
+                index++;
+            }
         }
     }
 
