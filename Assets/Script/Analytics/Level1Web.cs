@@ -3,10 +3,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Level1Score : MonoBehaviour
+public class Level1Web : MonoBehaviour
 {
     [SerializeField] private string formURL;
-    public static Level1Score instance;
+    public static Level1Web instance;
     private long _sessionId;
     private float _playtime;
 

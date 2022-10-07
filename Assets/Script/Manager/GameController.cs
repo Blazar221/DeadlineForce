@@ -76,7 +76,10 @@ public class GameController : MonoBehaviour
             switch (SceneManager.GetActiveScene().name)
             {
                 case "Level1":
-                    Level1Score.instance.Send();
+                    Level1Web.instance.Send();
+                    break;
+                case "Level2":
+                    Level2Web.instance.Send();
                     break;
             }
         }
