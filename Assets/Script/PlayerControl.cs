@@ -141,7 +141,11 @@ public class PlayerControl : MonoBehaviour
     void ScoreSingle(float scoreTime)
     {
         hitScore++;
-        Destroy(toHit);
+        // if(toHit.tag == "food"){
+        //     toHit.SetActive(false);
+        // }else{
+            Destroy(toHit);
+        // }
         if (scoreTime - collsionTime < 0.03f){
             addHitEffect(hitEffect);
             GameOverScreen.instance.IncreaseScore();

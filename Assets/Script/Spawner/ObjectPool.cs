@@ -6,8 +6,9 @@ public class ObjectPool : MonoBehaviour
 {
 
     public static ObjectPool SharedInstance;
-    public List<GameObject> pooledObjects;
-    // public Queue<GameObject> usedObjects;
+    // public List<GameObject> pooledObjects;
+    public Queue<GameObject> pooledObjects;
+    public Queue<GameObject> usedObjects;
     public GameObject objectToPool;
     public int amountToPool;
 
@@ -19,46 +20,77 @@ public class ObjectPool : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pooledObjects = new List<GameObject>();
-        // usedObjects = new Queue<GameObject>();
+        // pooledObjects = new List<GameObject>();
+        pooledObjects = new Queue<GameObject>();
+        usedObjects = new Queue<GameObject>();
         GameObject tmp;
         for(int i = 0; i < amountToPool; i++)
         {
             tmp = Instantiate(objectToPool);
             tmp.SetActive(false);
-            pooledObjects.Add(tmp);
+            // pooledObjects.Add(tmp);
+            pooledObjects.Enqueue(tmp);
         }
     }
 
-    // void FixedUpdate(){
-    //     GameObject temp;
-    //     while(usedObjects.Count > 0 && usedObjects.Peek().activeInHierarchy && usedObjects.Peek().transform.position.x <= -10){
-    //         Debug.Log("Used: " + usedObjects.Count);
-    //         temp = usedObjects.Dequeue();
-    //         Debug.Log("after dequeue: " + usedObjects.Count);
-    //         temp.SetActive(false);
-    //         pooledObjects.Enqueue(temp);
-    //     }
-    // }
+    
 
     public GameObject GetPooledObject()
     {
-        for(int i = 0; i < amountToPool; i++)
-        {
-            if(!pooledObjects[i].activeInHierarchy)
-            {
-                return pooledObjects[i];
-            }
-        }
-        // if(pooledObjects.Count > 0)
+        // for(int i = 0; i < amountToPool; i++)
         // {
-        //     GameObject tmp = pooledObjects.Dequeue();
-        //     tmp.SetActive(true);
-        //     usedObjects.Enqueue(tmp);
-        //     return tmp;
+        //     if(!pooledObjects[i].activeInHierarchy)
+        //     {
+        //         return pooledObjects[i];
+        //     }
         // }
-        Debug.Log("out of notes");
+        Debug.Log("Pooled: " + pooledObjects.Count);
+        if(pooledObjects.Count > 0)
+        {
+            GameObject tmp = pooledObjects.Dequeue();
+            return tmp;
+        }
+        Debug.LogWarning("No object in pool");
         return null;
     }
+
+    public GameObject DequeueUsedObject()
+    {
+        if(usedObjects.Count > 0)
+        {
+            GameObject tmp = usedObjects.Dequeue();
+            return tmp;
+        }
+        return null;
+    }
+
+    public GameObject PeekUsedObject()
+    {
+        if(usedObjects.Count > 0)
+        {
+            GameObject tmp = usedObjects.Peek();
+            return tmp;
+        }
+        return null;
+    }
+
+    public void EnqueueUsedObject(GameObject obj)
+    {
+        usedObjects.Enqueue(obj);
+    }
+
+    public void EnqueuePooledObject(GameObject obj)
+    {
+        pooledObjects.Enqueue(obj);
+    }
     
+    public int GetUnusedCount()
+    {
+        return pooledObjects.Count;
+    }
+
+    public int GetUsedCount()
+    {
+        return usedObjects.Count;
+    }
 }

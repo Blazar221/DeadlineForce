@@ -21,6 +21,7 @@ public class L3Spawner : MonoBehaviour
     private Vector3 spawnPos;
     private Note noteHandler;
     private PlayerControl playerHandler;
+    private Queue<GameObject> usedNotes;
     private float playerX, xLen;
     private int ind = 1;
     
@@ -349,8 +350,36 @@ public class L3Spawner : MonoBehaviour
         playerX = playerHandler.transform.position.x;
         StartCoroutine(SpawnNewItem());
         // StartCoroutine(SpawnNewPlatform());
+        usedNotes = ObjectPool.SharedInstance.usedObjects;
     }
 
+    void FixedUpdate(){
+        GameObject temp;
+        Debug.Log("UsedObject Count: " + ObjectPool.SharedInstance.GetUsedCount());
+        Debug.Log("UnusedObject Count: " + ObjectPool.SharedInstance.GetUnusedCount());
+        if(ObjectPool.SharedInstance.GetUsedCount() > 0){
+            Debug.Log("UsedObject first Item: " + ObjectPool.SharedInstance.usedObjects.Peek().activeInHierarchy);
+            Debug.Log("UsedObject first Item: " + ObjectPool.SharedInstance.usedObjects.Peek().transform.position.x);
+        }
+
+        while(ObjectPool.SharedInstance.GetUsedCount() > 0 ){
+            temp = ObjectPool.SharedInstance.usedObjects.Peek();
+            // && usedNotes.Peek().activeInHierarchy && usedNotes.Peek().transform.position.x <= -10
+            if(temp.activeInHierarchy == true){
+                if(temp.transform.position.x <= -10){                    
+                    temp.SetActive(false);
+                }else{
+                    Debug.Log("Active Frist Item position: " + temp.transform.position.x);
+                    break;
+                }
+            }
+            Debug.LogWarning("Used: " + ObjectPool.SharedInstance.GetUsedCount());
+            ObjectPool.SharedInstance.DequeueUsedObject();
+            Debug.LogWarning("after dequeue: " + ObjectPool.SharedInstance.GetUsedCount());
+            temp.SetActive(false);
+            ObjectPool.SharedInstance.pooledObjects.Enqueue(temp);
+        }
+    }
     private IEnumerator SpawnNewItem()
     {
         while (ind < objArr.Length)
@@ -389,13 +418,35 @@ public class L3Spawner : MonoBehaviour
                     }
                     break;
                 case 1:
-                    newItem = Instantiate(note, spawnPos, Quaternion.identity);
-                    if(objArr[ind].IsMain){
-                        newItem.GetComponent<SpriteRenderer>().color = new Color32(6,248,230,255);
-                        newItem.transform.localScale = new Vector3(1.2f, 1.2f);
+                    newItem = ObjectPool.SharedInstance.GetPooledObject();
+                    if (newItem != null)
+                    {
+                        newItem.transform.position = spawnPos;
+                        newItem.transform.rotation = Quaternion.identity;
+                        if(objArr[ind].IsMain){
+                            newItem.GetComponent<SpriteRenderer>().color = new Color32(6,248,230,255);
+                            newItem.transform.localScale = new Vector3(1.2f, 1.2f);
+                        }else{
+                            newItem.GetComponent<SpriteRenderer>().color = new Color32(110,209,64,255);
+                            newItem.transform.localScale = new Vector3(0.6818f, 0.6818f);
+                        }
+                        Debug.LogWarning("newItem position before: " + newItem.transform.position.x + " " + newItem.transform.position.y);
+                        newItem.SetActive(true);
+                        Debug.LogWarning("newItem position after: " + newItem.transform.position.x + " " + newItem.transform.position.y);
+                        Debug.LogWarning("Successful Spawned");
+                        ObjectPool.SharedInstance.EnqueueUsedObject(newItem);
+                    }else{
+                        Debug.LogError("No object is spawning");
                     }
-                    Destroy(newItem, 3f);
                     break;
+
+                    // newItem = Instantiate(note, spawnPos, Quaternion.identity);
+                    // if(objArr[ind].IsMain){
+                    //     newItem.GetComponent<SpriteRenderer>().color = new Color32(6,248,230,255);
+                    //     newItem.transform.localScale = new Vector3(1.2f, 1.2f);
+                    // }
+                    // Destroy(newItem, 3f);
+                    // break;
                 case 2:
                     newItem = Instantiate(longNote, spawnPos, Quaternion.identity);
                     var newLongNote = newItem.GetComponent<LongNote>();
