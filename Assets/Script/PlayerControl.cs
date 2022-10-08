@@ -142,7 +142,7 @@ public class PlayerControl : MonoBehaviour
     {
         hitScore++;
         // if(toHit.tag == "food"){
-        //     toHit.SetActive(false);
+            // toHit.SetActive(false);
         // }else{
             Destroy(toHit);
         // }

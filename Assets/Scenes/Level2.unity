@@ -2207,7 +2207,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719575092}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 871c95dba941da04b8ca2042e5cff9e0, type: 3}
   m_Name: 
@@ -2226,11 +2226,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719575092}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7e65e612da2642659f9c6b472c6dfe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platform: {fileID: 0}
   gravSwitch: {fileID: 291549460440404176, guid: 7a974bf84f38f744fa1547b2eaf2f0e6, type: 3}
   note: {fileID: 6793344568998294521, guid: 1537c2e41d7e3804c88126d1a0ce9cb5, type: 3}
   longNote: {fileID: 2771948807783451587, guid: cac2db766bd50074682ddc967bc4714f, type: 3}

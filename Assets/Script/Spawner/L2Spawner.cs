@@ -507,7 +507,8 @@ public class L2Spawner : MonoBehaviour
                     newItem = Instantiate(longNote, spawnPos, Quaternion.identity);
                     var newLongNote = newItem.GetComponent<LongNote>();
                     newLongNote.SetLength(xLen);
-                    Destroy(newItem, 3f/2.46f*xLen);
+                    Destroy(newItem, (spawnPos.x + 12 + xLen/2) / (noteHandler.speed * 1/Time.fixedDeltaTime));
+                    // Destroy(newItem, 3f/2.46f*xLen);
                     break;
                 case 3:
                     newItem = Instantiate(block, spawnPos, Quaternion.identity);
@@ -517,7 +518,8 @@ public class L2Spawner : MonoBehaviour
                     newPlatform = Instantiate(platform, spawnPos, Quaternion.identity);
                     var newPlatform_ = newPlatform.GetComponent<platform>();
                     newPlatform_.SetLength(xLen);
-                    Destroy(newPlatform, 3f/2.46f*xLen);
+                    Destroy(newPlatform, (spawnPos.x + 12 + xLen/2) / (noteHandler.speed * 1/Time.fixedDeltaTime));
+                    // Destroy(newPlatform, 3f/2.46f*xLen);
                     break;
             }
             ind++;

@@ -451,7 +451,9 @@ public class L3Spawner : MonoBehaviour
                     newItem = Instantiate(longNote, spawnPos, Quaternion.identity);
                     var newLongNote = newItem.GetComponent<LongNote>();
                     newLongNote.SetLength(xLen);
-                    Destroy(newItem, 3f/2.46f*xLen);
+                    Debug.LogWarning("Spawned LongNote: " + (spawnPos.x - (-10) + xLen/2) + " " +  (noteHandler.speed * 1/Time.fixedDeltaTime) + " " + (spawnPos.x - (-10) + xLen/2) / (noteHandler.speed * 1/Time.fixedDeltaTime));
+                    Destroy(newItem, (spawnPos.x + 12 + xLen/2) / (noteHandler.speed * 1/Time.fixedDeltaTime));
+                    // Destroy(newItem, 3f/2.46f*xLen);
                     break;
                 case 3:
                     newItem = Instantiate(block, spawnPos, Quaternion.identity);
@@ -461,7 +463,8 @@ public class L3Spawner : MonoBehaviour
                     newPlatform = Instantiate(platform, spawnPos, Quaternion.identity);
                     var newPlatform_ = newPlatform.GetComponent<platform>();
                     newPlatform_.SetLength(xLen);
-                    Destroy(newPlatform, 3f/2.46f*xLen);
+                    Destroy(newPlatform, (spawnPos.x + 12 + xLen/2) / (noteHandler.speed * 1/Time.fixedDeltaTime));
+                    // Destroy(newPlatform, 3f/2.46f*xLen);
                     break;
             }
             ind++;
@@ -469,7 +472,7 @@ public class L3Spawner : MonoBehaviour
     }
 }
 
-class ObjectComparer: IComparer{
+public class ObjectComparer: IComparer{
     public int Compare(object x, object y){
         if (((Object)x).TimeStamp[0] > ((Object)y).TimeStamp[0])
             return 1;
