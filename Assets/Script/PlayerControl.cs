@@ -42,6 +42,8 @@ public class PlayerControl : MonoBehaviour
     private bool missMine;
     private bool pressingK;
     
+    private TargetPanel targetPanel;
+    
     // for hitting and blood effect
     public GameObject hitEffect, goodEffect, perfectEffect ,missEffect, bloodEffectCeil, bloodEffectFloor;
     // for hitting effect
@@ -63,7 +65,7 @@ public class PlayerControl : MonoBehaviour
         canGetSingleScore = false;
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        
+        targetPanel = TargetPanel.instance;
     }
 
     // Update is called once per frame
@@ -152,10 +154,12 @@ public class PlayerControl : MonoBehaviour
     void ScoreSingle(float scoreTime)
     {
         hitScore++;
+        targetPanel.targetHit(toHit.GetComponent<SpriteRenderer>().color);
+        // best way is to set tag for each color of gem
         // if(toHit.tag == "food"){
             // toHit.SetActive(false);
         // }else{
-            Destroy(toHit);
+        Destroy(toHit);
         // }
         if (scoreTime - collsionTime < 0.03f){
             addHitEffect(hitEffect);

@@ -1019,7 +1019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &279396495
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1062,9 +1062,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 16c0b723eadb6fb4bac4a8c8ae838df7, type: 3}
   - {fileID: 21300000, guid: cf6796922ad1c81448faa0e1217ed147, type: 3}
   - {fileID: 21300000, guid: 08f2f47657fa5124ab9d9536a1e00c89, type: 3}
-  firstGem: {fileID: 31425116}
-  secondGem: {fileID: 497407696}
-  thirdGem: {fileID: 688355154}
+  gems:
+  - {fileID: 31425116}
+  - {fileID: 497407696}
+  - {fileID: 688355154}
   upgradeItem: {fileID: 1294612883}
 --- !u!114 &279396497
 MonoBehaviour:
