@@ -9,6 +9,7 @@ TagManager:
   - food
   - Mine
   - LongNote
+  - PanelGem
   layers:
   - Default
   - TransparentFX
