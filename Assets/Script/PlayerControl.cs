@@ -87,6 +87,17 @@ public class PlayerControl : MonoBehaviour
             animator.SetBool("UpsideDown",isUpsideDown);
 		}
 
+        //加了空格可以跳 不要的话直接删掉就行
+        if (Input.GetKeyDown(KeyCode.Space)){
+            Vector2 direc;
+            if (isUpsideDown){
+                direc = new Vector2(0,-850);
+            } else {
+                direc = new Vector2(0,850);
+            }
+            GetComponent<Rigidbody2D>().AddForce(direc);
+		}
+
         // If the player click space on the wrong point, it will take damage.
         // if (canChangeGravity == false && Input.GetKeyDown (KeyCode.Space))
         // {
