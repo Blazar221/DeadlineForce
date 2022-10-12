@@ -1,10 +1,12 @@
-﻿namespace Script
+﻿using System;
+namespace Script
 {
+    [Serializable] 
     public struct Object
     {
-        private float[] timeStamp;
-        private int type, pos;
-        private bool isMain;
+        public float[] timeStamp;
+        public int type, pos;
+        public bool isMain;
 
         public Object(float[] timeStamp, int pos, int type, bool isMain = false)
         {

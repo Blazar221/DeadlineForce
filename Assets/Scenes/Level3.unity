@@ -449,6 +449,7 @@ MonoBehaviour:
   missScore: 0
   longScoreTimeBar: 0.07
   canChangeGravity: 0
+  canCross: 0
   hitEffect: {fileID: 7385447010465876087, guid: 5f5019da551236a46a2e361d2bd1fd06, type: 3}
   goodEffect: {fileID: 2802313049072304034, guid: c146c70ad0350f743a6620b8cc363bbd, type: 3}
   perfectEffect: {fileID: 2494714996470128700, guid: 7481da4ae9a13b3498b72745925926b6, type: 3}
