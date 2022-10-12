@@ -38,12 +38,10 @@ public class PlayerControl : MonoBehaviour
     private bool canGetLongScore;
     private bool canAvoidDamage;
     public bool canChangeGravity;
+    public bool canCross;
     private bool missFood;
     private bool missMine;
     private bool pressingK;
-    
-    private TargetPanel targetPanel;
-    
     // for hitting and blood effect
     public GameObject hitEffect, goodEffect, perfectEffect ,missEffect, bloodEffectCeil, bloodEffectFloor;
     // for hitting effect
@@ -55,6 +53,7 @@ public class PlayerControl : MonoBehaviour
         hitScore = 0;
         missScore = 0;
         canChangeGravity = true;
+        canCross = false;
         numOfFood = 0;
 
         currentHealth = maxHealth;
@@ -65,40 +64,61 @@ public class PlayerControl : MonoBehaviour
         canGetSingleScore = false;
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        targetPanel = TargetPanel.instance;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector2 temp = GetComponent<Transform>().position;
         if (Time.time >= nextTime && !pressingK) {
             animator.SetBool("isEating",false);
             animator.SetBool("isDamaged",false);
         }
+        
         if (canChangeGravity)
 		{
             if (Input.GetKeyDown (KeyCode.W) && !isUpsideDown){
+                canCross = false;
                 isUpsideDown = true;
+                Debug.Log(canChangeGravity);
                 rb2D.gravityScale = -5;
                 canChangeGravity = false;
             } else if (Input.GetKeyDown (KeyCode.S) && isUpsideDown) {
+                canCross = false;
                 isUpsideDown = false;
+                Debug.Log(canChangeGravity);
                 rb2D.gravityScale = 5;
                 canChangeGravity = false;
             }
             animator.SetBool("UpsideDown",isUpsideDown);
 		}
 
-        //加了空格可以跳 不要的话直接删掉就行
-        if (Input.GetKeyDown(KeyCode.Space)){
-            Vector2 direc;
-            if (isUpsideDown){
-                direc = new Vector2(0,-850);
-            } else {
-                direc = new Vector2(0,850);
+        if (canCross && Input.GetKeyDown (KeyCode.Space) )
+		{
+            
+            if (!isUpsideDown){
+                isUpsideDown = true;
+                rb2D.gravityScale = -5;
+                this.gameObject.transform.position = new Vector2(temp.x,-1.1f);
+            } else if (isUpsideDown) {
+                isUpsideDown = false;
+                rb2D.gravityScale = 5;
+                this.gameObject.transform.position = new Vector2(temp.x,1.1f);
             }
-            GetComponent<Rigidbody2D>().AddForce(direc);
+            animator.SetBool("UpsideDown",isUpsideDown);
 		}
+
+        //加了空格可以跳 不要的话直接删掉就行
+        // if (Input.GetKeyDown(KeyCode.Space)){
+        //     Vector2 direc;
+        //     if (isUpsideDown){
+        //         direc = new Vector2(0,-850);
+        //     } else {
+        //         direc = new Vector2(0,850);
+        //     }
+        //     GetComponent<Rigidbody2D>().AddForce(direc);
+		// }
 
         // If the player click space on the wrong point, it will take damage.
         // if (canChangeGravity == false && Input.GetKeyDown (KeyCode.Space))
@@ -154,12 +174,10 @@ public class PlayerControl : MonoBehaviour
     void ScoreSingle(float scoreTime)
     {
         hitScore++;
-        targetPanel.targetHit(toHit.GetComponent<SpriteRenderer>().color);
-        // best way is to set tag for each color of gem
         // if(toHit.tag == "food"){
             // toHit.SetActive(false);
         // }else{
-        Destroy(toHit);
+            Destroy(toHit);
         // }
         if (scoreTime - collsionTime < 0.03f){
             addHitEffect(hitEffect);
@@ -270,10 +288,21 @@ public class PlayerControl : MonoBehaviour
         //     canChangeGravity = true;
         // }
         
-        if(collision.gameObject.tag == "Platform")
+        if( collision.gameObject.tag == "OriginalPlatForm")
         {
             canChangeGravity = true;
+            canCross = false;
+            // Vector2 temp = GetComponent<Transform>().position;
+            // if (temp.y>-2 && temp.y<2){
+            //     canCross = true;
+            // }
         }
+
+        if(collision.gameObject.tag == "Platform"){
+            canChangeGravity = true;
+            canCross = true;
+        }
+
 
         if(collision.gameObject.tag == "food")
         {
@@ -301,6 +330,7 @@ public class PlayerControl : MonoBehaviour
         // if(collision.gameObject.tag == "GravSwitch")
         // {
         //     canChangeGravity = false;
+            
         // }
 
         if(collision.gameObject.tag == "food")
