@@ -15,6 +15,9 @@ public class PlayerControl : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
 
+    // Boss 
+    public Boss boss;
+
     //这些是其他class需要调用的变量
     public int hitScore;
     public int missScore;
@@ -195,6 +198,8 @@ public class PlayerControl : MonoBehaviour
         // GameOverScreen.instance.IncreaseScore();
         // add one when eating one
         numOfFood++;
+        // Deal damage to Boss
+        boss.TakeDamage(2);
     }
 
     void ScoreLong()
