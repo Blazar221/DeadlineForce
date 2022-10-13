@@ -2781,6 +2781,7 @@ MonoBehaviour:
   player: {fileID: 178061451}
   block: {fileID: 2425594156374542513, guid: 28777205d87fb1e4a8eb462b7e0b6b70, type: 3}
   bgm: {fileID: 1006874500}
+  Jsonfile: {fileID: 4900000, guid: 5fcc8de16a41b4c63957564996821c29, type: 3}
 --- !u!1 &736575766
 GameObject:
   m_ObjectHideFlags: 0

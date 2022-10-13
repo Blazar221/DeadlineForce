@@ -19,6 +19,7 @@ public class L3Spawner : MonoBehaviour
     [SerializeField] private GameObject longNote;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject block;
+    [SerializeField] private TextAsset Jsonfile;
 
     private GameObject newItem,newPlatform;
     private Vector3 spawnPos;
@@ -33,7 +34,7 @@ public class L3Spawner : MonoBehaviour
 
     private void Awake()
     {
-        string json = File.ReadAllText(Application.dataPath+"/Resources/L3Spawner.json");
+        string json = Jsonfile.text;
         Debug.Log("MyJson= "+json);
         objArr= JsonHelper.FromJson<Object>(json);
         noteHandler = note.GetComponent<Note>();

@@ -18,6 +18,7 @@ public class L1Spawner : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject block;
     [SerializeField] private GameObject bgm;
+    [SerializeField] private TextAsset Jsonfile;
 
     private GameObject _newItem;
     private Vector3 _spawnPos;
@@ -31,7 +32,7 @@ public class L1Spawner : MonoBehaviour
  
     private void Awake()
     {
-        string json = File.ReadAllText(Application.dataPath+"/Resources/L1Spawner.json");
+        string json = Jsonfile.text;
         Debug.Log("MyJson= "+json);
         objArr= JsonHelper.FromJson<Object>(json);
 		Array.Sort(objArr, new ObjectComparer());
