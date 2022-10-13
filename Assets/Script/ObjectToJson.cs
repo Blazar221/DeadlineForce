@@ -815,6 +815,22 @@ public class ObjectToJson : MonoBehaviour
         new Object(new []{57.42f, 57.42f}, 1, 1, true, 2),
         new Object(new []{60.87f, 60.87f}, 0, 1, true, 2),
         new Object(new []{70.47f, 70.47f}, 1, 1, true, 3),
+        new Object(new []{3.0f, 3.0f}, 1, 1, true, 1),
+        new Object(new []{3.75f, 3.75f}, 1, 1, true, 0),
+        new Object(new []{4.5f, 4.5f}, 1, 1, true, 1),
+        new Object(new []{5.25f, 5.25f}, 1, 1, true, 3),
+        new Object(new []{6.0f, 6.0f}, 1, 1, true, 0),
+        new Object(new []{6.75f, 6.75f}, 1, 1, true, 3),
+        new Object(new []{7.5f, 7.5f}, 1, 1, true, 2),
+        new Object(new []{8.25f, 8.25f}, 1, 1, true, 0),
+        new Object(new []{12.0f, 12.0f}, 1, 1, true, 2),
+        new Object(new []{12.75f, 12.75f}, 1, 1, true, 0),
+        new Object(new []{13.5f, 13.5f}, 1, 1, true, 2),
+        new Object(new []{14.25f, 14.25f}, 1, 1, true, 3),
+        new Object(new []{15.0f, 15.0f}, 1, 1, true, 3),
+        new Object(new []{15.75f, 15.75f}, 1, 1, true, 2),
+        new Object(new []{16.5f, 16.5f}, 1, 1, true, 2),
+        new Object(new []{17.25f, 17.25f}, 1, 1, true, 3),
     };
         string path = Application.dataPath + "/Resources";
         string L1fileName = "L1Spawner.json";//Add your Filename Here
