@@ -31,7 +31,7 @@ public class L1Spawner : MonoBehaviour
  
     private void Awake()
     {
-        string json = File.ReadAllText(Application.dataPath+"/Resources/L1.json");
+        string json = File.ReadAllText(Application.dataPath+"/Resources/L1Spawner.json");
         Debug.Log("MyJson= "+json);
         objArr= JsonHelper.FromJson<Object>(json);
 		Array.Sort(objArr, new ObjectComparer());
