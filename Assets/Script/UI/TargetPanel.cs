@@ -33,10 +33,18 @@ public class TargetPanel : MonoBehaviour
     
     private int itemIndex = 0;
     private int gemCounter = 0;
+    
+    //for inventory system
+    private Inventory inventory;
+    [SerializeField] private InventoryUI uiInventory;
 
     private void Awake()
     {
         instance = this;
+        
+        //for inventory system
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
     }
 
     // Start is called before the first frame update
@@ -65,6 +73,10 @@ public class TargetPanel : MonoBehaviour
         }
         if(gemCounter == 3)
         {
+            //for inventory system
+            inventory.AddSprite(items[formulas[itemIndex - 1]]);
+            uiInventory.SetInventory(inventory);
+            
             // player get all gems; set the item to visible
             // set next round item
             setGemsAndItem();

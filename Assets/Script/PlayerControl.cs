@@ -48,6 +48,8 @@ public class PlayerControl : MonoBehaviour
     // for hitting and blood effect
     public GameObject hitEffect, goodEffect, perfectEffect ,missEffect, bloodEffectCeil, bloodEffectFloor;
     // for hitting effect
+    
+    private TargetPanel targetPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +70,7 @@ public class PlayerControl : MonoBehaviour
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         
+        targetPanel = TargetPanel.instance;
     }
 
     // Update is called once per frame
@@ -177,6 +180,9 @@ public class PlayerControl : MonoBehaviour
     void ScoreSingle(float scoreTime)
     {
         hitScore++;
+        
+        targetPanel.targetHit(toHit.GetComponent<SpriteRenderer>().color);
+        
         // if(toHit.tag == "food"){
             // toHit.SetActive(false);
         // }else{
