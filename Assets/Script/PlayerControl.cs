@@ -154,7 +154,7 @@ public class PlayerControl : MonoBehaviour
     void ScoreSingle(float scoreTime)
     {
         hitScore++;
-        targetPanel.targetHit(toHit.GetComponent<SpriteRenderer>().color);
+        targetPanel.TargetHit(toHit.GetComponent<SpriteRenderer>().color);
         // best way is to set tag for each color of gem
         // if(toHit.tag == "food"){
             // toHit.SetActive(false);
