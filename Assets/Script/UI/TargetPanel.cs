@@ -45,6 +45,10 @@ public class TargetPanel : MonoBehaviour
     
     private int targetIndex = 0;
     private int gemCounter = 0;
+    
+    //for inventory system
+    private Inventory inventory;
+    [SerializeField] private InventoryUI uiInventory;
 
     private void Awake()
     {

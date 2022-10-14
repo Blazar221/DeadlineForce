@@ -1,6 +1,13 @@
+using System;
+using System.IO;
 using System.Collections;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using Stopwatch = System.Diagnostics.Stopwatch;
 using Object = Script.Object;
+using JsonHelper = Script.JsonHelper;
 
 
 public class L1Spawner : MonoBehaviour
@@ -11,6 +18,7 @@ public class L1Spawner : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject block;
     [SerializeField] private GameObject bgm;
+    [SerializeField] private TextAsset Jsonfile;
 
     private GameObject _newItem;
     private Vector3 _spawnPos;
@@ -19,122 +27,15 @@ public class L1Spawner : MonoBehaviour
     private BgmController _bgmHandler;
     private float _playerX, _xLen;
     private int _ind = 0;
+    private Object[] objArr;
     
-
-    private Object[] objArr = 
-    {
-        new Object(new []{ 0.0f, 0.0f }, 0, 1, true),
-        new Object(new []{ 0.75f, 0.75f },0, 1, true), 
-        new Object(new []{ 1.5f, 1.5f }, 0,1, true), 
-        new Object(new []{ 2.25f, 2.25f }, 0,1, true), 
-        new Object(new []{ 3.0f, 3.0f }, 0,1, true), 
-        new Object(new []{ 3.75f, 3.75f },0,1, true), 
-        new Object(new []{ 4.5f, 4.5f }, 0,1, true), 
-        new Object(new []{ 5.25f, 5.25f }, 0,1, true), 
-        new Object(new []{5.5f, 5.5f}, 1, 3, false),
-        new Object(new []{ 6.0f, 6.0f }, 0,1, true), 
-        new Object(new []{ 6.75f, 6.75f }, 0,1, true), 
-        new Object(new []{ 7.5f, 7.5f }, 0,1, true), 
-        new Object(new []{ 8.25f, 8.25f },0,1, true), 
-        new Object(new []{ 9.0f, 9.0f }, 0,1, true), 
-        new Object(new []{ 9.75f, 9.75f }, 0,1, true), 
-        new Object(new []{ 10.5f, 10.5f }, 0,1, true), 
-        new Object(new []{10.5f, 10.5f}, 1, 3, false), 
-        new Object(new []{ 11.25f, 11.25f }, 0,1, true), 
-        new Object(new []{ 12.0f, 12.0f }, 0,1, true), 
-        new Object(new []{ 12.75f, 12.75f },0,1, true), 
-        new Object(new []{ 13.5f, 13.5f }, 0,1, true), 
-        new Object(new []{ 14.25f, 14.25f }, 0,1, true), 
-        new Object(new []{ 15.0f, 15.0f }, 0,1, true), 
-        new Object(new []{15.5f, 15.5f}, 1, 3, false),
-        new Object(new []{ 15.75f, 15.75f }, 0,1, true), 
-        new Object(new []{ 16.5f, 16.5f },0,1, true), 
-        new Object(new []{ 17.25f, 17.25f }, 0,1, true), 
-        new Object(new []{ 18.0f, 18.0f }, 0,1, true), 
-        new Object(new []{ 18.75f, 18.75f }, 0,1, true), 
-        new Object(new []{ 19.5f, 19.5f }, 0,1, true), 
-        new Object(new []{ 20.25f, 20.25f },0,1, true), 
-        new Object(new []{20.5f, 20.5f}, 1, 3, false),
-        new Object(new []{ 21.0f, 22.35f }, 0,2, true), // long
-        new Object(new []{ 22.77f, 22.77f }, 0,0, true),
-        new Object(new []{ 23.67f, 23.67f }, 1,1, true),
-        new Object(new []{ 24.27f, 24.27f }, 1,1, true), 
-        new Object(new []{ 24.87f, 24.87f },1,1, true), 
-        new Object(new []{ 25.47f, 25.47f }, 1,1, true), 
-        new Object(new []{25.5f, 25.5f}, 0, 3, false),
-        new Object(new []{ 26.07f, 26.07f }, 1,1, true), 
-        new Object(new []{ 26.67f, 26.67f }, 1,1, true), 
-        new Object(new []{ 27.27f, 27.27f }, 1,1, true), 
-        new Object(new []{ 27.87f, 27.87f },1,1, true), 
-        new Object(new []{28.0f, 28.0f}, 0, 3, false),
-        new Object(new []{ 28.47f, 28.47f }, 1,1, true), 
-        new Object(new []{ 29.07f, 29.07f }, 1,1, true), 
-        new Object(new []{ 29.67f, 31.64f }, 1,2, true), // long
-        new Object(new []{30.5f, 30.5f}, 0, 3, false),
-        new Object(new []{ 32.07f, 32.07f }, 1,0, true), 
-        new Object(new []{ 33.27f, 33.27f },0,1, true), 
-        new Object(new []{ 33.87f, 33.87f }, 0,1, true), 
-        new Object(new []{ 34.47f, 41.0f }, 0,2, true), // long
-        new Object(new []{35.5f, 35.5f}, 1, 3, false), 
-        new Object(new []{38.0f, 38.0f}, 1, 3, false),
-        new Object(new []{ 41.37f, 41.37f }, 0,0, true), 
-        new Object(new []{ 41.67f, 43.64f }, 1,2, true), // long
-        new Object(new []{43.0f, 43.0f}, 0, 3, false),
-        new Object(new []{ 44.07f, 46.04f },1,2, true), // long
-        new Object(new []{ 46.47f, 46.47f }, 1,1, true), 
-        new Object(new []{ 46.77f, 46.77f }, 1,1, true), 
-        new Object(new []{ 47.07f, 47.07f }, 1,1, true), 
-        new Object(new []{ 47.37f, 47.37f }, 1,1, true), 
-        new Object(new []{ 47.67f, 47.67f },1,1, true), 
-        new Object(new []{ 47.97f, 47.97f }, 1,1, true), 
-        new Object(new []{48.0f, 48.0f}, 0, 3, false),
-        new Object(new []{ 48.27f, 48.27f }, 1,1, true), 
-        new Object(new []{ 48.57f, 48.57f }, 1,1, true), 
-        new Object(new []{ 48.87f, 48.87f }, 1,1, true), 
-        new Object(new []{ 49.17f, 49.17f },1,1, true), 
-        new Object(new []{ 49.47f, 49.47f }, 1,1, true), 
-        new Object(new []{ 49.77f, 49.77f }, 1,1, true), 
-        new Object(new []{ 50.07f, 50.07f }, 1,1, true), 
-        new Object(new []{ 50.37f, 50.37f }, 1,1, true), 
-        new Object(new []{ 50.67f, 50.67f },1,0, true), 
-        new Object(new []{ 51.27f, 53.24f }, 0,2, true), // long
-        new Object(new []{52.5f, 52.5f}, 1, 3, false),
-        new Object(new []{ 53.67f, 53.67f }, 0,0, true), 
-        new Object(new []{ 53.97f, 55.64f }, 1,2, true), // long
-        new Object(new []{56.0f, 56.0f}, 0, 3, false),
-        new Object(new []{ 56.07f, 56.07f }, 1,1, true), 
-        new Object(new []{ 56.37f, 57.14f },1,2, true), // long
-        new Object(new []{ 57.42f, 57.42f }, 1,0, true), 
-        new Object(new []{ 58.47f, 58.47f }, 0,1, true), 
-        new Object(new []{59.0f, 59.0f}, 1, 3, false),
-        new Object(new []{ 59.07f, 59.07f }, 0,1, true), 
-        new Object(new []{ 59.67f, 59.67f }, 0,1, true), 
-        new Object(new []{ 60.87f, 60.87f },0,0, true), 
-        new Object(new []{ 62.07f, 62.07f }, 1,1, true), 
-        new Object(new []{62.5f, 62.5f}, 0, 3, false),
-        new Object(new []{ 62.67f, 62.67f }, 1,1, true), 
-        new Object(new []{ 63.27f, 63.27f }, 1,1, true), 
-        new Object(new []{ 63.87f, 63.87f }, 1,1, true), 
-        new Object(new []{ 64.47f, 64.47f },1,1, true), 
-        new Object(new []{65.0f, 65.0f}, 0, 3, false),
-        new Object(new []{ 65.07f, 65.07f }, 1,1, true), 
-        new Object(new []{ 65.67f, 65.67f }, 1,1, true), 
-        new Object(new []{ 66.27f, 66.27f }, 1,1, true), 
-        new Object(new []{ 66.87f, 66.87f }, 1,1, true), 
-        new Object(new []{ 67.47f, 67.47f },1,1, true), 
-        new Object(new []{67.5f, 67.5f}, 0, 3, false),
-        new Object(new []{ 68.07f, 70.04f }, 1,2, true), // long
-        new Object(new []{ 70.47f, 70.47f }, 1,0, true), 
-        new Object(new []{ 71.67f, 71.67f }, 0,1, true), 
-        new Object(new []{ 72.27f, 72.27f }, 0,1, true), 
-        new Object(new []{72.5f, 72.5f}, 1, 3, false),
-        new Object(new []{ 73.25f, 79.75f },0,2, true), // long
-        new Object(new []{75.0f, 75.0f}, 1, 3, false), 
-        new Object(new []{77.5f, 77.5f}, 1, 3, false),
-    };
-
+ 
     private void Awake()
     {
+        string json = Jsonfile.text;
+        Debug.Log("MyJson= "+json);
+        objArr= JsonHelper.FromJson<Object>(json);
+		Array.Sort(objArr, new ObjectComparer());
         _noteHandler = note.GetComponent<Note>();
         _playerHandler = player.GetComponent<PlayerControl>();
         _bgmHandler = bgm.GetComponent<BgmController>();
@@ -158,8 +59,8 @@ public class L1Spawner : MonoBehaviour
 
             float yPos = objArr[_ind].Pos switch
             {
-                0 => -4,
-                1 => 4,
+                0 => 1,
+                1 => -1,
                 2 => 0,
                 _ => 0,
             };

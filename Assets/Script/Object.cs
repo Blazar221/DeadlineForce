@@ -1,17 +1,21 @@
-﻿namespace Script
+﻿using System;
+namespace Script
 {
+    [Serializable] 
     public struct Object
     {
-        private float[] timeStamp;
-        private int type, pos;
-        private bool isMain;
+        public float[] timeStamp;
+        public int type, pos, color;
+        public bool isMain;
+        
 
-        public Object(float[] timeStamp, int pos, int type, bool isMain = false)
+        public Object(float[] timeStamp, int pos, int type, bool isMain = false, int color = 0)
         {
             this.timeStamp = timeStamp;
             this.type = type;
             this.pos = pos;
             this.isMain = isMain;
+            this.color = color;
         }
 
         public float[] TimeStamp
@@ -32,6 +36,11 @@
         public bool IsMain
         {
             get { return isMain; }
+        }
+
+        public int Color
+        {
+            get { return color; }
         }
     }
 }
