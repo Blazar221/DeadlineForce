@@ -14,13 +14,13 @@ public class TargetPanel : MonoBehaviour
     public static TargetPanel instance;
     [SerializeField] private Sprite[] items;
     // [SerializeField] private Image[] gems;
-    [SerializeField] private Image upgradeItem;
+    [SerializeField] private Sprite[] sources;
     public GameObject targetLine;
     
-    private Color blue = new(0.01568625f, 0.1250286f, 0.9921569f, 1.0f);
-    private Color green = new(0.4305087f, 0.8207547f, 0.2516465f, 1.0f);
-    private Color cyan = new(1.0f, 1.0f, 1.0f, 1.0f);
-    private Color dark = new(1f,0.05368341f, 0f, 1f);
+    private Color blue = new(0.01568625f, 0.67f, 1f, 1.0f);
+    private Color green = new(0.4305087f, 1f, 0.058f, 1.0f);
+    private Color red = new(1.0f, 0.56f, 1.0f, 1.0f);
+    private Color dark = new(0.89f,0f, 1f, 1f);
     // private Dictionary<string, bool[]> isVisible;
 
     private IDictionary<string, GameObject> lineDict;
@@ -31,16 +31,19 @@ public class TargetPanel : MonoBehaviour
     private int[] formulas = {1,0,2};
     private Target[] targets =
     {
-        new(new[]{1}, new[]{10f}),   // for testing
+        new(new[]{0}, new[]{3f}),   // for testing
+        new(new[]{1}, new[]{3f}),   // for testing
+        new(new[]{2}, new[]{3f}),   // for testing
+        new(new[]{3}, new[]{3f}),   // for testing
         new(new[]{0,2,1,3}, new[]{15f, 25f, 20f, 30f}), 
         new(new[]{0,2}, new[]{25f, 15f}), 
         new( new[]{3,1}, new[]{20f, 25f})
     };
 
-    // 0: blue*3 = knife
-    // 1: green*3 = shield
-    // 2: cyan*3 = mine
-    // 3: dark*3 = sword
+    // 0: blue*3 = waterWeapon
+    // 1: green*3 = grassWeapon
+    // 2: red*3 = fireWeapon
+    // 3: dark*3 = darkWeapon
 
     
     private int targetIndex = 0;
@@ -83,6 +86,9 @@ public class TargetPanel : MonoBehaviour
                 var toDestroy = lineDict[key];
                 lineDict.Remove(key);
                 Destroy(toDestroy);
+                // add function to return the gems to the inventory
+                    
+                // add function to return the gems to the inventory
                 if (gemDict.Count == 0)
                 {
                     SetNextTarget();
@@ -107,6 +113,9 @@ public class TargetPanel : MonoBehaviour
                     lineDict.Remove(colorStr);
                     timeDict.Remove(colorStr);
                     Destroy(lineToDestroy);
+                    // add function to return the gems to the inventory
+                    
+                    // add function to return the gems to the inventory
                     if(gemDict.Count == 0)
                     {
                         SetNextTarget();
@@ -127,9 +136,9 @@ public class TargetPanel : MonoBehaviour
         {
             SetColor(color, "green");
         }
-        else if (IsSameColor(color, cyan))
+        else if (IsSameColor(color, red))
         {
-            SetColor(color, "cyan");
+            SetColor(color, "red");
         }
         else if (IsSameColor(color, dark))
         {
@@ -158,6 +167,9 @@ public class TargetPanel : MonoBehaviour
                     firstGem.color = blue;
                     secondGem.color = blue;
                     thirdGem.color = blue;
+                    firstGem.sprite = sources[0];
+                    secondGem.sprite = sources[0];
+                    thirdGem.sprite = sources[0];
                     item.sprite = items[0];
                     colorName = "blue";
                     // isVisible.Add("blue", new []{true, true, true});
@@ -166,22 +178,31 @@ public class TargetPanel : MonoBehaviour
                     firstGem.color = green;
                     secondGem.color = green;
                     thirdGem.color = green;
+                    firstGem.sprite = sources[1];
+                    secondGem.sprite = sources[1];
+                    thirdGem.sprite = sources[1];
                     item.sprite = items[1];
                     colorName = "green";
                     // isVisible.Add("green", new []{true, true, true});
                     break;
                 case 2:
-                    firstGem.color = cyan;
-                    secondGem.color = cyan;
-                    thirdGem.color = cyan;
+                    firstGem.color = red;
+                    secondGem.color = red;
+                    thirdGem.color = red;
+                    firstGem.sprite = sources[2];
+                    secondGem.sprite = sources[2];
+                    thirdGem.sprite = sources[2];
                     item.sprite = items[2];
-                    colorName = "cyan";
+                    colorName = "red";
                     // isVisible.Add("cyan", new []{true, true, true});
                     break;
                 case 3:
                     firstGem.color = dark;
                     secondGem.color = dark;
                     thirdGem.color = dark;
+                    firstGem.sprite = sources[3];
+                    secondGem.sprite = sources[3];
+                    thirdGem.sprite = sources[3];
                     item.sprite = items[3];
                     colorName = "dark";
                     // isVisible.Add("dark", new []{true, true, true});
