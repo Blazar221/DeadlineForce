@@ -108,7 +108,7 @@ public class TargetPanel : MonoBehaviour
                     Destroy(lineToDestroy);
                     if(_gemDict.Count == 0)
                     {
-                        inventory.AddSprite(items[targets[targetIndex - 1].GetFormulaIndex()[0]]);
+                        inventory.AddSprite(items[_targets[_targetIndex - 1].GetFormulaIndex()[0]]);
                         uiInventory.SetInventory(inventory);
                         SetNextTarget();
                     }
@@ -120,7 +120,7 @@ public class TargetPanel : MonoBehaviour
     public void TargetHit(Color color)
     {
         Debug.Log("Color parameter: " + color);
-
+        
         if (IsSameColor(color, _blue))
         {
             SetColor(color, "blue");
