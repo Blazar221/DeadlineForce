@@ -23,6 +23,7 @@ public class InventoryUI : MonoBehaviour
         float x = -1.5f;
         float slotCellSize = 100f;
         foreach (Item item in inventory.GetItemList()) {
+            //if (x > 4)  
             RectTransform slotRectTransform = Instantiate(slot, slotContainer).GetComponent<RectTransform>();
             slotRectTransform.gameObject.SetActive(true);
             slotRectTransform.anchoredPosition = new Vector2(x * slotCellSize, 0);

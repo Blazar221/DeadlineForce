@@ -18,10 +18,10 @@ public class Inventory
     private Item Sprite2Item(Sprite sprite) {
         switch (sprite.name) {
             default:
-            case "knife_0": return new Item{ itemType = Item.ItemType.Knife, amount = 1};
-            case "Shield": return new Item{ itemType = Item.ItemType.Shield, amount = 1};
-            case "Mine": return new Item{ itemType = Item.ItemType.Mine, amount = 1};
-            case "Sword": return new Item{ itemType = Item.ItemType.Sword, amount = 1};
+            case "Ice": return new Item{ itemType = Item.ItemType.Ice, amount = 1};
+            case "Grass": return new Item{ itemType = Item.ItemType.Grass, amount = 1};
+            case "Fire": return new Item{ itemType = Item.ItemType.Fire, amount = 1};
+            case "Dark": return new Item{ itemType = Item.ItemType.Dark, amount = 1};
         }            
     }
     
@@ -31,6 +31,14 @@ public class Inventory
     
     public void AddSprite(Sprite sprite) {
         itemList.Add(Sprite2Item(sprite));
+    }
+    
+    public void RemoveItem(Item item) {
+        itemList.Remove(item);
+    }
+    
+    public void RemoveSprite(Sprite sprite) {
+        itemList.Remove(Sprite2Item(sprite));
     }
     
     public List<Item> GetItemList() {

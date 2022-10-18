@@ -14,8 +14,8 @@ public class ItemAssets : MonoBehaviour
         Instance = this;
     }
     
-    [SerializeField] public Sprite knifeSprite;
-    [SerializeField] public Sprite shieldSprite;
-    [SerializeField] public Sprite mineSprite;
-    [SerializeField] public Sprite swordSprite;
+    [SerializeField] public Sprite iceSprite;
+    [SerializeField] public Sprite grassSprite;
+    [SerializeField] public Sprite fireSprite;
+    [SerializeField] public Sprite darkSprite;
 }

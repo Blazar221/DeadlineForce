@@ -54,6 +54,10 @@ public class TargetPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //for inventory system
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
+        
         // gems = new List<GameObject>();
         _gemDict = new Dictionary<string, List<Image>>();
         _lineDict = new Dictionary<string, GameObject>();
@@ -78,9 +82,6 @@ public class TargetPanel : MonoBehaviour
                 var toDestroy = _lineDict[key];
                 _lineDict.Remove(key);
                 Destroy(toDestroy);
-                // add function to return the gems to the inventory
-                    
-                // add function to return the gems to the inventory
                 if (_gemDict.Count == 0)
                 {
                     SetNextTarget();
@@ -105,11 +106,10 @@ public class TargetPanel : MonoBehaviour
                     _lineDict.Remove(colorStr);
                     _timeDict.Remove(colorStr);
                     Destroy(lineToDestroy);
-                    // add function to return the gems to the inventory
-                    
-                    // add function to return the gems to the inventory
                     if(_gemDict.Count == 0)
                     {
+                        inventory.AddSprite(items[targets[targetIndex - 1].GetFormulaIndex()[0]]);
+                        uiInventory.SetInventory(inventory);
                         SetNextTarget();
                     }
                 }
