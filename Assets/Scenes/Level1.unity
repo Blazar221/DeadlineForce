@@ -2687,6 +2687,7 @@ GameObject:
   m_Component:
   - component: {fileID: 719575094}
   - component: {fileID: 719575095}
+  - component: {fileID: 719575096}
   m_Layer: 0
   m_Name: GlobalSpawner
   m_TagString: Untagged
@@ -2716,9 +2717,28 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719575092}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01b3b1b622cd69343957497864fd07be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravSwitch: {fileID: 291549460440404176, guid: 7a974bf84f38f744fa1547b2eaf2f0e6, type: 3}
+  note: {fileID: 6793344568998294521, guid: 1537c2e41d7e3804c88126d1a0ce9cb5, type: 3}
+  longNote: {fileID: 2771948807783451587, guid: cac2db766bd50074682ddc967bc4714f, type: 3}
+  player: {fileID: 178061451}
+  block: {fileID: 2425594156374542513, guid: 28777205d87fb1e4a8eb462b7e0b6b70, type: 3}
+  bgm: {fileID: 1006874500}
+  Jsonfile: {fileID: 4900000, guid: f39b483c11ec95142a1ab18e60c5be97, type: 3}
+--- !u!114 &719575096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719575092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e65e612da2642659f9c6b472c6dfe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gravSwitch: {fileID: 291549460440404176, guid: 7a974bf84f38f744fa1547b2eaf2f0e6, type: 3}
@@ -3787,7 +3807,7 @@ MonoBehaviour:
   songPosition: 0
   started: 0
   audioSource: {fileID: 0}
-  waitTime: 0.25
+  waitTime: 0
 --- !u!4 &1006874502
 Transform:
   m_ObjectHideFlags: 0
@@ -3813,7 +3833,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ef209bc0049281a4ebd7965df5e72c54, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 87083cdb87d764463a513c19e5dd2567, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
