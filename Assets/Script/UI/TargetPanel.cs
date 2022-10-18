@@ -1,35 +1,28 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.UI;
 using Image = UnityEngine.UI.Image;
-using Slider = UnityEngine.UI.Slider;
 
 public class TargetPanel : MonoBehaviour
 {
-    public static TargetPanel instance;
+    public static TargetPanel Instance;
     [SerializeField] private Sprite[] items;
     // [SerializeField] private Image[] gems;
     [SerializeField] private Sprite[] sources;
     public GameObject targetLine;
     
-    private Color blue = new(0.01568625f, 0.67f, 1f, 1.0f);
-    private Color green = new(0.4305087f, 1f, 0.058f, 1.0f);
-    private Color red = new(1.0f, 0.56f, 1.0f, 1.0f);
-    private Color dark = new(0.89f,0f, 1f, 1f);
-    // private Dictionary<string, bool[]> isVisible;
+    private readonly Color _blue = new(0.016f, 0.67f, 1f, 1.0f);
+    private readonly Color _green = new(0.43f, 1f, 0.058f, 1.0f);
+    private readonly Color _red = new(1.0f, 0.5f, 0f, 1.0f);
+    private readonly Color _brown = new(0.8f,0.38f, 0f, 1f);
 
-    private IDictionary<string, GameObject> lineDict;
-    // private List<GameObject> gems;
-    private IDictionary<string, List<Image>> gemDict;
-    private IDictionary<string, float> timeDict;
+    private readonly Color _brownSaber = new(0.58f, 0.3f, 0f, 1f);
 
-    private int[] formulas = {1,0,2};
-    private Target[] targets =
+    private IDictionary<string, GameObject> _lineDict;
+    private IDictionary<string, List<Image>> _gemDict;
+    private IDictionary<string, float> _timeDict;
+
+    private readonly Target[] _targets =
     {
         new(new[]{0}, new[]{3f}),   // for testing
         new(new[]{1}, new[]{3f}),   // for testing
@@ -46,8 +39,7 @@ public class TargetPanel : MonoBehaviour
     // 3: dark*3 = darkWeapon
 
     
-    private int targetIndex = 0;
-    private int gemCounter = 0;
+    private int _targetIndex;
     
     //for inventory system
     private Inventory inventory;
@@ -55,7 +47,7 @@ public class TargetPanel : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
         // targetLine = transform.Find("TargetLine").gameObject;
     }
 
@@ -63,33 +55,33 @@ public class TargetPanel : MonoBehaviour
     void Start()
     {
         // gems = new List<GameObject>();
-        gemDict = new Dictionary<string, List<Image>>();
-        lineDict = new Dictionary<string, GameObject>();
-        timeDict = new Dictionary<string, float>();
+        _gemDict = new Dictionary<string, List<Image>>();
+        _lineDict = new Dictionary<string, GameObject>();
+        _timeDict = new Dictionary<string, float>();
         // isVisible = new Dictionary<string, bool[]>();
         SetNextTarget();
     }
 
     private void FixedUpdate()
     {
-        var keys = new List<string>(lineDict.Keys);
+        var keys = new List<string>(_lineDict.Keys);
         foreach (var key in keys)
         {
-            if (timeDict[key] >= Time.fixedDeltaTime)
+            if (_timeDict[key] >= Time.fixedDeltaTime)
             {
-                timeDict[key] -= Time.fixedDeltaTime;
+                _timeDict[key] -= Time.fixedDeltaTime;
             }
             else
             {
-                timeDict.Remove(key);
-                gemDict.Remove(key);
-                var toDestroy = lineDict[key];
-                lineDict.Remove(key);
+                _timeDict.Remove(key);
+                _gemDict.Remove(key);
+                var toDestroy = _lineDict[key];
+                _lineDict.Remove(key);
                 Destroy(toDestroy);
                 // add function to return the gems to the inventory
                     
                 // add function to return the gems to the inventory
-                if (gemDict.Count == 0)
+                if (_gemDict.Count == 0)
                 {
                     SetNextTarget();
                 }
@@ -99,24 +91,24 @@ public class TargetPanel : MonoBehaviour
 
     private void SetColor(Color color ,string colorStr)
     {
-        if(gemDict.ContainsKey(colorStr))
+        if(_gemDict.ContainsKey(colorStr))
         {   
             // set the first one in the list to transparent and remove it from the list
-            if(gemDict[colorStr].Count > 0)
+            if(_gemDict[colorStr].Count > 0)
             {
-                gemDict[colorStr][0].color = new Color(color.r, color.g, color.b, 0.0f);
-                gemDict[colorStr].RemoveAt(0);
-                if(gemDict[colorStr].Count == 0)
+                _gemDict[colorStr][0].color = new Color(color.r, color.g, color.b, 0.0f);
+                _gemDict[colorStr].RemoveAt(0);
+                if(_gemDict[colorStr].Count == 0)
                 {
-                    GameObject lineToDestroy = lineDict[colorStr];
-                    gemDict.Remove(colorStr);
-                    lineDict.Remove(colorStr);
-                    timeDict.Remove(colorStr);
+                    GameObject lineToDestroy = _lineDict[colorStr];
+                    _gemDict.Remove(colorStr);
+                    _lineDict.Remove(colorStr);
+                    _timeDict.Remove(colorStr);
                     Destroy(lineToDestroy);
                     // add function to return the gems to the inventory
                     
                     // add function to return the gems to the inventory
-                    if(gemDict.Count == 0)
+                    if(_gemDict.Count == 0)
                     {
                         SetNextTarget();
                     }
@@ -129,29 +121,29 @@ public class TargetPanel : MonoBehaviour
     {
         Debug.Log("Color parameter: " + color);
 
-        if (IsSameColor(color, blue))
+        if (IsSameColor(color, _blue))
         {
             SetColor(color, "blue");
-        }else if (IsSameColor(color, green))
+        }else if (IsSameColor(color, _green))
         {
             SetColor(color, "green");
         }
-        else if (IsSameColor(color, red))
+        else if (IsSameColor(color, _red))
         {
             SetColor(color, "red");
         }
-        else if (IsSameColor(color, dark))
+        else if (IsSameColor(color, _brown))
         {
-            SetColor(color, "dark");
+            SetColor(color, "brown");
         }
         
     }
 
     private void SetNextTarget()
     {
-        var lines = targets[targetIndex].GetFormulaIndex();
-        var times = targets[targetIndex].GetTimeToCollect();
-        for(var i = 0; i <  targets[targetIndex].TargetLength(); i++)
+        var lines = _targets[_targetIndex].GetFormulaIndex();
+        var times = _targets[_targetIndex].GetTimeToCollect();
+        for(var i = 0; i <  _targets[_targetIndex].TargetLength(); i++)
         {
             GameObject obj = Instantiate(targetLine, transform);
             var firstGem = obj.transform.Find("FirstItem").gameObject.GetComponent<Image>();
@@ -164,62 +156,57 @@ public class TargetPanel : MonoBehaviour
             switch (lines[i])
             {
                 case 0:
-                    firstGem.color = blue;
-                    secondGem.color = blue;
-                    thirdGem.color = blue;
+                    firstGem.color = _blue;
+                    secondGem.color = _blue;
+                    thirdGem.color = _blue;
                     firstGem.sprite = sources[0];
                     secondGem.sprite = sources[0];
                     thirdGem.sprite = sources[0];
                     item.sprite = items[0];
                     colorName = "blue";
-                    // isVisible.Add("blue", new []{true, true, true});
                     break;
                 case 1:
-                    firstGem.color = green;
-                    secondGem.color = green;
-                    thirdGem.color = green;
+                    firstGem.color = _green;
+                    secondGem.color = _green;
+                    thirdGem.color = _green;
                     firstGem.sprite = sources[1];
                     secondGem.sprite = sources[1];
                     thirdGem.sprite = sources[1];
                     item.sprite = items[1];
                     colorName = "green";
-                    // isVisible.Add("green", new []{true, true, true});
                     break;
                 case 2:
-                    firstGem.color = red;
-                    secondGem.color = red;
-                    thirdGem.color = red;
+                    firstGem.color = _red;
+                    secondGem.color = _red;
+                    thirdGem.color = _red;
                     firstGem.sprite = sources[2];
                     secondGem.sprite = sources[2];
                     thirdGem.sprite = sources[2];
                     item.sprite = items[2];
                     colorName = "red";
-                    // isVisible.Add("cyan", new []{true, true, true});
                     break;
                 case 3:
-                    firstGem.color = dark;
-                    secondGem.color = dark;
-                    thirdGem.color = dark;
+                    firstGem.color = _brown;
+                    secondGem.color = _brown;
+                    thirdGem.color = _brown;
                     firstGem.sprite = sources[3];
                     secondGem.sprite = sources[3];
                     thirdGem.sprite = sources[3];
                     item.sprite = items[3];
-                    colorName = "dark";
-                    // isVisible.Add("dark", new []{true, true, true});
-                    break;
-                default:
+                    item.color = _brownSaber;
+                    colorName = "brown";
                     break;
             }
-            lineDict.Add(colorName, obj);
-            gemDict.Add(colorName, new List<Image>{firstGem, secondGem, thirdGem});
+            _lineDict.Add(colorName, obj);
+            _gemDict.Add(colorName, new List<Image>{firstGem, secondGem, thirdGem});
             // set timer
             obj.GetComponent<TargetTimer>().timeLeft = times[i];
-            timeDict.Add(colorName, times[i]);
+            _timeDict.Add(colorName, times[i]);
         }
         
-        targetIndex++;
-        if(targetIndex == targets.Length)
-            targetIndex = 0;
+        _targetIndex++;
+        if(_targetIndex == _targets.Length)
+            _targetIndex = 0;
         
     }
 
@@ -231,28 +218,28 @@ public class TargetPanel : MonoBehaviour
     }
 }
 
-public struct Target
+public readonly struct Target
 {
-    private int[] formulaIndex;
-    private float[] timeToCollect;
+    private readonly int[] _formulaIndex;
+    private readonly float[] _timeToCollect;
     public Target(int[] formulaIndex, float[] timeToCollect)
     {
-        this.formulaIndex = formulaIndex;
-        this.timeToCollect = timeToCollect;
+        this._formulaIndex = formulaIndex;
+        this._timeToCollect = timeToCollect;
     }
 
     public int[] GetFormulaIndex()
     { 
-        return formulaIndex;
+        return _formulaIndex;
     }
     
     public float[] GetTimeToCollect()
     {
-        return timeToCollect;
+        return _timeToCollect;
     }
     
     public int TargetLength()
     {
-        return formulaIndex.Length;
+        return _formulaIndex.Length;
     }
 }

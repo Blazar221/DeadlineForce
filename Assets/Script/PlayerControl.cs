@@ -70,7 +70,7 @@ public class PlayerControl : MonoBehaviour
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         
-        targetPanel = TargetPanel.instance;
+        targetPanel = TargetPanel.Instance;
     }
 
     // Update is called once per frame
