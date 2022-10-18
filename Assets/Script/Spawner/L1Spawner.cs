@@ -59,9 +59,9 @@ public class L1Spawner : MonoBehaviour
 
             float yPos = objArr[_ind].Pos switch
             {
-                0 => 1,
-                1 => -1,
-                2 => 0,
+                0 => 0,
+                1 => 1,
+                2 => -1,
                 _ => 0,
             };
 

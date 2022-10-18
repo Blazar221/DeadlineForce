@@ -37,7 +37,6 @@ public class BgmController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         //Record the time when the music starts
         dspSongTime = (float)AudioSettings.dspTime;
-        Debug.Log("in music init:" + dspSongTime + "   "+ songPosition);
         audioSource.Play();
         started = true;
     }

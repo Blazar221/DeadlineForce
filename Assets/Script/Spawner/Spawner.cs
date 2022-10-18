@@ -9,9 +9,8 @@ using Stopwatch = System.Diagnostics.Stopwatch;
 using Object = Script.Object;
 using JsonHelper = Script.JsonHelper;
 
-public class tempL2Spawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject platform;
     [SerializeField] private GameObject gravSwitch;
     [SerializeField] private GameObject note;
     [SerializeField] private GameObject longNote;
@@ -27,7 +26,7 @@ public class tempL2Spawner : MonoBehaviour
     private PlayerControl playerHadler;
     private BgmController _bgmHandler;
     private float playerX, xLen;
-    private int ind = 1;
+    private int ind = 0;
     private bool normal = false;
 
     private Object[] objArr;
@@ -52,25 +51,7 @@ public class tempL2Spawner : MonoBehaviour
         playerX = playerHadler.transform.position.x;
         StartCoroutine(SpawnNewItem());
     }
-
-    IEnumerator SleepTillTimeToNormal()
-    {
-        while (_bgmHandler.songPosition > 200)
-        {
-            yield return new WaitForSeconds(0.01f);
-        }
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        if (_bgmHandler.songPosition > 200 && normal == false)
-        {
-            StartCoroutine(SleepTillTimeToNormal());
-            normal = true;
-        }
-    }
-
+    
     private IEnumerator SpawnNewItem()
     {
         while (ind < objArr.Length)
@@ -80,7 +61,8 @@ public class tempL2Spawner : MonoBehaviour
                 yield return new WaitForSeconds(0.0001f);
                 normal = true;
             }
-            
+            Debug.Log("time:"+ _bgmHandler.songPosition);
+            Debug.Log("ind:"+ ind);
             if (objArr[ind].TimeStamp[0] > _bgmHandler.songPosition)
             {
                 yield return new WaitForSeconds((objArr[ind].TimeStamp[0]-_bgmHandler.songPosition)*0.8f);
@@ -136,13 +118,6 @@ public class tempL2Spawner : MonoBehaviour
                         newItem = Instantiate(block, spawnPos, Quaternion.identity);
                         Destroy(newItem, 3f);
                         break;
-                    case 4:
-                        newPlatform = Instantiate(platform, spawnPos, Quaternion.identity);
-                        var newPlatform_ = newPlatform.GetComponent<platform>();
-                        newPlatform_.SetLength(xLen);
-                        Destroy(newPlatform, (spawnPos.x + 12 + xLen/2) / (noteHandler.speed * 1/Time.fixedDeltaTime));
-                        // Destroy(newPlatform, 3f/2.46f*xLen);
-                        break;
                 }
 
                 ind++;
@@ -151,5 +126,17 @@ public class tempL2Spawner : MonoBehaviour
             }
             
         }
+    }
+}
+
+
+public class ObjectComparer: IComparer{
+    public int Compare(object x, object y){
+        if (((Object)x).TimeStamp[0] > ((Object)y).TimeStamp[0])
+            return 1;
+        else if (((Object)x).TimeStamp[0] < ((Object)y).TimeStamp[0])
+            return -1;
+        else
+            return 0;
     }
 }
