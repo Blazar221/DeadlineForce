@@ -5,24 +5,24 @@ using UnityEngine;
 public class Item
 {
     public enum ItemType {
-        Knife,
-        Shield,
-        Mine,
-        Sword,
+        Ice,
+        Grass,
+        Fire,
+        Dark,
     }
     public ItemType itemType;
     public int amount;
     public Sprite GetSprite() {
         switch (itemType) {
             default:
-            case ItemType.Knife:
-                return ItemAssets.Instance.knifeSprite;
-            case ItemType.Shield:
-                return ItemAssets.Instance.shieldSprite;
-            case ItemType.Mine:
-                return ItemAssets.Instance.mineSprite;
-            case ItemType.Sword:
-                return ItemAssets.Instance.swordSprite;
+            case ItemType.Ice:
+                return ItemAssets.Instance.iceSprite;
+            case ItemType.Grass:
+                return ItemAssets.Instance.grassSprite;
+            case ItemType.Fire:
+                return ItemAssets.Instance.fireSprite;
+            case ItemType.Dark:
+                return ItemAssets.Instance.darkSprite;
         }
     }
 }
