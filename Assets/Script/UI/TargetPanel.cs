@@ -53,7 +53,7 @@ public class TargetPanel : MonoBehaviour
     private int _targetIndex;
     
     //for inventory system
-    private Inventory inventory;
+    public Inventory inventory;
     [SerializeField] private InventoryUI uiInventory;
 
     private void Awake()
@@ -72,15 +72,15 @@ public class TargetPanel : MonoBehaviour
                 break;
         }
         // targetLine = transform.Find("TargetLine").gameObject;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
+        
         //for inventory system
         inventory = new Inventory();
         uiInventory.SetInventory(inventory);
-        
+    }
+
+
+    void Start()
+    {        
         // gems = new List<GameObject>();
         _gemDict = new Dictionary<string, List<Image>>();
         _lineDict = new Dictionary<string, GameObject>();
@@ -125,7 +125,7 @@ public class TargetPanel : MonoBehaviour
                 if(_gemDict[colorStr].Count == 0)
                 {
                     GameObject lineToDestroy = _lineDict[colorStr];
-                    if (inventory.GetItemList().Count == 4) inventory.RemoveFirst();
+                    if (inventory.GetItemList().Count == 6) inventory.RemoveFirst();
                     inventory.AddSprite(_lineDict[colorStr].transform.Find("UpgradeItem").gameObject.GetComponent<Image>().sprite);
                     _gemDict.Remove(colorStr);
                     _lineDict.Remove(colorStr);

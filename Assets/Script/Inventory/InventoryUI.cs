@@ -31,7 +31,7 @@ public class InventoryUI : MonoBehaviour
             if (child == slot) continue;
             Destroy(child.gameObject);
         }
-        float x = -1.5f;
+        float x = -2.5f;
         float slotCellSize = 100f;
         foreach (Item item in inventory.GetItemList()) {
             //if (x > 4)  

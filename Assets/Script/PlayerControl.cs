@@ -34,8 +34,7 @@ public class PlayerControl : MonoBehaviour
     private float nextTime;
     private float collsionTime;
     private float keepLongScoreTime = 0f;
-    [SerializeField]
-    private float longScoreTimeBar = 0.07f;
+    private float longScoreTimeBar = 0.28f;
     
     private bool canGetSingleScore;
     private bool canGetLongScore;
@@ -50,6 +49,7 @@ public class PlayerControl : MonoBehaviour
     // for hitting effect
     
     private TargetPanel targetPanel;
+    private Inventory inventory;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +71,7 @@ public class PlayerControl : MonoBehaviour
         animator = GetComponent<Animator>();
         
         targetPanel = TargetPanel.Instance;
+        inventory = targetPanel.inventory;
     }
 
     // Update is called once per frame
@@ -203,13 +204,13 @@ public class PlayerControl : MonoBehaviour
         // GameOverScreen.instance.IncreaseScore();
         // add one when eating one
         numOfFood++;
-        // Deal damage to Boss
-        boss.TakeDamage(2);
     }
 
     void ScoreLong()
     {
         if(keepLongScoreTime > longScoreTimeBar){
+            Item rlsItem = inventory.RemoveFirst();
+            boss.TakeDamage(rlsItem);
             keepLongScoreTime = 0f;
 
             hitScore++;
