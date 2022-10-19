@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
@@ -98,6 +99,7 @@ public class Boss : MonoBehaviour
         if (bossHealth <= 0)
         {
             Dead();
+            GameController.Instance.EnableCongratsMenu();
         }
     }
 
