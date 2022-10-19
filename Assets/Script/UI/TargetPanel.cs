@@ -60,7 +60,7 @@ public class TargetPanel : MonoBehaviour
     private int _targetIndex;
     
     //for inventory system
-    private Inventory inventory;
+    public Inventory inventory;
     [SerializeField] private InventoryUI uiInventory;
 
     private void Awake()
@@ -79,17 +79,18 @@ public class TargetPanel : MonoBehaviour
                 break;
         }
         // targetLine = transform.Find("TargetLine").gameObject;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
+        
         //for inventory system
         inventory = new Inventory();
         uiInventory.SetInventory(inventory);
-
         _objectLines = new List<ObjectLine>();
         _targetCounter = 1;
+    }
+
+
+    void Start()
+    {        
+
         SetNextTarget();
     }
 
