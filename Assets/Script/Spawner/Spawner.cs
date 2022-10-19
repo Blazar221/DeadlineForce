@@ -63,6 +63,9 @@ public class Spawner : MonoBehaviour
         waterDiamondHandler.SetSpeed(moveSpeed);
         grassDiamondHandler.SetSpeed(moveSpeed);
         rockDiamondHandler.SetSpeed(moveSpeed);
+
+        blockHandler = block.GetComponent<Block>();
+        blockHandler.SetSpeed(moveSpeed);
         
         playerHadler = player.GetComponent<PlayerControl>();
         _bgmHandler = bgm.GetComponent<BgmController>();
@@ -151,6 +154,8 @@ public class Spawner : MonoBehaviour
                         break;
                     //block
                     case 3:
+                        xLen = blockHandler.transform.localScale.x;
+                        spawnPos = new Vector3(playerX + moveSpeed * (2f / Time.fixedDeltaTime) + xLen / 2, yPos, 0);
                         newItem = Instantiate(block, spawnPos, Quaternion.identity);
                         Destroy(newItem, 3f);
                         break;

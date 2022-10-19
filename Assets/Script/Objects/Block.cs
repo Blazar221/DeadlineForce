@@ -10,6 +10,11 @@ public class Block : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 pos;
 
+    public void SetSpeed(float s)
+    {
+        speed = s;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
