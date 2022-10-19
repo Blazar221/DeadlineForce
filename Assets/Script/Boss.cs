@@ -6,6 +6,7 @@ public class Boss : MonoBehaviour
 {
     private float gameTime = 0.0f;
     private float step = 0.0f;
+    private int state = 0;
     SpriteRenderer render;
 
     [SerializeField] public int bossHealth = 100;
@@ -21,6 +22,7 @@ public class Boss : MonoBehaviour
         healthBar.SetMaxHealth(bossHealth);
         // Get the corresponding property of the gameObject
         render = colorBody.GetComponent<SpriteRenderer>();
+        SwitchState();
     }
 
     void Update()
@@ -35,23 +37,26 @@ public class Boss : MonoBehaviour
         {
             Appear();
         }
+    }
 
-        // Switch properties
-        if (gameTime / 10.0f % 4 > 0 && gameTime / 10.0f % 4 <= 1)
+    public void SwitchState()
+    {
+        state++;
+        // Debug.Log("state:"+state);
+        switch (state%8)
         {
-            FireState();
-        } 
-        else if (gameTime / 10.0f % 4 > 1 && gameTime / 10.0f % 4 <= 2)
-        {
-            WaterState();
-        }
-        else if (gameTime / 10.0f % 4 > 2 && gameTime / 10.0f % 4 <= 3)
-        {
-            GrassState();
-        }
-        else 
-        {
-            EarthState();
+            case 0:
+                FireState();
+                break;
+            case 2:
+                WaterState();
+                break;
+            case 4:
+                GrassState();
+                break;
+            case 6:
+                EarthState();
+                break;
         }
     }
 
@@ -59,25 +64,25 @@ public class Boss : MonoBehaviour
     {
         // Debug.Log("fire");
         // 0.1f is the smoothing factor
-        render.color = Color.Lerp(render.color, Color.red, 0.1f * gameTime);
+        render.color = Color.Lerp(render.color, Color.red, 1);
     }
 
     void WaterState()
     {
         // Debug.Log("water");
-        render.color = Color.Lerp(render.color, Color.blue, 0.1f * gameTime);
+        render.color = Color.Lerp(render.color, Color.blue, 1);
     }
 
     void GrassState()
     {
         // Debug.Log("grass");
-        render.color = Color.Lerp(render.color, Color.green, 0.1f * gameTime);
+        render.color = Color.Lerp(render.color, Color.green, 1);
     }
 
     void EarthState()
     {
         // Debug.Log("earth");
-        render.color = Color.Lerp(render.color, Color.yellow, 0.1f * gameTime);
+        render.color = Color.Lerp(render.color, Color.yellow, 1);
     }
 
     void Appear()

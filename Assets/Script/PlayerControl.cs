@@ -71,6 +71,7 @@ public class PlayerControl : MonoBehaviour
         animator = GetComponent<Animator>();
         
         targetPanel = TargetPanel.Instance;
+        boss.SwitchState();
     }
 
     // Update is called once per frame
@@ -356,6 +357,7 @@ public class PlayerControl : MonoBehaviour
         if(collision.gameObject.tag == "LongNote")
         {
             canGetLongScore = false;
+            boss.SwitchState();
         }
 
         if(collision.gameObject.tag == "Mine")

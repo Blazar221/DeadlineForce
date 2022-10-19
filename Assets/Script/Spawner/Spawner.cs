@@ -91,12 +91,13 @@ public class Spawner : MonoBehaviour
                 yield return new WaitForSeconds(0.0001f);
                 normal = true;
             }
-            Debug.Log("time:"+ _bgmHandler.songPosition);
-            Debug.Log("ind:"+ ind);
+            // Debug.Log("time:"+ _bgmHandler.songPosition);
+            // Debug.Log("ind:"+ ind);
             if (objArr[ind].TimeStamp[0] > _bgmHandler.songPosition)
             {
                 yield return new WaitForSeconds((objArr[ind].TimeStamp[0]-_bgmHandler.songPosition)*0.8f);
             }
+            
             while (ind < objArr.Length && objArr[ind].TimeStamp[0] <= _bgmHandler.songPosition)
             {   
                 Object toSpawn = objArr[ind];
@@ -109,7 +110,6 @@ public class Spawner : MonoBehaviour
                     3 => -4,
                     _ => 0,
                 };
-
                 // start spawn
                 switch (toSpawn.Type)
                 {
@@ -131,9 +131,9 @@ public class Spawner : MonoBehaviour
                         }; 
 
                         xLen = curDiamondHandler.transform.localScale.x;
-                        Debug.Log(xLen);
-                        Debug.Log(moveSpeed);
-                        Debug.Log(playerX + moveSpeed * (2f / Time.fixedDeltaTime) + xLen / 2);
+                        //Debug.Log(xLen);
+                        //Debug.Log(moveSpeed);
+                        //Debug.Log(playerX + moveSpeed * (2f / Time.fixedDeltaTime) + xLen / 2);
                         
                         spawnPos = new Vector3(playerX + moveSpeed * (2f / Time.fixedDeltaTime) + xLen / 2, yPos, 0);
 
@@ -165,7 +165,6 @@ public class Spawner : MonoBehaviour
         }
     }
 }
-
 
 public class ObjectComparer: IComparer{
     public int Compare(object x, object y){
