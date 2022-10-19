@@ -6,6 +6,8 @@ public class Boss : MonoBehaviour
 {
     [SerializeField] public int bossHealth = 100;
     public HealthBar healthBar;
+    public GameObject deathEffect;
+
     void Start()
     {
         healthBar.SetMaxHealth(bossHealth);
@@ -20,5 +22,16 @@ public class Boss : MonoBehaviour
     {
         bossHealth -= damage;
         healthBar.SetHealth(bossHealth);
+
+        if (bossHealth <= 0)
+        {
+            Dead();
+        }
+    }
+
+    void Dead()
+    {
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }
