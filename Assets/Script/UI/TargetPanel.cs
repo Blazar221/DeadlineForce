@@ -1,20 +1,23 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Image = UnityEngine.UI.Image;
 
 public class TargetPanel : MonoBehaviour
 {
     public static TargetPanel Instance;
+
     [SerializeField] private Sprite[] items;
+
     // [SerializeField] private Image[] gems;
     [SerializeField] private Sprite[] sources;
     public GameObject targetLine;
-    
+
     private readonly Color _blue = new(0.016f, 0.67f, 1f, 1.0f);
     private readonly Color _green = new(0.43f, 1f, 0.058f, 1.0f);
     private readonly Color _red = new(1.0f, 0.5f, 0f, 1.0f);
-    private readonly Color _brown = new(0.8f,0.38f, 0f, 1f);
+    private readonly Color _brown = new(0.8f, 0.38f, 0f, 1f);
 
     private readonly Color _brownSaber = new(0.58f, 0.3f, 0f, 1f);
 
@@ -22,16 +25,24 @@ public class TargetPanel : MonoBehaviour
     private IDictionary<string, List<Image>> _gemDict;
     private IDictionary<string, float> _timeDict;
 
-    private readonly Target[] _targets =
-    {
-        new(new[]{0}, new[]{3f}),   // for testing
-        new(new[]{1}, new[]{3f}),   // for testing
-        new(new[]{2}, new[]{3f}),   // for testing
-        new(new[]{3}, new[]{3f}),   // for testing
-        new(new[]{0,2,1,3}, new[]{15f, 25f, 20f, 30f}), 
-        new(new[]{0,2}, new[]{25f, 15f}), 
-        new( new[]{3,1}, new[]{20f, 25f})
+    private Target[] _targets ;
+    private int _targetLoopIndex;
+
+    private readonly Target[] _level1Target = {
+        new(new[] { 0 }, new[] { 10f }),
+        new(new[] { 2 }, new[] { 10f }),
+        new(new[] { 0, 2 }, new[] { 5f, 10f }),
+        new(new[] { 2, 0 }, new[] { 5f, 10f }),
+        // loop
+        new(new[] { 0, 2 }, new[] { 4f, 8f }),
+        new(new[] { 0 }, new[] { 3f}),
+        new(new[] { 2, 0 }, new[] { 4f, 8f }),
+        new(new[] { 2 }, new[] { 3f }),
+        new(new[] { 0 }, new[] { 4f, 8f }),
+        new(new[] { 2, 0 }, new[] { 4f, 6f }),
+        new(new[] { 2, 0 }, new[] { 3f, 6f }),
     };
+    private const int _level1LoopIndex = 4;
 
     // 0: blue*3 = waterWeapon
     // 1: green*3 = grassWeapon
@@ -48,6 +59,18 @@ public class TargetPanel : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        var scene = SceneManager.GetActiveScene();
+        switch (scene.name)
+        {
+            case "Level1":
+                _targets = _level1Target;
+                _targetLoopIndex = _level1LoopIndex;
+                break;
+            case "Level2":
+                break;
+            case "Level3":
+                break;
+        }
         // targetLine = transform.Find("TargetLine").gameObject;
     }
 
@@ -119,8 +142,6 @@ public class TargetPanel : MonoBehaviour
 
     public void TargetHit(Color color)
     {
-        Debug.Log("Color parameter: " + color);
-        
         if (IsSameColor(color, _blue))
         {
             SetColor(color, "blue");
@@ -206,7 +227,7 @@ public class TargetPanel : MonoBehaviour
         
         _targetIndex++;
         if(_targetIndex == _targets.Length)
-            _targetIndex = 0;
+            _targetIndex = _targetLoopIndex;
         
     }
 
