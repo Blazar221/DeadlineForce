@@ -5,23 +5,38 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     private float gameTime = 0.0f;
+    private float step = 0.0f;
     SpriteRenderer render;
 
     [SerializeField] public int bossHealth = 100;
+    public float speed = 1f;
     public HealthBar healthBar;
     public GameObject deathEffect;
     public GameObject colorBody;
+    public GameObject boss;
 
 
     void Start()
     {
         healthBar.SetMaxHealth(bossHealth);
+        // Get the corresponding property of the gameObject
         render = colorBody.GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
         gameTime += Time.deltaTime;
+        step = speed * gameTime;
+        // Switch boss state(appear, hide)
+        if (gameTime % 10.0f > 2 && gameTime % 10.0f <= 8)
+        {
+            Hide();
+        } else
+        {
+            Appear();
+        }
+
+        // Switch properties
         if (gameTime / 10.0f % 4 > 0 && gameTime / 10.0f % 4 <= 1)
         {
             FireState();
@@ -63,6 +78,16 @@ public class Boss : MonoBehaviour
     {
         // Debug.Log("earth");
         render.color = Color.Lerp(render.color, Color.yellow, 0.1f * gameTime);
+    }
+
+    void Appear()
+    {
+        boss.transform.position = Vector3.MoveTowards(boss.transform.position, new Vector3(9.34f, 0.63f, 0.0786f), step);
+    }
+
+    void Hide()
+    {
+        boss.transform.position = Vector3.MoveTowards(boss.transform.position, new Vector3(11.18f, 0.63f, 0.0786f), step);
     }
 
     public void TakeDamage(int damage)
