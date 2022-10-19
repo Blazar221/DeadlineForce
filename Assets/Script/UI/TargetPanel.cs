@@ -102,14 +102,14 @@ public class TargetPanel : MonoBehaviour
                 if(_gemDict[colorStr].Count == 0)
                 {
                     GameObject lineToDestroy = _lineDict[colorStr];
+                    if (inventory.GetItemList().Count == 4) inventory.RemoveFirst();
+                    inventory.AddSprite(_lineDict[colorStr].transform.Find("UpgradeItem").gameObject.GetComponent<Image>().sprite);
                     _gemDict.Remove(colorStr);
                     _lineDict.Remove(colorStr);
                     _timeDict.Remove(colorStr);
                     Destroy(lineToDestroy);
                     if(_gemDict.Count == 0)
                     {
-                        inventory.AddSprite(items[_targets[_targetIndex - 1].GetFormulaIndex()[0]]);
-                        uiInventory.SetInventory(inventory);
                         SetNextTarget();
                     }
                 }
