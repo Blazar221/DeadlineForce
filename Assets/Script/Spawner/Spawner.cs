@@ -11,6 +11,8 @@ using JsonHelper = Script.JsonHelper;
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField] private GameObject player;
+    
     [SerializeField] private GameObject gravSwitch;
 
     [SerializeField] private GameObject fireDiamond;
@@ -19,7 +21,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject rockDiamond;
 
     [SerializeField] private GameObject longNote;
-    [SerializeField] private GameObject player;
+    
     [SerializeField] private GameObject block;
     [SerializeField] private GameObject bgm;
     [SerializeField] private TextAsset Jsonfile;
@@ -149,6 +151,7 @@ public class Spawner : MonoBehaviour
                         newItem = Instantiate(longNote, spawnPos, Quaternion.identity);
                         var newLongNote = newItem.GetComponent<LongNote>();
                         newLongNote.SetLength(xLen);
+                        newLongNote.SetSpeed(moveSpeed);
                         // Destroy(newItem, 3f / 2.46f * xLen);
                         Destroy(newItem, (spawnPos.x + 12 + xLen/2) / (moveSpeed * 1/Time.fixedDeltaTime));
                         break;

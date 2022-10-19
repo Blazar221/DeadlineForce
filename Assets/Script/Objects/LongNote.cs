@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class LongNote : MonoBehaviour
 {
-    [SerializeField] public float speed;
     [SerializeField] public float height;
+    
+    public float speed;
 
     private GameObject player;
 
@@ -36,6 +37,11 @@ public class LongNote : MonoBehaviour
     void Start()
     {
 
+    }
+
+    public void SetSpeed(float s)
+    {
+        speed = s;
     }
 
     public void SetLength(float length)
