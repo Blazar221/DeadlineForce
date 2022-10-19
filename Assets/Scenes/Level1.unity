@@ -5118,9 +5118,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossHealth: 100
+  speed: 1
   healthBar: {fileID: 808834014}
   deathEffect: {fileID: 1755349173569476, guid: 1b0d883ac069a4f2ab8e69d6cff40416, type: 3}
   colorBody: {fileID: 1371344481}
+  boss: {fileID: 1307346853}
 --- !u!95 &1307346858
 Animator:
   serializedVersion: 4
