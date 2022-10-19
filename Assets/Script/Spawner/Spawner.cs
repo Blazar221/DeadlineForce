@@ -146,7 +146,8 @@ public class Spawner : MonoBehaviour
                         newItem = Instantiate(longNote, spawnPos, Quaternion.identity);
                         var newLongNote = newItem.GetComponent<LongNote>();
                         newLongNote.SetLength(xLen);
-                        Destroy(newItem, 3f / 2.46f * xLen);
+                        // Destroy(newItem, 3f / 2.46f * xLen);
+                        Destroy(newItem, (spawnPos.x + 12 + xLen/2) / (moveSpeed * 1/Time.fixedDeltaTime));
                         break;
                     //block
                     case 3:
