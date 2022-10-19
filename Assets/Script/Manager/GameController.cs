@@ -9,9 +9,23 @@ public class GameController : MonoBehaviour
     public GameObject congratsMenu;
 
     [SerializeField]
+    GameObject platformTop;
+    [SerializeField]
+    GameObject platformBottom;
+
+
+    [SerializeField]
     private float endTime = 84f;
     private float timeCount = 0f;
     private bool gameIsEnd = false;
+
+    private void Awake() {
+        string sceneName = SceneManager.GetActiveScene().name;
+        if(sceneName == "Level1"){
+            platformTop.SetActive(false);
+            platformBottom.SetActive(false);
+        }
+    }
 
     void Update()
     {

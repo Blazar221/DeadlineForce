@@ -664,7 +664,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178061451}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: -3.42, z: 0}
+  m_LocalPosition: {x: -3, y: 1.82, z: 0}
   m_LocalScale: {x: 9.815627, y: 9.815627, z: 9.815627}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3132,6 +3132,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverMenu: {fileID: 801338847}
   congratsMenu: {fileID: 341597719}
+  platformTop: {fileID: 0}
+  platformBottom: {fileID: 0}
   endTime: 84
 --- !u!1 &755456326
 GameObject:
@@ -6771,6 +6773,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1726089751}
+  - component: {fileID: 1726089752}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6795,6 +6798,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1726089752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726089750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15112363388cd4ff1bfe98807bb33bae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverMenu: {fileID: 0}
+  congratsMenu: {fileID: 0}
+  platformTop: {fileID: 60805061}
+  platformBottom: {fileID: 2108271602}
+  endTime: 84
 --- !u!1 &1741832800
 GameObject:
   m_ObjectHideFlags: 0
@@ -7689,7 +7709,7 @@ GameObject:
   - component: {fileID: 2108271604}
   - component: {fileID: 2108271603}
   m_Layer: 0
-  m_Name: Platform
+  m_Name: PlatformBottom
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
