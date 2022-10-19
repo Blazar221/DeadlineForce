@@ -27,6 +27,7 @@ public class Boss : MonoBehaviour
         // Get the corresponding property of the gameObject
         render = colorBody.GetComponent<SpriteRenderer>();
         SwitchState();
+        SwitchState();
     }
 
     void Update()
@@ -46,7 +47,7 @@ public class Boss : MonoBehaviour
     public void SwitchState()
     {
         state++;
-        // Debug.Log("state:"+state);
+         Debug.Log("state:"+state);
         switch (state%8)
         {
             case 0:
@@ -69,28 +70,28 @@ public class Boss : MonoBehaviour
         // Debug.Log("fire");
         // 0.1f is the smoothing factor
         render.color = Color.Lerp(render.color, Color.red, 1);
-        boss.eleType = ElemType.Fire;
+        eleType = ElemType.Fire;
     }
 
     void WaterState()
     {
         // Debug.Log("water");
         render.color = Color.Lerp(render.color, Color.blue, 1);
-        boss.eleType = ElemType.Water;
+        eleType = ElemType.Water;
     }
 
     void GrassState()
     {
         // Debug.Log("grass");
         render.color = Color.Lerp(render.color, Color.green, 1);
-        boss.eleType = ElemType.Grass;
+        eleType = ElemType.Grass;
     }
 
     void EarthState()
     {
         // Debug.Log("earth");
         render.color = Color.Lerp(render.color, Color.yellow, 1);
-        boss.eleType = ElemType.Rock;
+        eleType = ElemType.Rock;
     }
 
     void Appear()
@@ -105,7 +106,7 @@ public class Boss : MonoBehaviour
 
     public void TakeDamage(Item attackingItem)
     {
-        bossHealth -= damage;
+        // bossHealth -= damage;
         healthBar.SetHealth(bossHealth);
 
         if (bossHealth <= 0)

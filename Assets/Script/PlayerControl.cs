@@ -72,6 +72,7 @@ public class PlayerControl : MonoBehaviour
         
         targetPanel = TargetPanel.Instance;
         inventory = targetPanel.inventory;
+        
     }
 
     // Update is called once per frame
