@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
     private bool gameIsEnd = false;
 
     private void Awake() {
-        instance = this;
+        Instance = this;
         string sceneName = SceneManager.GetActiveScene().name;
         if(sceneName == "Level1"){
             platformTop.SetActive(false);
