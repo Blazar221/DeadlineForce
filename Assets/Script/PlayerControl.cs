@@ -209,7 +209,8 @@ public class PlayerControl : MonoBehaviour
     void ScoreLong()
     {
         if(keepLongScoreTime > longScoreTimeBar){
-            inventory.RemoveFirst();
+            Item rlsItem = inventory.RemoveFirst();
+            boss.TakeDamage(rlsItem);
             keepLongScoreTime = 0f;
 
             hitScore++;
