@@ -42,26 +42,26 @@ public class Boss : MonoBehaviour
 
     void FireState() 
     {
-        Debug.Log("fire");
+        // Debug.Log("fire");
         // 0.1f is the smoothing factor
         render.color = Color.Lerp(render.color, Color.red, 0.1f * gameTime);
     }
 
     void WaterState()
     {
-        Debug.Log("water");
+        // Debug.Log("water");
         render.color = Color.Lerp(render.color, Color.blue, 0.1f * gameTime);
     }
 
     void GrassState()
     {
-        Debug.Log("grass");
+        // Debug.Log("grass");
         render.color = Color.Lerp(render.color, Color.green, 0.1f * gameTime);
     }
 
     void EarthState()
     {
-        Debug.Log("earth");
+        // Debug.Log("earth");
         render.color = Color.Lerp(render.color, Color.yellow, 0.1f * gameTime);
     }
 
