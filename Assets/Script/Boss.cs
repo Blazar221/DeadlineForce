@@ -16,6 +16,9 @@ public class Boss : MonoBehaviour
     public GameObject colorBody;
     public GameObject boss;
 
+    public enum ElemType {Fire, Water, Grass, Rock};
+    public ElemType eleType;
+
 
     void Start()
     {
@@ -61,24 +64,28 @@ public class Boss : MonoBehaviour
         // Debug.Log("fire");
         // 0.1f is the smoothing factor
         render.color = Color.Lerp(render.color, Color.red, 0.1f * gameTime);
+        boss.eleType = ElemType.Fire;
     }
 
     void WaterState()
     {
         // Debug.Log("water");
         render.color = Color.Lerp(render.color, Color.blue, 0.1f * gameTime);
+        boss.eleType = ElemType.Water;
     }
 
     void GrassState()
     {
         // Debug.Log("grass");
         render.color = Color.Lerp(render.color, Color.green, 0.1f * gameTime);
+        boss.eleType = ElemType.Grass;
     }
 
     void EarthState()
     {
         // Debug.Log("earth");
         render.color = Color.Lerp(render.color, Color.yellow, 0.1f * gameTime);
+        boss.eleType = ElemType.Rock;
     }
 
     void Appear()
@@ -91,7 +98,7 @@ public class Boss : MonoBehaviour
         boss.transform.position = Vector3.MoveTowards(boss.transform.position, new Vector3(11.18f, 0.63f, 0.0786f), step);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(Item attackingItem)
     {
         bossHealth -= damage;
         healthBar.SetHealth(bossHealth);
