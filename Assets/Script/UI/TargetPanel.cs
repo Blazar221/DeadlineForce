@@ -31,11 +31,9 @@ public class TargetPanel : MonoBehaviour
 
     private readonly Target[] _level1Target = {
         
-        new(new[] { 0, 4 }, new[] { 10f, 10f }), // test
-        
-
         new(new[] { 0 }, new[] { 10f }),
         new(new[] { 2 }, new[] { 10f }),
+        new(new[] { 4 }, new[] { 10f }),
         new(new[] { 0, 2 }, new[] { 5f, 10f }),
         new(new[] { 2, 0 }, new[] { 5f, 10f }),
         // loop
@@ -43,11 +41,12 @@ public class TargetPanel : MonoBehaviour
         new(new[] { 0 }, new[] { 3f}),
         new(new[] { 2, 0 }, new[] { 4f, 8f }),
         new(new[] { 2 }, new[] { 3f }),
-        new(new[] { 0 }, new[] { 4f, 8f }),
-        new(new[] { 2, 0 }, new[] { 4f, 6f }),
-        new(new[] { 2, 0 }, new[] { 3f, 6f }),
+        new(new[] { 4, 0 }, new[] { 4f, 8f }),
+        new(new[] { 4 }, new[] { 3F }),
+        new(new[] { 4, 2 }, new[] { 4f, 6f }),
+        new(new[] { 4, 0 }, new[] { 3f, 6f }),
     };
-    private const int Level1LoopIndex = 4;
+    private const int Level1LoopIndex = 5;
 
     // 0: blue*3 = waterWeapon
     // 1: green*3 = grassWeapon
