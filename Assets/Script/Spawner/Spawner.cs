@@ -12,7 +12,12 @@ using JsonHelper = Script.JsonHelper;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject gravSwitch;
-    [SerializeField] private GameObject note;
+
+    [SerializeField] private GameObject fireDiamond;
+    [SerializeField] private GameObject waterDiamond;
+    [SerializeField] private GameObject grassDiamond;
+    [SerializeField] private GameObject rockDiamond;
+
     [SerializeField] private GameObject longNote;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject block;
@@ -20,13 +25,26 @@ public class Spawner : MonoBehaviour
     [SerializeField] private TextAsset Jsonfile;
 
     private GameObject newItem, newMine, newPlatform;
+
     private Vector3 spawnPos;
+
     private Block blockHandler;
-    private Note noteHandler;
+    
+    private Diamond fireDiamondHandler;
+    private Diamond waterDiamondHandler;
+    private Diamond grassDiamondHandler;
+    private Diamond rockDiamondHandler;
+    
     private PlayerControl playerHadler;
     private BgmController _bgmHandler;
+
+    [SerializeField]
+    public float moveSpeed; 
+
     private float playerX, xLen;
+
     private int ind = 0;
+
     private bool normal = false;
 
     private Object[] objArr;
@@ -36,7 +54,16 @@ public class Spawner : MonoBehaviour
         string json = Jsonfile.text;
         Debug.Log("MyJson= "+json);
         objArr= JsonHelper.FromJson<Object>(json);
-        noteHandler = note.GetComponent<Note>();
+
+        fireDiamondHandler = fireDiamond.GetComponent<Diamond>();
+        waterDiamondHandler = waterDiamond.GetComponent<Diamond>();
+        grassDiamondHandler = grassDiamond.GetComponent<Diamond>();
+        rockDiamondHandler = rockDiamond.GetComponent<Diamond>();
+        fireDiamondHandler.SetSpeed(moveSpeed);
+        waterDiamondHandler.SetSpeed(moveSpeed);
+        grassDiamondHandler.SetSpeed(moveSpeed);
+        rockDiamondHandler.SetSpeed(moveSpeed);
+        
         playerHadler = player.GetComponent<PlayerControl>();
         _bgmHandler = bgm.GetComponent<BgmController>();
         // sort the notes by time
@@ -68,10 +95,10 @@ public class Spawner : MonoBehaviour
                 yield return new WaitForSeconds((objArr[ind].TimeStamp[0]-_bgmHandler.songPosition)*0.8f);
             }
             while (ind < objArr.Length && objArr[ind].TimeStamp[0] <= _bgmHandler.songPosition)
-            {
-                xLen = noteHandler.transform.localScale.x;
+            {   
+                Object toSpawn = objArr[ind];
 
-                float yPos = objArr[ind].Pos switch
+                float yPos = toSpawn.Pos switch
                 {
                     0 => 4,
                     1 => 1,
@@ -80,34 +107,41 @@ public class Spawner : MonoBehaviour
                     _ => 0,
                 };
 
-                if (objArr[ind].TimeStamp[1] - objArr[ind].TimeStamp[0] != 0)
-                {
-                    xLen = (objArr[ind].TimeStamp[1] - objArr[ind].TimeStamp[0]) * noteHandler.speed *
-                           (1 / Time.fixedDeltaTime);
-                }
-
-                spawnPos = new Vector3(playerX + noteHandler.speed * (2f / Time.fixedDeltaTime) + xLen / 2, yPos, 0);
-
                 // start spawn
-                switch (objArr[ind].Type)
+                switch (toSpawn.Type)
                 {
-                    // gravSwitch
-                    case 0:
-                        newItem = Instantiate(gravSwitch, spawnPos, Quaternion.identity);
-                        Destroy(newItem, 3f);
-                        if (objArr[ind].Pos == 1)
-                        {
-                            newItem.transform.localScale = new Vector3(1, -1, 1);
-                        }
-
-                        break;
-                    // short note
+                    // element diamond
                     case 1:
-                        newItem = Instantiate(note, spawnPos, Quaternion.identity);
+                        Diamond curDiamondHandler = toSpawn.Color switch
+                        {
+                            0 => fireDiamondHandler,
+                            1 => waterDiamondHandler,
+                            2 => grassDiamondHandler,
+                            _ => rockDiamondHandler,
+                        };
+                        GameObject toCopy = toSpawn.Color switch
+                        {
+                            0 => fireDiamond,
+                            1 => waterDiamond,
+                            2 => grassDiamond,
+                            _ => rockDiamond,
+                        }; 
+
+                        xLen = curDiamondHandler.transform.localScale.x;
+                        Debug.Log(xLen);
+                        Debug.Log(moveSpeed);
+                        Debug.Log(playerX + moveSpeed * (2f / Time.fixedDeltaTime) + xLen / 2);
+                        
+                        spawnPos = new Vector3(playerX + moveSpeed * (2f / Time.fixedDeltaTime) + xLen / 2, yPos, 0);
+
+                        newItem = Instantiate(toCopy, spawnPos, Quaternion.identity);
+                        newItem.GetComponent<Diamond>().SetSpeed(moveSpeed);
                         Destroy(newItem, 3f);
                         break;
                     // long note
                     case 2:
+                        xLen = (toSpawn.TimeStamp[1] - toSpawn.TimeStamp[0]) * moveSpeed * (1 / Time.fixedDeltaTime);
+
                         newItem = Instantiate(longNote, spawnPos, Quaternion.identity);
                         var newLongNote = newItem.GetComponent<LongNote>();
                         newLongNote.SetLength(xLen);
@@ -119,12 +153,8 @@ public class Spawner : MonoBehaviour
                         Destroy(newItem, 3f);
                         break;
                 }
-
                 ind++;
-                
-                
             }
-            
         }
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6793344568998294526}
   - component: {fileID: -7320357969136632013}
   m_Layer: 1
-  m_Name: BrownNote
+  m_Name: RockDiamond
   m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,4 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deab75c9d19fd504f9c4bcdc790fa8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.3
+  myType: 3

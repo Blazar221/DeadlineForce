@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6793344568998294526}
   - component: {fileID: -7320357969136632013}
   m_Layer: 1
-  m_Name: GreenNote
+  m_Name: FireDiamond
   m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1955337794, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
-  m_Color: {r: 0.4305087, g: 1, b: 0.058, a: 1}
+  m_Sprite: {fileID: 887685491, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
+  m_Color: {r: 1, g: 0.5, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -104,7 +104,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.25, y: 0.25}
+    oldSize: {x: 0.2, y: 0.19}
     newSize: {x: 0.9, y: 0.9}
     adaptiveTilingThreshold: 0.5
     drawMode: 1
