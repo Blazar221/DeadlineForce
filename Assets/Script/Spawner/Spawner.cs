@@ -141,6 +141,7 @@ public class Spawner : MonoBehaviour
                     // long note
                     case 2:
                         xLen = (toSpawn.TimeStamp[1] - toSpawn.TimeStamp[0]) * moveSpeed * (1 / Time.fixedDeltaTime);
+                        spawnPos = new Vector3(playerX + moveSpeed * (2f / Time.fixedDeltaTime) + xLen / 2, yPos, 0);
 
                         newItem = Instantiate(longNote, spawnPos, Quaternion.identity);
                         var newLongNote = newItem.GetComponent<LongNote>();
