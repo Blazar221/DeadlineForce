@@ -32,11 +32,11 @@ public class TargetPanel : MonoBehaviour
     private readonly Target[] _level1Target = {
         
 
-        new(new[] { 0, 2 }, new[] { 6f, 10f }),
-        new(new[] { 2, 0 }, new[] { 6f, 10f }),
+        new(new[] { 0, 1 }, new[] { 6f, 10f }),
+        new(new[] { 1, 0 }, new[] { 6f, 10f }),
         // loop
-        new(new[] { 0, 2 }, new[] { 5.5f, 9f }),
-        new(new[] { 2, 0 }, new[] { 5.5f, 9f }),
+        new(new[] { 0, 1 }, new[] { 5.5f, 9f }),
+        new(new[] { 1, 0 }, new[] { 5.5f, 9f }),
     };
     private const int Level1LoopIndex = 2;
     

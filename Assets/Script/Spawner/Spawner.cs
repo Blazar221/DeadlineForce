@@ -119,15 +119,15 @@ public class Spawner : MonoBehaviour
                     case 1:
                         Diamond curDiamondHandler = toSpawn.Color switch
                         {
-                            0 => fireDiamondHandler,
-                            1 => waterDiamondHandler,
+                            0 => waterDiamondHandler,
+                            1 => fireDiamondHandler,
                             2 => grassDiamondHandler,
                             _ => rockDiamondHandler,
                         };
                         GameObject toCopy = toSpawn.Color switch
                         {
-                            0 => fireDiamond,
-                            1 => waterDiamond,
+                            0 => waterDiamond,
+                            1 => fireDiamond,
                             2 => grassDiamond,
                             _ => rockDiamond,
                         }; 
