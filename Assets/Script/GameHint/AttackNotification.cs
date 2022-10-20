@@ -20,12 +20,12 @@ public class Attacknotification : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
+    public void Start()
     {
        t  = GetComponent<Text>();
     }
 
-    private void Update()
+    public void Update()
     {
         timer += Time.deltaTime;
         if (isAddAlpha)
