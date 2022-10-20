@@ -1291,15 +1291,15 @@ public class ObjectToJson : MonoBehaviour
     Object[] TutorialobjArr = new Object[]
     {
         // best lane
-        
         new Object(new [] { 0f, 0f }, 1, 1, false,1), 
+        new Object(new [] { 0f, 0f }, 1, 1, false,1), 
+        new Object(new [] { 1f, 1f }, 1, 1, false,1), 
         new Object(new [] { 2f, 2f }, 1, 1, false,1), 
-        new Object(new [] { 3f, 3f }, 1, 1, false,1), 
-        new Object(new [] { 4f, 4f }, 1, 1, false,1), 
-        new Object(new [] { 5f, 5f }, 1, 1, false,1), 
-        new Object(new [] { 6f, 6f }, 1, 1, false,1), 
         
-        new Object(new [] { 8f, 9.5f }, 1, 2, false), 
+        
+        new Object(new [] { 5f, 6.5f }, 1, 2, false), 
+        
+        
         // new Object(new float[] { 5.5f, 5.5f }, 0, 1, false), 
         // new Object(new float[] { 7.75f, 7.75f }, 0, 1, false), 
         // new Object(new float[] { 7.75f, 7.75f }, 0, 1, false), 

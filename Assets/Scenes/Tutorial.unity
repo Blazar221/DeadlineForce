@@ -314,7 +314,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Long press <sprite index= 0> to use spell to attack Boss!
+  m_text: Let's defeat the Boss! Long press <sprite index= 0> on the rainbow to use
+    spell!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
   m_sharedMaterial: {fileID: -1571771168669490468, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
@@ -3427,7 +3428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 719575094}
-  - component: {fileID: 719575096}
+  - component: {fileID: 719575097}
   m_Layer: 0
   m_Name: GlobalSpawner
   m_TagString: Untagged
@@ -3450,7 +3451,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &719575096
+--- !u!114 &719575097
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3459,7 +3460,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 719575092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7e65e612da2642659f9c6b472c6dfe4, type: 3}
+  m_Script: {fileID: 11500000, guid: 6affe51587a428c438090dacddfaf112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 178061451}
@@ -5915,7 +5916,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press <sprite index= 0> to collect diamonds
+  m_text: When the diamonds come, Press <sprite index= 0> to collect diamonds
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
   m_sharedMaterial: {fileID: -1571771168669490468, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}

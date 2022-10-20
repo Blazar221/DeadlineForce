@@ -35,16 +35,16 @@ public class TextTutorial : MonoBehaviour
     private bool passupLearned = false;
 
     private float firstShortNoteTime = 2f;
-    private float t1ShortNoteTime = 3.55f;
-    private float t2ShortNoteTime = 4.75f;
+    private float t1ShortNoteTime = 3f;
+    private float t2ShortNoteTime = 4f;
     
-    private float firstLongNoteTime = 8.2f;
+    private float firstLongNoteTime = 7f;
     // private float firstBlockTime = 7.5f;
     private float firstUpSwitchTime = 12f;
     private float firstDownSwitchTime = 14f;
     private float passdownSwitchTime = 16f;
     private float passupSwitchTime = 18f;
-    private float finishTime = 20f;
+    private float finishTime = 21f;
     
     // Start is called before the first frame update
     void Start()
@@ -94,6 +94,15 @@ public class TextTutorial : MonoBehaviour
             TripleInstruction.enabled = true;
             if (Input.GetKeyDown(KeyCode.J)) {
                 tripleLearned1 = true;
+                TripleInstruction.enabled = false;
+                Time.timeScale = 1f;
+            }
+        }
+        if(!tripleLearned2 && Time.timeSinceLevelLoad >= t2ShortNoteTime){
+            Time.timeScale = 0f;
+            TripleInstruction.enabled = true;
+            if (Input.GetKeyDown(KeyCode.J)) {
+                tripleLearned2 = true;
                 TripleInstruction.enabled = false;
                 Time.timeScale = 1f;
             }
