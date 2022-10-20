@@ -33,7 +33,6 @@ public class TargetPanel : MonoBehaviour
         
         new(new[] { 0 }, new[] { 10f }),
         new(new[] { 2 }, new[] { 10f }),
-        new(new[] { 4 }, new[] { 10f }),
         new(new[] { 0, 2 }, new[] { 5f, 10f }),
         new(new[] { 2, 0 }, new[] { 5f, 10f }),
         // loop
@@ -41,12 +40,22 @@ public class TargetPanel : MonoBehaviour
         new(new[] { 0 }, new[] { 3f}),
         new(new[] { 2, 0 }, new[] { 4f, 8f }),
         new(new[] { 2 }, new[] { 3f }),
-        new(new[] { 4, 0 }, new[] { 4f, 8f }),
-        new(new[] { 4 }, new[] { 3F }),
-        new(new[] { 4, 2 }, new[] { 4f, 6f }),
-        new(new[] { 4, 0 }, new[] { 3f, 6f }),
     };
-    private const int Level1LoopIndex = 5;
+    private const int Level1LoopIndex = 4;
+    
+    private readonly Target[] _level3Target = {
+        
+        new(new[] { 0 }, new[] { 10f }),
+        new(new[] { 2 }, new[] { 10f }),
+        new(new[] { 0, 2 }, new[] { 5f, 10f }),
+        new(new[] { 2, 0 }, new[] { 5f, 10f }),
+        // loop
+        new(new[] { 0, 2 }, new[] { 4f, 8f }),
+        new(new[] { 0 }, new[] { 3f}),
+        new(new[] { 2, 0 }, new[] { 4f, 8f }),
+        new(new[] { 2 }, new[] { 3f }),
+    };
+    private const int Level3LoopIndex = 4;
 
     // 0: blue*3 = waterWeapon
     // 1: green*3 = grassWeapon
@@ -75,6 +84,8 @@ public class TargetPanel : MonoBehaviour
             case "Level2":
                 break;
             case "Level3":
+                _targets = _level3Target;
+                _targetLoopIndex = Level3LoopIndex;
                 break;
         }
         // targetLine = transform.Find("TargetLine").gameObject;
