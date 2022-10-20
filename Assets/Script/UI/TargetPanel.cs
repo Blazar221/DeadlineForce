@@ -106,6 +106,10 @@ public class TargetPanel : MonoBehaviour
                 var toDestroy = objectLine.GetGameObj();
                 Destroy(toDestroy);
                 _objectLines.RemoveAt(i);
+                if(_objectLines.Count == 0)
+                {
+                    SetNextTarget();
+                }
             }
         }
 
