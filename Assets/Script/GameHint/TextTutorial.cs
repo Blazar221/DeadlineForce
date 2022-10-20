@@ -17,21 +17,34 @@ public class TextTutorial : MonoBehaviour
     [SerializeField] private TextMeshProUGUI downSwitchInstruction;
     [SerializeField] private TextMeshProUGUI blockInstruction;
     [SerializeField] private TextMeshProUGUI finishInstruction;
+    [SerializeField] private TextMeshProUGUI TripleInstruction;
+    [SerializeField] private TextMeshProUGUI passdownInstruction;
+    [SerializeField] private TextMeshProUGUI passupInstruction;
     
     private PlayerControl playerControl;
     
     private bool shortNoteLearned = false;
+    private bool tripleLearned1 = false;
+    private bool tripleLearned2 = false;
+    
     private bool longNoteLearned = false;
     private bool upSwitchLearned = false;
     private bool downSwitchLearned = false;
     private bool blockLearned = false;
+    private bool passdownLearned = false;
+    private bool passupLearned = false;
 
     private float firstShortNoteTime = 2f;
-    private float firstLongNoteTime = 3.75f;
+    private float t1ShortNoteTime = 3.55f;
+    private float t2ShortNoteTime = 4.75f;
+    
+    private float firstLongNoteTime = 8.2f;
     // private float firstBlockTime = 7.5f;
-    private float firstUpSwitchTime = 9.15f;
-    private float firstDownSwitchTime = 10.75f;
-    private float finishTime = 12.5f;
+    private float firstUpSwitchTime = 12f;
+    private float firstDownSwitchTime = 14f;
+    private float passdownSwitchTime = 16f;
+    private float passupSwitchTime = 18f;
+    private float finishTime = 20f;
     
     // Start is called before the first frame update
     void Start()
@@ -42,6 +55,9 @@ public class TextTutorial : MonoBehaviour
         downSwitchInstruction.enabled = false;
         blockInstruction.enabled = false;
         finishInstruction.enabled = false;
+        TripleInstruction.enabled=false;
+        passdownInstruction.enabled=false;
+        passupInstruction.enabled=false;
     }
 
     // Update is called once per frame
@@ -73,6 +89,25 @@ public class TextTutorial : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
+        if(!tripleLearned1 && Time.timeSinceLevelLoad >= t1ShortNoteTime){
+            Time.timeScale = 0f;
+            TripleInstruction.enabled = true;
+            if (Input.GetKeyDown(KeyCode.J)) {
+                tripleLearned1 = true;
+                TripleInstruction.enabled = false;
+                Time.timeScale = 1f;
+            }
+        }
+        if(!tripleLearned2 && Time.timeSinceLevelLoad >= t2ShortNoteTime){
+            Time.timeScale = 0f;
+            TripleInstruction.enabled = true;
+            if (Input.GetKeyDown(KeyCode.J)) {
+                tripleLearned2= true;
+                TripleInstruction.enabled = false;
+                Time.timeScale = 1f;
+            }
+        }
+        
         if(!longNoteLearned && Time.timeSinceLevelLoad >= firstLongNoteTime){
             Time.timeScale = 0f;
             longNoteInstruction.enabled = true;
@@ -115,6 +150,30 @@ public class TextTutorial : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.S)) {
                 downSwitchLearned = true;
                 downSwitchInstruction.enabled = false;
+                playerControl.canChangeGravity = false;
+                Time.timeScale = 1f;
+            }
+        }
+        if(!passdownLearned && Time.timeSinceLevelLoad >= passdownSwitchTime){
+            Time.timeScale = 0f;
+            passdownInstruction.enabled = true;
+            playerControl = Player.GetComponent<PlayerControl>();
+            playerControl.canChangeGravity = true;
+            if (Input.GetKeyDown(KeyCode.S)) {
+                passdownLearned = true;
+                passdownInstruction.enabled = false;
+                playerControl.canChangeGravity = false;
+                Time.timeScale = 1f;
+            }
+        }
+        if(!passupLearned && Time.timeSinceLevelLoad >= passupSwitchTime){
+            Time.timeScale = 0f;
+            passupInstruction.enabled = true;
+            playerControl = Player.GetComponent<PlayerControl>();
+            playerControl.canChangeGravity = true;
+            if (Input.GetKeyDown(KeyCode.W)) {
+                passupLearned = true;
+                passupInstruction.enabled = false;
                 Time.timeScale = 1f;
             }
         }
