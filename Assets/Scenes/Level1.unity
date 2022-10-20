@@ -5102,6 +5102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossHealth: 100
   laser: {fileID: 3364694483412564346, guid: 6f3bf51229f147047a094637825a9436, type: 3}
+  lineNum: 2
   anim: {fileID: 0}
   speed: 1
   healthBar: {fileID: 808834014}

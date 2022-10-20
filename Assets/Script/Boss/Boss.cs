@@ -10,16 +10,19 @@ public class Boss : MonoBehaviour
     private int state = 0;
     private float _fireRate;
     private float _canFire = 2f;
+    public int[] stateCount = {0,0,0};
     SpriteRenderer render;
 
     [SerializeField] public int bossHealth = 100;
     [SerializeField] private GameObject laser;
-    public Animator anim;
+    [SerializeField] private int lineNum;
+    //public Animator anim;
     public float speed = 1f;
     public HealthBar healthBar;
     public GameObject deathEffect;
     public GameObject colorBody;
     public GameObject boss;
+    public static Boss instance;
 
     public enum ElemType {Fire, Water, Grass, Rock};
     public ElemType eleType;
@@ -27,10 +30,11 @@ public class Boss : MonoBehaviour
 
     void Start()
     {
+        instance = this;
         healthBar.SetMaxHealth(bossHealth);
         // Get the corresponding property of the gameObject
         render = colorBody.GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
         SwitchState();
         SwitchState();
         StartCoroutine(SpawnLaser());
@@ -52,14 +56,37 @@ public class Boss : MonoBehaviour
 
     private IEnumerator SpawnLaser()
     {
-        var pos = 1;
+        var posHandle = 1;
+        float yPos;
         while (true)
         {
             yield return new WaitForSeconds(5f);
-            anim.Play("LaserPrep");
-            var newItem = Instantiate(laser, new Vector3(-1, pos, 0), Quaternion.identity);
+            //anim.Play("LaserPrep");
+            Debug.Log(posHandle%lineNum);
+            if (lineNum == 4)
+            {
+                yPos = posHandle switch
+                {
+                    0 => 4,
+                    1 => 1,
+                    2 => -1,
+                    3 => -4,
+                    _ => 0,
+                };
+            }
+            else
+            {
+                yPos = posHandle switch
+                {
+                    0 => 1,
+                    1 => -1,
+                    _ => 0,
+                };
+            }
+            Debug.Log("yPos:"+yPos);
+            var newItem = Instantiate(laser, new Vector3(-1, yPos, 0), Quaternion.identity);
             Destroy(newItem, 3f);
-            pos = -pos;
+            posHandle = ++posHandle%lineNum;
         }
     }
 
@@ -154,9 +181,13 @@ public class Boss : MonoBehaviour
         if((attacking == 3 && defending == 0)||(defending - attacking == 1))
         {
             baseDmg *= 2;
+            stateCount[1]++;
         }else if(((defending == 3 && attacking == 0)||(attacking - defending == 1)))
         {
             baseDmg /= 2;
+            stateCount[2]++;
+        }else{
+            stateCount[0]++;
         }
         return baseDmg;
     }
