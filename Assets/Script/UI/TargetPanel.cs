@@ -39,6 +39,17 @@ public class TargetPanel : MonoBehaviour
         new(new[] { 1, 0 }, new[] { 5.5f, 9f }),
     };
     private const int Level1LoopIndex = 2;
+
+    private readonly Target[] _level2Target = {
+        new(new[] { 0, 3}, new[] { 15f, 20f }),
+        new(new[] { 1, 2}, new[] { 15f, 20f }),
+        new(new[] { 0, 1, 3}, new[] { 15f, 20f, 25f }),
+        new(new[] { 1, 3}, new[] { 15f, 20f }),
+        new(new[] { 0, 2}, new[] { 15f, 20f }),
+        new(new[] { 1, 2, 3}, new[] { 15f, 20f, 25f }),
+    };
+
+    private const int Level2LoopIndex = 0;
     
     private readonly Target[] _level3Target = {
         
@@ -89,6 +100,8 @@ public class TargetPanel : MonoBehaviour
                 _targetLoopIndex = Level1LoopIndex;
                 break;
             case "Level2":
+                _targets = _level2Target;
+                _targetLoopIndex = Level2LoopIndex;
                 break;
             case "Level3":
                 _targets = _level3Target;
