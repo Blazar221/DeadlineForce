@@ -79,7 +79,7 @@ public class Boss : MonoBehaviour
                 GrassState();
                 break;
             case 6:
-                EarthState();
+                RockState();
                 break;
         }
     }
@@ -106,7 +106,7 @@ public class Boss : MonoBehaviour
         eleType = ElemType.Grass;
     }
 
-    void EarthState()
+    void RockState()
     {
         // Debug.Log("earth");
         render.color = Color.Lerp(render.color, Color.yellow, 1);
