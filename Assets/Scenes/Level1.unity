@@ -3067,7 +3067,7 @@ MonoBehaviour:
   block: {fileID: 2425594156374542513, guid: 28777205d87fb1e4a8eb462b7e0b6b70, type: 3}
   bgm: {fileID: 1006874500}
   Jsonfile: {fileID: 4900000, guid: f39b483c11ec95142a1ab18e60c5be97, type: 3}
-  moveSpeed: 0.3
+  moveSpeed: 0.25
 --- !u!1 &736575766
 GameObject:
   m_ObjectHideFlags: 0
@@ -4949,7 +4949,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1288543107}
-  - component: {fileID: 1288543106}
+  - component: {fileID: 1288543108}
   m_Layer: 0
   m_Name: ItemAssets
   m_TagString: Untagged
@@ -4957,22 +4957,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1288543106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1288543105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98ee5bb0979da2247955f0fed2530b92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iceSprite: {fileID: 21300000, guid: d5879f7a5670391449d6799346e84ffa, type: 3}
-  grassSprite: {fileID: 21300000, guid: eb4ba228208e30a47afcd25eef996105, type: 3}
-  fireSprite: {fileID: 21300000, guid: ee436c6aa223b864b8656b29b01a0bfd, type: 3}
-  darkSprite: {fileID: 21300000, guid: ed40ed3b92cf3724a808cc261db84dfa, type: 3}
 --- !u!4 &1288543107
 Transform:
   m_ObjectHideFlags: 0
@@ -4988,6 +4972,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1288543108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288543105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98ee5bb0979da2247955f0fed2530b92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterSprite: {fileID: 21300000, guid: d5879f7a5670391449d6799346e84ffa, type: 3}
+  fireSprite: {fileID: 21300000, guid: ee436c6aa223b864b8656b29b01a0bfd, type: 3}
+  grassSprite: {fileID: 21300000, guid: eb4ba228208e30a47afcd25eef996105, type: 3}
+  rockSprite: {fileID: 21300000, guid: ed40ed3b92cf3724a808cc261db84dfa, type: 3}
 --- !u!1 &1292075350
 GameObject:
   m_ObjectHideFlags: 0

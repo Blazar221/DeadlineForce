@@ -126,7 +126,7 @@ public class TargetPanel : MonoBehaviour
                         _objectLines[i].GetDescription(), _objectLines[i].GetCompleted());
                     var toDestroy = objL.GetGameObj();
                     Destroy(toDestroy);
-                    if (inventory.GetItemList().Count == 4) inventory.RemoveFirst();
+                    if (inventory.GetItemList().Count == 5) inventory.RemoveFirst();
                     inventory.AddSprite(objL.GetUpgradeItem().sprite);
                     _objectLines.RemoveAt(i);
                     break;

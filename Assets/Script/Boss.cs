@@ -139,7 +139,6 @@ public class Boss : MonoBehaviour
         {
             baseDmg /= 2;
         }
-        Debug.Log("Boss Dmg" + baseDmg);
         return baseDmg;
     }
 
