@@ -5100,16 +5100,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70c54fe14e655d42928ee4402d16b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossMoveSpeed: 0.01
   stateCount: 000000000000000000000000
   bossHealth: 100
   laser: {fileID: 3364694483412564346, guid: 6f3bf51229f147047a094637825a9436, type: 3}
   lineNum: 2
+  bossAnimator: {fileID: 0}
   speed: 1
   flashTime: 0.3
   healthBar: {fileID: 808834014}
   deathEffect: {fileID: 1755349173569476, guid: 1b0d883ac069a4f2ab8e69d6cff40416, type: 3}
   colorBody: {fileID: 1371344481}
   boss: {fileID: 1307346853}
+  isHide: 0
+  startMove: 0
+  attackingLine: 0
+  moveDestY: 0
+  curLine: 0
+  moveDest: {x: 0, y: 0, z: 0}
   eleType: 0
 --- !u!95 &1307346858
 Animator:
@@ -5121,7 +5129,7 @@ Animator:
   m_GameObject: {fileID: 1307346853}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4d751c1823dedfc429cfec3a34bac1e5, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1dda261b966684d43bcbfdd9f3f38357, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

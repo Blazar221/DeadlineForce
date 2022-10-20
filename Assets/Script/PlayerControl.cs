@@ -335,7 +335,7 @@ public class PlayerControl : MonoBehaviour
         if(collision.gameObject.tag == "LongNote")
         {
             canGetLongScore = true;
-            boss.isHide = false;
+            // boss.isHide = false;
         }
 
         if(collision.gameObject.tag == "Mine")
@@ -375,7 +375,7 @@ public class PlayerControl : MonoBehaviour
         {
             canGetLongScore = false;
             boss.SwitchState();
-            boss.isHide = true;
+            // boss.isHide = true;
         }
 
         if(collision.gameObject.tag == "Mine")

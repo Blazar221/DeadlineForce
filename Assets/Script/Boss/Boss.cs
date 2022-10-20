@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
-    private float gameTime = 0.0f;
-    private float step = 0.0f;
+    [SerializeField]
+    private float bossMoveSpeed = 0.3f; 
+
     private int state = 0;
     private float _fireRate;
     private float _canFire = 2f;
@@ -17,16 +18,26 @@ public class Boss : MonoBehaviour
     [SerializeField] public int bossHealth = 100;
     [SerializeField] private GameObject laser;
     [SerializeField] private int lineNum;
-    //public Animator anim;
+    
+    public Animator bossAnimator;
+
     public float speed = 1f;
     public float flashTime = 0.3f;
     public HealthBar healthBar;
     public GameObject deathEffect;
     public GameObject colorBody;
     public GameObject boss;
+
     public static Boss instance;
 
     public bool isHide;
+    public bool startMove;
+
+    // Line Index from top to bottom: 0, 1, 2, 3
+    public int attackingLine;
+    public float moveDestY;
+    public int curLine;
+    public Vector3 moveDest;
 
     public enum ElemType {Fire, Water, Grass, Rock};
     public ElemType eleType;
@@ -39,58 +50,81 @@ public class Boss : MonoBehaviour
         // Get the corresponding property of the gameObject
         render = colorBody.GetComponent<SpriteRenderer>();
         originalColor = render.color;
-        //anim = GetComponent<Animator>();
+        
+        bossAnimator = GetComponent<Animator>();
+        
         SwitchState();
         SwitchState();
-        StartCoroutine(SpawnLaser());
+        StartCoroutine(AutoAttack());
+
         isHide = true;
+        startMove = false;
     }
 
     void Update()
     {
-        gameTime += Time.deltaTime;
-        step = speed * gameTime;
-        if(isHide){
-            Hide();
-        }else{
-            Appear();
+        if(startMove)
+        {
+            CheckMoveEnd();
+        }
+        // if(isHide){
+        //     Hide();
+        // }else{
+        //     Appear();
+        // }
+    }
+
+    private IEnumerator AutoAttack()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(10f);
+
+            while(attackingLine == curLine)
+            {
+                attackingLine = Random.Range(1, 3);
+            }
+
+            moveDestY = attackingLine switch
+            {
+                0 => 7,
+                1 => 4,
+                2 => 2,
+                3 => -1,
+                _ => 0,
+            };
+
+            moveDest = new Vector3(9.34f, moveDestY, 0);
+            startMove = true;
+            bossAnimator.SetBool("isMove", true);
         }
     }
 
-    private IEnumerator SpawnLaser()
+    void CheckMoveEnd()
     {
-        var posHandle = 1;
-        float yPos;
-        while (true)
-        {
-            yield return new WaitForSeconds(5f);
-            //anim.Play("LaserPrep");
-            Debug.Log(posHandle%lineNum);
-            if (lineNum == 4)
-            {
-                yPos = posHandle switch
-                {
-                    0 => 4,
-                    1 => 1,
-                    2 => -1,
-                    3 => -4,
-                    _ => 0,
-                };
-            }
-            else
-            {
-                yPos = posHandle switch
-                {
-                    0 => 1,
-                    1 => -1,
-                    _ => 0,
-                };
-            }
-            Debug.Log("yPos:"+yPos);
-            var newItem = Instantiate(laser, new Vector3(-1, yPos, 0), Quaternion.identity);
-            Destroy(newItem, 3f);
-            posHandle = ++posHandle%lineNum;
+        Debug.Log("moveDest" + moveDest);
+        Debug.Log("transform" + transform.position);
+        transform.position = Vector3.MoveTowards(transform.position, moveDest, bossMoveSpeed);
+        if(transform.position.y == moveDestY){
+            curLine = attackingLine;
+            startMove = false;
+            bossAnimator.SetBool("isMove", false);
+            bossAnimator.SetTrigger("Attack");
         }
+    }
+
+    public void Attack()
+    {
+        float yPos = attackingLine switch
+        {
+            0 => 4,
+            1 => 1,
+            2 => -1,
+            3 => -4,
+            _ => 0,
+        };
+        var newItem = Instantiate(laser, new Vector3(-1, yPos, 0), Quaternion.identity);
+        Destroy(newItem, 1f);
     }
 
     public void SwitchState()
@@ -143,15 +177,15 @@ public class Boss : MonoBehaviour
         eleType = ElemType.Rock;
     }
 
-    public void Appear()
-    {
-        boss.transform.position = Vector3.Lerp(boss.transform.position, new Vector3(9.34f, 0.63f, 0.0786f), .02f);
-    }
+    // public void Appear()
+    // {
+    //     boss.transform.position = Vector3.Lerp(boss.transform.position, new Vector3(7.34f, 0.63f, 0.0786f), .02f);
+    // }
 
-    public void Hide()
-    {
-        boss.transform.position = Vector3.Lerp(boss.transform.position, new Vector3(11.18f, 0.63f, 0.0786f), .02f);
-    }
+    // public void Hide()
+    // {
+    //     boss.transform.position = Vector3.Lerp(boss.transform.position, new Vector3(9.18f, 0.63f, 0.0786f), .02f);
+    // }
 
     public void TakeDamage(Item attackingItem)
     {
