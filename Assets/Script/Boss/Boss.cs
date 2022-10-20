@@ -11,13 +11,15 @@ public class Boss : MonoBehaviour
     private float _fireRate;
     private float _canFire = 2f;
     public int[] stateCount = {0,0,0};
-    SpriteRenderer render;
+    private SpriteRenderer render;
+    private Color originalColor;
 
     [SerializeField] public int bossHealth = 100;
     [SerializeField] private GameObject laser;
     [SerializeField] private int lineNum;
     //public Animator anim;
     public float speed = 1f;
+    public float flashTime = 0.3f;
     public HealthBar healthBar;
     public GameObject deathEffect;
     public GameObject colorBody;
@@ -34,6 +36,7 @@ public class Boss : MonoBehaviour
         healthBar.SetMaxHealth(bossHealth);
         // Get the corresponding property of the gameObject
         render = colorBody.GetComponent<SpriteRenderer>();
+        originalColor = render.color;
         //anim = GetComponent<Animator>();
         SwitchState();
         SwitchState();
@@ -166,6 +169,9 @@ public class Boss : MonoBehaviour
             ElemType.Grass => 2,
             _ => 3,
         }; 
+
+        FlashColor(flashTime);
+
         bossHealth -= CalcDamage(attackingVal, defendingVal);
         healthBar.SetHealth(bossHealth);
 
@@ -196,5 +202,17 @@ public class Boss : MonoBehaviour
     {
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    // Effect of being attacked
+    void FlashColor(float time)
+    {
+        render.color = Color.white;
+        Invoke("ResetColor", time);
+    }
+
+    void ResetColor()
+    {
+        render.color = originalColor;
     }
 }
