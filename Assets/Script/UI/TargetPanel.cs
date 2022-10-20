@@ -164,6 +164,8 @@ public class TargetPanel : MonoBehaviour
                         objLine.GetDescription(), objLine.GetCompleted());
                     break;
                 case "Level2":
+                    Level2Editor.instance.UpdateQuest(objLine.GetIndex().ToString(), 
+                        objLine.GetDescription(), objLine.GetCompleted());
                     break;
             }
         }
@@ -176,6 +178,8 @@ public class TargetPanel : MonoBehaviour
                         objLine.GetDescription(), objLine.GetCompleted());
                     break;
                 case "Level2":
+                    Level2Web.instance.UpdateQuest(objLine.GetIndex().ToString(), 
+                        objLine.GetDescription(), objLine.GetCompleted());
                     break;
             }
         }
