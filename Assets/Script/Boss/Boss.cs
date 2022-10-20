@@ -28,7 +28,7 @@ public class Boss : MonoBehaviour
 
     public bool isHide;
 
-    public enum ElemType {Fire, Water, Grass, Rock};
+    public enum ElemType {Blank, Fire, Water, Grass, Rock};
     public ElemType eleType;
 
 
@@ -40,8 +40,22 @@ public class Boss : MonoBehaviour
         render = colorBody.GetComponent<SpriteRenderer>();
         originalColor = render.color;
         //anim = GetComponent<Animator>();
-        SwitchState();
-        SwitchState();
+
+        // Level Control
+        if (SceneManager.GetActiveScene().name == "Level1")
+        {
+            BlankState();
+        } else if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            SwitchState();
+            SwitchState();
+        } else if (SceneManager.GetActiveScene().name == "Level3")
+        {
+            SwitchState();
+            SwitchState();
+        }
+
+        
         StartCoroutine(SpawnLaser());
         isHide = true;
     }
@@ -112,6 +126,12 @@ public class Boss : MonoBehaviour
                 RockState();
                 break;
         }
+    }
+
+    void BlankState()
+    {
+        render.color = Color.Lerp(render.color, Color.black, 1);
+        eleType = ElemType.Blank;
     }
 
     void FireState() 
