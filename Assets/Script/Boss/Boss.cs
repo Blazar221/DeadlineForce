@@ -36,6 +36,7 @@ public class Boss : MonoBehaviour
         healthBar.SetMaxHealth(bossHealth);
         // Get the corresponding property of the gameObject
         render = colorBody.GetComponent<SpriteRenderer>();
+        originalColor = render.color;
         //anim = GetComponent<Animator>();
         SwitchState();
         SwitchState();
