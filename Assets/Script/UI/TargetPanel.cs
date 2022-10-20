@@ -33,7 +33,6 @@ public class TargetPanel : MonoBehaviour
         
         new(new[] { 0 }, new[] { 10f }),
         new(new[] { 2 }, new[] { 10f }),
-        new(new[] { 4 }, new[] { 10f }),
         new(new[] { 0, 2 }, new[] { 5f, 10f }),
         new(new[] { 2, 0 }, new[] { 5f, 10f }),
         // loop
@@ -41,12 +40,22 @@ public class TargetPanel : MonoBehaviour
         new(new[] { 0 }, new[] { 3f}),
         new(new[] { 2, 0 }, new[] { 4f, 8f }),
         new(new[] { 2 }, new[] { 3f }),
-        new(new[] { 4, 0 }, new[] { 4f, 8f }),
-        new(new[] { 4 }, new[] { 3F }),
-        new(new[] { 4, 2 }, new[] { 4f, 6f }),
-        new(new[] { 4, 0 }, new[] { 3f, 6f }),
     };
-    private const int Level1LoopIndex = 5;
+    private const int Level1LoopIndex = 4;
+    
+    private readonly Target[] _level3Target = {
+        
+        new(new[] { 0 }, new[] { 10f }),
+        new(new[] { 2 }, new[] { 10f }),
+        new(new[] { 0, 2 }, new[] { 5f, 10f }),
+        new(new[] { 2, 0 }, new[] { 5f, 10f }),
+        // loop
+        new(new[] { 0, 2 }, new[] { 4f, 8f }),
+        new(new[] { 0 }, new[] { 3f}),
+        new(new[] { 2, 0 }, new[] { 4f, 8f }),
+        new(new[] { 2 }, new[] { 3f }),
+    };
+    private const int Level3LoopIndex = 4;
 
     // 0: blue*3 = waterWeapon
     // 1: green*3 = grassWeapon
@@ -75,6 +84,8 @@ public class TargetPanel : MonoBehaviour
             case "Level2":
                 break;
             case "Level3":
+                _targets = _level3Target;
+                _targetLoopIndex = Level3LoopIndex;
                 break;
         }
         // targetLine = transform.Find("TargetLine").gameObject;
@@ -101,8 +112,7 @@ public class TargetPanel : MonoBehaviour
             if (objectLine.UpdateTime(Time.fixedDeltaTime))
             {
                 // the time is up
-                Level1Editor.instance.UpdateQuest(_objectLines[i].GetIndex().ToString(), 
-                    _objectLines[i].GetDescription(), _objectLines[i].GetCompleted());
+                UpdateAnalytics(objectLine);
                 var toDestroy = objectLine.GetGameObj();
                 Destroy(toDestroy);
                 _objectLines.RemoveAt(i);
@@ -126,8 +136,7 @@ public class TargetPanel : MonoBehaviour
                 if (objL.RemoveFirstGem())
                 {
                     // the line is completed
-                    Level1Editor.instance.UpdateQuest(_objectLines[i].GetIndex().ToString(), 
-                        _objectLines[i].GetDescription(), _objectLines[i].GetCompleted());
+                    UpdateAnalytics(objL);
                     var toDestroy = objL.GetGameObj();
                     Destroy(toDestroy);
                     if (inventory.GetItemList().Count == 5) inventory.RemoveFirst();
@@ -141,6 +150,33 @@ public class TargetPanel : MonoBehaviour
         if (_objectLines.Count == 0)
         {
             SetNextTarget();
+        }
+    }
+
+    private void UpdateAnalytics(ObjectLine objLine){
+        if (Application.isEditor)
+        {
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "Level1":
+                    Level1Editor.instance.UpdateQuest(objLine.GetIndex().ToString(), 
+                        objLine.GetDescription(), objLine.GetCompleted());
+                    break;
+                case "Level2":
+                    break;
+            }
+        }
+        else
+        {
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "Level1":
+                    Level1Web.instance.UpdateQuest(objLine.GetIndex().ToString(), 
+                        objLine.GetDescription(), objLine.GetCompleted());
+                    break;
+                case "Level2":
+                    break;
+            }
         }
     }
 
