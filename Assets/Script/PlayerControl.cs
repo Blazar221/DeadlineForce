@@ -250,14 +250,14 @@ public class PlayerControl : MonoBehaviour
         addHitEffect(hitEffect);
     }
 
-    void collideMine()
+    void Collide(int damage)
     {
         nextTime = Time.time + 0.3f;
         animator.SetBool("isDamaged",true);
         addHitEffect(missEffect);
         Destroy(toHit);
         // damage
-        TakeDamage(10);
+        TakeDamage(damage);
         // add blood effect
         if (isUpsideDown){
             Instantiate(bloodEffectCeil, transform.position + new Vector3(0, -0.2f, 0), bloodEffectCeil.transform.rotation);
@@ -337,6 +337,12 @@ public class PlayerControl : MonoBehaviour
             toHit = collision.gameObject;
             canAvoidDamage = true;
         }
+        if(collision.gameObject.tag == "Laser")
+        {
+            Collide(20);
+            toHit = null;
+            canAvoidDamage = false;
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -366,7 +372,7 @@ public class PlayerControl : MonoBehaviour
         if(collision.gameObject.tag == "Mine")
         {
             if (missMine){
-                collideMine();
+                Collide(10);
             }
             toHit = null;
             canAvoidDamage = false;

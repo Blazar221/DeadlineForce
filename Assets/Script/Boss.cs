@@ -55,8 +55,8 @@ public class Boss : MonoBehaviour
         var pos = 1;
         while (true)
         {
-            yield return new WaitForSeconds(10f);
-            anim.Play("");
+            yield return new WaitForSeconds(5f);
+            anim.Play("LaserPrep");
             var newItem = Instantiate(laser, new Vector3(-1, pos, 0), Quaternion.identity);
             Destroy(newItem, 3f);
             pos = -pos;
