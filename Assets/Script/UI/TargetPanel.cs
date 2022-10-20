@@ -18,7 +18,7 @@ public class TargetPanel : MonoBehaviour
     private readonly Color _blue = new(0.016f, 0.67f, 1f, 1.0f);
     private readonly Color _green = new(0.43f, 1f, 0.058f, 1.0f);
     private readonly Color _red = new(1.0f, 0.5f, 0f, 1.0f);
-    private readonly Color _brown = new(0.8f, 0.38f, 0f, 1f);
+    private readonly Color _yellow = new(0.8f, 0.38f, 0f, 1f);
     private readonly Color _brownSaber = new(0.58f, 0.3f, 0f, 1f);
     
     
@@ -170,7 +170,6 @@ public class TargetPanel : MonoBehaviour
                     secondGem.sprite = sources[0];
                     thirdGem.sprite = sources[0];
                     item.sprite = items[0];
-                    // colorName = "blue";
                     blueCount = 3;
                     missionDescription = "blue blue blue";
                     break;
@@ -182,7 +181,6 @@ public class TargetPanel : MonoBehaviour
                     secondGem.sprite = sources[1];
                     thirdGem.sprite = sources[1];
                     item.sprite = items[1];
-                    // colorName = "green";
                     greenCount = 3;
                     missionDescription = "green green green";
                     break;
@@ -194,22 +192,20 @@ public class TargetPanel : MonoBehaviour
                     secondGem.sprite = sources[2];
                     thirdGem.sprite = sources[2];
                     item.sprite = items[2];
-                    // colorName = "red";
                     redCount = 3;
                     missionDescription = "red red red";
                     break;
                 case 3:
-                    firstGem.color = _brown;
-                    secondGem.color = _brown;
-                    thirdGem.color = _brown;
+                    firstGem.color = _yellow;
+                    secondGem.color = _yellow;
+                    thirdGem.color = _yellow;
                     firstGem.sprite = sources[3];
                     secondGem.sprite = sources[3];
                     thirdGem.sprite = sources[3];
                     item.sprite = items[3];
                     item.color = _brownSaber;
-                    // colorName = "brown";
                     brownCount = 3;
-                    missionDescription = "brown brown brown";
+                    missionDescription = "yellow yellow yellow";
                     break;
                 case 4:
                     // red red blue
