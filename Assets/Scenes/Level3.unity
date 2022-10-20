@@ -5102,9 +5102,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateCount: 000000000000000000000000
   bossHealth: 100
-  laser: {fileID: 0}
+  laser: {fileID: 3364694483412564346, guid: 6f3bf51229f147047a094637825a9436, type: 3}
   lineNum: 2
   speed: 1
+  flashTime: 0.3
   healthBar: {fileID: 808834014}
   deathEffect: {fileID: 1755349173569476, guid: 1b0d883ac069a4f2ab8e69d6cff40416, type: 3}
   colorBody: {fileID: 1371344481}
@@ -6272,6 +6273,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ee436c6aa223b864b8656b29b01a0bfd, type: 3}
   - {fileID: 21300000, guid: 03431bfd2c6078947a9c8aa7c23aa2c2, type: 3}
   - {fileID: 21300000, guid: ed40ed3b92cf3724a808cc261db84dfa, type: 3}
+  - {fileID: 21300000, guid: ad488bdc0617d0343b9d1880b47be71a, type: 3}
+  - {fileID: 21300000, guid: 7ce213667733df34cbdb3f8b4ea05b76, type: 3}
+  - {fileID: 21300000, guid: fc9089b5415343b4faee8433fabf904f, type: 3}
+  - {fileID: 21300000, guid: 68cc184808bceea42aed13484859d809, type: 3}
+  - {fileID: 21300000, guid: 57c6a2c8021569146b6b0b4366f73e37, type: 3}
   sources:
   - {fileID: -1855127044, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
   - {fileID: -1955337794, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
