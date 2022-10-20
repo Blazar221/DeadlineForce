@@ -98,7 +98,7 @@ public class PlayerControl : MonoBehaviour
             if (Input.GetKeyDown (KeyCode.W) && !isUpsideDown){
                 canCross = false;
                 isUpsideDown = true;
-                Debug.Log(canChangeGravity);
+                // Debug.Log(canChangeGravity);
                 rb2D.gravityScale = -5;
                 canChangeGravity = false;
             } else if (Input.GetKeyDown (KeyCode.S) && isUpsideDown) {

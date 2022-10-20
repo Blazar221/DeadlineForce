@@ -54,10 +54,6 @@ public class TargetPanel : MonoBehaviour
         
         // new(new[] { 0, 1,2,3,4 }, new[] { 5f,5f,5f,5f,5f}), // for test
         // new(new[] { 5,6,7,8,9 }, new[] { 5f,5f,5f,5f,5f }), // for test
-
-        new(new[] { 3,4,5,6,7,8,9}, new[] { 70f, 70f, 70f, 70f, 70f, 70f, 70f}),
-
-        
         new(new[] { 9, 0 }, new[] { 10f, 15f }),
         new(new[] { 5, 3, 8 }, new[] { 10f, 15f, 20f }),
         new(new[] { 6, 1 }, new[] { 10f, 15f }),
@@ -80,9 +76,6 @@ public class TargetPanel : MonoBehaviour
     // 7: blue*2 + green*1 = BG
     // 8: blue*2 + yellow*1 = BY
     // 9: green*2 + yellow*1 = GY
-    
-    
-
     
     private int _targetIndex;
     
@@ -166,8 +159,8 @@ public class TargetPanel : MonoBehaviour
                     if (inventory.GetItemList().Count == 5) inventory.RemoveFirst();
                     inventory.AddSprite(objL.GetUpgradeItem().sprite);
                     _objectLines.RemoveAt(i);
-                    break;
                 }
+                break;
             }
         }
         // check if there is no more elements in objectLines
