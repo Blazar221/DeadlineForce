@@ -35,7 +35,7 @@ public class PlayerControl : MonoBehaviour
     private float nextTime;
     private float collsionTime;
     private float keepLongScoreTime = 0f;
-    private float longScoreTimeBar = 0.28f;
+    private float longScoreTimeBar = 0.14f;
     
     private bool canGetSingleScore;
     private bool canGetLongScore;
@@ -349,6 +349,7 @@ public class PlayerControl : MonoBehaviour
             toHit = null;
             canAvoidDamage = false;
         }
+        
     }
 
     void OnTriggerExit2D(Collider2D collision)

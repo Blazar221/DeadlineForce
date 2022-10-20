@@ -445,7 +445,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 1104769712}
-  boss: {fileID: 0}
+  boss: {fileID: 259321779}
   hitScore: 0
   missScore: 0
   canChangeGravity: 0
@@ -844,6 +844,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossHealth: 100
+  laser: {fileID: 3364694483412564346, guid: 6f3bf51229f147047a094637825a9436, type: 3}
+  lineNum: 4
   speed: 1
   healthBar: {fileID: 0}
   deathEffect: {fileID: 1755349173569476, guid: 1b0d883ac069a4f2ab8e69d6cff40416, type: 3}
