@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
+    public static Boss instance;
+
     [SerializeField]
     private float bossMoveSpeed = 0.3f; 
 
@@ -25,31 +27,37 @@ public class Boss : MonoBehaviour
     public float flashTime = 0.3f;
     public HealthBar healthBar;
     public GameObject deathEffect;
-    public GameObject colorBody;
-    public GameObject boss;
 
-    public static Boss instance;
-
-    public bool isHide;
+    public GameObject bossBody;
+    public GameObject bossHead;
+    public GameObject bossLeftLeg;
+    public GameObject bossRightLeg;
+    List<SpriteRenderer> bossRenderers;
+    
     public bool startMove;
 
     // Line Index from top to bottom: 0, 1, 2, 3
     public int attackingLine;
     public float moveDestY;
-    public int curLine;
+    public int curLine = 2;
     public Vector3 moveDest;
 
     public enum ElemType {Blank, Fire, Water, Grass, Rock};
     public ElemType eleType;
 
-
     void Start()
     {
         instance = this;
+        
         healthBar.SetMaxHealth(bossHealth);
         // Get the corresponding property of the gameObject
-        render = colorBody.GetComponent<SpriteRenderer>();
-        originalColor = render.color;
+        bossRenderers = new List<SpriteRenderer>();
+        bossRenderers.Add(bossBody.GetComponent<SpriteRenderer>());
+        bossRenderers.Add(bossHead.GetComponent<SpriteRenderer>());
+        bossRenderers.Add(bossLeftLeg.GetComponent<SpriteRenderer>());
+        bossRenderers.Add(bossRightLeg.GetComponent<SpriteRenderer>());
+
+        originalColor = Color.black;
         
         bossAnimator = GetComponent<Animator>();
         
@@ -69,7 +77,6 @@ public class Boss : MonoBehaviour
 
         
         StartCoroutine(AutoAttack());
-        isHide = true;
         startMove = false;
     }
 
@@ -79,11 +86,6 @@ public class Boss : MonoBehaviour
         {
             CheckMoveEnd();
         }
-        // if(isHide){
-        //     Hide();
-        // }else{
-        //     Appear();
-        // }
     }
 
     private IEnumerator AutoAttack()
@@ -162,48 +164,41 @@ public class Boss : MonoBehaviour
 
     void BlankState()
     {
-        render.color = Color.Lerp(render.color, Color.black, 1);
         eleType = ElemType.Blank;
+        SetColor(Color.black);
     }
 
     void FireState() 
     {
-        // Debug.Log("fire");
-        // 0.1f is the smoothing factor
-        render.color = Color.Lerp(render.color, Color.red, 1);
         eleType = ElemType.Fire;
+        SetColor(Color.red);
     }
 
     void WaterState()
     {
-        // Debug.Log("water");
-        render.color = Color.Lerp(render.color, Color.blue, 1);
         eleType = ElemType.Water;
+        SetColor(Color.blue);
     }
 
     void GrassState()
     {
-        // Debug.Log("grass");
-        render.color = Color.Lerp(render.color, Color.green, 1);
         eleType = ElemType.Grass;
+        SetColor(Color.green);
     }
 
     void RockState()
     {
-        // Debug.Log("earth");
-        render.color = Color.Lerp(render.color, Color.yellow, 1);
         eleType = ElemType.Rock;
+        SetColor(Color.yellow);
     }
 
-    // public void Appear()
-    // {
-    //     boss.transform.position = Vector3.Lerp(boss.transform.position, new Vector3(7.34f, 0.63f, 0.0786f), .02f);
-    // }
-
-    // public void Hide()
-    // {
-    //     boss.transform.position = Vector3.Lerp(boss.transform.position, new Vector3(9.18f, 0.63f, 0.0786f), .02f);
-    // }
+    void SetColor(Color nextColor)
+    {
+        foreach(SpriteRenderer renderer in bossRenderers)
+        {
+            renderer.color = Color.Lerp(renderer.color, nextColor, 1);
+        }
+    }
 
     public void TakeDamage(Item attackingItem)
     {
@@ -259,12 +254,12 @@ public class Boss : MonoBehaviour
     // Effect of being attacked
     void FlashColor(float time)
     {
-        render.color = Color.white;
+        SetColor(Color.white);
         Invoke("ResetColor", time);
     }
 
     void ResetColor()
     {
-        render.color = originalColor;
+        SetColor(originalColor);
     }
 }

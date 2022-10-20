@@ -5100,7 +5100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70c54fe14e655d42928ee4402d16b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossMoveSpeed: 0.01
+  bossMoveSpeed: 0.3
   stateCount: 000000000000000000000000
   bossHealth: 100
   laser: {fileID: 3364694483412564346, guid: 6f3bf51229f147047a094637825a9436, type: 3}
@@ -5110,13 +5110,14 @@ MonoBehaviour:
   flashTime: 0.3
   healthBar: {fileID: 808834014}
   deathEffect: {fileID: 1755349173569476, guid: 1b0d883ac069a4f2ab8e69d6cff40416, type: 3}
-  colorBody: {fileID: 1371344481}
-  boss: {fileID: 1307346853}
-  isHide: 0
+  bossBody: {fileID: 0}
+  bossHead: {fileID: 0}
+  bossLeftLeg: {fileID: 0}
+  bossRightLeg: {fileID: 0}
   startMove: 0
   attackingLine: 0
   moveDestY: 0
-  curLine: 0
+  curLine: 2
   moveDest: {x: 0, y: 0, z: 0}
   eleType: 0
 --- !u!95 &1307346858
@@ -5283,7 +5284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1357081008
 RectTransform:
   m_ObjectHideFlags: 0
