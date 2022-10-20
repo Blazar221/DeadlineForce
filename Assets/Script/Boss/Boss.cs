@@ -15,7 +15,8 @@ public class Boss : MonoBehaviour
 
     [SerializeField] public int bossHealth = 100;
     [SerializeField] private GameObject laser;
-    public Animator anim;
+    [SerializeField] private int lineNum;
+    //public Animator anim;
     public float speed = 1f;
     public HealthBar healthBar;
     public GameObject deathEffect;
@@ -33,7 +34,7 @@ public class Boss : MonoBehaviour
         healthBar.SetMaxHealth(bossHealth);
         // Get the corresponding property of the gameObject
         render = colorBody.GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
         SwitchState();
         SwitchState();
         StartCoroutine(SpawnLaser());
@@ -55,14 +56,37 @@ public class Boss : MonoBehaviour
 
     private IEnumerator SpawnLaser()
     {
-        var pos = 1;
+        var posHandle = 1;
+        float yPos;
         while (true)
         {
             yield return new WaitForSeconds(5f);
-            anim.Play("LaserPrep");
-            var newItem = Instantiate(laser, new Vector3(-1, pos, 0), Quaternion.identity);
+            //anim.Play("LaserPrep");
+            Debug.Log(posHandle%lineNum);
+            if (lineNum == 4)
+            {
+                yPos = posHandle switch
+                {
+                    0 => 4,
+                    1 => 1,
+                    2 => -1,
+                    3 => -4,
+                    _ => 0,
+                };
+            }
+            else
+            {
+                yPos = posHandle switch
+                {
+                    0 => 1,
+                    1 => -1,
+                    _ => 0,
+                };
+            }
+            Debug.Log("yPos:"+yPos);
+            var newItem = Instantiate(laser, new Vector3(-1, yPos, 0), Quaternion.identity);
             Destroy(newItem, 3f);
-            pos = -pos;
+            posHandle = ++posHandle%lineNum;
         }
     }
 

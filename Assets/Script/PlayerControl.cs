@@ -349,6 +349,7 @@ public class PlayerControl : MonoBehaviour
             toHit = null;
             canAvoidDamage = false;
         }
+        
     }
 
     void OnTriggerExit2D(Collider2D collision)
