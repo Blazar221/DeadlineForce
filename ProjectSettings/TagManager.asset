@@ -11,6 +11,7 @@ TagManager:
   - PanelGem
   - OriginalPlatForm
   - Laser
+  - GravSwitch
   layers:
   - Default
   - TransparentFX
@@ -50,4 +51,10 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1158747247
+    locked: 0
+  - name: AttackEffect
+    uniqueID: 2966397879
+    locked: 0
+  - name: Boss
+    uniqueID: 3100890469
     locked: 0
