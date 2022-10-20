@@ -94,22 +94,22 @@ public class Boss : MonoBehaviour
             CheckMoveEnd();
         }
 
-        // Level control
-        if (SceneManager.GetActiveScene().name == "Level1")
-        {
-            BlankState();
-            // Debug.Log("level1");
-        } else if (SceneManager.GetActiveScene().name == "Level2")
-        {
-            // Debug.Log("level2");
-            SwitchState();
-            SwitchState();
-        } else if (SceneManager.GetActiveScene().name == "Level3")
-        {
-            // Debug.Log("level3");
-            SwitchState();
-            SwitchState();
-        }
+        // // Level control
+        // if (SceneManager.GetActiveScene().name == "Level1")
+        // {
+        //     BlankState();
+        //     // Debug.Log("level1");
+        // } else if (SceneManager.GetActiveScene().name == "Level2")
+        // {
+        //     // Debug.Log("level2");
+        //     SwitchState();
+        //     SwitchState();
+        // } else if (SceneManager.GetActiveScene().name == "Level3")
+        // {
+        //     // Debug.Log("level3");
+        //     SwitchState();
+        //     SwitchState();
+        // }
     }
 
     private IEnumerator AutoAttack()
