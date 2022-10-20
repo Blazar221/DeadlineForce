@@ -9,6 +9,8 @@ TagManager:
   - Mine
   - LongNote
   - PanelGem
+  - OriginalPlatForm
+  - Laser
   layers:
   - Default
   - TransparentFX

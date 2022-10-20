@@ -1357,16 +1357,32 @@ public class ObjectToJson : MonoBehaviour
 
 
     };
+    Object[] TutorialobjArr = new Object[]
+    {
+        // best lane
+        
+        new Object(new float[] { 0f, 0f }, 3, 1, false), 
+        // new Object(new float[] { 1.75f, 3.75f }, 0, 1, false), 
+        // new Object(new float[] { 5.5f, 5.5f }, 0, 1, false), 
+        // new Object(new float[] { 7.75f, 7.75f }, 0, 1, false), 
+        // new Object(new float[] { 7.75f, 7.75f }, 0, 1, false), 
+        // new Object(new float[] { 8.25f, 8.25f }, 0, 1, false), 
+        
+        
+    };
         string path = Application.dataPath + "/Resources";
         string L1fileName = "L1Spawner.json";//Add your Filename Here
         string L2fileName = "L2Spawner.json";
         string L3fileName = "L3Spawner.json";
+        string TutorialfileName = "TutorialSpawner.json";
         string L1playerToJson = JsonHelper.ToJson(L1objArr);
         string L2playerToJson = JsonHelper.ToJson(L2objArr);
         string L3playerToJson = JsonHelper.ToJson(L3objArr);
+        string TutorialplayerToJson = JsonHelper.ToJson(TutorialobjArr);
         Debug.Log("L1: "+L1playerToJson);
         Debug.Log("L2: "+L2playerToJson);
         Debug.Log("L3: "+L3playerToJson);
+        Debug.Log("Tutorial: "+TutorialplayerToJson);
         if (!Directory.Exists(path))
         {
 
@@ -1376,6 +1392,7 @@ public class ObjectToJson : MonoBehaviour
         L1fileName = Path.Combine(path, L1fileName);     //将文件名和路径合并
         L2fileName = Path.Combine(path, L2fileName); 
         L3fileName = Path.Combine(path, L3fileName); 
+        TutorialfileName = Path.Combine(path, TutorialfileName); 
 
         if (!File.Exists(L1fileName))     //判断文件是否已经存在不存在就创建一个文件；
         {
@@ -1404,6 +1421,15 @@ public class ObjectToJson : MonoBehaviour
 
         }
         File.WriteAllText(L3fileName, L3playerToJson, Encoding.UTF8);
+        if (!File.Exists(TutorialfileName))     //判断文件是否已经存在不存在就创建一个文件；
+        {
+
+            FileStream fs = File.Create(TutorialfileName);
+
+            fs.Close();
+
+        }
+        File.WriteAllText(TutorialfileName, TutorialplayerToJson, Encoding.UTF8);
     }
 
     // Update is called once per frame

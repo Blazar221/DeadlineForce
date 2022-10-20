@@ -28,7 +28,7 @@ public class TextTutorial : MonoBehaviour
 
     private float firstShortNoteTime = 2f;
     private float firstLongNoteTime = 3.75f;
-    private float firstBlockTime = 7.5f;
+    // private float firstBlockTime = 7.5f;
     private float firstUpSwitchTime = 9.15f;
     private float firstDownSwitchTime = 10.75f;
     private float finishTime = 12.5f;
@@ -82,15 +82,15 @@ public class TextTutorial : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
-        if(!blockLearned && Time.timeSinceLevelLoad >= firstBlockTime){
-            Time.timeScale = 0f;
-            blockInstruction.enabled = true;
-            if (Input.GetKeyDown(KeyCode.J)) {
-                blockLearned = true;
-                blockInstruction.enabled = false;
-                Time.timeScale = 1f;
-            }
-        }
+        // if(!blockLearned && Time.timeSinceLevelLoad >= firstBlockTime){
+        //     Time.timeScale = 0f;
+        //     blockInstruction.enabled = true;
+        //     if (Input.GetKeyDown(KeyCode.J)) {
+        //         blockLearned = true;
+        //         blockInstruction.enabled = false;
+        //         Time.timeScale = 1f;
+        //     }
+        // }
         if (Time.timeSinceLevelLoad < firstUpSwitchTime) {
             playerControl = Player.GetComponent<PlayerControl>();
             playerControl.canChangeGravity = false;
