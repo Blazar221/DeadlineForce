@@ -101,6 +101,8 @@ public class TargetPanel : MonoBehaviour
             if (objectLine.UpdateTime(Time.fixedDeltaTime))
             {
                 // the time is up
+                Level1Editor.instance.UpdateQuest(_objectLines[i].GetIndex().ToString(), 
+                    _objectLines[i].GetDescription(), _objectLines[i].GetCompleted());
                 var toDestroy = objectLine.GetGameObj();
                 Destroy(toDestroy);
                 _objectLines.RemoveAt(i);
@@ -120,6 +122,8 @@ public class TargetPanel : MonoBehaviour
                 if (objL.RemoveFirstGem())
                 {
                     // the line is completed
+                    Level1Editor.instance.UpdateQuest(_objectLines[i].GetIndex().ToString(), 
+                        _objectLines[i].GetDescription(), _objectLines[i].GetCompleted());
                     var toDestroy = objL.GetGameObj();
                     Destroy(toDestroy);
                     if (inventory.GetItemList().Count == 4) inventory.RemoveFirst();
@@ -284,7 +288,7 @@ public class ObjectLine
     // stats
     private int _missionIndex;
     private string _missionDescription;
-    private bool _isMissionCompleted;
+    private string _isMissionCompleted;
     
     private readonly Color _blue;
     private readonly Color _green;
@@ -338,7 +342,7 @@ public class ObjectLine
         _gemList.RemoveAt(0);
         if (_gemList.Count == 0)
         {
-            _isMissionCompleted = true;
+            _isMissionCompleted = "1";
             return true;
         }
         _firstColor = _gemList[0].color;
@@ -349,7 +353,7 @@ public class ObjectLine
     {
         this._missionIndex = missionIndex;
         this._missionDescription = missionDescription;
-        this._isMissionCompleted = false;
+        this._isMissionCompleted = "0";
     }
 
     // return true if the time is up
@@ -365,5 +369,19 @@ public class ObjectLine
                && (Math.Round(color1.g,3)).Equals(Math.Round(color2.g,3))
                && (Math.Round(color1.b,3)).Equals(Math.Round(color2.b,3));
     }
-    
+
+    public int GetIndex()
+    {
+        return _missionIndex;
+    }
+
+    public string GetDescription()
+    {
+        return _missionDescription;
+    }
+
+    public string GetCompleted()
+    {
+        return _isMissionCompleted;
+    }
 }
