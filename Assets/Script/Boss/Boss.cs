@@ -7,8 +7,8 @@ public class Boss : MonoBehaviour
 {
     public static Boss instance;
 
-    [SerializeField]
-    private float bossMoveSpeed = 0.3f; 
+    [SerializeField] private float bossMoveSpeed = 0.3f;
+    [SerializeField] private float bossAttackPeriod = 10f;
 
     private int state = 0;
     private float _fireRate;
@@ -18,7 +18,9 @@ public class Boss : MonoBehaviour
     private Color originalColor;
 
     [SerializeField] public int bossHealth = 100;
+
     [SerializeField] private GameObject laser;
+    
     [SerializeField] private int lineNum;
     
     public Animator bossAnimator;
@@ -34,7 +36,7 @@ public class Boss : MonoBehaviour
     public GameObject bossRightLeg;
     List<SpriteRenderer> bossRenderers;
     
-    public bool startMove;
+    bool startMove;
 
     // Line Index from top to bottom: 0, 1, 2, 3
     public int attackingLine;
@@ -62,19 +64,24 @@ public class Boss : MonoBehaviour
         bossAnimator = GetComponent<Animator>();
         
         // Level Control
-        if (SceneManager.GetActiveScene().name == "Level1")
-        {
-            BlankState();
-        } else if (SceneManager.GetActiveScene().name == "Level2")
-        {
-            SwitchState();
-            SwitchState();
-        } else if (SceneManager.GetActiveScene().name == "Level3")
-        {
-            SwitchState();
-            SwitchState();
-        }
+        // if (SceneManager.GetActiveScene().name == "Level1")
+        // {
+        //     BlankState();
+        //     Debug.Log("level1");
+        // } else if (SceneManager.GetActiveScene().name == "Level2")
+        // {
+        //     Debug.Log("level2");
+        //     SwitchState();
+        //     SwitchState();
+        // } else if (SceneManager.GetActiveScene().name == "Level3")
+        // {
+        //     Debug.Log("level3");
+        //     SwitchState();
+        //     SwitchState();
+        // }
 
+        SwitchState();
+        SwitchState();
         
         StartCoroutine(AutoAttack());
         startMove = false;
@@ -86,13 +93,30 @@ public class Boss : MonoBehaviour
         {
             CheckMoveEnd();
         }
+
+        // Level control
+        if (SceneManager.GetActiveScene().name == "Level1")
+        {
+            BlankState();
+            Debug.Log("level1");
+        } else if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            Debug.Log("level2");
+            SwitchState();
+            SwitchState();
+        } else if (SceneManager.GetActiveScene().name == "Level3")
+        {
+            Debug.Log("level3");
+            SwitchState();
+            SwitchState();
+        }
     }
 
     private IEnumerator AutoAttack()
     {
         while (true)
         {
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(bossAttackPeriod);
 
             while(attackingLine == curLine)
             {
