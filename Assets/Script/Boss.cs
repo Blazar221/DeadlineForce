@@ -106,7 +106,21 @@ public class Boss : MonoBehaviour
 
     public void TakeDamage(Item attackingItem)
     {
-        // bossHealth -= damage;
+        int attackingVal = attackingItem.itemType switch 
+        {
+            Item.ItemType.Water => 0,
+            Item.ItemType.Fire => 1,
+            Item.ItemType.Grass => 2,
+            _ => 3,
+        };
+        int defendingVal = eleType switch 
+        {
+            ElemType.Water => 0,
+            ElemType.Fire => 1,
+            ElemType.Grass => 2,
+            _ => 3,
+        }; 
+        bossHealth -= CalcDamage(attackingVal, defendingVal);
         healthBar.SetHealth(bossHealth);
 
         if (bossHealth <= 0)
@@ -114,6 +128,19 @@ public class Boss : MonoBehaviour
             Dead();
             GameController.Instance.EnableCongratsMenu();
         }
+    }
+
+    public int CalcDamage(int attacking, int defending){
+        int baseDmg = 5;
+        if((attacking == 3 && defending == 0)||(defending - attacking == 1))
+        {
+            baseDmg *= 2;
+        }else if(((defending == 3 && attacking == 0)||(attacking - defending == 1)))
+        {
+            baseDmg /= 2;
+        }
+        Debug.Log("Boss Dmg" + baseDmg);
+        return baseDmg;
     }
 
     void Dead()

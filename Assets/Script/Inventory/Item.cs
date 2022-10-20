@@ -5,24 +5,24 @@ using UnityEngine;
 public class Item
 {
     public enum ItemType {
-        Ice,
-        Grass,
+        Water,
         Fire,
-        Dark,
+        Grass,
+        Rock,
     }
     public ItemType itemType;
     public int amount;
     public Sprite GetSprite() {
         switch (itemType) {
             default:
-            case ItemType.Ice:
-                return ItemAssets.Instance.iceSprite;
+            case ItemType.Water:
+                return ItemAssets.Instance.waterSprite;
             case ItemType.Grass:
                 return ItemAssets.Instance.grassSprite;
             case ItemType.Fire:
                 return ItemAssets.Instance.fireSprite;
-            case ItemType.Dark:
-                return ItemAssets.Instance.darkSprite;
+            case ItemType.Rock:
+                return ItemAssets.Instance.rockSprite;
         }
     }
 }

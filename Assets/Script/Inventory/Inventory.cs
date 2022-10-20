@@ -21,13 +21,17 @@ public class Inventory
     private Item Sprite2Item(Sprite sprite) {
         switch (sprite.name) {
             default:
-            case "Ice": return new Item{ itemType = Item.ItemType.Ice, amount = 1};
-            case "Grass": return new Item{ itemType = Item.ItemType.Grass, amount = 1};
+            case "Water": return new Item{ itemType = Item.ItemType.Water, amount = 1};
             case "Fire": return new Item{ itemType = Item.ItemType.Fire, amount = 1};
-            case "Dark": return new Item{ itemType = Item.ItemType.Dark, amount = 1};
+            case "Grass": return new Item{ itemType = Item.ItemType.Grass, amount = 1};
+            case "Rock": return new Item{ itemType = Item.ItemType.Rock, amount = 1};
         }            
     }
     
+    public bool isEmpty(){
+        return itemList.Count <= 0;
+    }
+
     public void AddItem(Item item) {
         itemList.Add(item);
         OnItemListChanged?.Invoke(this, EventArgs.Empty);
@@ -53,7 +57,7 @@ public class Inventory
         itemList.Remove(itemInInventory);
         OnItemListChanged?.Invoke(this, EventArgs.Empty);
     }
-    
+
     public Item RemoveFirst() {
         Item itemInInventory = itemList[0];
         itemList.Remove(itemInInventory);

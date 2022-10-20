@@ -210,20 +210,22 @@ public class PlayerControl : MonoBehaviour
     void ScoreLong()
     {
         if(keepLongScoreTime > longScoreTimeBar){
-            Item rlsItem = inventory.RemoveFirst();
-            boss.TakeDamage(rlsItem);
-            keepLongScoreTime = 0f;
+            if(!inventory.isEmpty()){
+                Item rlsItem = inventory.RemoveFirst();
+                boss.TakeDamage(rlsItem);
+                keepLongScoreTime = 0f;
 
-            hitScore++;
-            
-            addHitEffect(hitEffect);
-            // Update hit times
-            ScoreManager.instance.AddHit();
-            // Update final score
-            GameOverScreen.instance.IncreaseScore();
-            // Update hit rate
-            ScoreManager.instance.CalHitRate();
-            GameOverScreen.instance.CalHitRate();
+                hitScore++;
+                
+                addHitEffect(hitEffect);
+                // Update hit times
+                ScoreManager.instance.AddHit();
+                // Update final score
+                GameOverScreen.instance.IncreaseScore();
+                // Update hit rate
+                ScoreManager.instance.CalHitRate();
+                GameOverScreen.instance.CalHitRate();
+            }
         }
     }
 
