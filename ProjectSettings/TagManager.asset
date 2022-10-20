@@ -5,12 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Platform
-  - GravSwitch
   - food
   - Mine
   - LongNote
   - PanelGem
-  - OriginalPlatForm
   layers:
   - Default
   - TransparentFX

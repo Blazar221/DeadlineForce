@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -75,6 +76,11 @@ public class PlayerControl : MonoBehaviour
         
     }
 
+    bool IsLvlOne()
+    {
+        return "Level1" == SceneManager.GetActiveScene().name;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -84,7 +90,8 @@ public class PlayerControl : MonoBehaviour
             animator.SetBool("isDamaged",false);
         }
         
-        if (canChangeGravity)
+        
+        if (canChangeGravity && !IsLvlOne())
 		{
             if (Input.GetKeyDown (KeyCode.W) && !isUpsideDown){
                 canCross = false;
@@ -102,14 +109,13 @@ public class PlayerControl : MonoBehaviour
             animator.SetBool("UpsideDown",isUpsideDown);
 		}
 
-        if (canCross && Input.GetKeyDown (KeyCode.Space) )
+        if (canCross)
 		{
-            
-            if (!isUpsideDown){
+            if (!isUpsideDown && Input.GetKeyDown (KeyCode.S)){
                 isUpsideDown = true;
                 rb2D.gravityScale = -5;
                 this.gameObject.transform.position = new Vector2(temp.x,-1.1f);
-            } else if (isUpsideDown) {
+            } else if (isUpsideDown && Input.GetKeyDown (KeyCode.W)) {
                 isUpsideDown = false;
                 rb2D.gravityScale = 5;
                 this.gameObject.transform.position = new Vector2(temp.x,1.1f);

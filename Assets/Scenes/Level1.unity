@@ -3077,7 +3077,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 736575767}
-  - component: {fileID: 736575769}
   - component: {fileID: 736575768}
   m_Layer: 0
   m_Name: GameOver
@@ -3117,23 +3116,6 @@ MonoBehaviour:
   hitScoreText: {fileID: 1754926884}
   hitRateText: {fileID: 670535660}
   rankText: {fileID: 823623039}
---- !u!114 &736575769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736575766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15112363388cd4ff1bfe98807bb33bae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameOverMenu: {fileID: 801338847}
-  congratsMenu: {fileID: 341597719}
-  platformTop: {fileID: 0}
-  platformBottom: {fileID: 0}
-  endTime: 84
 --- !u!1 &755456326
 GameObject:
   m_ObjectHideFlags: 0
@@ -6921,8 +6903,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15112363388cd4ff1bfe98807bb33bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverMenu: {fileID: 0}
-  congratsMenu: {fileID: 0}
+  gameOverMenu: {fileID: 801338847}
+  congratsMenu: {fileID: 341597719}
   platformTop: {fileID: 60805061}
   platformBottom: {fileID: 2108271602}
   endTime: 84
