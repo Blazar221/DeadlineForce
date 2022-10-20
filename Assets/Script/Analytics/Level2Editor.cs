@@ -6,92 +6,64 @@ using UnityEngine.Networking;
 public class Level2Editor : MonoBehaviour
 {
     [SerializeField] private string formURL;
-
     public static Level2Editor instance;
-    private GameObject player;
     private long _sessionId;
-    private string[] pathOption = new string[4];
-    private int _perfect;
-    private int _good;
+    private float _playtime;
+    private int _bossHealth;
+    private int _playerHealth;
+    private int _regularAttack = 0;
+    private int _bonusAttack = 0;
+    private int _reducedAttack = 0;
+    private string subQuests = "";
 
-    private static readonly float[] platformStart = { 0.0f, 18.5f, 36.00f, 53.50f };
-    private static readonly float[] platformEnd = { 17.45f, 34.909f, 52.00f, 70.00f };
-    private float[,] onPathTime = new float[4, 4];
-    private float playerPos;
-    private float currentTime;
-    
 
+    // Start is called before the first frame update
     void Start()
     {
         instance = this;
         _sessionId = DateTime.Now.Ticks;
-        for (int i = 0; i < onPathTime.GetLength(0); i++)
-            for (int j = 0; j < onPathTime.GetLength(1); j++)
-                onPathTime[i, j] = 0;
-        for (int i = 0; i < pathOption.GetLength(0); i++)
-            pathOption[i] = "";
-        player = GameObject.Find("DinasourRunner");
     }
 
+    // Update is called once per frame
     void Update()
     {
-        currentTime = Time.timeSinceLevelLoad;
-        playerPos = Mathf.Round(player.transform.position.y);
-        if (currentTime <= platformEnd[0])
-            UpdatePathTime(0, playerPos);
-        else if (currentTime >= platformStart[1] && currentTime <= platformEnd[1])
-            UpdatePathTime(1, playerPos);
-        else if (currentTime >= platformStart[2] && currentTime <= platformEnd[2])
-            UpdatePathTime(2, playerPos);
-        else if (currentTime >= platformStart[3] && currentTime <= platformEnd[3])
-            UpdatePathTime(3, playerPos);
+
     }
 
-    private void UpdatePathTime(int a, float pos)
+    public void UpdateQuest(string index, string desc, string complete)
     {
-        switch (pos)
-        {
-            case 4:
-                onPathTime[a, 0] += 1f * Time.deltaTime;
-                break;
-            case 1:
-                onPathTime[a, 1] += 1f * Time.deltaTime;
-                break;
-            case -1:
-                onPathTime[a, 2] += 1f * Time.deltaTime;
-                break;
-            case -4:
-                onPathTime[a, 3] += 1f * Time.deltaTime;
-                break;
-        }
+        string quest = index + ',' + desc + ',' + complete + '|';
+        subQuests += quest;
+    }
+
+    public void UpdateCounter(int[] counter){
+        _regularAttack = counter[0];
+        _bonusAttack = counter[1];
+        _reducedAttack = counter[2];
     }
 
     public void Send()
     {
-        for (int i = 0; i < pathOption.GetLength(0); i++)
-        {
-            float platformLength = platformEnd[i] - platformStart[i];
-            for (int j = 0; j < onPathTime.GetLength(1); j++)
-                if (onPathTime[i, j] >= platformLength * 0.3)
-                    pathOption[i] += j.ToString();
-        }
-        _perfect = GameOverScreen.instance.GetPerfect();
-        _good = GameOverScreen.instance.GetGood();
-
-        StartCoroutine(Post(_sessionId.ToString(), pathOption, _perfect.ToString(), _good.ToString()));
+        _playtime = Time.timeSinceLevelLoad;
+        _bossHealth = (Boss.instance != null)?Boss.instance.bossHealth:0;
+        _playerHealth = PlayerControl.instance.currentHealth;
+        StartCoroutine(Post(_sessionId.ToString(), _playtime.ToString(), _bossHealth.ToString(), _playerHealth.ToString(),
+                        subQuests, _regularAttack.ToString(), _bonusAttack.ToString(), _reducedAttack.ToString()));
     }
 
-    private IEnumerator Post(string sessionId, string[] pathOption, string perfect, string good)
+    private IEnumerator Post(string sessionId, string playtime, string bossHealth, string playerHealth,
+                                string quests, string regular, string bonus, string reduced)
     {
         // Create the form and enter responses
         WWWForm form = new WWWForm();
         form.AddField("entry.595256420", sessionId);
-        form.AddField("entry.1906048010", pathOption[0]);
-        form.AddField("entry.813446464", pathOption[1]);
-        form.AddField("entry.54375219", pathOption[2]);
-        form.AddField("entry.1847098271", pathOption[3]);
-        form.AddField("entry.1082972053", perfect);
-        form.AddField("entry.811315430", good);
+        form.AddField("entry.1906048010", playtime);
+        form.AddField("entry.813446464", bossHealth);
+        form.AddField("entry.54375219", playerHealth);
+        form.AddField("entry.1847098271", quests);
+        form.AddField("entry.1082972053", regular);
+        form.AddField("entry.811315430", bonus);
+        form.AddField("entry.1251465969", reduced);
 
         // Send responses and verify result
         using (UnityWebRequest www = UnityWebRequest.Post(formURL, form))
@@ -104,7 +76,7 @@ public class Level2Editor : MonoBehaviour
             }
             else
             {
-                Debug.Log("Form upload complete");
+                Debug.Log("Level2Editor Form upload complete");
             }
         }
     }

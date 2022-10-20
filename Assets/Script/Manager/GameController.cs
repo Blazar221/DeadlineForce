@@ -83,7 +83,8 @@ public class GameController : MonoBehaviour
                     Level1Editor.instance.Send();
                     break;
                 case "Level2":
-                    //Level2Editor.instance.Send();
+                    Level2Editor.instance.UpdateCounter(Boss.instance.stateCount);
+                    Level2Editor.instance.Send();
                     break;
             }
         }
@@ -96,7 +97,8 @@ public class GameController : MonoBehaviour
                     Level1Web.instance.Send();
                     break;
                 case "Level2":
-                    //Level2Web.instance.Send();
+                    Level2Web.instance.UpdateCounter(Boss.instance.stateCount);
+                    Level2Web.instance.Send();
                     break;
             }
         }
