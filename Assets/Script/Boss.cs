@@ -10,6 +10,7 @@ public class Boss : MonoBehaviour
     private int state = 0;
     private float _fireRate;
     private float _canFire = 2f;
+    private int[] stateCount = {0,0,0};
     SpriteRenderer render;
 
     [SerializeField] public int bossHealth = 100;
@@ -20,6 +21,7 @@ public class Boss : MonoBehaviour
     public GameObject deathEffect;
     public GameObject colorBody;
     public GameObject boss;
+    public static Boss instance;
 
     public enum ElemType {Fire, Water, Grass, Rock};
     public ElemType eleType;
@@ -27,6 +29,7 @@ public class Boss : MonoBehaviour
 
     void Start()
     {
+        instance = this;
         healthBar.SetMaxHealth(bossHealth);
         // Get the corresponding property of the gameObject
         render = colorBody.GetComponent<SpriteRenderer>();
@@ -154,9 +157,13 @@ public class Boss : MonoBehaviour
         if((attacking == 3 && defending == 0)||(defending - attacking == 1))
         {
             baseDmg *= 2;
+            stateCount[1]++;
         }else if(((defending == 3 && attacking == 0)||(attacking - defending == 1)))
         {
             baseDmg /= 2;
+            stateCount[2]++;
+        }else{
+            stateCount[0]++;
         }
         return baseDmg;
     }
