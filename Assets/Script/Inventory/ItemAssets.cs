@@ -18,4 +18,10 @@ public class ItemAssets : MonoBehaviour
     [SerializeField] public Sprite fireSprite;
     [SerializeField] public Sprite grassSprite;
     [SerializeField] public Sprite rockSprite;
+    [SerializeField] public Sprite RBSprite;
+    [SerializeField] public Sprite RGSprite;
+    [SerializeField] public Sprite RYSprite;
+    [SerializeField] public Sprite BGSprite;
+    [SerializeField] public Sprite BYSprite;
+    [SerializeField] public Sprite GYSprite;
 }

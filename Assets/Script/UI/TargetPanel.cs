@@ -30,7 +30,6 @@ public class TargetPanel : MonoBehaviour
     private int _targetCounter;
 
     private readonly Target[] _level1Target = {
-        
 
         new(new[] { 0, 1 }, new[] { 6f, 10f }),
         new(new[] { 1, 0 }, new[] { 6f, 10f }),
@@ -55,6 +54,8 @@ public class TargetPanel : MonoBehaviour
         
         // new(new[] { 0, 1,2,3,4 }, new[] { 5f,5f,5f,5f,5f}), // for test
         // new(new[] { 5,6,7,8,9 }, new[] { 5f,5f,5f,5f,5f }), // for test
+
+        new(new[] { 3,4,5,6,7,8,9}, new[] { 70f, 70f, 70f, 70f, 70f, 70f, 70f}),
 
         
         new(new[] { 9, 0 }, new[] { 10f, 15f }),

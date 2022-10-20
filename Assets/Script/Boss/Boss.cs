@@ -98,15 +98,15 @@ public class Boss : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Level1")
         {
             BlankState();
-            Debug.Log("level1");
+            // Debug.Log("level1");
         } else if (SceneManager.GetActiveScene().name == "Level2")
         {
-            Debug.Log("level2");
+            // Debug.Log("level2");
             SwitchState();
             SwitchState();
         } else if (SceneManager.GetActiveScene().name == "Level3")
         {
-            Debug.Log("level3");
+            // Debug.Log("level3");
             SwitchState();
             SwitchState();
         }
@@ -168,7 +168,7 @@ public class Boss : MonoBehaviour
     public void SwitchState()
     {
         state++;
-        Debug.Log("state:"+state);
+        // Debug.Log("state:"+state);
         switch (state%8)
         {
             case 0:

@@ -19,12 +19,19 @@ public class Inventory
     }
     
     private Item Sprite2Item(Sprite sprite) {
+        Debug.Log("Sprite2Item" + sprite.name);
         switch (sprite.name) {
             default:
             case "Water": return new Item{ itemType = Item.ItemType.Water, amount = 1};
             case "Fire": return new Item{ itemType = Item.ItemType.Fire, amount = 1};
             case "Grass": return new Item{ itemType = Item.ItemType.Grass, amount = 1};
             case "Rock": return new Item{ itemType = Item.ItemType.Rock, amount = 1};
+            case "RB": return new Item{ itemType = Item.ItemType.RB, amount = 1};
+            case "RG": return new Item{ itemType = Item.ItemType.RG, amount = 1};
+            case "RY": return new Item{ itemType = Item.ItemType.RY, amount = 1};
+            case "BG": return new Item{ itemType = Item.ItemType.BG, amount = 1};
+            case "BY": return new Item{ itemType = Item.ItemType.BY, amount = 1};
+            case "GY": return new Item{ itemType = Item.ItemType.GY, amount = 1};
         }            
     }
     
