@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Attacknotification : MonoBehaviour
 {
+    public static Attacknotification Instance;
 
     public float blinkSpeed;
     private bool isAddAlpha;
@@ -13,6 +14,12 @@ public class Attacknotification : MonoBehaviour
     public float timeval = 1;
 
     private Text t;
+
+    public void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
        t  = GetComponent<Text>();
