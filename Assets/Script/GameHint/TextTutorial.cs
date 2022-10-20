@@ -98,15 +98,7 @@ public class TextTutorial : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
-        if(!tripleLearned2 && Time.timeSinceLevelLoad >= t2ShortNoteTime){
-            Time.timeScale = 0f;
-            TripleInstruction.enabled = true;
-            if (Input.GetKeyDown(KeyCode.J)) {
-                tripleLearned2= true;
-                TripleInstruction.enabled = false;
-                Time.timeScale = 1f;
-            }
-        }
+       
         
         if(!longNoteLearned && Time.timeSinceLevelLoad >= firstLongNoteTime){
             Time.timeScale = 0f;

@@ -5783,10 +5783,12 @@ MonoBehaviour:
   laser: {fileID: 3364694483412564346, guid: 6f3bf51229f147047a094637825a9436, type: 3}
   lineNum: 2
   speed: 1
+  flashTime: 0.3
   healthBar: {fileID: 808834014}
   deathEffect: {fileID: 1755349173569476, guid: 1b0d883ac069a4f2ab8e69d6cff40416, type: 3}
   colorBody: {fileID: 1371344481}
   boss: {fileID: 1307346853}
+  isHide: 0
   eleType: 0
 --- !u!95 &1307346858
 Animator:
@@ -7223,6 +7225,7 @@ GameObject:
   - component: {fileID: 1620707936}
   - component: {fileID: 1620707938}
   - component: {fileID: 1620707939}
+  - component: {fileID: 1620707941}
   - component: {fileID: 1620707940}
   m_Layer: 5
   m_Name: TargetPanel
@@ -7362,6 +7365,18 @@ MonoBehaviour:
   - {fileID: 1867268703, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
   targetLine: {fileID: 857988776250520980, guid: 02949a31d5356a942868a233a36e4e50, type: 3}
   uiInventory: {fileID: 107642924}
+--- !u!114 &1620707941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620707934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 623b372289901bb4aa45ead4a975a8fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1671728217
 GameObject:
   m_ObjectHideFlags: 0

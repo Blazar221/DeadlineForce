@@ -75,19 +75,20 @@ public class TargetPanel : MonoBehaviour
     {
         Instance = this;
         var scene = SceneManager.GetActiveScene();
-        switch (scene.name)
-        {
-            case "Level1":
+       
+        // switch (scene.name)
+        // {
+        //     case "Level1":
                 _targets = _level1Target;
                 _targetLoopIndex = Level1LoopIndex;
-                break;
-            case "Level2":
-                break;
-            case "Level3":
-                _targets = _level3Target;
-                _targetLoopIndex = Level3LoopIndex;
-                break;
-        }
+        //         break;
+        //     case "Level2":
+        //         break;
+        //     case "Level3":
+        //         break;
+        //     case "Level1 1":
+        //         break;
+        // }
         // targetLine = transform.Find("TargetLine").gameObject;
         
         //for inventory system
