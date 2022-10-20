@@ -1,144 +1,161 @@
-// using System.Collections;
-// using System.Collections.Concurrent;
-// using System.Collections.Generic;
-// using Unity.VisualScripting;
-// using UnityEngine;
+using System;
+using System.IO;
+using System.Collections;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using Stopwatch = System.Diagnostics.Stopwatch;
+using Object = Script.Object;
+using JsonHelper = Script.JsonHelper;
 
-// public class TutorialSpawner : MonoBehaviour
-// {
-//     [SerializeField] private GameObject gravSwitch;
-//     [SerializeField] private GameObject note;
-//     [SerializeField] private GameObject longNote;
-//     [SerializeField] private GameObject player;
-//     [SerializeField] private GameObject block;
-
-//     private GameObject newItem, newBlock;
-//     private Vector3 spawnPos;
-//     private Block spawnedObjHandler;
-//     private Diamond noteHandler;
-//     private PlayerControl playerHadler;
-//     private float playerX, xLen;
-//     private int ind = 1, i;
-//     private List<int> gravSwitchIndLs = new List<int>();
-
-//     //IMPORTANT: length of 2d time will have one more element {0, 0}, be aware of index!
-//     private float[,] timeArr = new float[,]
-//     {
-//         { 0.0f, 0.0f }, { 0.0f, 0.0f }, { 1.75f, 3.75f }, { 5.5f, 5.5f }, { 7.75f, 7.75f }, { 7.75f, 7.75f },
-//         { 8.25f, 8.25f }
-//     };
+public class TutorialSpawner : MonoBehaviour
+{
+    [SerializeField] private GameObject player;
     
-//     // 0 - lower, 1 - upper
-//     private short[] posArr = new short[]
-//     {
-//         0, 0, 0, 1, 0, 1
-//     };
+    [SerializeField] private GameObject gravSwitch;
 
-//     // 0 - change, 1 - short, 2 - long, 3 - block
-//     private short[] itemArr = new short[]
-//     {
-//         1, 2, 3, 1, 3, 1
-//     };
+    [SerializeField] private GameObject fireDiamond;
+    [SerializeField] private GameObject waterDiamond;
+    [SerializeField] private GameObject grassDiamond;
+    [SerializeField] private GameObject rockDiamond;
 
-//     private void Awake()
-//     {
-//         noteHandler = note.GetComponent<Note>();
-//         playerHadler = player.GetComponent<PlayerControl>();
-//         for (i = 0; i < itemArr.Length; i++)
-//         {
-//             if (itemArr[i] == 0)
-//             {
-//                 gravSwitchIndLs.Add(i);
-//             }
-//         }
-//     }
+    [SerializeField] private GameObject longNote;
     
-//     // Start is called before the first frame update
-//     void Start()
-//     {
-//         playerX = playerHadler.transform.position.x;
-//         StartCoroutine(SpawnNewItem());
-//         //StartCoroutine(SpawnNewBlock());
-//     }
+    [SerializeField] private GameObject block;
+    [SerializeField] private GameObject bgm;
+    [SerializeField] private TextAsset Jsonfile;
 
-//     private IEnumerator SpawnNewBlock()
-//     {
-//         var nxtGravSwitchInd = 0;
-//         while (ind < timeArr.Length)
-//         {
-//             yield return new WaitForSeconds(Random.Range(1f, 4f));
-//             //当前重力转换点已被generate，要在另一平面生成障碍
-//             if (ind-1 > gravSwitchIndLs[nxtGravSwitchInd])
-//             {
-//                 nxtGravSwitchInd++;
-//             }
+    private GameObject newItem, newMine, newPlatform;
 
-//             if (nxtGravSwitchInd == gravSwitchIndLs.Count)
-//             {
-//                 break;
-//             }
+    private Vector3 spawnPos;
 
-//             var minePosY = posArr[gravSwitchIndLs[nxtGravSwitchInd]] switch
-//             {
-//                 0 => 4,
-//                 1 => -4,
-//                 _ => 0,
-//             };
-            
-//             spawnPos = new Vector3(playerX+26f, minePosY, 0);
-//             newBlock = Instantiate(block, spawnPos, Quaternion.identity);
-//             Destroy(newBlock, 3f);
-//         }
-//     }
+    private Block blockHandler;
+    
+    private Diamond fireDiamondHandler;
+    private Diamond waterDiamondHandler;
+    private Diamond grassDiamondHandler;
+    private Diamond rockDiamondHandler;
+    
+    private PlayerControl playerHadler;
+    private BgmController _bgmHandler;
 
-//     private IEnumerator SpawnNewItem()
-//     {
-//         while (ind < timeArr.Length/2)
-//         {
-//             yield return new WaitForSeconds(timeArr[ind, 0]-timeArr[ind-1, 0]);
-//             xLen = noteHandler.transform.localScale.x;
+    [SerializeField]
+    public float moveSpeed; 
 
-//             float yPos = posArr[ind - 1] switch
-//             {
-//                 0 => -4,
-//                 1 => 4,
-//                 _ => 0,
-//             };
+    private float playerX, xLen;
 
-//             if (timeArr[ind, 1] - timeArr[ind, 0] != 0)
-//             {
-//                 xLen = (timeArr[ind, 1] - timeArr[ind, 0]) * noteHandler.speed * (1 / Time.fixedDeltaTime);
-//             }
+    private int ind = 1;
 
-//             spawnPos = new Vector3(playerX + noteHandler.speed * (2f / Time.fixedDeltaTime) + xLen / 2, yPos, 0);
+    private bool normal = false;
 
-//             // start spawn
-//             switch (itemArr[ind - 1])
-//             {
-//                 case 0:
-//                     newItem = Instantiate(gravSwitch, spawnPos, Quaternion.identity);
-//                     Destroy(newItem, 3f);
-//                     if (posArr[ind - 1] == 1)
-//                     {
-//                         newItem.transform.localScale = new Vector3(1, -1, 1);
-//                     }
-//                     break;
-//                 case 1:
-//                     newItem = Instantiate(note, spawnPos, Quaternion.identity);
-//                     Destroy(newItem, 3f);
-//                     break;
-//                 case 2:
-//                     newItem = Instantiate(longNote, spawnPos, Quaternion.identity);
-//                     var newLongNote = newItem.GetComponent<LongNote>();
-//                     newLongNote.SetLength(xLen);
-//                     Destroy(newItem, 3f/2.46f*xLen);
-//                     break;
-//                 case 3:
-//                     newItem = Instantiate(block, spawnPos, Quaternion.identity);
-//                     Destroy(newItem, 3f);
-//                     break;
-//             }
-//             ind++;
-//         }
-//     }
-// }
+    private Object[] objArr;
+
+    private void Awake()
+    {
+        string json = Jsonfile.text;
+        Debug.Log("MyJson= "+json);
+        objArr= JsonHelper.FromJson<Object>(json);
+
+        fireDiamondHandler = fireDiamond.GetComponent<Diamond>();
+        waterDiamondHandler = waterDiamond.GetComponent<Diamond>();
+        grassDiamondHandler = grassDiamond.GetComponent<Diamond>();
+        rockDiamondHandler = rockDiamond.GetComponent<Diamond>();
+        fireDiamondHandler.SetSpeed(moveSpeed);
+        waterDiamondHandler.SetSpeed(moveSpeed);
+        grassDiamondHandler.SetSpeed(moveSpeed);
+        rockDiamondHandler.SetSpeed(moveSpeed);
+
+        blockHandler = block.GetComponent<Block>();
+        blockHandler.SetSpeed(moveSpeed);
+        
+        playerHadler = player.GetComponent<PlayerControl>();
+        _bgmHandler = bgm.GetComponent<BgmController>();
+        // sort the notes by time
+        var watch = Stopwatch.StartNew();
+        Array.Sort(objArr, new ObjectComparer());
+        var elabpsedMs = watch.ElapsedMilliseconds;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        playerX = playerHadler.transform.position.x;
+        StartCoroutine(SpawnNewItem());
+    }
+    
+     private IEnumerator SpawnNewItem()
+    {
+        while (ind < objArr.Length)
+        {
+            yield return new WaitForSeconds(objArr[ind].TimeStamp[0]-objArr[ind-1].TimeStamp[0]);
+            //Debug.Log("loop start:"+Time.time);
+
+            // start spawn
+               Object toSpawn = objArr[ind];
+
+                float yPos = toSpawn.Pos switch
+                {
+                    0 => 4,
+                    1 => 1,
+                    2 => -1,
+                    3 => -4,
+                    _ => 0,
+                };
+                // start spawn
+                switch (toSpawn.Type)
+                {
+                    // element diamond
+                    case 1:
+                        Diamond curDiamondHandler = toSpawn.Color switch
+                        {
+                            0 => fireDiamondHandler,
+                            1 => waterDiamondHandler,
+                            2 => grassDiamondHandler,
+                            _ => rockDiamondHandler,
+                        };
+                        GameObject toCopy = toSpawn.Color switch
+                        {
+                            0 => fireDiamond,
+                            1 => waterDiamond,
+                            2 => grassDiamond,
+                            _ => rockDiamond,
+                        }; 
+
+                        xLen = curDiamondHandler.transform.localScale.x;
+                        //Debug.Log(xLen);
+                        //Debug.Log(moveSpeed);
+                        //Debug.Log(playerX + moveSpeed * (2f / Time.fixedDeltaTime) + xLen / 2);
+                        
+                        spawnPos = new Vector3(playerX + moveSpeed * (2f / Time.fixedDeltaTime) + xLen / 2, yPos, 0);
+
+                        newItem = Instantiate(toCopy, spawnPos, Quaternion.identity);
+                        newItem.GetComponent<Diamond>().SetSpeed(moveSpeed);
+                        Destroy(newItem, 3f);
+                        break;
+                    // long note
+                    case 2:
+                        xLen = (toSpawn.TimeStamp[1] - toSpawn.TimeStamp[0]) * moveSpeed * (1 / Time.fixedDeltaTime);
+                        spawnPos = new Vector3(playerX + moveSpeed * (2f / Time.fixedDeltaTime) + xLen / 2, yPos, 0);
+
+                        newItem = Instantiate(longNote, spawnPos, Quaternion.identity);
+                        var newLongNote = newItem.GetComponent<LongNote>();
+                        newLongNote.SetLength(xLen);
+                        newLongNote.SetSpeed(moveSpeed);
+                        // Destroy(newItem, 3f / 2.46f * xLen);
+                        Destroy(newItem, (spawnPos.x + 12 + xLen/2) / (moveSpeed * 1/Time.fixedDeltaTime));
+                        break;
+                    //block
+                    case 3:
+                        xLen = blockHandler.transform.localScale.x;
+                        spawnPos = new Vector3(playerX + moveSpeed * (2f / Time.fixedDeltaTime) + xLen / 2, yPos, 0);
+                        newItem = Instantiate(block, spawnPos, Quaternion.identity);
+                        Destroy(newItem, 3f);
+                        break;
+                }
+                ind++;
+            //Debug.Log("loop end:"+Time.time);
+        }
+    }
+}
+

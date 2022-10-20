@@ -10,6 +10,7 @@ public class Level1Editor : MonoBehaviour
     private long _sessionId;
     private float _playtime;
     private int _bossHealth;
+    private int _playerHealth;
     private int _regularAttack = 0;
     private int _bonusAttack = 0;
     private int _reducedAttack = 0;
@@ -45,11 +46,12 @@ public class Level1Editor : MonoBehaviour
     {
         _playtime = Time.timeSinceLevelLoad;
         _bossHealth = (Boss.instance != null)?Boss.instance.bossHealth:0;
-        StartCoroutine(Post(_sessionId.ToString(), _playtime.ToString(), _bossHealth.ToString(), 
+        _playerHealth = PlayerControl.instance.currentHealth;
+        StartCoroutine(Post(_sessionId.ToString(), _playtime.ToString(), _bossHealth.ToString(), _playerHealth.ToString(),
                         subQuests, _regularAttack.ToString(), _bonusAttack.ToString(), _reducedAttack.ToString()));
     }
 
-    private IEnumerator Post(string sessionId, string playtime, string bossHealth, 
+    private IEnumerator Post(string sessionId, string playtime, string bossHealth, string playerHealth,
                                 string quests, string regular, string bonus, string reduced)
     {
         // Create the form and enter responses
@@ -57,6 +59,7 @@ public class Level1Editor : MonoBehaviour
         form.AddField("entry.1340477315", sessionId);
         form.AddField("entry.1068428193", playtime);
         form.AddField("entry.742161712", bossHealth);
+        form.AddField("entry.974960358", playerHealth);
         form.AddField("entry.1514832225", quests);
         form.AddField("entry.1892509082", regular);
         form.AddField("entry.1513198891", bonus);

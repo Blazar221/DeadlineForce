@@ -31,37 +31,44 @@ public class TargetPanel : MonoBehaviour
 
     private readonly Target[] _level1Target = {
         
-        new(new[] { 0 }, new[] { 10f }),
-        new(new[] { 2 }, new[] { 10f }),
-        new(new[] { 0, 2 }, new[] { 5f, 10f }),
-        new(new[] { 2, 0 }, new[] { 5f, 10f }),
+
+        new(new[] { 0, 2 }, new[] { 6f, 10f }),
+        new(new[] { 2, 0 }, new[] { 6f, 10f }),
         // loop
-        new(new[] { 0, 2 }, new[] { 4f, 8f }),
-        new(new[] { 0 }, new[] { 3f}),
-        new(new[] { 2, 0 }, new[] { 4f, 8f }),
-        new(new[] { 2 }, new[] { 3f }),
+        new(new[] { 0, 2 }, new[] { 5.5f, 9f }),
+        new(new[] { 2, 0 }, new[] { 5.5f, 9f }),
     };
-    private const int Level1LoopIndex = 4;
+    private const int Level1LoopIndex = 2;
     
     private readonly Target[] _level3Target = {
         
-        new(new[] { 0 }, new[] { 10f }),
-        new(new[] { 2 }, new[] { 10f }),
-        new(new[] { 0, 2 }, new[] { 5f, 10f }),
-        new(new[] { 2, 0 }, new[] { 5f, 10f }),
-        // loop
-        new(new[] { 0, 2 }, new[] { 4f, 8f }),
-        new(new[] { 0 }, new[] { 3f}),
-        new(new[] { 2, 0 }, new[] { 4f, 8f }),
-        new(new[] { 2 }, new[] { 3f }),
+        new(new[] { 0, 1,2,3,4 }, new[] { 5f,5f,5f,5f,5f}), // for test
+        new(new[] { 5,6,7,8,9 }, new[] { 5f,5f,5f,5f,5f }), // for test
+
+        
+        new(new[] { 0, 9 }, new[] { 15f, 10f }),
+        new(new[] { 3, 5, 8 }, new[] { 15f, 10f, 20f }),
+        new(new[] { 1, 6 }, new[] { 15f, 10f }),
+        new(new[] { 4, 8, 9}, new[] { 15f, 10f, 20f }),
+        new(new[] { 2, 7}, new[] { 15f, 10f }),
+        new(new[] { 1, 6, 8}, new[] { 15f, 10f, 20f }),
+        new(new[] { 3, 5 }, new[] { 15f, 10f }),
+        new(new[] { 0, 9, 5}, new[] { 15f, 10f, 20f }),
+        new(new[] { 4, 8 }, new[] { 15f, 10f }),
     };
-    private const int Level3LoopIndex = 4;
+    private const int Level3LoopIndex = 0;
 
     // 0: blue*3 = waterWeapon
     // 1: green*3 = grassWeapon
     // 2: red*3 = fireWeapon
-    // 3: brown*3 = brownWeapon
-    // 4: red*2 + blue*1 = darkWeapon
+    // 3: yellow*3 = yellowWeapon
+    // 4: red*2 + blue*1 = RB
+    // 5: red*2 + green*1 = RG
+    // 6: red*2 + yellow*1 = RY
+    // 7: blue*2 + green*1 = BG
+    // 8: blue*2 + yellow*1 = BY
+    // 9: green*2 + yellow*1 = GY
+    
     
 
     
@@ -75,19 +82,20 @@ public class TargetPanel : MonoBehaviour
     {
         Instance = this;
         var scene = SceneManager.GetActiveScene();
-        switch (scene.name)
-        {
-            case "Level1":
+       
+        // switch (scene.name)
+        // {
+        //     case "Level1":
                 _targets = _level1Target;
                 _targetLoopIndex = Level1LoopIndex;
-                break;
-            case "Level2":
-                break;
-            case "Level3":
-                _targets = _level3Target;
-                _targetLoopIndex = Level3LoopIndex;
-                break;
-        }
+        //         break;
+        //     case "Level2":
+        //         break;
+        //     case "Level3":
+        //         break;
+        //     case "Level1 1":
+        //         break;
+        // }
         // targetLine = transform.Find("TargetLine").gameObject;
         
         //for inventory system
@@ -163,6 +171,8 @@ public class TargetPanel : MonoBehaviour
                         objLine.GetDescription(), objLine.GetCompleted());
                     break;
                 case "Level2":
+                    Level2Editor.instance.UpdateQuest(objLine.GetIndex().ToString(), 
+                        objLine.GetDescription(), objLine.GetCompleted());
                     break;
             }
         }
@@ -175,6 +185,8 @@ public class TargetPanel : MonoBehaviour
                         objLine.GetDescription(), objLine.GetCompleted());
                     break;
                 case "Level2":
+                    Level2Web.instance.UpdateQuest(objLine.GetIndex().ToString(), 
+                        objLine.GetDescription(), objLine.GetCompleted());
                     break;
             }
         }
@@ -197,6 +209,7 @@ public class TargetPanel : MonoBehaviour
             var thirdGem = obj.transform.Find("ThirdItem").gameObject.GetComponent<Image>();
             var item = obj.transform.Find("UpgradeItem").gameObject.GetComponent<Image>();
 
+            RectTransform rectTransform = item.transform as RectTransform;
             var missionDescription = "";
 
             var redCount = 0;
@@ -214,6 +227,11 @@ public class TargetPanel : MonoBehaviour
                     secondGem.sprite = sources[0];
                     thirdGem.sprite = sources[0];
                     item.sprite = items[0];
+                    if (rectTransform != null)
+                    {
+                        rectTransform.Rotate(new Vector3(0, 0, 45));
+                        rectTransform.localScale = new Vector3(0.5f, 1, 1);
+                    }
                     blueCount = 3;
                     missionDescription = "blue blue blue";
                     break;
@@ -225,6 +243,11 @@ public class TargetPanel : MonoBehaviour
                     secondGem.sprite = sources[1];
                     thirdGem.sprite = sources[1];
                     item.sprite = items[1];
+                    if (rectTransform != null)
+                    {
+                        rectTransform.Rotate(new Vector3(0, 0, 45));
+                        rectTransform.localScale = new Vector3(0.5f, 1, 1);
+                    }
                     greenCount = 3;
                     missionDescription = "green green green";
                     break;
@@ -236,6 +259,11 @@ public class TargetPanel : MonoBehaviour
                     secondGem.sprite = sources[2];
                     thirdGem.sprite = sources[2];
                     item.sprite = items[2];
+                    if (rectTransform != null)
+                    {
+                        rectTransform.Rotate(new Vector3(0, 0, 45));
+                        rectTransform.localScale = new Vector3(0.5f, 1, 1);
+                    }
                     redCount = 3;
                     missionDescription = "red red red";
                     break;
@@ -247,6 +275,11 @@ public class TargetPanel : MonoBehaviour
                     secondGem.sprite = sources[3];
                     thirdGem.sprite = sources[3];
                     item.sprite = items[3];
+                    if (rectTransform != null)
+                    {
+                        rectTransform.Rotate(new Vector3(0, 0, 45));
+                        rectTransform.localScale = new Vector3(0.5f, 1, 1);
+                    }
                     item.color = _brownSaber;
                     brownCount = 3;
                     missionDescription = "yellow yellow yellow";
@@ -260,10 +293,81 @@ public class TargetPanel : MonoBehaviour
                     secondGem.sprite = sources[2];
                     thirdGem.sprite = sources[0];
                     item.sprite = items[4];
+                    if (rectTransform != null)
+                    {
+                        rectTransform.Rotate(new Vector3(0, 0, 45));
+                        rectTransform.localScale = new Vector3(0.5f, 1, 1);
+                    }
                     redCount = 2;
                     blueCount = 1;
                     missionDescription = "red red blue";
                     break;
+                case 5:
+                    // red red green
+                    firstGem.color = _red;
+                    secondGem.color = _red;
+                    thirdGem.color = _green;
+                    firstGem.sprite = sources[2];
+                    secondGem.sprite = sources[2];
+                    thirdGem.sprite = sources[1];
+                    item.sprite = items[5];
+                    redCount = 2;
+                    greenCount = 1;
+                    missionDescription = "red red green";
+                    break;
+                case 6:
+                    // red red yellow
+                    firstGem.color = _red;
+                    secondGem.color = _red; 
+                    thirdGem.color = _yellow;
+                    firstGem.sprite = sources[2];
+                    secondGem.sprite = sources[2];
+                    thirdGem.sprite = sources[3];
+                    item.sprite = items[6];
+                    redCount = 2;
+                    brownCount = 1;
+                    missionDescription = "red red yellow";
+                    break;
+                case 7:
+                    // blue blue green
+                    firstGem.color = _blue;
+                    secondGem.color = _blue;
+                    thirdGem.color = _green;
+                    firstGem.sprite = sources[0];
+                    secondGem.sprite = sources[0];
+                    thirdGem.sprite = sources[1];
+                    item.sprite = items[7];
+                    blueCount = 2;
+                    greenCount = 1;
+                    missionDescription = "blue blue green";
+                    break;
+                case 8:
+                    // blue blue yellow
+                    firstGem.color = _blue;
+                    secondGem.color = _blue;
+                    thirdGem.color = _yellow;
+                    firstGem.sprite = sources[0];
+                    secondGem.sprite = sources[0];
+                    thirdGem.sprite = sources[3];
+                    item.sprite = items[8];
+                    blueCount = 2;
+                    brownCount = 1;
+                    missionDescription = "blue blue yellow";
+                    break;
+                case 9:
+                    // green green yellow
+                    firstGem.color = _green;
+                    secondGem.color = _green;
+                    thirdGem.color = _yellow;
+                    firstGem.sprite = sources[1];
+                    secondGem.sprite = sources[1];
+                    thirdGem.sprite = sources[3];
+                    item.sprite = items[9];
+                    greenCount = 2;
+                    brownCount = 1;
+                    missionDescription = "green green yellow";
+                    break;
+
             }
 
             var objectLine = new ObjectLine(new List<Image> { firstGem, secondGem, thirdGem }, 

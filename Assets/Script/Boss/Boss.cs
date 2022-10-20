@@ -39,7 +39,7 @@ public class Boss : MonoBehaviour
     public int curLine;
     public Vector3 moveDest;
 
-    public enum ElemType {Fire, Water, Grass, Rock};
+    public enum ElemType {Blank, Fire, Water, Grass, Rock};
     public ElemType eleType;
 
 
@@ -53,10 +53,22 @@ public class Boss : MonoBehaviour
         
         bossAnimator = GetComponent<Animator>();
         
-        SwitchState();
-        SwitchState();
-        StartCoroutine(AutoAttack());
+        // Level Control
+        if (SceneManager.GetActiveScene().name == "Level1")
+        {
+            BlankState();
+        } else if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            SwitchState();
+            SwitchState();
+        } else if (SceneManager.GetActiveScene().name == "Level3")
+        {
+            SwitchState();
+            SwitchState();
+        }
 
+        
+        StartCoroutine(AutoAttack());
         isHide = true;
         startMove = false;
     }
@@ -146,6 +158,12 @@ public class Boss : MonoBehaviour
                 RockState();
                 break;
         }
+    }
+
+    void BlankState()
+    {
+        render.color = Color.Lerp(render.color, Color.black, 1);
+        eleType = ElemType.Blank;
     }
 
     void FireState() 
