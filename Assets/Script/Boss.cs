@@ -10,7 +10,7 @@ public class Boss : MonoBehaviour
     private int state = 0;
     private float _fireRate;
     private float _canFire = 2f;
-    private int[] stateCount = {0,0,0};
+    public int[] stateCount = {0,0,0};
     SpriteRenderer render;
 
     [SerializeField] public int bossHealth = 100;
