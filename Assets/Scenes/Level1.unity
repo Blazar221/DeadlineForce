@@ -3465,7 +3465,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 566, y: 174}
+  m_AnchoredPosition: {x: 664, y: -452}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &823623037
@@ -5235,6 +5235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossMoveSpeed: 0.01
+  bossAttackPeriod: 10
   stateCount: 000000000000000000000000
   bossHealth: 100
   laser: {fileID: 3364694483412564346, guid: 6f3bf51229f147047a094637825a9436, type: 3}
@@ -5248,7 +5249,6 @@ MonoBehaviour:
   bossHead: {fileID: 203480176}
   bossLeftLeg: {fileID: 483930902}
   bossRightLeg: {fileID: 2059247978}
-  startMove: 0
   attackingLine: 0
   moveDestY: 0
   curLine: 0

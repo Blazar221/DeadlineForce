@@ -32,29 +32,29 @@ public class TargetPanel : MonoBehaviour
     private readonly Target[] _level1Target = {
         
 
-        new(new[] { 0, 2 }, new[] { 6f, 10f }),
-        new(new[] { 2, 0 }, new[] { 6f, 10f }),
+        new(new[] { 0, 1 }, new[] { 6f, 10f }),
+        new(new[] { 1, 0 }, new[] { 6f, 10f }),
         // loop
-        new(new[] { 0, 2 }, new[] { 5.5f, 9f }),
-        new(new[] { 2, 0 }, new[] { 5.5f, 9f }),
+        new(new[] { 0, 1 }, new[] { 5.5f, 9f }),
+        new(new[] { 1, 0 }, new[] { 5.5f, 9f }),
     };
     private const int Level1LoopIndex = 2;
     
     private readonly Target[] _level3Target = {
         
-        new(new[] { 0, 1,2,3,4 }, new[] { 5f,5f,5f,5f,5f}), // for test
-        new(new[] { 5,6,7,8,9 }, new[] { 5f,5f,5f,5f,5f }), // for test
+        // new(new[] { 0, 1,2,3,4 }, new[] { 5f,5f,5f,5f,5f}), // for test
+        // new(new[] { 5,6,7,8,9 }, new[] { 5f,5f,5f,5f,5f }), // for test
 
         
-        new(new[] { 0, 9 }, new[] { 15f, 10f }),
-        new(new[] { 3, 5, 8 }, new[] { 15f, 10f, 20f }),
-        new(new[] { 1, 6 }, new[] { 15f, 10f }),
-        new(new[] { 4, 8, 9}, new[] { 15f, 10f, 20f }),
-        new(new[] { 2, 7}, new[] { 15f, 10f }),
-        new(new[] { 1, 6, 8}, new[] { 15f, 10f, 20f }),
-        new(new[] { 3, 5 }, new[] { 15f, 10f }),
-        new(new[] { 0, 9, 5}, new[] { 15f, 10f, 20f }),
-        new(new[] { 4, 8 }, new[] { 15f, 10f }),
+        new(new[] { 9, 0 }, new[] { 10f, 15f }),
+        new(new[] { 5, 3, 8 }, new[] { 10f, 15f, 20f }),
+        new(new[] { 6, 1 }, new[] { 10f, 15f }),
+        new(new[] { 8, 4, 9}, new[] { 10f, 15f, 20f }),
+        new(new[] { 7, 2}, new[] { 10f, 15f }),
+        new(new[] { 6, 1, 8}, new[] { 10f, 15f, 20f }),
+        new(new[] { 5, 3 }, new[] { 10f, 15f }),
+        new(new[] { 9, 0, 5}, new[] { 10f, 15f, 20f }),
+        new(new[] { 8, 4 }, new[] { 10f, 15f }),
     };
     private const int Level3LoopIndex = 0;
 
@@ -82,20 +82,23 @@ public class TargetPanel : MonoBehaviour
     {
         Instance = this;
         var scene = SceneManager.GetActiveScene();
-       
-        // switch (scene.name)
-        // {
-        //     case "Level1":
+        switch (scene.name)
+        {
+            case "Level1":
                 _targets = _level1Target;
                 _targetLoopIndex = Level1LoopIndex;
-        //         break;
-        //     case "Level2":
-        //         break;
-        //     case "Level3":
-        //         break;
-        //     case "Level1 1":
-        //         break;
-        // }
+                break;
+            case "Level2":
+                break;
+            case "Level3":
+                _targets = _level3Target;
+                _targetLoopIndex = Level3LoopIndex;
+                break;
+            case "Tutorial":
+                _targets = _level1Target;
+                _targetLoopIndex = Level1LoopIndex;
+                break;
+        }
         // targetLine = transform.Find("TargetLine").gameObject;
         
         //for inventory system
@@ -135,7 +138,6 @@ public class TargetPanel : MonoBehaviour
 
     private void SetColor(Color color)
     {
-
         for (var i = 0; i < _objectLines.Count; i++)
         {
             var objL = _objectLines[i];
