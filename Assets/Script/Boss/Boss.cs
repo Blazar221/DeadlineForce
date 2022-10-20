@@ -26,6 +26,8 @@ public class Boss : MonoBehaviour
     public GameObject boss;
     public static Boss instance;
 
+    public bool isHide;
+
     public enum ElemType {Fire, Water, Grass, Rock};
     public ElemType eleType;
 
@@ -41,18 +43,16 @@ public class Boss : MonoBehaviour
         SwitchState();
         SwitchState();
         StartCoroutine(SpawnLaser());
+        isHide = true;
     }
 
     void Update()
     {
         gameTime += Time.deltaTime;
         step = speed * gameTime;
-        // Switch boss state(appear, hide)
-        if (gameTime % 10.0f > 2 && gameTime % 10.0f <= 8)
-        {
+        if(isHide){
             Hide();
-        } else
-        {
+        }else{
             Appear();
         }
     }
@@ -96,7 +96,7 @@ public class Boss : MonoBehaviour
     public void SwitchState()
     {
         state++;
-         Debug.Log("state:"+state);
+        Debug.Log("state:"+state);
         switch (state%8)
         {
             case 0:
@@ -143,14 +143,14 @@ public class Boss : MonoBehaviour
         eleType = ElemType.Rock;
     }
 
-    void Appear()
+    public void Appear()
     {
-        boss.transform.position = Vector3.MoveTowards(boss.transform.position, new Vector3(9.34f, 0.63f, 0.0786f), step);
+        boss.transform.position = Vector3.Lerp(boss.transform.position, new Vector3(9.34f, 0.63f, 0.0786f), .02f);
     }
 
-    void Hide()
+    public void Hide()
     {
-        boss.transform.position = Vector3.MoveTowards(boss.transform.position, new Vector3(11.18f, 0.63f, 0.0786f), step);
+        boss.transform.position = Vector3.Lerp(boss.transform.position, new Vector3(11.18f, 0.63f, 0.0786f), .02f);
     }
 
     public void TakeDamage(Item attackingItem)

@@ -10,6 +10,7 @@ public class Level1Web : MonoBehaviour
     private long _sessionId;
     private float _playtime;
     private int _bossHealth;
+    private int _playerHealth;
     private int _regularAttack = 0;
     private int _bonusAttack = 0;
     private int _reducedAttack = 0;
@@ -44,11 +45,12 @@ public class Level1Web : MonoBehaviour
     {
         _playtime = Time.timeSinceLevelLoad;
         _bossHealth = (Boss.instance != null)?Boss.instance.bossHealth:0;
-        StartCoroutine(Post(_sessionId.ToString(), _playtime.ToString(), _bossHealth.ToString(), 
+        _playerHealth = PlayerControl.instance.currentHealth;
+        StartCoroutine(Post(_sessionId.ToString(), _playtime.ToString(), _bossHealth.ToString(), _playerHealth.ToString(), 
                         subQuests, _regularAttack.ToString(), _bonusAttack.ToString(), _reducedAttack.ToString()));
     }
 
-    private IEnumerator Post(string sessionId, string playtime, string bossHealth, 
+    private IEnumerator Post(string sessionId, string playtime, string bossHealth, string playerHealth,
                                 string quests, string regular, string bonus, string reduced)
     {
         // Create the form and enter responses
@@ -56,6 +58,7 @@ public class Level1Web : MonoBehaviour
         form.AddField("entry.1331702699", sessionId);
         form.AddField("entry.2001195189", playtime);
         form.AddField("entry.895654878", bossHealth);
+        form.AddField("entry.1415939753", playerHealth);
         form.AddField("entry.1101869322", quests);
         form.AddField("entry.476266214", regular);
         form.AddField("entry.1873070447", bonus);

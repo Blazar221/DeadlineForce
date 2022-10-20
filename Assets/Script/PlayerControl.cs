@@ -9,6 +9,7 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D rb2D;
 
     public static event Action OnPlayerDeath;
+    public static PlayerControl instance;
 
     // Healthbar
     [SerializeField]
@@ -55,6 +56,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
+        instance = this;
         pressingK = false;
         hitScore = 0;
         missScore = 0;
@@ -335,6 +337,7 @@ public class PlayerControl : MonoBehaviour
         if(collision.gameObject.tag == "LongNote")
         {
             canGetLongScore = true;
+            boss.isHide = false;
         }
 
         if(collision.gameObject.tag == "Mine")
@@ -374,6 +377,7 @@ public class PlayerControl : MonoBehaviour
         {
             canGetLongScore = false;
             boss.SwitchState();
+            boss.isHide = true;
         }
 
         if(collision.gameObject.tag == "Mine")

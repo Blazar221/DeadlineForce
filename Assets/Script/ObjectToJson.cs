@@ -1522,9 +1522,15 @@ public class ObjectToJson : MonoBehaviour
     Object[] TutorialobjArr = new Object[]
     {
         // best lane
+        new Object(new [] { 0f, 0f }, 1, 1, false,1), 
+        new Object(new [] { 0f, 0f }, 1, 1, false,1), 
+        new Object(new [] { 1f, 1f }, 1, 1, false,1), 
+        new Object(new [] { 2f, 2f }, 1, 1, false,1), 
         
-        new Object(new float[] { 0f, 0f }, 3, 1, false), 
-        // new Object(new float[] { 1.75f, 3.75f }, 0, 1, false), 
+        
+        new Object(new [] { 5f, 6.5f }, 1, 2, false), 
+        
+        
         // new Object(new float[] { 5.5f, 5.5f }, 0, 1, false), 
         // new Object(new float[] { 7.75f, 7.75f }, 0, 1, false), 
         // new Object(new float[] { 7.75f, 7.75f }, 0, 1, false), 
@@ -1532,7 +1538,7 @@ public class ObjectToJson : MonoBehaviour
         
         
     };
-        string path = Application.dataPath + "/Resources/";
+        string path = Application.dataPath + "/Resources";
         string L1fileName = "L1Spawner.json";//Add your Filename Here
         string L2fileName = "L2Spawner.json";
         string L3fileName = "L3Spawner.json";
