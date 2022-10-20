@@ -9,73 +9,57 @@ public class Level1Web : MonoBehaviour
     public static Level1Web instance;
     private long _sessionId;
     private float _playtime;
-
-    private static readonly double[] checkpoint = { 22.77, 32.07, 41.37, 50.67, 53.67, 57.42, 60.87, 70.47 };
-    private int[] hit = new int[9];
-    private bool[] hasUpdate = new bool[9];
-    private int totalHit = 0;
-    private int lastTotalHit = 0;
-    private float currentTime;
-    private int index = 0;
+    private int _bossHealth;
+    private int _regularAttack = 0;
+    private int _bonusAttack = 0;
+    private int _reducedAttack = 0;
+    private string subQuests = "";
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
         _sessionId = DateTime.Now.Ticks;
-        for(int i=0; i<hit.Length; i++)
-        {
-            hit[i] = -1;
-            hasUpdate[i] = false;
-        }
-        totalHit = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(index<=7){
-            currentTime = Time.timeSinceLevelLoad;
-            totalHit = (int)ScoreManager.instance.GetTotalHit();
-            
-            if (currentTime >= checkpoint[index]){
-                hit[index] = totalHit - lastTotalHit;
-                lastTotalHit = totalHit;
-                hasUpdate[index] = true;
-                index++;
-            }
-        }
+
+    }
+
+    public void UpdateQuest(string index, string desc, string complete)
+    {
+        string quest = index + ',' + desc + ',' + complete + '|';
+        subQuests += quest;
+    }
+
+    public void UpdateCounter(int[] counter){
+        _regularAttack = counter[0];
+        _bonusAttack = counter[1];
+        _reducedAttack = counter[2];
     }
 
     public void Send()
     {
         _playtime = Time.timeSinceLevelLoad;
-        for (int i=0; i < hasUpdate.Length; i++)
-        {
-            if (!hasUpdate[i])
-            {
-                hit[i] = (int)ScoreManager.instance.GetTotalHit() - lastTotalHit;
-                break;
-            }
-        }
-        StartCoroutine(Post(_sessionId.ToString(), _playtime.ToString(), hit));
+        _bossHealth = (Boss.instance != null)?Boss.instance.bossHealth:0;
+        StartCoroutine(Post(_sessionId.ToString(), _playtime.ToString(), _bossHealth.ToString(), 
+                        subQuests, _regularAttack.ToString(), _bonusAttack.ToString(), _reducedAttack.ToString()));
     }
 
-    private IEnumerator Post(string sessionId, string playtime, int[] hit)
+    private IEnumerator Post(string sessionId, string playtime, string bossHealth, 
+                                string quests, string regular, string bonus, string reduced)
     {
         // Create the form and enter responses
         WWWForm form = new WWWForm();
         form.AddField("entry.1331702699", sessionId);
         form.AddField("entry.2001195189", playtime);
-        form.AddField("entry.895654878", hit[0].ToString());
-        form.AddField("entry.1101869322", hit[1].ToString());
-        form.AddField("entry.476266214", hit[2].ToString());
-        form.AddField("entry.1873070447", hit[3].ToString());
-        form.AddField("entry.663020293", hit[4].ToString());
-        form.AddField("entry.1016687746", hit[5].ToString());
-        form.AddField("entry.1412185331", hit[6].ToString());
-        form.AddField("entry.1687017221", hit[7].ToString());
-        form.AddField("entry.712051530", hit[8].ToString());
+        form.AddField("entry.895654878", bossHealth);
+        form.AddField("entry.1101869322", quests);
+        form.AddField("entry.476266214", regular);
+        form.AddField("entry.1873070447", bonus);
+        form.AddField("entry.663020293", reduced);
 
         // Send responses and verify result
         using (UnityWebRequest www = UnityWebRequest.Post(formURL, form))
@@ -88,7 +72,7 @@ public class Level1Web : MonoBehaviour
             }
             else
             {
-                Debug.Log("Level1Score Form upload complete");
+                Debug.Log("Level1Web Form upload complete");
             }
         }
     }

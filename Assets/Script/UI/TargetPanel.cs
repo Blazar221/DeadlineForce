@@ -101,8 +101,7 @@ public class TargetPanel : MonoBehaviour
             if (objectLine.UpdateTime(Time.fixedDeltaTime))
             {
                 // the time is up
-                Level1Editor.instance.UpdateQuest(_objectLines[i].GetIndex().ToString(), 
-                    _objectLines[i].GetDescription(), _objectLines[i].GetCompleted());
+                UpdateAnalytics(objectLine);
                 var toDestroy = objectLine.GetGameObj();
                 Destroy(toDestroy);
                 _objectLines.RemoveAt(i);
@@ -126,8 +125,7 @@ public class TargetPanel : MonoBehaviour
                 if (objL.RemoveFirstGem())
                 {
                     // the line is completed
-                    Level1Editor.instance.UpdateQuest(_objectLines[i].GetIndex().ToString(), 
-                        _objectLines[i].GetDescription(), _objectLines[i].GetCompleted());
+                    UpdateAnalytics(objL);
                     var toDestroy = objL.GetGameObj();
                     Destroy(toDestroy);
                     if (inventory.GetItemList().Count == 5) inventory.RemoveFirst();
@@ -141,6 +139,33 @@ public class TargetPanel : MonoBehaviour
         if (_objectLines.Count == 0)
         {
             SetNextTarget();
+        }
+    }
+
+    private void UpdateAnalytics(ObjectLine objLine){
+        if (Application.isEditor)
+        {
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "Level1":
+                    Level1Editor.instance.UpdateQuest(objLine.GetIndex().ToString(), 
+                        objLine.GetDescription(), objLine.GetCompleted());
+                    break;
+                case "Level2":
+                    break;
+            }
+        }
+        else
+        {
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "Level1":
+                    Level1Web.instance.UpdateQuest(objLine.GetIndex().ToString(), 
+                        objLine.GetDescription(), objLine.GetCompleted());
+                    break;
+                case "Level2":
+                    break;
+            }
         }
     }
 

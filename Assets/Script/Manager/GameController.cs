@@ -92,6 +92,7 @@ public class GameController : MonoBehaviour
             switch (SceneManager.GetActiveScene().name)
             {
                 case "Level1":
+                    Level1Web.instance.UpdateCounter(Boss.instance.stateCount);
                     Level1Web.instance.Send();
                     break;
                 case "Level2":
