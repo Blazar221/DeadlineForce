@@ -29,15 +29,14 @@ public class PlayerControl : MonoBehaviour
     // The diamond to destory
     private GameObject toHit;
     
-
     private Animator animator;
     private bool isUpsideDown;
     private bool isEating;
     private float nextTime;
     private float collsionTime;
 
-    private float itemReleaseTimeCounter = 0f;
-    [SerializeField] private float itemReleaseTimeBar = 0.14f;
+    private float longNoteScoreTimeCounter = 0f;
+    [SerializeField] private float longNoteScoreTimeBar = 0.14f;
     
     private bool canGetSingleScore;
     private bool canGetLongScore;
@@ -47,9 +46,12 @@ public class PlayerControl : MonoBehaviour
     private bool missFood;
     private bool missMine;
     private bool pressingK;
+
+    float[] playerYPosArr;
+    public int curYPos;
+
     // for hitting and blood effect
     public GameObject hitEffect, goodEffect, perfectEffect ,missEffect, bloodEffectCeil, bloodEffectFloor;
-    // for hitting effect
     
     private TargetPanel targetPanel;
     private Inventory inventory;
@@ -68,63 +70,92 @@ public class PlayerControl : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
 
-        isUpsideDown = false;
         nextTime = Time.time;
         canGetSingleScore = false;
+        
+        playerYPosArr = new float[4];
+        playerYPosArr[0] = 3.4f;
+        playerYPosArr[1] = 1.6f;
+        playerYPosArr[2] = -1.6f;
+        playerYPosArr[3] = -3.4f;
+        curYPos = 1;
+        isUpsideDown = false;
+
         rb2D = gameObject.GetComponent<Rigidbody2D>();
+        
         animator = GetComponent<Animator>();
+
         
         targetPanel = TargetPanel.Instance;
         inventory = targetPanel.inventory;
         
     }
 
-    bool IsLvlOne()
-    {
-        return "Level1" == SceneManager.GetActiveScene().name;
-    }
-
     // Update is called once per frame
     void Update()
     {
-        Vector2 temp = GetComponent<Transform>().position;
+        Vector3 tempPosition = transform.position;
+        Vector3 tempLocalScale = transform.localScale;
         if (Time.time >= nextTime && !pressingK) {
             animator.SetBool("isEating",false);
             animator.SetBool("isDamaged",false);
         }
         
         
-        if (canChangeGravity && !IsLvlOne())
+        if (canChangeGravity)
 		{
-            if (Input.GetKeyDown (KeyCode.W) && !isUpsideDown){
-                canCross = false;
-                isUpsideDown = true;
-                Debug.Log(canChangeGravity);
-                rb2D.gravityScale = -15;
+            if(Input.GetKeyDown(KeyCode.W) && curYPos !=0)
+            {
+                if(curYPos!=2){
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(tempPosition.x, playerYPosArr[curYPos-1], tempPosition.z), 2f);
+                }else{
+                    transform.position = new Vector3(tempPosition.x, playerYPosArr[curYPos-1], tempPosition.z);
+                }
+                curYPos -=1;
+                rb2D.gravityScale*=-1;
+                isUpsideDown = !isUpsideDown;
                 canChangeGravity = false;
-            } else if (Input.GetKeyDown (KeyCode.S) && isUpsideDown) {
-                canCross = false;
-                isUpsideDown = false;
-                Debug.Log(canChangeGravity);
-                rb2D.gravityScale = 15;
-                canChangeGravity = false;
+                animator.SetBool("UpsideDown",isUpsideDown);
             }
-            animator.SetBool("UpsideDown",isUpsideDown);
+            if(Input.GetKeyDown(KeyCode.S) && curYPos !=3)
+            {
+                if(curYPos!=1){
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(tempPosition.x, playerYPosArr[curYPos+1], tempPosition.z), 2f);
+                }else{
+                    transform.position = new Vector3(tempPosition.x, playerYPosArr[curYPos+1], tempPosition.z);
+                }
+                curYPos +=1;
+                rb2D.gravityScale*=-1;
+                isUpsideDown = !isUpsideDown;
+                canChangeGravity = false;
+                animator.SetBool("UpsideDown",isUpsideDown);
+            }
+            // if (Input.GetKeyDown (KeyCode.W) && !isUpsideDown){
+            //     canCross = false;
+            //     isUpsideDown = true;
+            //     rb2D.gravityScale = -15;
+            //     canChangeGravity = false;
+            // } else if (Input.GetKeyDown (KeyCode.S) && isUpsideDown) {
+            //     canCross = false;
+            //     isUpsideDown = false;
+            //     rb2D.gravityScale = 15;
+            //     canChangeGravity = false;
+            // }
 		}
 
-        if (canCross)
-		{
-            if (!isUpsideDown && Input.GetKeyDown (KeyCode.S)){
-                isUpsideDown = true;
-                rb2D.gravityScale = -5;
-                this.gameObject.transform.position = new Vector2(temp.x,-1.1f);
-            } else if (isUpsideDown && Input.GetKeyDown (KeyCode.W)) {
-                isUpsideDown = false;
-                rb2D.gravityScale = 5;
-                this.gameObject.transform.position = new Vector2(temp.x,1.1f);
-            }
-            animator.SetBool("UpsideDown",isUpsideDown);
-		}
+        // if (canCross)
+		// {
+        //     if (!isUpsideDown && Input.GetKeyDown (KeyCode.S)){
+        //         isUpsideDown = true;
+        //         rb2D.gravityScale = -5;
+        //         this.gameObject.transform.position = new Vector2(tempPosition.x,-1.1f);
+        //     } else if (isUpsideDown && Input.GetKeyDown (KeyCode.W)) {
+        //         isUpsideDown = false;
+        //         rb2D.gravityScale = 5;
+        //         this.gameObject.transform.position = new Vector2(tempPosition.x,1.1f);
+        //     }
+        //     animator.SetBool("UpsideDown",isUpsideDown);
+		// }
 
         //加了空格可以跳 不要的话直接删掉就行
         // if (Input.GetKeyDown(KeyCode.Space)){
@@ -137,12 +168,6 @@ public class PlayerControl : MonoBehaviour
         //     GetComponent<Rigidbody2D>().AddForce(direc);
 		// }
 
-        // If the player click space on the wrong point, it will take damage.
-        // if (canChangeGravity == false && Input.GetKeyDown (KeyCode.Space))
-        // {
-        //     TakeDamage(5);
-        // }
-
         if (Input.GetKeyDown(KeyCode.J))
 		{
             missFood = false;
@@ -152,7 +177,7 @@ public class PlayerControl : MonoBehaviour
                 ScoreSingle(Time.time);
             }
             else if (!canAvoidDamage){
-                MissSingle();
+                //MissSingle();
             }
             if (canAvoidDamage){
                 avoidMine();
@@ -179,7 +204,7 @@ public class PlayerControl : MonoBehaviour
 		{  
             pressingK = true;
             animator.SetBool("isEating",true);
-            itemReleaseTimeCounter += Time.fixedDeltaTime;
+            longNoteScoreTimeCounter += Time.fixedDeltaTime;
             if (canGetLongScore){
                 ScoreLong();
             }
@@ -218,11 +243,11 @@ public class PlayerControl : MonoBehaviour
 
     void ScoreLong()
     {
-        if(itemReleaseTimeCounter > itemReleaseTimeBar){
+        if(longNoteScoreTimeCounter > longNoteScoreTimeBar){
             // if(!inventory.isEmpty()){
             //     Item rlsItem = inventory.RemoveFirst();
             //     boss.TakeDamage(rlsItem);
-            //     itemReleaseTimeCounter = 0f;
+            //     longNoteScoreTimeCounter = 0f;
 
             //     hitScore++;
                 
@@ -315,10 +340,6 @@ public class PlayerControl : MonoBehaviour
         {
             canChangeGravity = true;
             canCross = false;
-            // Vector2 temp = GetComponent<Transform>().position;
-            // if (temp.y>-2 && temp.y<2){
-            //     canCross = true;
-            // }
         }
 
         if(collision.gameObject.tag == "Platform"){
@@ -338,7 +359,6 @@ public class PlayerControl : MonoBehaviour
         if(collision.gameObject.tag == "LongNote")
         {
             canGetLongScore = true;
-            // boss.isHide = false;
         }
 
         if(collision.gameObject.tag == "Mine")
@@ -377,8 +397,6 @@ public class PlayerControl : MonoBehaviour
         if(collision.gameObject.tag == "LongNote")
         {
             canGetLongScore = false;
-            // boss.SwitchState();
-            // boss.isHide = true;
         }
 
         if(collision.gameObject.tag == "Mine")

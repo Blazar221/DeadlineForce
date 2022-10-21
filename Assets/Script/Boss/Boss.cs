@@ -102,8 +102,6 @@ public class Boss : MonoBehaviour
 
     void CheckMoveEnd()
     {
-        Debug.Log("moveDest" + moveDest);
-        Debug.Log("transform" + transform.position);
         transform.position = Vector3.MoveTowards(transform.position, moveDest, bossMoveSpeed);
         if(transform.position.y == moveDestY){
             curLine = attackingLine;

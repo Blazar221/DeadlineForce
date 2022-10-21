@@ -8,10 +8,6 @@ public class GameController : MonoBehaviour
     public GameObject gameOverMenu;
     public GameObject congratsMenu;
     public static GameController Instance;
-    [SerializeField]
-    GameObject platformTop;
-    [SerializeField]
-    GameObject platformBottom;
 
 
     [SerializeField]
@@ -21,11 +17,6 @@ public class GameController : MonoBehaviour
 
     private void Awake() {
         Instance = this;
-        string sceneName = SceneManager.GetActiveScene().name;
-        if(sceneName == "Level1"){
-            platformTop.SetActive(false);
-            platformBottom.SetActive(false);
-        }
     }
 
     void Update()
