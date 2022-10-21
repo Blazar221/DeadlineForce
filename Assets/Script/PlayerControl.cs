@@ -35,8 +35,9 @@ public class PlayerControl : MonoBehaviour
     private bool isEating;
     private float nextTime;
     private float collsionTime;
-    private float keepLongScoreTime = 0f;
-    private float longScoreTimeBar = 0.14f;
+
+    private float itemReleaseTimeCounter = 0f;
+    [SerializeField] private float itemReleaseTimeBar = 0.14f;
     
     private bool canGetSingleScore;
     private bool canGetLongScore;
@@ -99,13 +100,13 @@ public class PlayerControl : MonoBehaviour
                 canCross = false;
                 isUpsideDown = true;
                 Debug.Log(canChangeGravity);
-                rb2D.gravityScale = -5;
+                rb2D.gravityScale = -15;
                 canChangeGravity = false;
             } else if (Input.GetKeyDown (KeyCode.S) && isUpsideDown) {
                 canCross = false;
                 isUpsideDown = false;
                 Debug.Log(canChangeGravity);
-                rb2D.gravityScale = 5;
+                rb2D.gravityScale = 15;
                 canChangeGravity = false;
             }
             animator.SetBool("UpsideDown",isUpsideDown);
@@ -178,7 +179,7 @@ public class PlayerControl : MonoBehaviour
 		{  
             pressingK = true;
             animator.SetBool("isEating",true);
-            keepLongScoreTime += Time.fixedDeltaTime;
+            itemReleaseTimeCounter += Time.fixedDeltaTime;
             if (canGetLongScore){
                 ScoreLong();
             }
@@ -217,11 +218,11 @@ public class PlayerControl : MonoBehaviour
 
     void ScoreLong()
     {
-        if(keepLongScoreTime > longScoreTimeBar){
+        if(itemReleaseTimeCounter > itemReleaseTimeBar){
             if(!inventory.isEmpty()){
                 Item rlsItem = inventory.RemoveFirst();
                 boss.TakeDamage(rlsItem);
-                keepLongScoreTime = 0f;
+                itemReleaseTimeCounter = 0f;
 
                 hitScore++;
                 
