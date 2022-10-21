@@ -80,8 +80,8 @@ public class TargetPanel : MonoBehaviour
     private int _targetIndex;
     
     //for inventory system
-    public Inventory inventory;
-    [SerializeField] private InventoryUI uiInventory;
+    // public Inventory inventory;
+    // [SerializeField] private InventoryUI uiInventory;
 
     private void Awake()
     {
@@ -109,8 +109,8 @@ public class TargetPanel : MonoBehaviour
         // targetLine = transform.Find("TargetLine").gameObject;
         
         //for inventory system
-        inventory = new Inventory();
-        uiInventory.SetInventory(inventory);
+        // inventory = new Inventory();
+        // uiInventory.SetInventory(inventory);
         _objectLines = new List<ObjectLine>();
         _targetCounter = 1;
     }
@@ -156,8 +156,8 @@ public class TargetPanel : MonoBehaviour
                     UpdateAnalytics(objL);
                     var toDestroy = objL.GetGameObj();
                     Destroy(toDestroy);
-                    if (inventory.GetItemList().Count == 5) inventory.RemoveFirst();
-                    inventory.AddSprite(objL.GetUpgradeItem().sprite);
+                    // if (inventory.GetItemList().Count == 5) inventory.RemoveFirst();
+                    // inventory.AddSprite(objL.GetUpgradeItem().sprite);
                     _objectLines.RemoveAt(i);
                 }
                 break;
