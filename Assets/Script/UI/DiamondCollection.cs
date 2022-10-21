@@ -36,7 +36,7 @@ public class DiamondCollection : MonoBehaviour
         // if ((fireCount + grassCount + waterCount + rockCount) >= 30)
         if (fireCount >= 12 && grassCount >= 12 && waterCount >= 12 && rockCount >= 12)
         {
-            Boss.instance.TakeDamage(fireCount, waterCount, grassCount, rockCount);
+            Boss.instance.TakeDamage(300);
             fireCount = 0;
             grassCount = 0;
             waterCount = 0;
