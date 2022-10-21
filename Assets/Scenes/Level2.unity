@@ -3485,8 +3485,8 @@ MonoBehaviour:
   longNote: {fileID: 2771948807783451587, guid: cac2db766bd50074682ddc967bc4714f, type: 3}
   block: {fileID: 2425594156374542513, guid: 28777205d87fb1e4a8eb462b7e0b6b70, type: 3}
   bgm: {fileID: 1006874500}
-  Jsonfile: {fileID: 4900000, guid: 0530f1a07ce2d234aa1eaf3dc74c699a, type: 3}
-  moveSpeed: 0.25
+  Jsonfile: {fileID: 4900000, guid: b71b98866a7b088418f900207e1d8a76, type: 3}
+  moveSpeed: 0.2
 --- !u!1 &736575766
 GameObject:
   m_ObjectHideFlags: 0
@@ -4800,7 +4800,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9696d00f309461d4e81576258cfd7fe3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a83787bdc5095d840b9122065121a289, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5214,8 +5214,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1203535962}
-  - component: {fileID: 1203535966}
-  - component: {fileID: 1203535965}
+  - component: {fileID: 1203535964}
+  - component: {fileID: 1203535963}
   m_Layer: 0
   m_Name: AnalyticManager
   m_TagString: Untagged
@@ -5238,7 +5238,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1203535965
+--- !u!114 &1203535963
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5247,11 +5247,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1203535960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6f699ca867c1a44095709b6ac27ac93, type: 3}
+  m_Script: {fileID: 11500000, guid: 68e79a98de8e41643a894cb44c8fb43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSdl4DxQQvCkrAy4uAwxfDkplZFRlgc1zKRPS9lvE972EvMuVQ/formResponse
---- !u!114 &1203535966
+  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSdVSYMwMuMjZggAZ27HjHviN4vPFeGnTrj_sd6wxGTgP9iDnA/formResponse
+--- !u!114 &1203535964
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5260,10 +5260,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1203535960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e2378d31171bf143b45b0d8c657e724, type: 3}
+  m_Script: {fileID: 11500000, guid: f5492a782fe6ae842852e28214e7c3af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLScmx9MyVfNDgaEwqioyTLk_Hl0d3H6BA7OxI_sr7tIQwgIJAQ/formResponse
+  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSd35Ssc9tK9JWp4gJ0OYyznJKXc5eYwhsQS4r0Ec0_infQmpQ/formResponse
 --- !u!1 &1237845008
 GameObject:
   m_ObjectHideFlags: 0
@@ -6773,7 +6773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.76, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.7607843, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
