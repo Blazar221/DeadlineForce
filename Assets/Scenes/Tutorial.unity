@@ -2210,8 +2210,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "We have four types of diamonds! \nCollect one of each type will generate
-    a combo!"
+  m_text: "We have four types of diamonds! \nCollect diamonds will increase our diamonds
+    bar!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
   m_sharedMaterial: {fileID: -1571771168669490468, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
@@ -7081,7 +7081,6 @@ MonoBehaviour:
   - {fileID: 887685491, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
   - {fileID: 1867268703, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
   targetLine: {fileID: 857988776250520980, guid: 02949a31d5356a942868a233a36e4e50, type: 3}
-  uiInventory: {fileID: 959581470}
 --- !u!114 &1348862755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8768,8 +8767,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.9501, y: -51}
-  m_SizeDelta: {x: 1910.1, y: 65.488}
+  m_AnchoredPosition: {x: -348, y: 339.25}
+  m_SizeDelta: {x: 1257.932, y: 152.72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1633937493
 MonoBehaviour:
@@ -8791,14 +8790,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Every diamonds in our bag cause fixed damage
-
-
-    Every<sprite index=0>Set 
-    cause Bonus damage
-
-
-'
+  m_text: "Here is our Four diamonds bar\nOnce we fullfill All four diamonds Bar,\n
+    we will attack the Boss!\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
   m_sharedMaterial: {fileID: -1571771168669490468, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
@@ -8825,8 +8818,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8861,7 +8854,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: -105.313286}
+  m_margin: {x: 0, y: -88.23437, z: 0, w: -105.313286}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
