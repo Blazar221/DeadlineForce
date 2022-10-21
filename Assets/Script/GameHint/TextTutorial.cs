@@ -15,7 +15,7 @@ public class TextTutorial : MonoBehaviour
     [SerializeField] private TextMeshProUGUI longNoteInstruction;
     [SerializeField] private TextMeshProUGUI upSwitchInstruction;
     [SerializeField] private TextMeshProUGUI downSwitchInstruction;
-    [SerializeField] private TextMeshProUGUI blockInstruction;
+    [SerializeField] private TextMeshProUGUI differentcolorInstruction;
     [SerializeField] private TextMeshProUGUI finishInstruction;
     [SerializeField] private TextMeshProUGUI TripleInstruction;
     [SerializeField] private TextMeshProUGUI passdownInstruction;
@@ -30,6 +30,8 @@ public class TextTutorial : MonoBehaviour
     private bool shortNoteLearned = false;
     private bool tripleLearned1 = false;
     private bool tripleLearned2 = false;
+    private bool tripleLearned3 = false;
+    private bool differentcolorLearned = false;
     private bool gemcollectionLearned = false;
     
     private bool longNoteLearned = false;
@@ -43,6 +45,8 @@ public class TextTutorial : MonoBehaviour
     private float firstShortNoteTime = 2f;
     private float t1ShortNoteTime = 3f;
     private float t2ShortNoteTime = 4f;
+    private float t3ShortNoteTime = 5f;
+    private float differentcolorShortNoteTime = 6f;
     
     private float firstLongNoteTime = 7f;
     private float firstgemcollectionTime = 10f;
@@ -60,7 +64,7 @@ public class TextTutorial : MonoBehaviour
         longNoteInstruction.enabled = false;
         upSwitchInstruction.enabled = false;
         downSwitchInstruction.enabled = false;
-        blockInstruction.enabled = false;
+        differentcolorInstruction.enabled = false;
         finishInstruction.enabled = false;
         TripleInstruction.enabled=false;
         passdownInstruction.enabled=false;
@@ -102,19 +106,28 @@ public class TextTutorial : MonoBehaviour
         }
         if(!tripleLearned1 && Time.timeSinceLevelLoad >= t1ShortNoteTime){
             Time.timeScale = 0f;
-            TripleInstruction.enabled = true;
+            PressJInstruction.enabled = true;
             if (Input.GetKeyDown(KeyCode.J)) {
                 tripleLearned1 = true;
-                TripleInstruction.enabled = false;
+                PressJInstruction.enabled = false;
                 Time.timeScale = 1f;
             }
         }
         if(!tripleLearned2 && Time.timeSinceLevelLoad >= t2ShortNoteTime){
             Time.timeScale = 0f;
-            TripleInstruction.enabled = true;
+            PressJInstruction.enabled = true;
             if (Input.GetKeyDown(KeyCode.J)) {
                 tripleLearned2 = true;
-                TripleInstruction.enabled = false;
+                PressJInstruction.enabled = false;
+                Time.timeScale = 1f;
+            }
+        }
+         if(!tripleLearned3 && Time.timeSinceLevelLoad >= t3ShortNoteTime){
+            Time.timeScale = 0f;
+            PressJInstruction.enabled = true;
+            if (Input.GetKeyDown(KeyCode.J)) {
+                tripleLearned3 = true;
+                PressJInstruction.enabled = false;
                 Time.timeScale = 1f;
             }
         }
@@ -143,15 +156,17 @@ public class TextTutorial : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
-        // if(!blockLearned && Time.timeSinceLevelLoad >= firstBlockTime){
-        //     Time.timeScale = 0f;
-        //     blockInstruction.enabled = true;
-        //     if (Input.GetKeyDown(KeyCode.J)) {
-        //         blockLearned = true;
-        //         blockInstruction.enabled = false;
-        //         Time.timeScale = 1f;
-        //     }
-        // }
+        if(!differentcolorLearned && Time.timeSinceLevelLoad >= differentcolorShortNoteTime){
+            Time.timeScale = 0f;
+            differentcolorInstruction.enabled = true;
+            PressJInstruction.enabled = true;
+            if (Input.GetKeyDown(KeyCode.J)) {
+                differentcolorLearned = true;
+                PressJInstruction.enabled = false;
+                differentcolorInstruction.enabled = false;
+                Time.timeScale = 1f;
+            }
+        }
         if (Time.timeSinceLevelLoad < startcollectTime) {
             playerControl = Player.GetComponent<PlayerControl>();
             playerControl.canChangeGravity = false;
