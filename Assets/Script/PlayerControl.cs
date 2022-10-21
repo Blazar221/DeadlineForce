@@ -104,7 +104,7 @@ public class PlayerControl : MonoBehaviour
 
         
         targetPanel = TargetPanel.Instance;
-        inventory = targetPanel.inventory;
+        // inventory = targetPanel.inventory;
 
         fireBar.SetMinHealth(fireCount);
         grassBar.SetMinHealth(grassCount);
