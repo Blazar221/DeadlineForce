@@ -424,7 +424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &107642923
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5212,8 +5212,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1203535962}
-  - component: {fileID: 1203535963}
-  - component: {fileID: 1203535964}
   - component: {fileID: 1203535966}
   - component: {fileID: 1203535965}
   m_Layer: 0
@@ -5238,32 +5236,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1203535963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203535960}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48895d644d57bea40b27727473ef0c09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSePxRWGYbqNQTvQqzZ8-tNrJP6a0PG7Kk4OiF0VgM7jRo945A/formResponse
---- !u!114 &1203535964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203535960}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 242f120d3961af740ae4ad6940549e82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSeseaM4A3SVcs-gxBN6GviSGPkskhEYZuQBio32UzYeRBUfQw/formResponse
 --- !u!114 &1203535965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5289,7 +5261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2378d31171bf143b45b0d8c657e724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  formURL: 
+  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLScmx9MyVfNDgaEwqioyTLk_Hl0d3H6BA7OxI_sr7tIQwgIJAQ/formResponse
 --- !u!1 &1237845008
 GameObject:
   m_ObjectHideFlags: 0
@@ -7195,7 +7167,6 @@ MonoBehaviour:
   - {fileID: 887685491, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
   - {fileID: 1867268703, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
   targetLine: {fileID: 857988776250520980, guid: 02949a31d5356a942868a233a36e4e50, type: 3}
-  uiInventory: {fileID: 107642924}
 --- !u!1 &1636842096
 GameObject:
   m_ObjectHideFlags: 0

@@ -75,6 +75,9 @@ public class GameController : MonoBehaviour
                 case "Level2":
                     Level2Editor.instance.Send();
                     break;
+                case "Level3":
+                    Level3Editor.instance.Send();
+                    break;
             }
         }
         else
@@ -86,6 +89,9 @@ public class GameController : MonoBehaviour
                     break;
                 case "Level2":
                     Level2Web.instance.Send();
+                    break;
+                case "Level3":
+                    Level3Web.instance.Send();
                     break;
             }
         }

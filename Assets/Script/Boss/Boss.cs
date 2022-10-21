@@ -181,6 +181,9 @@ public class Boss : MonoBehaviour
                 case "Level2":
                     Level2Editor.instance.UpdateAttack(count);
                     break;
+                case "Level3":
+                    Level3Editor.instance.UpdateAttack(count);
+                    break;
             }
         }
         else
@@ -192,6 +195,9 @@ public class Boss : MonoBehaviour
                     break;
                 case "Level2":
                     Level2Web.instance.UpdateAttack(count);
+                    break;
+                case "Level3":
+                    Level3Web.instance.UpdateAttack(count);
                     break;
             }
         }
