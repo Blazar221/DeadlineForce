@@ -5979,10 +5979,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 178061452}
-  bossMoveSpeed: 0.01
-  bossAttackPeriod: 10
+  bossMoveSpeed: 0.03
+  bossAttackPeriod: 5
   stateCount: 000000000000000000000000
-  bossHealth: 1500
+  bossHealth: 1000
   laser: {fileID: 3364694483412564346, guid: 6f3bf51229f147047a094637825a9436, type: 3}
   bossAnimator: {fileID: 0}
   speed: 1
