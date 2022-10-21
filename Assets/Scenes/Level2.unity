@@ -920,7 +920,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 12
+  m_MaxValue: 9
   m_WholeNumbers: 1
   m_Value: 1
   m_OnValueChanged:
@@ -4414,7 +4414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 
   fullDamage: 180
-  singleLimit: 12
+  singleLimit: 9
   fireDiamond: {fileID: 6793344568998294521, guid: 0942592310d901b4ca2d102f56a13991, type: 3}
   fireBar: {fileID: 1878400880}
   grassDiamond: {fileID: 6793344568998294521, guid: 0020b74fc6d5612468084ca21a688ffd, type: 3}
@@ -4522,7 +4522,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 12
+  m_MaxValue: 9
   m_WholeNumbers: 1
   m_Value: 1
   m_OnValueChanged:
@@ -8668,7 +8668,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 12
+  m_MaxValue: 9
   m_WholeNumbers: 1
   m_Value: 1
   m_OnValueChanged:
@@ -8773,7 +8773,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 12
+  m_MaxValue: 9
   m_WholeNumbers: 1
   m_Value: 1
   m_OnValueChanged:
