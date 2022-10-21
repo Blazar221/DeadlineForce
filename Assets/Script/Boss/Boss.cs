@@ -82,8 +82,8 @@ public class Boss : MonoBehaviour
         //     SwitchState();
         // }
 
-        SwitchState();
-        SwitchState();
+        // SwitchState();
+        // SwitchState();
         
         StartCoroutine(AutoAttack());
         startMove = false;
@@ -167,6 +167,7 @@ public class Boss : MonoBehaviour
         Destroy(newItem, 1f);
     }
 
+    /*
     public void SwitchState()
     {
         state++;
@@ -217,6 +218,7 @@ public class Boss : MonoBehaviour
         eleType = ElemType.Rock;
         SetColor(Color.yellow);
     }
+    */
 
     void SetColor(Color nextColor)
     {
@@ -225,37 +227,41 @@ public class Boss : MonoBehaviour
             renderer.color = Color.Lerp(renderer.color, nextColor, 1);
         }
     }
-
-    public void TakeDamage(Item attackingItem)
+    
+    public void TakeDamage(List<Item> attackingItems)
     {
-        int attackingVal = attackingItem.itemType switch 
+        for (int i = 0; i < attackingItems.Count; i++)
         {
-            Item.ItemType.Water => 0,
-            Item.ItemType.Fire => 1,
-            Item.ItemType.Grass => 2,
-            _ => 3,
-        };
-        int defendingVal = eleType switch 
-        {
-            ElemType.Water => 0,
-            ElemType.Fire => 1,
-            ElemType.Grass => 2,
-            _ => 3,
-        }; 
+            int attackingVal = attackingItems[i].itemType switch 
+            {
+                Item.ItemType.Water => 0,
+                Item.ItemType.Fire => 1,
+                Item.ItemType.Grass => 2,
+                _ => 3,
+            };
+            int defendingVal = eleType switch 
+            {
+                ElemType.Water => 0,
+                ElemType.Fire => 1,
+                ElemType.Grass => 2,
+                _ => 3,
+            }; 
 
-        // blood effect
-        Instantiate(bloodEffect, bossHead.transform.position, Quaternion.identity);
+            // blood effect
+            Instantiate(bloodEffect, bossHead.transform.position, Quaternion.identity);
 
-        FlashColor(flashTime);
+            // FlashColor(flashTime);
 
-        bossHealth -= CalcDamage(attackingVal, defendingVal);
-        healthBar.SetHealth(bossHealth);
+            bossHealth -= CalcDamage(attackingVal, defendingVal);
+            healthBar.SetHealth(bossHealth);
 
-        if (bossHealth <= 0)
-        {
-            Dead();
-            GameController.Instance.EnableCongratsMenu();
+            if (bossHealth <= 0)
+            {
+                Dead();
+                GameController.Instance.EnableCongratsMenu();
+            }
         }
+        
     }
 
     public int CalcDamage(int attacking, int defending){
