@@ -7,6 +7,8 @@ public class Boss : MonoBehaviour
 {
     public static Boss instance;
 
+    [SerializeField] public PlayerControl player;
+
     [SerializeField] private float bossMoveSpeed = 0.3f;
     [SerializeField] private float bossAttackPeriod = 10f;
 
@@ -80,11 +82,7 @@ public class Boss : MonoBehaviour
         {
             yield return new WaitForSeconds(bossAttackPeriod);
 
-            while(attackingLine == curLine)
-            {
-                attackingLine = Random.Range(1, 3);
-            }
-
+            attackingLine = player.curYPos;
             moveDestY = attackingLine switch
             {
                 0 => 7,

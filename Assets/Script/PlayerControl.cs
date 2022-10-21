@@ -94,8 +94,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 tempPosition = transform.position;
-        Vector3 tempLocalScale = transform.localScale;
+        Vector3 curPosition = transform.position;
         if (Time.time >= nextTime && !pressingK) {
             animator.SetBool("isEating",false);
             animator.SetBool("isDamaged",false);
@@ -107,9 +106,9 @@ public class PlayerControl : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.W) && curYPos !=0)
             {
                 if(curYPos!=2){
-                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(tempPosition.x, playerYPosArr[curYPos-1], tempPosition.z), 2f);
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(curPosition.x, playerYPosArr[curYPos-1], curPosition.z), 2f);
                 }else{
-                    transform.position = new Vector3(tempPosition.x, playerYPosArr[curYPos-1], tempPosition.z);
+                    transform.position = new Vector3(curPosition.x, playerYPosArr[curYPos-1], curPosition.z);
                 }
                 curYPos -=1;
                 rb2D.gravityScale*=-1;
@@ -120,9 +119,9 @@ public class PlayerControl : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.S) && curYPos !=3)
             {
                 if(curYPos!=1){
-                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(tempPosition.x, playerYPosArr[curYPos+1], tempPosition.z), 2f);
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(curPosition.x, playerYPosArr[curYPos+1], curPosition.z), 2f);
                 }else{
-                    transform.position = new Vector3(tempPosition.x, playerYPosArr[curYPos+1], tempPosition.z);
+                    transform.position = new Vector3(curPosition.x, playerYPosArr[curYPos+1], curPosition.z);
                 }
                 curYPos +=1;
                 rb2D.gravityScale*=-1;
@@ -148,11 +147,11 @@ public class PlayerControl : MonoBehaviour
         //     if (!isUpsideDown && Input.GetKeyDown (KeyCode.S)){
         //         isUpsideDown = true;
         //         rb2D.gravityScale = -5;
-        //         this.gameObject.transform.position = new Vector2(tempPosition.x,-1.1f);
+        //         this.gameObject.transform.position = new Vector2(curPosition.x,-1.1f);
         //     } else if (isUpsideDown && Input.GetKeyDown (KeyCode.W)) {
         //         isUpsideDown = false;
         //         rb2D.gravityScale = 5;
-        //         this.gameObject.transform.position = new Vector2(tempPosition.x,1.1f);
+        //         this.gameObject.transform.position = new Vector2(curPosition.x,1.1f);
         //     }
         //     animator.SetBool("UpsideDown",isUpsideDown);
 		// }
