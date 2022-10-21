@@ -44,6 +44,16 @@ public class GameController : MonoBehaviour
         PlayerControl.OnPlayerDeath -= EnableGameOverMenu;
     }
 
+    private void WinEnable()
+    {
+        Boss.OnBossDeath += EnableCongratsMenu;
+    }
+
+    private void WinDisable()
+    {
+        Boss.OnBossDeath -= EnableCongratsMenu;
+    }
+
     // 血量掉光游戏结束
     public void EnableGameOverMenu()
     {

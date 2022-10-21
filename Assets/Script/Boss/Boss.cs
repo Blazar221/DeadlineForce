@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class Boss : MonoBehaviour
 {
     public static Boss instance;
+
+    public static event Action OnBossDeath;
 
     [SerializeField] public PlayerControl player;
 
@@ -140,8 +143,9 @@ public class Boss : MonoBehaviour
 
         if (bossHealth <= 0)
         {
+            bossHealth = 0;
+            OnBossDeath?.Invoke();
             Dead();
-            GameController.Instance.EnableCongratsMenu();
         }
         
     }
