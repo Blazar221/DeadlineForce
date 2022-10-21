@@ -648,6 +648,14 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 1104769712}
+  fireDiamond: {fileID: 6793344568998294521, guid: 0942592310d901b4ca2d102f56a13991, type: 3}
+  fireBar: {fileID: 1878400880}
+  grassDiamond: {fileID: 6793344568998294521, guid: 0020b74fc6d5612468084ca21a688ffd, type: 3}
+  grassBar: {fileID: 911543719}
+  waterDiamond: {fileID: 6793344568998294521, guid: cc6951aaee945bf46a742a8aa8aac654, type: 3}
+  waterBar: {fileID: 1878636901}
+  rockDiamond: {fileID: 6793344568998294521, guid: 6e3699c2f9bc3814981deaa2df1eda7e, type: 3}
+  rockBar: {fileID: 187507465}
   boss: {fileID: 1307346855}
   hitScore: 0
   missScore: 0
@@ -4361,6 +4369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 905980828}
+  - component: {fileID: 905980829}
   m_Layer: 5
   m_Name: DiamondBar
   m_TagString: Untagged
@@ -4392,6 +4401,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 45}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &905980829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905980827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 478414e7927864e4f975353579113e69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireDiamond: {fileID: 6793344568998294521, guid: 0942592310d901b4ca2d102f56a13991, type: 3}
+  fireBar: {fileID: 1878400880}
+  grassDiamond: {fileID: 6793344568998294521, guid: 0020b74fc6d5612468084ca21a688ffd, type: 3}
+  grassBar: {fileID: 911543719}
+  waterDiamond: {fileID: 6793344568998294521, guid: cc6951aaee945bf46a742a8aa8aac654, type: 3}
+  waterBar: {fileID: 1878636901}
+  rockDiamond: {fileID: 6793344568998294521, guid: 6e3699c2f9bc3814981deaa2df1eda7e, type: 3}
+  rockBar: {fileID: 187507465}
 --- !u!1 &911543717
 GameObject:
   m_ObjectHideFlags: 0
