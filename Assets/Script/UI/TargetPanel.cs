@@ -10,6 +10,8 @@ public class TargetPanel : MonoBehaviour
 
     [SerializeField] private Sprite[] items;
 
+    public int patternDamage = 20;
+
     // [SerializeField] private Image[] gems;
     [SerializeField] private Sprite[] sources;
     public GameObject targetLine;
@@ -18,7 +20,7 @@ public class TargetPanel : MonoBehaviour
     private readonly Color _blue = new(0.016f, 0.67f, 1f, 1.0f);
     private readonly Color _green = new(0.43f, 1f, 0.058f, 1.0f);
     private readonly Color _red = new(1.0f, 0.5f, 0f, 1.0f);
-    private readonly Color _yellow = new(0.8f, 0.38f, 0f, 1f);
+    private readonly Color _yellow = new(1f, 0.76f, 0f, 1f);
     private readonly Color _brownSaber = new(0.58f, 0.3f, 0f, 1f);
     
     
@@ -153,7 +155,7 @@ public class TargetPanel : MonoBehaviour
                 if (objL.RemoveFirstGem())
                 {
                     // the line is completed
-                    Boss.instance.TakeDamage(20);
+                    Boss.instance.TakeDamage(patternDamage);
                     UpdateAnalytics(objL);
                     var toDestroy = objL.GetGameObj();
                     Destroy(toDestroy);
@@ -455,7 +457,7 @@ public class ObjectLine
     private readonly Color _blue;
     private readonly Color _green;
     private readonly Color _red;
-    private readonly Color _brown;
+    private readonly Color _yellow;
 
     private Color _firstColor;
 
@@ -473,7 +475,7 @@ public class ObjectLine
         this._blue = new Color(0.0f, 0.0f, 1.0f);
         this._green = new Color(0.0f, 1.0f, 0.0f);
         this._red = new Color(1.0f, 0.0f, 0.0f);
-        this._brown = new Color(0.5f, 0.25f, 0.0f);
+        this._yellow = new Color(1f, 0.76f, 0f, 1f);;
         _firstColor = gemList[0].color;
     }
 

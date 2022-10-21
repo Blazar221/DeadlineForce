@@ -15,6 +15,9 @@ public class DiamondCollection : MonoBehaviour
     SpriteRenderer waterRenderer;
     SpriteRenderer rockRenderer;
 
+    public int fullDamage = 200;
+    public int singleLimit = 5;
+
 
     [SerializeField] public GameObject fireDiamond;
     public HealthBar fireBar;
@@ -34,9 +37,9 @@ public class DiamondCollection : MonoBehaviour
     public void Reset()
     {
         // if ((fireCount + grassCount + waterCount + rockCount) >= 30)
-        if (fireCount >= 12 && grassCount >= 12 && waterCount >= 12 && rockCount >= 12)
+        if (fireCount >= singleLimit && grassCount >= singleLimit && waterCount >= singleLimit && rockCount >= singleLimit)
         {
-            Boss.instance.TakeDamage(300);
+            Boss.instance.TakeDamage(fullDamage);
             fireCount = 0;
             grassCount = 0;
             waterCount = 0;
