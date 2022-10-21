@@ -54,10 +54,11 @@ public class DiamondCollection : MonoBehaviour
             waterBar.SetHealth(waterCount);
             rockBar.SetHealth(rockCount);
             timeCount_f = Time.deltaTime - time;
+            time = Time.deltaTime;
             timeCount_i = (int)timeCount_f;
             Debug.Log(timeCount_i);
         }
-        time = Time.deltaTime;
+        
     }
 
     public void AddFireCount()
