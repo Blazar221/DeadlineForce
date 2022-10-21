@@ -30,7 +30,6 @@ public class TargetPanel : MonoBehaviour
     private int _targetCounter;
 
     private readonly Target[] _level1Target = {
-        
 
         new(new[] { 0, 1 }, new[] { 6f, 10f }),
         new(new[] { 1, 0 }, new[] { 6f, 10f }),
@@ -39,13 +38,22 @@ public class TargetPanel : MonoBehaviour
         new(new[] { 1, 0 }, new[] { 5.5f, 9f }),
     };
     private const int Level1LoopIndex = 2;
+
+    private readonly Target[] _level2Target = {
+        new(new[] { 0, 3}, new[] { 15f, 20f }),
+        new(new[] { 1, 2}, new[] { 15f, 20f }),
+        new(new[] { 0, 1, 3}, new[] { 15f, 20f, 25f }),
+        new(new[] { 1, 3}, new[] { 15f, 20f }),
+        new(new[] { 0, 2}, new[] { 15f, 20f }),
+        new(new[] { 1, 2, 3}, new[] { 15f, 20f, 25f }),
+    };
+
+    private const int Level2LoopIndex = 0;
     
     private readonly Target[] _level3Target = {
         
         // new(new[] { 0, 1,2,3,4 }, new[] { 5f,5f,5f,5f,5f}), // for test
         // new(new[] { 5,6,7,8,9 }, new[] { 5f,5f,5f,5f,5f }), // for test
-
-        
         new(new[] { 9, 0 }, new[] { 10f, 15f }),
         new(new[] { 5, 3, 8 }, new[] { 10f, 15f, 20f }),
         new(new[] { 6, 1 }, new[] { 10f, 15f }),
@@ -69,9 +77,6 @@ public class TargetPanel : MonoBehaviour
     // 8: blue*2 + yellow*1 = BY
     // 9: green*2 + yellow*1 = GY
     
-    
-
-    
     private int _targetIndex;
     
     //for inventory system
@@ -89,6 +94,8 @@ public class TargetPanel : MonoBehaviour
                 _targetLoopIndex = Level1LoopIndex;
                 break;
             case "Level2":
+                _targets = _level2Target;
+                _targetLoopIndex = Level2LoopIndex;
                 break;
             case "Level3":
                 _targets = _level3Target;
@@ -152,8 +159,8 @@ public class TargetPanel : MonoBehaviour
                     if (inventory.GetItemList().Count == 5) inventory.RemoveFirst();
                     inventory.AddSprite(objL.GetUpgradeItem().sprite);
                     _objectLines.RemoveAt(i);
-                    break;
                 }
+                break;
             }
         }
         // check if there is no more elements in objectLines

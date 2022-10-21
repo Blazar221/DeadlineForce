@@ -9,6 +9,12 @@ public class Item
         Fire,
         Grass,
         Rock,
+        RB,
+        RG,
+        RY,
+        BG,
+        BY,
+        GY
     }
     public ItemType itemType;
     public int amount;
@@ -23,6 +29,18 @@ public class Item
                 return ItemAssets.Instance.fireSprite;
             case ItemType.Rock:
                 return ItemAssets.Instance.rockSprite;
+            case ItemType.RB:
+                return ItemAssets.Instance.RBSprite;
+            case ItemType.RG:
+                return ItemAssets.Instance.RGSprite;
+            case ItemType.RY:   
+                return ItemAssets.Instance.RYSprite;
+            case ItemType.BG:   
+                return ItemAssets.Instance.BGSprite;
+            case ItemType.BY:   
+                return ItemAssets.Instance.BYSprite; 
+            case ItemType.GY:   
+                return ItemAssets.Instance.GYSprite;
         }
     }
 }

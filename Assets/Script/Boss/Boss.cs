@@ -64,19 +64,24 @@ public class Boss : MonoBehaviour
         bossAnimator = GetComponent<Animator>();
         
         // Level Control
-        if (SceneManager.GetActiveScene().name == "Level1")
-        {
-            BlankState();
-        } else if (SceneManager.GetActiveScene().name == "Level2")
-        {
-            SwitchState();
-            SwitchState();
-        } else if (SceneManager.GetActiveScene().name == "Level3")
-        {
-            SwitchState();
-            SwitchState();
-        }
+        // if (SceneManager.GetActiveScene().name == "Level1")
+        // {
+        //     BlankState();
+        //     Debug.Log("level1");
+        // } else if (SceneManager.GetActiveScene().name == "Level2")
+        // {
+        //     Debug.Log("level2");
+        //     SwitchState();
+        //     SwitchState();
+        // } else if (SceneManager.GetActiveScene().name == "Level3")
+        // {
+        //     Debug.Log("level3");
+        //     SwitchState();
+        //     SwitchState();
+        // }
 
+        SwitchState();
+        SwitchState();
         
         StartCoroutine(AutoAttack());
         startMove = false;
@@ -88,6 +93,23 @@ public class Boss : MonoBehaviour
         {
             CheckMoveEnd();
         }
+
+        // // Level control
+        // if (SceneManager.GetActiveScene().name == "Level1")
+        // {
+        //     BlankState();
+        //     // Debug.Log("level1");
+        // } else if (SceneManager.GetActiveScene().name == "Level2")
+        // {
+        //     // Debug.Log("level2");
+        //     SwitchState();
+        //     SwitchState();
+        // } else if (SceneManager.GetActiveScene().name == "Level3")
+        // {
+        //     // Debug.Log("level3");
+        //     SwitchState();
+        //     SwitchState();
+        // }
     }
 
     private IEnumerator AutoAttack()
@@ -146,7 +168,7 @@ public class Boss : MonoBehaviour
     public void SwitchState()
     {
         state++;
-        Debug.Log("state:"+state);
+        // Debug.Log("state:"+state);
         switch (state%8)
         {
             case 0:
