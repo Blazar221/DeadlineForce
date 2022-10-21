@@ -15,10 +15,10 @@ public class Level1Editor : MonoBehaviour
     private string _subQuests = "";
     private string _attacks = "";
 
-    private static readonly float[] _diamondStart = {2f, 25.67f, 34.07f, 46.07f, 55.67f, 62.87f, 72.47f};
-    private static readonly float[] _diamondEnd = {22.25f, 31.07f, 43.37f, 52.67f, 60.17f, 69.47f, 81.47f};
+    private static readonly float[] _diamondStart = {2f, 25.67f, 34.07f, 46.07f, 62.87f, 72.47f};
+    private static readonly float[] _diamondEnd = {22.25f, 31.07f, 43.37f, 60.17f, 69.47f, 81.47f};
     private string pathOption = "";
-    private float[,] onPathTime = new float[7,2];
+    private float[,] onPathTime = new float[6,4];
     private float playerPos;
     private float currentTime;
 
@@ -48,11 +48,17 @@ public class Level1Editor : MonoBehaviour
 
     private void UpdatePathTime(int a, float pos){
         switch (pos){
-            case 2:
+            case 4:
                 onPathTime[a, 0] += 1f * Time.deltaTime;
                 break;
-            case -2:
+            case 2:
                 onPathTime[a, 1] += 1f * Time.deltaTime;
+                break;
+            case -2:
+                onPathTime[a, 2] += 1f * Time.deltaTime;
+                break;
+            case -4:
+                onPathTime[a, 3] += 1f * Time.deltaTime;
                 break;
         }
     }

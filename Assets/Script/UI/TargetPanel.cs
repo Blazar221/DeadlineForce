@@ -183,6 +183,10 @@ public class TargetPanel : MonoBehaviour
                     Level2Editor.instance.UpdateQuest(objLine.GetIndex().ToString(), 
                         objLine.GetDescription(), objLine.GetCompleted());
                     break;
+                case "Level3":
+                    Level3Editor.instance.UpdateQuest(objLine.GetIndex().ToString(), 
+                        objLine.GetDescription(), objLine.GetCompleted());
+                    break;
             }
         }
         else
@@ -195,6 +199,10 @@ public class TargetPanel : MonoBehaviour
                     break;
                 case "Level2":
                     Level2Web.instance.UpdateQuest(objLine.GetIndex().ToString(), 
+                        objLine.GetDescription(), objLine.GetCompleted());
+                    break;
+                case "Level3":
+                    Level3Web.instance.UpdateQuest(objLine.GetIndex().ToString(), 
                         objLine.GetDescription(), objLine.GetCompleted());
                     break;
             }
