@@ -659,7 +659,6 @@ MonoBehaviour:
   boss: {fileID: 1307346855}
   hitScore: 0
   missScore: 0
-  longNoteScoreTimeBar: 0.14
   canChangeGravity: 0
   canCross: 0
   curYPos: 0
@@ -3486,7 +3485,7 @@ MonoBehaviour:
   block: {fileID: 2425594156374542513, guid: 28777205d87fb1e4a8eb462b7e0b6b70, type: 3}
   bgm: {fileID: 1006874500}
   Jsonfile: {fileID: 4900000, guid: 0530f1a07ce2d234aa1eaf3dc74c699a, type: 3}
-  moveSpeed: 0.25
+  moveSpeed: 0.24
 --- !u!1 &736575766
 GameObject:
   m_ObjectHideFlags: 0
@@ -4413,8 +4412,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 478414e7927864e4f975353579113e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullDamage: 200
-  singleLimit: 5
+  fullDamage: 180
+  singleLimit: 12
   fireDiamond: {fileID: 6793344568998294521, guid: 0942592310d901b4ca2d102f56a13991, type: 3}
   fireBar: {fileID: 1878400880}
   grassDiamond: {fileID: 6793344568998294521, guid: 0020b74fc6d5612468084ca21a688ffd, type: 3}
@@ -5983,7 +5982,7 @@ MonoBehaviour:
   bossMoveSpeed: 0.01
   bossAttackPeriod: 10
   stateCount: 000000000000000000000000
-  bossHealth: 10000
+  bossHealth: 1500
   laser: {fileID: 3364694483412564346, guid: 6f3bf51229f147047a094637825a9436, type: 3}
   bossAnimator: {fileID: 0}
   speed: 1
@@ -6083,7 +6082,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1353258435
 MonoBehaviour:
   m_ObjectHideFlags: 0

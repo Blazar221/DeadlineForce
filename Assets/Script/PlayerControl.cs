@@ -53,7 +53,7 @@ public class PlayerControl : MonoBehaviour
     private float collsionTime;
 
     private float longNoteScoreTimeCounter = 0f;
-    [SerializeField] private float longNoteScoreTimeBar = 0.14f;
+    private float longNoteScoreTimeBar = 0.2f;
     
     private bool canGetSingleScore;
     private bool canGetLongScore;
