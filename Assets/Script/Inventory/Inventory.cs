@@ -19,7 +19,6 @@ public class Inventory
     }
     
     private Item Sprite2Item(Sprite sprite) {
-        Debug.Log("Sprite2Item" + sprite.name);
         switch (sprite.name) {
             default:
             case "Water": return new Item{ itemType = Item.ItemType.Water, amount = 1};

@@ -40,7 +40,6 @@ public class InventoryUI : MonoBehaviour
             slotRectTransform.anchoredPosition = new Vector2(x * slotCellSize, 0);
             Image image = slotRectTransform.Find("Image").GetComponent<Image>();
             image.sprite = item.GetSprite();
-            Debug.Log("RefreshInventoryItems" + item.GetSprite().name);
             if(image.sprite.name == "Rock"){
                 Debug.Log("change Rock color");
                 image.color = new Color(0.58f, 0.3f, 0f, 1f);

@@ -23,12 +23,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Level2temp.unity
     guid: 83a60b5b1cc610049aa8ba4359919fa0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level2 temp temp.unity
     guid: 5c947b96072b22840a0c20fd00203f5d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OldLevel3.unity
     guid: 603bc5766d97e5c4b8c249df501e7e23
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 8afff55d4d8dc1248925fe891baa69bb
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 04f39a770b5d54a46a25785cb7bd1ec2
