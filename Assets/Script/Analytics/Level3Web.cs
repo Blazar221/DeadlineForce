@@ -3,10 +3,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Level1Web : MonoBehaviour
+public class Level3Web : MonoBehaviour
 {
     [SerializeField] private string formURL;
-    public static Level1Web instance;
+    public static Level3Web instance;
     private GameObject player;
     private long _sessionId;
     private float _playtime;
@@ -15,8 +15,8 @@ public class Level1Web : MonoBehaviour
     private string _subQuests = "";
     private string _attacks = "";
 
-    private static readonly float[] _diamondStart = {2f, 25.67f, 34.07f, 46.07f, 62.87f, 72.47f};
-    private static readonly float[] _diamondEnd = {22.25f, 31.07f, 43.37f, 60.17f, 69.47f, 81.47f};
+    private static readonly float[] _diamondStart = {1.57f, 10f, 22.19f, 31.57f, 46.57f, 65.78f};
+    private static readonly float[] _diamondEnd = {9.07f, 20.32f, 29.69f, 42.82f, 61.57f, 74.69f};
     private string pathOption = "";
     private float[,] onPathTime = new float[6,4];
     private float playerPos;
@@ -97,17 +97,16 @@ public class Level1Web : MonoBehaviour
                                 string quests, string path, string attack){
         // Create the form and enter responses
         WWWForm form = new WWWForm();
-        form.AddField("entry.1331702699", sessionId);
-        form.AddField("entry.2001195189", playtime);
-        form.AddField("entry.895654878", bossHealth);
-        form.AddField("entry.1415939753", playerHealth);
-        form.AddField("entry.1101869322", quests);
-        form.AddField("entry.476266214", path);
-        form.AddField("entry.1873070447", attack);
+        form.AddField("entry.804819462", sessionId);
+        form.AddField("entry.591548254", playtime);
+        form.AddField("entry.1248979546", bossHealth);
+        form.AddField("entry.784929143", playerHealth);
+        form.AddField("entry.566242056", quests);
+        form.AddField("entry.1092481504", path);
+        form.AddField("entry.1926328653", attack);
 
         // Send responses and verify result
-        using (UnityWebRequest www = UnityWebRequest.Post(formURL, form))
-        {
+        using (UnityWebRequest www = UnityWebRequest.Post(formURL, form)){
             yield return www.SendWebRequest();
 
             if (www.result != UnityWebRequest.Result.Success)
@@ -116,7 +115,7 @@ public class Level1Web : MonoBehaviour
             }
             else
             {
-                Debug.Log("Level1Web Form upload complete");
+                Debug.Log("Level3Web Form upload complete");
             }
         }
     }

@@ -15,12 +15,10 @@ public class Level2Web : MonoBehaviour
     private string _subQuests = "";
     private string _attacks = "";
 
-    private static readonly float[] _diamondStart = 
-        {3.091f, 7.455f, 11.818f, 16.182f, 22.727f, 29.273f, 33.636f, 38.0f, 42.364f, 46.727f, 51.091f, 57.636f, 64.182f};
-    private static readonly float[] _diamondEnd = 
-        {6.364f, 10.727f, 15.091f, 21.364f, 27.909f, 32.273f, 36.909f, 41.273f, 45.636f, 50.0f, 56.273f, 62.818f, 70.454f};
+    private static readonly float[] _diamondStart = {3.091f, 11.818f, 22.727f, 33.636f, 42.364f, 51.091f};
+    private static readonly float[] _diamondEnd = {10.727f, 21.364f, 32.273f, 41.273f, 50.0f, 70.454f};
     private string pathOption = "";
-    private float[,] onPathTime = new float[13,4];
+    private float[,] onPathTime = new float[6,4];
     private float playerPos;
     private float currentTime;
 
