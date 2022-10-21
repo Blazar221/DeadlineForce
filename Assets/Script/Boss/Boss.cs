@@ -149,6 +149,10 @@ public class Boss : MonoBehaviour
         
     }
 
+    public int GetBossHealth()
+    {
+        return bossHealth;
+    }
     void Dead()
     {
         Instantiate(deathEffect, transform.position, Quaternion.identity);
