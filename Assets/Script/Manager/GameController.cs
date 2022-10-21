@@ -37,20 +37,12 @@ public class GameController : MonoBehaviour
     private void OnEnable()
     {
         PlayerControl.OnPlayerDeath += EnableGameOverMenu;
+        Boss.OnBossDeath += EnableCongratsMenu;
     }
 
     private void OnDisable()
     {
         PlayerControl.OnPlayerDeath -= EnableGameOverMenu;
-    }
-
-    private void WinEnable()
-    {
-        Boss.OnBossDeath += EnableCongratsMenu;
-    }
-
-    private void WinDisable()
-    {
         Boss.OnBossDeath -= EnableCongratsMenu;
     }
 

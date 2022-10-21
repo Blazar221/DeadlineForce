@@ -145,7 +145,6 @@ public class Boss : MonoBehaviour
         {
             bossHealth = 0;
             OnBossDeath?.Invoke();
-            Dead();
         }
         
     }
