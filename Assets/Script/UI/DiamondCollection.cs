@@ -33,7 +33,8 @@ public class DiamondCollection : MonoBehaviour
 
     public void Reset()
     {
-        if ((fireCount + grassCount + waterCount + rockCount) >= 30)
+        // if ((fireCount + grassCount + waterCount + rockCount) >= 30)
+        if (fireCount >= 12 && grassCount >= 12 && waterCount >= 12 && rockCount >= 12)
         {
             Boss.instance.TakeDamage(fireCount, waterCount, grassCount, rockCount);
             fireCount = 0;
