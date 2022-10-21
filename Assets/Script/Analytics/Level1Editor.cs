@@ -19,7 +19,7 @@ public class Level1Editor : MonoBehaviour
 
     private static readonly float[] _diamondStart = {2f, 14f, 25.67f, 36.47f, 46.07f, 55.67f, 64.07f};
     private static readonly float[] _diamondEnd = {11.75f, 22.25f, 31.07f, 43.37f, 52.67f, 61.07f, 74.27f};
-    private static readonly float[] _emissionStart = {12.5f, 22.5f, 31.5f, 43.5f, 53f, 61.5f, 70f, 74.5f};
+    private static readonly float[] _emissionStart = {12f, 22.5f, 31.5f, 43.5f, 53f, 61.5f, 69.5f, 74.5f};
     private static readonly float[] _emissionEnd = {13.7f, 25f, 34f, 46f, 55.5f, 63f, 72.5f, 82f};
     private string pathOption = "";
     private float[,] onPathTime = new float[7,2];
@@ -54,7 +54,6 @@ public class Level1Editor : MonoBehaviour
             for(int i=0; i<emission.Length; i++){
                 if(currentTime <= _emissionEnd[i] && currentTime >= _emissionStart[i]){
                     emission[i] = 1;
-                    Debug.Log(i);
                     break;
                 }
             }
