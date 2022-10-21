@@ -5117,10 +5117,10 @@ MonoBehaviour:
   flashTime: 0.3
   healthBar: {fileID: 808834014}
   deathEffect: {fileID: 1755349173569476, guid: 1b0d883ac069a4f2ab8e69d6cff40416, type: 3}
-  bossBody: {fileID: 0}
-  bossHead: {fileID: 0}
-  bossLeftLeg: {fileID: 0}
-  bossRightLeg: {fileID: 0}
+  bossBody: {fileID: 1371344481}
+  bossHead: {fileID: 203480176}
+  bossLeftLeg: {fileID: 483930902}
+  bossRightLeg: {fileID: 2059247978}
   attackingLine: 0
   moveDestY: 0
   curLine: 2
