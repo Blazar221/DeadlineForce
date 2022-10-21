@@ -10,6 +10,8 @@ public class TargetPanel : MonoBehaviour
 
     [SerializeField] private Sprite[] items;
 
+    public int patternDamage = 20;
+
     // [SerializeField] private Image[] gems;
     [SerializeField] private Sprite[] sources;
     public GameObject targetLine;
@@ -153,7 +155,7 @@ public class TargetPanel : MonoBehaviour
                 if (objL.RemoveFirstGem())
                 {
                     // the line is completed
-                    Boss.instance.TakeDamage(20);
+                    Boss.instance.TakeDamage(patternDamage);
                     UpdateAnalytics(objL);
                     var toDestroy = objL.GetGameObj();
                     Destroy(toDestroy);
