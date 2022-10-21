@@ -13,7 +13,7 @@ public class Level2Editor : MonoBehaviour
     private int _bossHealth;
     private int _playerHealth;
     private string _subQuests = "";
-    private string _attacks = "";
+    private string _timer = "";
 
     private static readonly float[] _diamondStart = {3.091f, 11.818f, 22.727f, 33.636f, 42.364f, 51.091f};
     private static readonly float[] _diamondEnd = {10.727f, 21.364f, 32.273f, 41.273f, 50.0f, 70.454f};
@@ -68,11 +68,6 @@ public class Level2Editor : MonoBehaviour
         _subQuests += quest;
     }
 
-    public void UpdateAttack(int count){
-        string attack = count.ToString() + "|";
-        _attacks += attack;
-    }
-
     private void CalculatePath(){
         for (int i = 0; i < onPathTime.GetLength(0); i++)
         {
@@ -88,13 +83,14 @@ public class Level2Editor : MonoBehaviour
         _playtime = Time.timeSinceLevelLoad;
         _bossHealth = (Boss.instance != null)?Boss.instance.bossHealth:0;
         _playerHealth = PlayerControl.instance.currentHealth;
+        _timer = DiamondCollection.Instance.time;
         CalculatePath();
         StartCoroutine(Post(_sessionId.ToString(), _playtime.ToString(), _bossHealth.ToString(), _playerHealth.ToString(),
-                        _subQuests, pathOption, _attacks));
+                        _subQuests, pathOption, _timer));
     }
 
     private IEnumerator Post(string sessionId, string playtime, string bossHealth, string playerHealth,
-                                string quests, string path, string attack){
+                                string quests, string path, string timer){
         // Create the form and enter responses
         WWWForm form = new WWWForm();
         form.AddField("entry.595256420", sessionId);
@@ -103,7 +99,7 @@ public class Level2Editor : MonoBehaviour
         form.AddField("entry.54375219", playerHealth);
         form.AddField("entry.1847098271", quests);
         form.AddField("entry.1082972053", path);
-        form.AddField("entry.811315430", attack);
+        form.AddField("entry.811315430", timer);
 
         // Send responses and verify result
         using (UnityWebRequest www = UnityWebRequest.Post(formURL, form))
