@@ -8,6 +8,10 @@ public class PlayerControl : MonoBehaviour
 {
     private Rigidbody2D rb2D;
 
+    SpriteRenderer fireRenderer;
+    SpriteRenderer grassRenderer;
+    SpriteRenderer waterRenderer;
+    SpriteRenderer rockRenderer;
     public static event Action OnPlayerDeath;
     public static PlayerControl instance;
 
@@ -16,6 +20,19 @@ public class PlayerControl : MonoBehaviour
     public int maxHealth = 100; 
     public int currentHealth;
     public HealthBar healthBar;
+
+    public GameObject fireDiamond;
+    public HealthBar fireBar;
+    public GameObject grassDiamond;
+    public HealthBar grassBar;
+    public GameObject waterDiamond;
+    public HealthBar waterBar;
+    public GameObject rockDiamond;
+    public HealthBar rockBar;
+    private int fireCount = 0;
+    private int grassCount = 0;
+    private int waterCount = 0;
+    private int rockCount = 0;
 
     // Boss 
     public Boss boss;
@@ -88,6 +105,16 @@ public class PlayerControl : MonoBehaviour
         
         targetPanel = TargetPanel.Instance;
         inventory = targetPanel.inventory;
+
+        fireBar.SetMinHealth(fireCount);
+        grassBar.SetMinHealth(grassCount);
+        waterBar.SetMinHealth(waterCount);
+        rockBar.SetMinHealth(rockCount);
+
+        fireRenderer = fireDiamond.GetComponent<SpriteRenderer>();
+        grassRenderer = grassDiamond.GetComponent<SpriteRenderer>();
+        waterRenderer = waterDiamond.GetComponent<SpriteRenderer>();
+        rockRenderer = rockDiamond.GetComponent<SpriteRenderer>();
         
     }
 
@@ -196,6 +223,8 @@ public class PlayerControl : MonoBehaviour
         GameOverScreen.instance.GetRank();
         ScoreManager.instance.GetRank();
         //Debug.Log(hitScore + "/" + missScore);
+        // Reset diamond
+        DiamondCollection.Instance.Reset();
     }
 
     void FixedUpdate() {
@@ -216,6 +245,20 @@ public class PlayerControl : MonoBehaviour
     {
         hitScore++;
         targetPanel.TargetHit(toHit.GetComponent<SpriteRenderer>().color);
+        
+        if (toHit.GetComponent<SpriteRenderer>().color == fireRenderer.color)
+        {
+            DiamondCollection.Instance.AddFireCount();
+        } else if (toHit.GetComponent<SpriteRenderer>().color == grassRenderer.color)
+        {
+            DiamondCollection.Instance.AddGrassCount();
+        } else if (toHit.GetComponent<SpriteRenderer>().color == waterRenderer.color)
+        {
+            DiamondCollection.Instance.AddWaterCount();
+        } else if (toHit.GetComponent<SpriteRenderer>().color == rockRenderer.color)
+        {
+            DiamondCollection.Instance.AddRockCount();
+        }
         // best way is to set tag for each color of gem
         // if(toHit.tag == "food"){
             // toHit.SetActive(false);
@@ -407,4 +450,5 @@ public class PlayerControl : MonoBehaviour
             canAvoidDamage = false;
         }
     }
+
 }
