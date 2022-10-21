@@ -132,13 +132,13 @@ public class Boss : MonoBehaviour
         }
     }
     
-    public void TakeDamage(int rCnt, int bCnt, int gCnt, int yCnt)
+    public void TakeDamage(int damage)
     {
         Instantiate(bloodEffect, bossHead.transform.position, Quaternion.identity);
 
         FlashColor(flashTime);
 
-        bossHealth -= CalcDamage(rCnt, bCnt, gCnt, yCnt);
+        bossHealth -= damage;
         healthBar.SetHealth(bossHealth);
 
         if (bossHealth <= 0)
@@ -148,12 +148,6 @@ public class Boss : MonoBehaviour
             Dead();
         }
         
-    }
-
-    public int CalcDamage(int rCnt, int bCnt, int gCnt, int yCnt){
-        int groupCnt = Mathf.Min(rCnt, bCnt, gCnt, yCnt);
-        UpdateAnalytics(groupCnt);
-        return groupCnt * 30 + rCnt*rCnt/2 + bCnt*bCnt/2 + gCnt*gCnt/2 + yCnt*yCnt/2;
     }
 
     void Dead()

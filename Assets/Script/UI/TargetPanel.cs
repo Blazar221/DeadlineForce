@@ -153,6 +153,7 @@ public class TargetPanel : MonoBehaviour
                 if (objL.RemoveFirstGem())
                 {
                     // the line is completed
+                    Boss.instance.TakeDamage(20);
                     UpdateAnalytics(objL);
                     var toDestroy = objL.GetGameObj();
                     Destroy(toDestroy);
