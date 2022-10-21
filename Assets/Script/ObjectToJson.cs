@@ -478,7 +478,7 @@ public class ObjectToJson : MonoBehaviour
         new (new []{ 74.69f, 76.10f }, 0 , 2 , false , 1 ), 
         new (new []{ 74.69f, 76.10f }, 1 , 2 , false , 2 ), 
         new (new []{ 74.69f, 76.10f }, 2 , 2 , false , 3 ), 
-        new (new []{ 74.69f, 76.10f }, 3 , 2 , false , 0 ), 
+        new (new []{ 74.69f, 76.10f }, 3 , 2 , false , 0 ),  
     };
 
     Object[] L2objArr = new Object[]

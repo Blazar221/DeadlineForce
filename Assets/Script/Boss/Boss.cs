@@ -35,6 +35,8 @@ public class Boss : MonoBehaviour
     public GameObject bossLeftLeg;
     public GameObject bossRightLeg;
     List<SpriteRenderer> bossRenderers;
+
+    public GameObject bloodEffect;
     
     bool startMove;
 
@@ -240,6 +242,9 @@ public class Boss : MonoBehaviour
             ElemType.Grass => 2,
             _ => 3,
         }; 
+
+        // blood effect
+        Instantiate(bloodEffect, bossHead.transform.position, Quaternion.identity);
 
         FlashColor(flashTime);
 

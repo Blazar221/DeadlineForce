@@ -5255,6 +5255,7 @@ MonoBehaviour:
   bossHead: {fileID: 203480176}
   bossLeftLeg: {fileID: 483930902}
   bossRightLeg: {fileID: 2059247978}
+  bloodEffect: {fileID: 7684543134659561662, guid: ae0d4e81658269946b040554832eb4cb, type: 3}
   attackingLine: 0
   moveDestY: 0
   curLine: 0
