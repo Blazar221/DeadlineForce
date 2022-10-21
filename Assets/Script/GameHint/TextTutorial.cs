@@ -20,12 +20,15 @@ public class TextTutorial : MonoBehaviour
     [SerializeField] private TextMeshProUGUI TripleInstruction;
     [SerializeField] private TextMeshProUGUI passdownInstruction;
     [SerializeField] private TextMeshProUGUI passupInstruction;
+    [SerializeField] private TextMeshProUGUI gemcollectionInstruction;
+    [SerializeField] private TextMeshProUGUI PressJInstruction;
+    [SerializeField] private TextMeshProUGUI MissionInstruction;
     
     private PlayerControl playerControl;
     
     private bool shortNoteLearned = false;
     private bool tripleLearned1 = false;
-    private bool tripleLearned2 = false;
+    private bool gemcollectionLearned = false;
     
     private bool longNoteLearned = false;
     private bool upSwitchLearned = false;
@@ -39,12 +42,12 @@ public class TextTutorial : MonoBehaviour
     private float t2ShortNoteTime = 4f;
     
     private float firstLongNoteTime = 7f;
-    // private float firstBlockTime = 7.5f;
+    private float firstgemcollectionTime = 10f;
     private float firstUpSwitchTime = 12f;
     private float firstDownSwitchTime = 14f;
     private float passdownSwitchTime = 16f;
     private float passupSwitchTime = 18f;
-    private float finishTime = 21f;
+    private float finishTime = 28f;
     
     // Start is called before the first frame update
     void Start()
@@ -58,6 +61,9 @@ public class TextTutorial : MonoBehaviour
         TripleInstruction.enabled=false;
         passdownInstruction.enabled=false;
         passupInstruction.enabled=false;
+        gemcollectionInstruction.enabled=false;
+        PressJInstruction.enabled=false;
+        MissionInstruction.enabled=false;
     }
 
     // Update is called once per frame
@@ -98,15 +104,15 @@ public class TextTutorial : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
-        if(!tripleLearned2 && Time.timeSinceLevelLoad >= t2ShortNoteTime){
-            Time.timeScale = 0f;
-            TripleInstruction.enabled = true;
-            if (Input.GetKeyDown(KeyCode.J)) {
-                tripleLearned2 = true;
-                TripleInstruction.enabled = false;
-                Time.timeScale = 1f;
-            }
-        }
+        // if(!tripleLearned2 && Time.timeSinceLevelLoad >= t2ShortNoteTime){
+        //     Time.timeScale = 0f;
+        //     TripleInstruction.enabled = true;
+        //     if (Input.GetKeyDown(KeyCode.J)) {
+        //         tripleLearned2 = true;
+        //         TripleInstruction.enabled = false;
+        //         Time.timeScale = 1f;
+        //     }
+        // }
        
         
         if(!longNoteLearned && Time.timeSinceLevelLoad >= firstLongNoteTime){
@@ -115,6 +121,20 @@ public class TextTutorial : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.K)) {
                 longNoteLearned = true;
                 longNoteInstruction.enabled = false;
+                Time.timeScale = 1f;
+            }
+        }
+
+        if(!gemcollectionLearned && Time.timeSinceLevelLoad >= firstgemcollectionTime){
+            Time.timeScale = 0f;
+            gemcollectionInstruction.enabled = true;
+            PressJInstruction.enabled = true;
+            MissionInstruction.enabled=true;
+            if (Input.GetKeyDown(KeyCode.J)) {
+                gemcollectionLearned = true;
+                gemcollectionInstruction.enabled = false;
+                PressJInstruction.enabled = false;
+                MissionInstruction.enabled=false;
                 Time.timeScale = 1f;
             }
         }
