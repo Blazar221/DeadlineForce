@@ -231,7 +231,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.17895468, g: 0.1366441, b: 0.4433962, a: 1}
+  m_Color: {r: 0.7490196, g: 0.57254905, b: 0.8588236, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2463,7 +2463,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 15
+  m_MaxValue: 9
   m_WholeNumbers: 1
   m_Value: 4
   m_OnValueChanged:
@@ -3809,7 +3809,6 @@ MonoBehaviour:
   boss: {fileID: 0}
   hitScore: 0
   missScore: 0
-  longNoteScoreTimeBar: 0.14
   canChangeGravity: 0
   canCross: 0
   curYPos: 0
@@ -3962,6 +3961,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 478414e7927864e4f975353579113e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time: 
+  fullDamage: 180
+  singleLimit: 9
   fireDiamond: {fileID: 6793344568998294521, guid: 0942592310d901b4ca2d102f56a13991, type: 3}
   fireBar: {fileID: 516107441}
   grassDiamond: {fileID: 6793344568998294521, guid: 0020b74fc6d5612468084ca21a688ffd, type: 3}
@@ -5091,7 +5093,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.17895468, g: 0.1366441, b: 0.4433962, a: 1}
+  m_Color: {r: 0.7490196, g: 0.57254905, b: 0.8588236, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5552,7 +5554,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1194076827
-  m_SortingLayer: 0
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 681cdb2853ae7144c815013a86c8da7c, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -5636,7 +5638,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1194076827
-  m_SortingLayer: 0
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8eb2ff5d15ad57044863329a435b3394, type: 3}
   m_Color: {r: 0.254717, g: 0.2006497, b: 0.2006497, a: 1}
@@ -6467,7 +6469,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -6869,7 +6871,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 15
+  m_MaxValue: 9
   m_WholeNumbers: 1
   m_Value: 4
   m_OnValueChanged:
@@ -7075,6 +7077,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fc9089b5415343b4faee8433fabf904f, type: 3}
   - {fileID: 21300000, guid: 68cc184808bceea42aed13484859d809, type: 3}
   - {fileID: 21300000, guid: 57c6a2c8021569146b6b0b4366f73e37, type: 3}
+  patternDamage: 20
   sources:
   - {fileID: -1855127044, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
   - {fileID: -1955337794, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
@@ -7888,7 +7891,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1194076827
-  m_SortingLayer: 0
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 72186849934bfde4484d95f21e9e9145, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -8360,7 +8363,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 15
+  m_MaxValue: 9
   m_WholeNumbers: 1
   m_Value: 4
   m_OnValueChanged:
@@ -8790,8 +8793,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Here is our Four diamonds bar\nOnce we fullfill All four diamonds Bar,\n
-    we will attack the Boss!\n\n"
+  m_text: 'Here is our Four diamonds bar
+
+    Once we fullfill All four diamonds
+    Bar,
+
+    we will attack the Boss!
+
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
   m_sharedMaterial: {fileID: -1571771168669490468, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
@@ -10182,7 +10192,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1194076827
-  m_SortingLayer: 0
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d843bdc711e689e49b636a4b8a824c67, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -10800,7 +10810,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1194076827
-  m_SortingLayer: 0
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 72186849934bfde4484d95f21e9e9145, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -11062,7 +11072,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 15
+  m_MaxValue: 9
   m_WholeNumbers: 1
   m_Value: 4
   m_OnValueChanged:
@@ -11176,7 +11186,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.17895468, g: 0.1366441, b: 0.4433962, a: 1}
+  m_Color: {r: 0.7490196, g: 0.57254905, b: 0.85882354, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -11272,7 +11282,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1194076827
-  m_SortingLayer: 0
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 066cc7941702be2409b4c86b8dac4ea9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
