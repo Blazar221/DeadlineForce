@@ -40,7 +40,11 @@ public class PauseMenu : MonoBehaviour
     
     public void NextLevel()
     {
-        if (SceneManager.sceneCountInBuildSettings <= SceneManager.GetActiveScene().buildIndex + 1) return;
+        if (SceneManager.sceneCountInBuildSettings <= SceneManager.GetActiveScene().buildIndex + 1)
+        {
+            SceneManager.LoadScene("LevelMenu");
+            return;
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1f;
     }
