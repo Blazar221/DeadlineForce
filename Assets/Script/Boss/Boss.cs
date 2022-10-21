@@ -7,8 +7,6 @@ public class Boss : MonoBehaviour
 {
     public static Boss instance;
 
-    [SerializeField] public PlayerControl player;
-
     [SerializeField] private float bossMoveSpeed = 0.3f;
     [SerializeField] private float bossAttackPeriod = 10f;
 
@@ -45,6 +43,9 @@ public class Boss : MonoBehaviour
     public int curLine = 2;
     public Vector3 moveDest;
 
+    public enum ElemType {Blank, Fire, Water, Grass, Rock};
+    public ElemType eleType;
+
     void Start()
     {
         instance = this;
@@ -58,7 +59,6 @@ public class Boss : MonoBehaviour
         bossRenderers.Add(bossRightLeg.GetComponent<SpriteRenderer>());
 
         originalColor = Color.white;
-        SetColor(originalColor);
         
         bossAnimator = GetComponent<Animator>();
         
@@ -80,7 +80,11 @@ public class Boss : MonoBehaviour
         {
             yield return new WaitForSeconds(bossAttackPeriod);
 
-            attackingLine = player.curYPos;
+            while(attackingLine == curLine)
+            {
+                attackingLine = Random.Range(1, 3);
+            }
+
             moveDestY = attackingLine switch
             {
                 0 => 7,
@@ -98,6 +102,8 @@ public class Boss : MonoBehaviour
 
     void CheckMoveEnd()
     {
+        Debug.Log("moveDest" + moveDest);
+        Debug.Log("transform" + transform.position);
         transform.position = Vector3.MoveTowards(transform.position, moveDest, bossMoveSpeed);
         if(transform.position.y == moveDestY){
             curLine = attackingLine;
@@ -129,27 +135,46 @@ public class Boss : MonoBehaviour
         }
     }
     
-    public void TakeDamage(int rCnt, int bCnt, int gCnt, int yCnt)
+    public void TakeDamage(List<Item> attackingItems)
     {
-        // blood effect
-        Instantiate(bloodEffect, bossHead.transform.position, Quaternion.identity);
-
-        FlashColor(flashTime);
-
-        bossHealth -= CalcDamage(rCnt, bCnt, gCnt, yCnt);
-        healthBar.SetHealth(bossHealth);
-
-        if (bossHealth <= 0)
+        for (int i = 0; i < attackingItems.Count; i++)
         {
-            Dead();
-            GameController.Instance.EnableCongratsMenu();
+            int attackingVal = attackingItems[i].itemType switch 
+            {
+                Item.ItemType.Water => 0,
+                Item.ItemType.Fire => 1,
+                Item.ItemType.Grass => 2,
+                _ => 3,
+            };
+            int defendingVal = eleType switch 
+            {
+                ElemType.Water => 0,
+                ElemType.Fire => 1,
+                ElemType.Grass => 2,
+                _ => 3,
+            }; 
+
+            // blood effect
+            Instantiate(bloodEffect, bossHead.transform.position, Quaternion.identity);
+
+            FlashColor(flashTime);
+
+            // TODO give real data
+            bossHealth -= CalcDamage(1,2,3,4);
+            healthBar.SetHealth(bossHealth);
+
+            if (bossHealth <= 0)
+            {
+                Dead();
+                GameController.Instance.EnableCongratsMenu();
+            }
         }
-           
+        
     }
 
     public int CalcDamage(int rCnt, int bCnt, int gCnt, int yCnt){
         int groupCnt = Mathf.Min(rCnt, bCnt, gCnt, yCnt);
-        
+        UpdateAnalytics(groupCnt);
         return groupCnt * 30 + rCnt*rCnt/2 + bCnt*bCnt/2 + gCnt*gCnt/2 + yCnt*yCnt/2;
     }
 
@@ -169,5 +194,32 @@ public class Boss : MonoBehaviour
     void ResetColor()
     {
         SetColor(originalColor);
+    }
+
+    private void UpdateAnalytics(int count){
+        if (Application.isEditor)
+        {
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "Level1":
+                    Level1Editor.instance.UpdateAttack(count);
+                    break;
+                case "Level2":
+                    Level2Editor.instance.UpdateAttack(count);
+                    break;
+            }
+        }
+        else
+        {
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "Level1":
+                    Level1Web.instance.UpdateAttack(count);
+                    break;
+                case "Level2":
+                    Level2Web.instance.UpdateAttack(count);
+                    break;
+            }
+        }
     }
 }

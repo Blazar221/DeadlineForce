@@ -70,11 +70,9 @@ public class GameController : MonoBehaviour
             switch (SceneManager.GetActiveScene().name)
             {
                 case "Level1":
-                    Level1Editor.instance.UpdateCounter(Boss.instance.stateCount);
                     Level1Editor.instance.Send();
                     break;
                 case "Level2":
-                    Level2Editor.instance.UpdateCounter(Boss.instance.stateCount);
                     Level2Editor.instance.Send();
                     break;
             }
@@ -84,11 +82,9 @@ public class GameController : MonoBehaviour
             switch (SceneManager.GetActiveScene().name)
             {
                 case "Level1":
-                    Level1Web.instance.UpdateCounter(Boss.instance.stateCount);
                     Level1Web.instance.Send();
                     break;
                 case "Level2":
-                    Level2Web.instance.UpdateCounter(Boss.instance.stateCount);
                     Level2Web.instance.Send();
                     break;
             }
