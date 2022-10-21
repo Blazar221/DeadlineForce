@@ -93,11 +93,11 @@ public class Level2Web : MonoBehaviour
                                 string quests, string path, string timer){
         // Create the form and enter responses
         WWWForm form = new WWWForm();
-        form.AddField("entry.595256420", sessionId);
-        form.AddField("entry.1906048010", playtime);
-        form.AddField("entry.813446464", bossHealth);
-        form.AddField("entry.54375219", playerHealth);
-        form.AddField("entry.1847098271", quests);
+        form.AddField("entry.1543633014", sessionId);
+        form.AddField("entry.1130630893", playtime);
+        form.AddField("entry.1056179249", bossHealth);
+        form.AddField("entry.702910713", playerHealth);
+        form.AddField("entry.653905903", quests);
         form.AddField("entry.281356619", path);
         form.AddField("entry.2094259220", timer);
 
