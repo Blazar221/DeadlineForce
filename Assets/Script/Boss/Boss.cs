@@ -7,6 +7,8 @@ public class Boss : MonoBehaviour
 {
     public static Boss instance;
 
+    [SerializeField] public PlayerControl player;
+
     [SerializeField] private float bossMoveSpeed = 0.3f;
     [SerializeField] private float bossAttackPeriod = 10f;
 
@@ -43,9 +45,6 @@ public class Boss : MonoBehaviour
     public int curLine = 2;
     public Vector3 moveDest;
 
-    public enum ElemType {Blank, Fire, Water, Grass, Rock};
-    public ElemType eleType;
-
     void Start()
     {
         instance = this;
@@ -59,6 +58,7 @@ public class Boss : MonoBehaviour
         bossRenderers.Add(bossRightLeg.GetComponent<SpriteRenderer>());
 
         originalColor = Color.white;
+        SetColor(originalColor);
         
         bossAnimator = GetComponent<Animator>();
         
@@ -80,11 +80,7 @@ public class Boss : MonoBehaviour
         {
             yield return new WaitForSeconds(bossAttackPeriod);
 
-            while(attackingLine == curLine)
-            {
-                attackingLine = Random.Range(1, 3);
-            }
-
+            attackingLine = player.curYPos;
             moveDestY = attackingLine switch
             {
                 0 => 7,
@@ -102,8 +98,6 @@ public class Boss : MonoBehaviour
 
     void CheckMoveEnd()
     {
-        Debug.Log("moveDest" + moveDest);
-        Debug.Log("transform" + transform.position);
         transform.position = Vector3.MoveTowards(transform.position, moveDest, bossMoveSpeed);
         if(transform.position.y == moveDestY){
             curLine = attackingLine;
@@ -135,39 +129,19 @@ public class Boss : MonoBehaviour
         }
     }
     
-    public void TakeDamage(List<Item> attackingItems)
+    public void TakeDamage(int rCnt, int bCnt, int gCnt, int yCnt)
     {
-        for (int i = 0; i < attackingItems.Count; i++)
+        Instantiate(bloodEffect, bossHead.transform.position, Quaternion.identity);
+
+        FlashColor(flashTime);
+
+        bossHealth -= CalcDamage(rCnt, bCnt, gCnt, yCnt);
+        healthBar.SetHealth(bossHealth);
+
+        if (bossHealth <= 0)
         {
-            int attackingVal = attackingItems[i].itemType switch 
-            {
-                Item.ItemType.Water => 0,
-                Item.ItemType.Fire => 1,
-                Item.ItemType.Grass => 2,
-                _ => 3,
-            };
-            int defendingVal = eleType switch 
-            {
-                ElemType.Water => 0,
-                ElemType.Fire => 1,
-                ElemType.Grass => 2,
-                _ => 3,
-            }; 
-
-            // blood effect
-            Instantiate(bloodEffect, bossHead.transform.position, Quaternion.identity);
-
-            FlashColor(flashTime);
-
-            // TODO give real data
-            bossHealth -= CalcDamage(1,2,3,4);
-            healthBar.SetHealth(bossHealth);
-
-            if (bossHealth <= 0)
-            {
-                Dead();
-                GameController.Instance.EnableCongratsMenu();
-            }
+            Dead();
+            GameController.Instance.EnableCongratsMenu();
         }
         
     }
