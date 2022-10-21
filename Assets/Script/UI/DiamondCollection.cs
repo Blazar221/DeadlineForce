@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class DiamondCollection : MonoBehaviour
 {
     public static DiamondCollection Instance;
-    private float time = 0f;
-    private float timeCount_f = 0f;
+    public string time = "";
+    private float lastTime = 0f;
     private int timeCount_i = 0;
 
     private int fireCount = 0;
@@ -53,10 +53,9 @@ public class DiamondCollection : MonoBehaviour
             grassBar.SetHealth(grassCount);
             waterBar.SetHealth(waterCount);
             rockBar.SetHealth(rockCount);
-            timeCount_f = Time.deltaTime - time;
-            time = Time.deltaTime;
-            timeCount_i = (int)timeCount_f;
-            Debug.Log(timeCount_i);
+            time += (Time.timeSinceLevelLoad - lastTime).ToString() + "|";
+            lastTime = Time.timeSinceLevelLoad;
+            Debug.Log(time);
         }
         
     }

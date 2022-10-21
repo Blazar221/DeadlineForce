@@ -170,37 +170,4 @@ public class Boss : MonoBehaviour
     {
         SetColor(originalColor);
     }
-
-    private void UpdateAnalytics(int count){
-        if (Application.isEditor)
-        {
-            switch (SceneManager.GetActiveScene().name)
-            {
-                case "Level1":
-                    Level1Editor.instance.UpdateAttack(count);
-                    break;
-                case "Level2":
-                    Level2Editor.instance.UpdateAttack(count);
-                    break;
-                case "Level3":
-                    Level3Editor.instance.UpdateAttack(count);
-                    break;
-            }
-        }
-        else
-        {
-            switch (SceneManager.GetActiveScene().name)
-            {
-                case "Level1":
-                    Level1Web.instance.UpdateAttack(count);
-                    break;
-                case "Level2":
-                    Level2Web.instance.UpdateAttack(count);
-                    break;
-                case "Level3":
-                    Level3Web.instance.UpdateAttack(count);
-                    break;
-            }
-        }
-    }
 }
