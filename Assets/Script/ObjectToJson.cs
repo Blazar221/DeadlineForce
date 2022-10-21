@@ -1882,9 +1882,10 @@ public class ObjectToJson : MonoBehaviour
     Object[] TutorialobjArr = new Object[]
     {
         new Object(new [] { 0f, 0f }, 1, 1, false,1), 
-        new Object(new [] { 0f, 0f }, 1, 1, false,1), 
+        new Object(new [] { 0f, 0f }, 1, 1, false,0), 
         new Object(new [] { 1f, 1f }, 1, 1, false,1), 
-        new Object(new [] { 2f, 2f }, 1, 1, false,1), 
+        new Object(new [] { 2f, 2f }, 1, 1, false,2), 
+        new Object(new [] { 3f, 3f }, 1, 1, false,3), 
         
         
         new Object(new [] { 5f, 6.5f }, 1, 2, false), 
