@@ -23,20 +23,20 @@ public class GameController : MonoBehaviour
     {
         timeCount += Time.deltaTime;
         bossHealth = Boss.instance.GetBossHealth();
-        if(timeCount > endTime && bossHealth <= 0)
+        if(timeCount > endTime && bossHealth <= 0 && !IsGameEnd())
         {
-            // gameIsEnd = true;
+            gameIsEnd = true;
             EnableCongratsMenu();
-        } else 
+        } else if (timeCount > endTime && bossHealth > 0 && !IsGameEnd())
         {
             EnableGameOverMenu();
         }
     }
 
-    // bool IsGameEnd()
-    // {
-    //     return gameIsEnd;
-    // }
+    bool IsGameEnd()
+    {
+        return gameIsEnd;
+    }
 
     private void OnEnable()
     {
