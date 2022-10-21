@@ -1881,7 +1881,6 @@ public class ObjectToJson : MonoBehaviour
     };
     Object[] TutorialobjArr = new Object[]
     {
-        // best lane
         new Object(new [] { 0f, 0f }, 1, 1, false,1), 
         new Object(new [] { 0f, 0f }, 1, 1, false,1), 
         new Object(new [] { 1f, 1f }, 1, 1, false,1), 
@@ -1917,14 +1916,12 @@ public class ObjectToJson : MonoBehaviour
         new Object(new []{28.47f, 28.47f}, 2, 1, false, 2),
         new Object(new []{29.07f, 29.07f}, 1, 1, false, 0),
         new Object(new []{29.07f, 29.07f}, 2, 1, false, 2),
-        new Object(new []{32.07f, 32.07f}, 1, 1, false, 2),
-        new Object(new []{32.07f, 32.07f}, 2, 1, false, 0),
+
         
         // new Object(new float[] { 5.5f, 5.5f }, 0, 1, false), 
         // new Object(new float[] { 7.75f, 7.75f }, 0, 1, false), 
         // new Object(new float[] { 7.75f, 7.75f }, 0, 1, false), 
         // new Object(new float[] { 8.25f, 8.25f }, 0, 1, false), 
-        
         
     };
         string path = Application.dataPath + "/Resources";
