@@ -219,22 +219,22 @@ public class PlayerControl : MonoBehaviour
     void ScoreLong()
     {
         if(itemReleaseTimeCounter > itemReleaseTimeBar){
-            if(!inventory.isEmpty()){
-                Item rlsItem = inventory.RemoveFirst();
-                boss.TakeDamage(rlsItem);
-                itemReleaseTimeCounter = 0f;
+            // if(!inventory.isEmpty()){
+            //     Item rlsItem = inventory.RemoveFirst();
+            //     boss.TakeDamage(rlsItem);
+            //     itemReleaseTimeCounter = 0f;
 
-                hitScore++;
+            //     hitScore++;
                 
-                addHitEffect(hitEffect);
-                // Update hit times
-                ScoreManager.instance.AddHit();
-                // Update final score
-                GameOverScreen.instance.IncreaseScore();
-                // Update hit rate
-                ScoreManager.instance.CalHitRate();
-                GameOverScreen.instance.CalHitRate();
-            }
+            //     addHitEffect(hitEffect);
+            //     // Update hit times
+            //     ScoreManager.instance.AddHit();
+            //     // Update final score
+            //     GameOverScreen.instance.IncreaseScore();
+            //     // Update hit rate
+            //     ScoreManager.instance.CalHitRate();
+            //     GameOverScreen.instance.CalHitRate();
+            // }
         }
     }
 

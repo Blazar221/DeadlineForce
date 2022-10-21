@@ -14,14 +14,11 @@ public class Boss : MonoBehaviour
     private float _fireRate;
     private float _canFire = 2f;
     public int[] stateCount = {0,0,0};
-    private SpriteRenderer render;
     private Color originalColor;
 
     [SerializeField] public int bossHealth = 100;
 
     [SerializeField] private GameObject laser;
-    
-    [SerializeField] private int lineNum;
     
     public Animator bossAnimator;
 
@@ -61,29 +58,9 @@ public class Boss : MonoBehaviour
         bossRenderers.Add(bossLeftLeg.GetComponent<SpriteRenderer>());
         bossRenderers.Add(bossRightLeg.GetComponent<SpriteRenderer>());
 
-        originalColor = Color.black;
+        originalColor = Color.white;
         
         bossAnimator = GetComponent<Animator>();
-        
-        // Level Control
-        // if (SceneManager.GetActiveScene().name == "Level1")
-        // {
-        //     BlankState();
-        //     Debug.Log("level1");
-        // } else if (SceneManager.GetActiveScene().name == "Level2")
-        // {
-        //     Debug.Log("level2");
-        //     SwitchState();
-        //     SwitchState();
-        // } else if (SceneManager.GetActiveScene().name == "Level3")
-        // {
-        //     Debug.Log("level3");
-        //     SwitchState();
-        //     SwitchState();
-        // }
-
-        // SwitchState();
-        // SwitchState();
         
         StartCoroutine(AutoAttack());
         startMove = false;
@@ -95,23 +72,6 @@ public class Boss : MonoBehaviour
         {
             CheckMoveEnd();
         }
-
-        // // Level control
-        // if (SceneManager.GetActiveScene().name == "Level1")
-        // {
-        //     BlankState();
-        //     // Debug.Log("level1");
-        // } else if (SceneManager.GetActiveScene().name == "Level2")
-        // {
-        //     // Debug.Log("level2");
-        //     SwitchState();
-        //     SwitchState();
-        // } else if (SceneManager.GetActiveScene().name == "Level3")
-        // {
-        //     // Debug.Log("level3");
-        //     SwitchState();
-        //     SwitchState();
-        // }
     }
 
     private IEnumerator AutoAttack()
@@ -167,59 +127,6 @@ public class Boss : MonoBehaviour
         Destroy(newItem, 1f);
     }
 
-    /*
-    public void SwitchState()
-    {
-        state++;
-        // Debug.Log("state:"+state);
-        switch (state%8)
-        {
-            case 0:
-                FireState();
-                break;
-            case 2:
-                WaterState();
-                break;
-            case 4:
-                GrassState();
-                break;
-            case 6:
-                RockState();
-                break;
-        }
-    }
-
-    void BlankState()
-    {
-        eleType = ElemType.Blank;
-        SetColor(Color.black);
-    }
-
-    void FireState() 
-    {
-        eleType = ElemType.Fire;
-        SetColor(Color.red);
-    }
-
-    void WaterState()
-    {
-        eleType = ElemType.Water;
-        SetColor(Color.blue);
-    }
-
-    void GrassState()
-    {
-        eleType = ElemType.Grass;
-        SetColor(Color.green);
-    }
-
-    void RockState()
-    {
-        eleType = ElemType.Rock;
-        SetColor(Color.yellow);
-    }
-    */
-
     void SetColor(Color nextColor)
     {
         foreach(SpriteRenderer renderer in bossRenderers)
@@ -250,9 +157,10 @@ public class Boss : MonoBehaviour
             // blood effect
             Instantiate(bloodEffect, bossHead.transform.position, Quaternion.identity);
 
-            // FlashColor(flashTime);
+            FlashColor(flashTime);
 
-            bossHealth -= CalcDamage(attackingVal, defendingVal);
+            // TODO give real data
+            bossHealth -= CalcDamage(1,2,3,4);
             healthBar.SetHealth(bossHealth);
 
             if (bossHealth <= 0)
@@ -264,20 +172,10 @@ public class Boss : MonoBehaviour
         
     }
 
-    public int CalcDamage(int attacking, int defending){
-        int baseDmg = 5;
-        if((attacking == 3 && defending == 0)||(defending - attacking == 1))
-        {
-            baseDmg *= 2;
-            stateCount[1]++;
-        }else if(((defending == 3 && attacking == 0)||(attacking - defending == 1)))
-        {
-            baseDmg /= 2;
-            stateCount[2]++;
-        }else{
-            stateCount[0]++;
-        }
-        return baseDmg;
+    public int CalcDamage(int rCnt, int bCnt, int gCnt, int yCnt){
+        int groupCnt = Mathf.Min(rCnt, bCnt, gCnt, yCnt);
+        
+        return groupCnt * 30 + rCnt*rCnt/2 + bCnt*bCnt/2 + gCnt*gCnt/2 + yCnt*yCnt/2;
     }
 
     void Dead()
@@ -289,7 +187,7 @@ public class Boss : MonoBehaviour
     // Effect of being attacked
     void FlashColor(float time)
     {
-        SetColor(Color.white);
+        SetColor(Color.red);
         Invoke("ResetColor", time);
     }
 
