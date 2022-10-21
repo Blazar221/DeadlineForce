@@ -156,32 +156,7 @@ public class PlayerControl : MonoBehaviour
                 canChangeGravity = false;
                 animator.SetBool("UpsideDown",isUpsideDown);
             }
-            // if (Input.GetKeyDown (KeyCode.W) && !isUpsideDown){
-            //     canCross = false;
-            //     isUpsideDown = true;
-            //     rb2D.gravityScale = -15;
-            //     canChangeGravity = false;
-            // } else if (Input.GetKeyDown (KeyCode.S) && isUpsideDown) {
-            //     canCross = false;
-            //     isUpsideDown = false;
-            //     rb2D.gravityScale = 15;
-            //     canChangeGravity = false;
-            // }
 		}
-
-        // if (canCross)
-		// {
-        //     if (!isUpsideDown && Input.GetKeyDown (KeyCode.S)){
-        //         isUpsideDown = true;
-        //         rb2D.gravityScale = -5;
-        //         this.gameObject.transform.position = new Vector2(curPosition.x,-1.1f);
-        //     } else if (isUpsideDown && Input.GetKeyDown (KeyCode.W)) {
-        //         isUpsideDown = false;
-        //         rb2D.gravityScale = 5;
-        //         this.gameObject.transform.position = new Vector2(curPosition.x,1.1f);
-        //     }
-        //     animator.SetBool("UpsideDown",isUpsideDown);
-		// }
 
         //加了空格可以跳 不要的话直接删掉就行
         // if (Input.GetKeyDown(KeyCode.Space)){
@@ -286,22 +261,11 @@ public class PlayerControl : MonoBehaviour
     void ScoreLong()
     {
         if(longNoteScoreTimeCounter > longNoteScoreTimeBar){
-            // if(!inventory.isEmpty()){
-            //     Item rlsItem = inventory.RemoveFirst();
-            //     boss.TakeDamage(rlsItem);
-            //     longNoteScoreTimeCounter = 0f;
-
-            //     hitScore++;
-                
-            //     addHitEffect(hitEffect);
-            //     // Update hit times
-            //     ScoreManager.instance.AddHit();
-            //     // Update final score
-            //     GameOverScreen.instance.IncreaseScore();
-            //     // Update hit rate
-            //     ScoreManager.instance.CalHitRate();
-            //     GameOverScreen.instance.CalHitRate();
-            // }
+            longNoteScoreTimeCounter = 0;
+            DiamondCollection.Instance.AddFireCount();
+            DiamondCollection.Instance.AddWaterCount();
+            DiamondCollection.Instance.AddGrassCount();
+            DiamondCollection.Instance.AddRockCount();
         }
     }
 

@@ -45,9 +45,6 @@ public class Boss : MonoBehaviour
     public int curLine = 2;
     public Vector3 moveDest;
 
-    public enum ElemType {Blank, Fire, Water, Grass, Rock};
-    public ElemType eleType;
-
     void Start()
     {
         instance = this;
@@ -61,6 +58,7 @@ public class Boss : MonoBehaviour
         bossRenderers.Add(bossRightLeg.GetComponent<SpriteRenderer>());
 
         originalColor = Color.white;
+        SetColor(originalColor);
         
         bossAnimator = GetComponent<Animator>();
         
@@ -131,41 +129,22 @@ public class Boss : MonoBehaviour
         }
     }
     
-    public void TakeDamage(List<Item> attackingItems)
+    public void TakeDamage(int rCnt, int bCnt, int gCnt, int yCnt)
     {
-        for (int i = 0; i < attackingItems.Count; i++)
+        // blood effect
+        Instantiate(bloodEffect, bossHead.transform.position, Quaternion.identity);
+
+        FlashColor(flashTime);
+
+        bossHealth -= CalcDamage(rCnt, bCnt, gCnt, yCnt);
+        healthBar.SetHealth(bossHealth);
+
+        if (bossHealth <= 0)
         {
-            int attackingVal = attackingItems[i].itemType switch 
-            {
-                Item.ItemType.Water => 0,
-                Item.ItemType.Fire => 1,
-                Item.ItemType.Grass => 2,
-                _ => 3,
-            };
-            int defendingVal = eleType switch 
-            {
-                ElemType.Water => 0,
-                ElemType.Fire => 1,
-                ElemType.Grass => 2,
-                _ => 3,
-            }; 
-
-            // blood effect
-            Instantiate(bloodEffect, bossHead.transform.position, Quaternion.identity);
-
-            FlashColor(flashTime);
-
-            // TODO give real data
-            bossHealth -= CalcDamage(1,2,3,4);
-            healthBar.SetHealth(bossHealth);
-
-            if (bossHealth <= 0)
-            {
-                Dead();
-                GameController.Instance.EnableCongratsMenu();
-            }
+            Dead();
+            GameController.Instance.EnableCongratsMenu();
         }
-        
+           
     }
 
     public int CalcDamage(int rCnt, int bCnt, int gCnt, int yCnt){

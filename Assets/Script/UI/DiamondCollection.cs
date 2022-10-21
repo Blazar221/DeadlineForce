@@ -25,20 +25,6 @@ public class DiamondCollection : MonoBehaviour
     public GameObject rockDiamond;
     public HealthBar rockBar;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        fireBar.SetMinHealth(fireCount);
-        grassBar.SetMinHealth(grassCount);
-        waterBar.SetMinHealth(waterCount);
-        rockBar.SetMinHealth(rockCount);
-
-        fireRenderer = fireDiamond.GetComponent<SpriteRenderer>();
-        grassRenderer = grassDiamond.GetComponent<SpriteRenderer>();
-        waterRenderer = waterDiamond.GetComponent<SpriteRenderer>();
-        rockRenderer = rockDiamond.GetComponent<SpriteRenderer>();
-    }
-
     // Update is called once per frame
     void Awake()
     {
@@ -49,6 +35,7 @@ public class DiamondCollection : MonoBehaviour
     {
         if ((fireCount + grassCount + waterCount + rockCount) > 15)
         {
+            Boss.instance.TakeDamage(fireCount, waterCount, grassCount, rockCount);
             fireCount = 0;
             grassCount = 0;
             waterCount = 0;
