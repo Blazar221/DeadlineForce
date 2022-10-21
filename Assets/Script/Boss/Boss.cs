@@ -131,7 +131,6 @@ public class Boss : MonoBehaviour
     
     public void TakeDamage(int rCnt, int bCnt, int gCnt, int yCnt)
     {
-        // blood effect
         Instantiate(bloodEffect, bossHead.transform.position, Quaternion.identity);
 
         FlashColor(flashTime);
@@ -144,12 +143,12 @@ public class Boss : MonoBehaviour
             Dead();
             GameController.Instance.EnableCongratsMenu();
         }
-           
+        
     }
 
     public int CalcDamage(int rCnt, int bCnt, int gCnt, int yCnt){
         int groupCnt = Mathf.Min(rCnt, bCnt, gCnt, yCnt);
-        
+        UpdateAnalytics(groupCnt);
         return groupCnt * 30 + rCnt*rCnt/2 + bCnt*bCnt/2 + gCnt*gCnt/2 + yCnt*yCnt/2;
     }
 
@@ -169,5 +168,32 @@ public class Boss : MonoBehaviour
     void ResetColor()
     {
         SetColor(originalColor);
+    }
+
+    private void UpdateAnalytics(int count){
+        if (Application.isEditor)
+        {
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "Level1":
+                    Level1Editor.instance.UpdateAttack(count);
+                    break;
+                case "Level2":
+                    Level2Editor.instance.UpdateAttack(count);
+                    break;
+            }
+        }
+        else
+        {
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "Level1":
+                    Level1Web.instance.UpdateAttack(count);
+                    break;
+                case "Level2":
+                    Level2Web.instance.UpdateAttack(count);
+                    break;
+            }
+        }
     }
 }

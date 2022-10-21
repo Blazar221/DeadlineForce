@@ -12,19 +12,13 @@ public class Level1Web : MonoBehaviour
     private float _playtime;
     private int _bossHealth;
     private int _playerHealth;
-    private int _regularAttack = 0;
-    private int _bonusAttack = 0;
-    private int _reducedAttack = 0;
-    private string subQuests = "";
+    private string _subQuests = "";
+    private string _attacks = "";
 
-    private static readonly float[] _diamondStart = {2f, 14f, 25.67f, 36.47f, 46.07f, 55.67f, 64.07f};
-    private static readonly float[] _diamondEnd = {11.75f, 22.25f, 31.07f, 43.37f, 52.67f, 61.07f, 74.27f};
-    private static readonly float[] _emissionStart = {12f, 22.5f, 31.5f, 43.5f, 53f, 61.5f, 69.5f, 74.5f};
-    private static readonly float[] _emissionEnd = {13.7f, 25f, 34f, 46f, 55.5f, 63f, 72.5f, 82f};
+    private static readonly float[] _diamondStart = {2f, 25.67f, 34.07f, 46.07f, 55.67f, 62.87f, 72.47f};
+    private static readonly float[] _diamondEnd = {22.25f, 31.07f, 43.37f, 52.67f, 60.17f, 69.47f, 81.47f};
     private string pathOption = "";
     private float[,] onPathTime = new float[7,2];
-    private int[] emission = new int[8];
-    private string emis = "";
     private float playerPos;
     private float currentTime;
 
@@ -50,23 +44,14 @@ public class Level1Web : MonoBehaviour
                 break;
             }
         }
-        if(Input.GetKeyDown(KeyCode.K)){
-            for(int i=0; i<emission.Length; i++){
-                if(currentTime <= _emissionEnd[i] && currentTime >= _emissionStart[i]){
-                    emission[i] = 1;
-                    break;
-                }
-            }
-        }
-        
     }
 
     private void UpdatePathTime(int a, float pos){
-        switch (pos>0){
-            case true:
+        switch (pos){
+            case 2:
                 onPathTime[a, 0] += 1f * Time.deltaTime;
                 break;
-            case false:
+            case -2:
                 onPathTime[a, 1] += 1f * Time.deltaTime;
                 break;
         }
@@ -74,13 +59,12 @@ public class Level1Web : MonoBehaviour
 
     public void UpdateQuest(string index, string desc, string complete){
         string quest = index + ',' + desc + ',' + complete + '|';
-        subQuests += quest;
+        _subQuests += quest;
     }
 
-    public void UpdateCounter(int[] counter){
-        _regularAttack = counter[0];
-        _bonusAttack = counter[1];
-        _reducedAttack = counter[2];
+    public void UpdateAttack(int count){
+        string attack = count.ToString() + "|";
+        _attacks += attack;
     }
 
     private void CalculatePath(){
@@ -94,26 +78,17 @@ public class Level1Web : MonoBehaviour
         }
     }
 
-    private void UpdateEmission(){
-        foreach(int e in emission){
-            emis += e.ToString() + "|";
-        }
-    }
-
     public void Send(){
         _playtime = Time.timeSinceLevelLoad;
         _bossHealth = (Boss.instance != null)?Boss.instance.bossHealth:0;
         _playerHealth = PlayerControl.instance.currentHealth;
         CalculatePath();
-        UpdateEmission();
         StartCoroutine(Post(_sessionId.ToString(), _playtime.ToString(), _bossHealth.ToString(), _playerHealth.ToString(),
-                        subQuests, _regularAttack.ToString(), _bonusAttack.ToString(), _reducedAttack.ToString(), 
-                        pathOption, emis));
+                        _subQuests, pathOption, _attacks));
     }
 
     private IEnumerator Post(string sessionId, string playtime, string bossHealth, string playerHealth,
-                                string quests, string regular, string bonus, string reduced, 
-                                string path, string emission){
+                                string quests, string path, string attack){
         // Create the form and enter responses
         WWWForm form = new WWWForm();
         form.AddField("entry.1331702699", sessionId);
@@ -121,10 +96,8 @@ public class Level1Web : MonoBehaviour
         form.AddField("entry.895654878", bossHealth);
         form.AddField("entry.1415939753", playerHealth);
         form.AddField("entry.1101869322", quests);
-        form.AddField("entry.476266214", regular);
-        form.AddField("entry.1873070447", bonus);
-        form.AddField("entry.663020293", reduced);
-        form.AddField("entry.1686257065", emission);
+        form.AddField("entry.476266214", path);
+        form.AddField("entry.1873070447", attack);
 
         // Send responses and verify result
         using (UnityWebRequest www = UnityWebRequest.Post(formURL, form))
