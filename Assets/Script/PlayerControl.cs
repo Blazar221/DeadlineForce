@@ -377,7 +377,7 @@ public class PlayerControl : MonoBehaviour
         if(collision.gameObject.tag == "LongNote")
         {
             canGetLongScore = false;
-            boss.SwitchState();
+            // boss.SwitchState();
             // boss.isHide = true;
         }
 
