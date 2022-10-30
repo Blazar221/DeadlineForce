@@ -130,7 +130,7 @@ public class PlayerControl : MonoBehaviour
         
         if (canChangeGravity)
 		{
-            if(Input.GetKeyDown(KeyCode.W) && curYPos !=0)
+            if((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && curYPos !=0)
             {
                 if(curYPos!=2){
                     transform.position = Vector3.MoveTowards(transform.position, new Vector3(curPosition.x, playerYPosArr[curYPos-1], curPosition.z), 2f);
@@ -143,7 +143,7 @@ public class PlayerControl : MonoBehaviour
                 canChangeGravity = false;
                 animator.SetBool("UpsideDown",isUpsideDown);
             }
-            if(Input.GetKeyDown(KeyCode.S) && curYPos !=3)
+            if((Input.GetKeyDown(KeyCode.S)|| Input.GetKeyDown(KeyCode.DownArrow)) && curYPos !=3)
             {
                 if(curYPos!=1){
                     transform.position = Vector3.MoveTowards(transform.position, new Vector3(curPosition.x, playerYPosArr[curYPos+1], curPosition.z), 2f);
@@ -158,18 +158,7 @@ public class PlayerControl : MonoBehaviour
             }
 		}
 
-        //加了空格可以跳 不要的话直接删掉就行
-        // if (Input.GetKeyDown(KeyCode.Space)){
-        //     Vector2 direc;
-        //     if (isUpsideDown){
-        //         direc = new Vector2(0,-850);
-        //     } else {
-        //         direc = new Vector2(0,850);
-        //     }
-        //     GetComponent<Rigidbody2D>().AddForce(direc);
-		// }
-
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.Space))
 		{
             missFood = false;
             animator.SetBool("isEating",true);
@@ -177,15 +166,15 @@ public class PlayerControl : MonoBehaviour
             if (canGetSingleScore){
                 ScoreSingle(Time.time);
             }
-            else if (!canAvoidDamage){
-                //MissSingle();
+            else {
+                TakeDamage(5);
             }
             if (canAvoidDamage){
                 avoidMine();
             }
 		}
 
-        if (Input.GetKeyUp(KeyCode.K)){
+        if (Input.GetKeyUp(KeyCode.Space)){
             pressingK = false;
         }
         // // Update hit rate
@@ -203,7 +192,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     void FixedUpdate() {
-        if (Input.GetKey(KeyCode.K))
+        if (Input.GetKey(KeyCode.Space))
 		{  
             pressingK = true;
             animator.SetBool("isEating",true);
