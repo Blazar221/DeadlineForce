@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Boss : MonoBehaviour
+public class BossUI : MonoBehaviour
 {
-    public static Boss instance;
+    public static BossUI instance;
 
     public static event Action OnBossDeath;
     private Color originalColor;

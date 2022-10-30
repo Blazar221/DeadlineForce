@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 705887296444272635}
   - component: {fileID: 5797775286865263065}
   - component: {fileID: 1891218703974714255}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: LongNote
   m_TagString: LongNote
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2771948807783451587}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.32279006}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24307e9deaf611742af28e3df0bb4856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.3
   height: 2
+  speed: 0.3
   preCheckLength: 2
 --- !u!120 &705887296444272635
 LineRenderer:

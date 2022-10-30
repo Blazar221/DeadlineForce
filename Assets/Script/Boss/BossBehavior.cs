@@ -8,14 +8,17 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] private float bossMoveSpeed = 0.3f;
     [SerializeField] private float bossAttackPeriod = 5f;
     [SerializeField] private GameObject laser;
+    [SerializeField] private GameObject bandit;
     
     private int _attackingLine;
+    private int _count=0;
     private float _moveDestY;
     public Vector3 moveDest;
     public bool startMove;
     public Animator bossAnimator;
+    
 
-    private GameObject _newLaser;
+    private GameObject _newBullet;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,7 +78,18 @@ public class BossBehavior : MonoBehaviour
             3 => -4,
             _ => 0,
         };
-        _newLaser = Instantiate(laser, new Vector3(-2, yPos, 0), Quaternion.identity);
-        Destroy(_newLaser, 1f);
+        switch (_count)
+        {
+            case 0:
+                _newBullet = Instantiate(laser, new Vector3(-2, yPos, 0), Quaternion.identity);
+                Destroy(_newBullet, 1f);
+                break;
+            default:
+                _newBullet = Instantiate(bandit, new Vector3(3, yPos, 0), Quaternion.identity);
+                Destroy(_newBullet, 2f);
+                break;
+                ;
+        }
+        _count = (_count + 1)%3;
     }
 }

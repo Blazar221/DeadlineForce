@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Block : MonoBehaviour
+public class Bandit : MonoBehaviour
 {
-    [SerializeField]
-    public float speed;
+    [SerializeField] private float speed;
 
     private Rigidbody2D rb;
     private Vector3 pos;

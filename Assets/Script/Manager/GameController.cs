@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         timeCount += Time.deltaTime;
-        bossHealth = Boss.instance.GetBossHealth();
+        bossHealth = BossUI.instance.GetBossHealth();
         if(timeCount > endTime && bossHealth <= 0 && !IsGameEnd())
         {
             gameIsEnd = true;
@@ -42,13 +42,13 @@ public class GameController : MonoBehaviour
     private void OnEnable()
     {
         PlayerControl.OnPlayerDeath += EnableGameOverMenu;
-        Boss.OnBossDeath += EnableCongratsMenu;
+        BossUI.OnBossDeath += EnableCongratsMenu;
     }
 
     private void OnDisable()
     {
         PlayerControl.OnPlayerDeath -= EnableGameOverMenu;
-        Boss.OnBossDeath -= EnableCongratsMenu;
+        BossUI.OnBossDeath -= EnableCongratsMenu;
     }
 
     // 血量掉光游戏结束

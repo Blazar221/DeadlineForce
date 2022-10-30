@@ -13,8 +13,6 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     
-    [SerializeField] private GameObject gravSwitch;
-
     [SerializeField] private GameObject fireDiamond;
     [SerializeField] private GameObject waterDiamond;
     [SerializeField] private GameObject grassDiamond;
@@ -22,15 +20,12 @@ public class Spawner : MonoBehaviour
 
     [SerializeField] private GameObject longNote;
     
-    [SerializeField] private GameObject block;
     [SerializeField] private GameObject bgm;
     [SerializeField] private TextAsset Jsonfile;
 
     private GameObject newItem, newMine, newPlatform;
 
     private Vector3 spawnPos;
-
-    private Block blockHandler;
     
     private Diamond fireDiamondHandler;
     private Diamond waterDiamondHandler;
@@ -66,9 +61,6 @@ public class Spawner : MonoBehaviour
         grassDiamondHandler.SetSpeed(moveSpeed);
         rockDiamondHandler.SetSpeed(moveSpeed);
 
-        blockHandler = block.GetComponent<Block>();
-        blockHandler.SetSpeed(moveSpeed);
-        
         playerHadler = player.GetComponent<PlayerControl>();
         _bgmHandler = bgm.GetComponent<BgmController>();
         // sort the notes by time
@@ -154,13 +146,6 @@ public class Spawner : MonoBehaviour
                         newLongNote.SetSpeed(moveSpeed);
                         // Destroy(newItem, 3f / 2.46f * xLen);
                         Destroy(newItem, (spawnPos.x + 12 + xLen/2) / (moveSpeed * 1/Time.fixedDeltaTime));
-                        break;
-                    //block
-                    case 3:
-                        xLen = blockHandler.transform.localScale.x;
-                        spawnPos = new Vector3(playerX + moveSpeed * (2f / Time.fixedDeltaTime) + xLen / 2, yPos, 0);
-                        newItem = Instantiate(block, spawnPos, Quaternion.identity);
-                        Destroy(newItem, 3f);
                         break;
                 }
                 ind++;

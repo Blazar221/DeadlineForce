@@ -35,7 +35,7 @@ public class PlayerControl : MonoBehaviour
     private int rockCount = 0;
 
     // Boss 
-    public Boss boss;
+    public BossUI boss;
 
     //这些是其他class需要调用的变量
     public int hitScore;

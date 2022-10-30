@@ -155,7 +155,7 @@ public class TargetPanel : MonoBehaviour
                 if (objL.RemoveFirstGem())
                 {
                     // the line is completed
-                    Boss.instance.TakeDamage(patternDamage);
+                    BossUI.instance.TakeDamage(patternDamage);
                     UpdateAnalytics(objL);
                     var toDestroy = objL.GetGameObj();
                     Destroy(toDestroy);

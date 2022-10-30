@@ -81,7 +81,7 @@ public class Level2Web : MonoBehaviour
 
     public void Send(){
         _playtime = Time.timeSinceLevelLoad;
-        _bossHealth = (Boss.instance != null)?Boss.instance.bossHealth:0;
+        _bossHealth = (BossUI.instance != null)?BossUI.instance.bossHealth:0;
         _playerHealth = PlayerControl.instance.currentHealth;
         _timer = DiamondCollection.Instance.time;
         CalculatePath();

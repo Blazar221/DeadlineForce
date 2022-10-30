@@ -6,7 +6,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"D:/USC/CS526/WebGL;C:/Users/61932/Desktop/webgl;D:/MyCode/UnityProj/build/Build;D:/MyCode/UnityProj/build;D:/Storage/USC/courses/22fall/CSCI526/Rhythm Jump/WebGL;;;;;\"}"
+                "value": "{\"m_Value\":\"D:/Program_Files/GitHub/Unity_Build;D:/USC/CS526/WebGL;C:/Users/61932/Desktop/webgl;D:/MyCode/UnityProj/build/Build;D:/MyCode/UnityProj/build;D:/Storage/USC/courses/22fall/CSCI526/Rhythm Jump/WebGL;;;;\"}"
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
