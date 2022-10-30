@@ -656,7 +656,7 @@ MonoBehaviour:
   waterBar: {fileID: 1878636901}
   rockDiamond: {fileID: 6793344568998294521, guid: 6e3699c2f9bc3814981deaa2df1eda7e, type: 3}
   rockBar: {fileID: 187507465}
-  boss: {fileID: 1307346855}
+  _boss: {fileID: 0}
   hitScore: 0
   missScore: 0
   canChangeGravity: 0
@@ -914,7 +914,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 806853976}
   m_HandleRect: {fileID: 0}
@@ -3476,13 +3476,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 178061451}
-  gravSwitch: {fileID: 291549460440404176, guid: 7a974bf84f38f744fa1547b2eaf2f0e6, type: 3}
   fireDiamond: {fileID: 6793344568998294521, guid: 0942592310d901b4ca2d102f56a13991, type: 3}
   waterDiamond: {fileID: 6793344568998294521, guid: cc6951aaee945bf46a742a8aa8aac654, type: 3}
   grassDiamond: {fileID: 6793344568998294521, guid: 0020b74fc6d5612468084ca21a688ffd, type: 3}
   rockDiamond: {fileID: 6793344568998294521, guid: 6e3699c2f9bc3814981deaa2df1eda7e, type: 3}
   longNote: {fileID: 2771948807783451587, guid: cac2db766bd50074682ddc967bc4714f, type: 3}
-  block: {fileID: 2425594156374542513, guid: 28777205d87fb1e4a8eb462b7e0b6b70, type: 3}
   bgm: {fileID: 1006874500}
   Jsonfile: {fileID: 4900000, guid: f39b483c11ec95142a1ab18e60c5be97, type: 3}
   moveSpeed: 0.24
@@ -3927,7 +3925,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 755456327}
   m_HandleRect: {fileID: 0}
@@ -4516,7 +4514,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1831129048}
   m_HandleRect: {fileID: 0}
@@ -4979,7 +4977,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 75809395}
   m_HandleRect: {fileID: 0}
@@ -6073,6 +6071,8 @@ MonoBehaviour:
   bossAttackPeriod: 3
   laser: {fileID: 3364694483412564346, guid: 6f3bf51229f147047a094637825a9436, type: 3}
   bandit: {fileID: 2425594156374542513, guid: 28777205d87fb1e4a8eb462b7e0b6b70, type: 3}
+  laserHarm: 20
+  banditHarm: 10
   moveDest: {x: 0, y: 0, z: 0}
   startMove: 0
   bossAnimator: {fileID: 1307346858}
@@ -8672,7 +8672,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1237992311}
   m_HandleRect: {fileID: 0}
@@ -8777,7 +8777,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1636842097}
   m_HandleRect: {fileID: 0}
