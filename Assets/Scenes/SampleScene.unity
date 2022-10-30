@@ -5942,6 +5942,7 @@ GameObject:
   - component: {fileID: 1307346858}
   - component: {fileID: 1307346860}
   - component: {fileID: 1307346859}
+  - component: {fileID: 1307346861}
   m_Layer: 6
   m_Name: Boss
   m_TagString: Untagged
@@ -5979,14 +5980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70c54fe14e655d42928ee4402d16b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 178061452}
-  bossMoveSpeed: 0.01
-  bossAttackPeriod: 10
-  stateCount: 000000000000000000000000
   bossHealth: 1500
-  laser: {fileID: 3364694483412564346, guid: 6f3bf51229f147047a094637825a9436, type: 3}
-  bossAnimator: {fileID: 0}
-  speed: 1
   flashTime: 0.3
   healthBar: {fileID: 808834014}
   deathEffect: {fileID: 1755349173569476, guid: 1b0d883ac069a4f2ab8e69d6cff40416, type: 3}
@@ -5995,10 +5989,6 @@ MonoBehaviour:
   bossLeftLeg: {fileID: 483930902}
   bossRightLeg: {fileID: 2059247978}
   bloodEffect: {fileID: 7684543134659561662, guid: ae0d4e81658269946b040554832eb4cb, type: 3}
-  attackingLine: 0
-  moveDestY: 0
-  curLine: 0
-  moveDest: {x: 0, y: 0, z: 0}
 --- !u!95 &1307346858
 Animator:
   serializedVersion: 4
@@ -6066,6 +6056,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1307346861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307346853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734289b36e662c94880ea62b6787b708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 178061452}
+  bossMoveSpeed: 0.03
+  bossAttackPeriod: 3
+  laser: {fileID: 3364694483412564346, guid: 6f3bf51229f147047a094637825a9436, type: 3}
+  moveDest: {x: 0, y: 0, z: 0}
+  startMove: 0
+  bossAnimator: {fileID: 1307346858}
 --- !u!1 &1353258434
 GameObject:
   m_ObjectHideFlags: 0
