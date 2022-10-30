@@ -35,7 +35,8 @@ public class PlayerControl : MonoBehaviour
     private int rockCount = 0;
 
     // Boss 
-    public BossUI boss;
+    [SerializeField] private GameObject _boss;
+    private BossBehavior _bossHandler;
 
     //这些是其他class需要调用的变量
     public int hitScore;
@@ -101,6 +102,7 @@ public class PlayerControl : MonoBehaviour
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         
         animator = GetComponent<Animator>();
+        _bossHandler = _boss.GetComponent<BossBehavior>();
 
         
         targetPanel = TargetPanel.Instance;
@@ -356,7 +358,7 @@ public class PlayerControl : MonoBehaviour
             canGetLongScore = true;
         }
 
-        if(collision.gameObject.tag == "Mine")
+        if(collision.gameObject.tag == "Bandit")
         {
             missMine = true;
             toHit = collision.gameObject;
@@ -364,7 +366,7 @@ public class PlayerControl : MonoBehaviour
         }
         if(collision.gameObject.tag == "Laser")
         {
-            Collide(20);
+            Collide(_bossHandler.laserHarm);
             toHit = null;
             canAvoidDamage = false;
         }
@@ -394,10 +396,10 @@ public class PlayerControl : MonoBehaviour
             canGetLongScore = false;
         }
 
-        if(collision.gameObject.tag == "Mine")
+        if(collision.gameObject.tag == "Bandit")
         {
             if (missMine){
-                Collide(10);
+                Collide(_bossHandler.banditHarm);
             }
             toHit = null;
             canAvoidDamage = false;

@@ -9,13 +9,14 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] private float bossAttackPeriod = 5f;
     [SerializeField] private GameObject laser;
     [SerializeField] private GameObject bandit;
+    public int laserHarm=20, banditHarm=10;
     
     private int _attackingLine;
     private int _count=0;
     private float _moveDestY;
     public Vector3 moveDest;
     public bool startMove;
-    public Animator bossAnimator;
+    [SerializeField] private Animator bossAnimator;
     
 
     private GameObject _newBullet;
@@ -91,5 +92,12 @@ public class BossBehavior : MonoBehaviour
                 ;
         }
         _count = (_count + 1)%3;
+    }
+
+    public void Struggle()
+    {
+        bossAttackPeriod *= 0.6f;
+        laserHarm = (int)(laserHarm*1.5f);
+        banditHarm = (int)(banditHarm*1.5f);
     }
 }
