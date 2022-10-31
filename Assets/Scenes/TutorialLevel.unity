@@ -1327,11 +1327,20 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 783592351}
-  boss: {fileID: 0}
+  fireDiamond: {fileID: 0}
+  fireBar: {fileID: 0}
+  grassDiamond: {fileID: 0}
+  grassBar: {fileID: 0}
+  waterDiamond: {fileID: 0}
+  waterBar: {fileID: 0}
+  rockDiamond: {fileID: 0}
+  rockBar: {fileID: 0}
+  _boss: {fileID: 0}
   hitScore: 0
   missScore: 0
   canChangeGravity: 0
   canCross: 0
+  curYPos: 0
   hitEffect: {fileID: 7385447010465876087, guid: 5f5019da551236a46a2e361d2bd1fd06, type: 3}
   goodEffect: {fileID: 2802313049072304034, guid: c146c70ad0350f743a6620b8cc363bbd, type: 3}
   perfectEffect: {fileID: 2494714996470128700, guid: 7481da4ae9a13b3498b72745925926b6, type: 3}
@@ -2075,8 +2084,15 @@ MonoBehaviour:
   longNoteInstruction: {fileID: 1469601813}
   upSwitchInstruction: {fileID: 1651571888}
   downSwitchInstruction: {fileID: 347516609}
-  blockInstruction: {fileID: 778739771}
+  differentcolorInstruction: {fileID: 0}
   finishInstruction: {fileID: 1306293580}
+  TripleInstruction: {fileID: 0}
+  passdownInstruction: {fileID: 0}
+  passupInstruction: {fileID: 0}
+  gemcollectionInstruction: {fileID: 0}
+  PressJInstruction: {fileID: 0}
+  MissionInstruction: {fileID: 0}
+  startcollectInstruction: {fileID: 0}
 --- !u!1 &678125413
 GameObject:
   m_ObjectHideFlags: 0
@@ -2385,7 +2401,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 267133476}
   m_HandleRect: {fileID: 0}
@@ -5665,8 +5681,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverMenu: {fileID: 1262400449}
   congratsMenu: {fileID: 1341785883}
-  platformTop: {fileID: 0}
-  platformBottom: {fileID: 0}
   endTime: 84
 --- !u!1 &1651571887
 GameObject:
@@ -6139,13 +6153,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 350985002}
-  gravSwitch: {fileID: 291549460440404176, guid: 7a974bf84f38f744fa1547b2eaf2f0e6, type: 3}
   fireDiamond: {fileID: 6793344568998294521, guid: 0942592310d901b4ca2d102f56a13991, type: 3}
   waterDiamond: {fileID: 6793344568998294521, guid: cc6951aaee945bf46a742a8aa8aac654, type: 3}
   grassDiamond: {fileID: 6793344568998294521, guid: 0020b74fc6d5612468084ca21a688ffd, type: 3}
   rockDiamond: {fileID: 6793344568998294521, guid: 6e3699c2f9bc3814981deaa2df1eda7e, type: 3}
   longNote: {fileID: 2771948807783451587, guid: cac2db766bd50074682ddc967bc4714f, type: 3}
-  block: {fileID: 2425594156374542513, guid: 28777205d87fb1e4a8eb462b7e0b6b70, type: 3}
   bgm: {fileID: 1079927810}
   Jsonfile: {fileID: 4900000, guid: 061d9782a6aa2dd4a8519606374d2f11, type: 3}
   moveSpeed: 0.3
