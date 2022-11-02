@@ -132,31 +132,13 @@ public class PlayerControl : MonoBehaviour
         
         if (canChangeGravity)
 		{
-            if((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && curYPos !=0)
+            if((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
             {
-                if(curYPos!=2){
-                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(curPosition.x, playerYPosArr[curYPos-1], curPosition.z), 2f);
-                }else{
-                    transform.position = new Vector3(curPosition.x, playerYPosArr[curYPos-1], curPosition.z);
-                }
-                curYPos -=1;
-                rb2D.gravityScale*=-1;
-                isUpsideDown = !isUpsideDown;
-                canChangeGravity = false;
-                animator.SetBool("UpsideDown",isUpsideDown);
+                SetYPos((curYPos+3)%4);
             }
-            if((Input.GetKeyDown(KeyCode.S)|| Input.GetKeyDown(KeyCode.DownArrow)) && curYPos !=3)
+            if((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)))
             {
-                if(curYPos!=1){
-                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(curPosition.x, playerYPosArr[curYPos+1], curPosition.z), 2f);
-                }else{
-                    transform.position = new Vector3(curPosition.x, playerYPosArr[curYPos+1], curPosition.z);
-                }
-                curYPos +=1;
-                rb2D.gravityScale*=-1;
-                isUpsideDown = !isUpsideDown;
-                canChangeGravity = false;
-                animator.SetBool("UpsideDown",isUpsideDown);
+                SetYPos((curYPos+1)%4);
             }
 		}
 
@@ -204,6 +186,18 @@ public class PlayerControl : MonoBehaviour
             }
             
 		}
+    }
+
+    public void SetYPos(int yPos)
+    {
+        Debug.Log(yPos);
+        curYPos = yPos;
+        // transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, playerYPosArr[yPos], transform.position.z), 2f);
+        transform.position = new Vector3(transform.position.x, playerYPosArr[yPos], transform.position.z);
+        rb2D.gravityScale*=-1;
+        isUpsideDown = !isUpsideDown;
+        canChangeGravity = false;
+        animator.SetBool("UpsideDown",isUpsideDown);
     }
 
     // Score on single diamond function

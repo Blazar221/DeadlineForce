@@ -626,6 +626,7 @@ GameObject:
   - component: {fileID: 178061457}
   - component: {fileID: 178061456}
   - component: {fileID: 178061458}
+  - component: {fileID: 178061459}
   m_Layer: 3
   m_Name: DinasourRunner
   m_TagString: Untagged
@@ -656,7 +657,7 @@ MonoBehaviour:
   waterBar: {fileID: 1878636901}
   rockDiamond: {fileID: 6793344568998294521, guid: 6e3699c2f9bc3814981deaa2df1eda7e, type: 3}
   rockBar: {fileID: 187507465}
-  _boss: {fileID: 0}
+  _boss: {fileID: 1307346853}
   hitScore: 0
   missScore: 0
   canChangeGravity: 0
@@ -821,6 +822,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &178061459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178061451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f68b58a1a9785664faf51389bfad3c39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originPlayer: {fileID: 178061451}
 --- !u!1 &187507463
 GameObject:
   m_ObjectHideFlags: 0
