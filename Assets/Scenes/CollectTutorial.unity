@@ -291,8 +291,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035156, y: 199.99997}
-  m_SizeDelta: {x: 1210.3052, y: 50}
+  m_AnchoredPosition: {x: 38.924, y: 125.75}
+  m_SizeDelta: {x: 1288.2, y: 198.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &64800422
 MonoBehaviour:
@@ -314,8 +314,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ranbow is a Chance! Long press <sprite index= 0> on the rainbow to collect
-    all types of diamonds!
+  m_text: Ranbow is a Chance! Long press           <sprite index= 0> on the rainbow
+    to collect all types of diamonds!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
   m_sharedMaterial: {fileID: -1571771168669490468, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
@@ -334,7 +334,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 7bde6d32c27c86645a02200a31b41295, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 09919b306284f8946919f38af6f70d56, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2994,8 +2994,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000032663, y: -284}
-  m_SizeDelta: {x: 810.677, y: 77.138}
+  m_AnchoredPosition: {x: 48.535, y: -268.258}
+  m_SizeDelta: {x: 865.771, y: 108.621}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &613758067
 MonoBehaviour:
@@ -3017,7 +3017,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press <sprite index=0> to Continue
+  m_text: Press            <sprite index=0>    to Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
   m_sharedMaterial: {fileID: -1571771168669490468, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
@@ -3036,7 +3036,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 51771e0a9c668e4429a0b7484ab9c400, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 09919b306284f8946919f38af6f70d56, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -3080,7 +3080,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 2.3308754, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: -2.6235294}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3562,7 +3562,7 @@ MonoBehaviour:
   grassDiamond: {fileID: 6793344568998294521, guid: 0020b74fc6d5612468084ca21a688ffd, type: 3}
   rockDiamond: {fileID: 6793344568998294521, guid: 6e3699c2f9bc3814981deaa2df1eda7e, type: 3}
   longNote: {fileID: 2771948807783451587, guid: cac2db766bd50074682ddc967bc4714f, type: 3}
-  bandit: {fileID: 0}
+  bandit: {fileID: 2425594156374542513, guid: 28777205d87fb1e4a8eb462b7e0b6b70, type: 3}
   bgm: {fileID: 1006874500}
   Jsonfile: {fileID: 4900000, guid: 061d9782a6aa2dd4a8519606374d2f11, type: 3}
   moveSpeed: 0.25
@@ -3798,7 +3798,7 @@ MonoBehaviour:
   waterBar: {fileID: 1535275898}
   rockDiamond: {fileID: 6793344568998294521, guid: 6e3699c2f9bc3814981deaa2df1eda7e, type: 3}
   rockBar: {fileID: 1317597237}
-  _boss: {fileID: 0}
+  _boss: {fileID: 296752959}
   hitScore: 0
   missScore: 0
   canChangeGravity: 0
@@ -5393,10 +5393,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Congratulations! You are now an official music warrior!
+  m_text: 'Congratulations! Let''s go to next Tutorial!
 
-    Press <sprite
-    index= 0> to return to menu and start a level'
+    Press <sprite index=
+    0> to start next Tutorial!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
   m_sharedMaterial: {fileID: -1571771168669490468, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
@@ -5415,7 +5415,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 6c99a4f0c035dbb43be590450badb8f3, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 51771e0a9c668e4429a0b7484ab9c400, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -5546,7 +5546,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1194076827
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 681cdb2853ae7144c815013a86c8da7c, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -5630,7 +5630,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1194076827
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8eb2ff5d15ad57044863329a435b3394, type: 3}
   m_Color: {r: 0.254717, g: 0.2006497, b: 0.2006497, a: 1}
@@ -5939,8 +5939,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035156, y: 199.99997}
-  m_SizeDelta: {x: 1008.4609, y: 50}
+  m_AnchoredPosition: {x: 55.882, y: 137.5}
+  m_SizeDelta: {x: 1120.2, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1184317217
 MonoBehaviour:
@@ -5962,8 +5962,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press <sprite index= 0> to collect more diamonds and auto attack when we
-    have enough diamonds!
+  m_text: Press        <sprite index= 0> to collect more diamonds and auto attack
+    when we have enough diamonds!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
   m_sharedMaterial: {fileID: -1571771168669490468, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
@@ -5982,7 +5982,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 51771e0a9c668e4429a0b7484ab9c400, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 09919b306284f8946919f38af6f70d56, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -5998,7 +5998,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -6904,8 +6904,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035156, y: 199.99997}
-  m_SizeDelta: {x: 1008.4609, y: 50}
+  m_AnchoredPosition: {x: -11.911, y: 160}
+  m_SizeDelta: {x: 1073.3, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1332790503
 MonoBehaviour:
@@ -6927,7 +6927,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: When diamonds come, Press <sprite index= 0> to collect diamonds
+  m_text: When diamonds come, Press         <sprite index= 0> to collect diamonds
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
   m_sharedMaterial: {fileID: -1571771168669490468, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
@@ -6946,7 +6946,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 51771e0a9c668e4429a0b7484ab9c400, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 09919b306284f8946919f38af6f70d56, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -6962,7 +6962,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -7883,7 +7883,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1194076827
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 72186849934bfde4484d95f21e9e9145, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -9326,6 +9326,7 @@ GameObject:
   - component: {fileID: 1709288259}
   - component: {fileID: 1709288264}
   - component: {fileID: 1709288265}
+  - component: {fileID: 1709288267}
   - component: {fileID: 1709288266}
   m_Layer: 5
   m_Name: Canvas
@@ -9492,9 +9493,35 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709288258}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0dfcb2b65459b44eb3a398bec6414cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 769911063}
+  shortNoteInstruction: {fileID: 1332790503}
+  longNoteInstruction: {fileID: 64800422}
+  upSwitchInstruction: {fileID: 1793308872}
+  downSwitchInstruction: {fileID: 1420698400}
+  differentcolorInstruction: {fileID: 509945988}
+  finishInstruction: {fileID: 1052437901}
+  TripleInstruction: {fileID: 1184317217}
+  passdownInstruction: {fileID: 96055596}
+  passupInstruction: {fileID: 1434104504}
+  gemcollectionInstruction: {fileID: 1633937493}
+  PressJInstruction: {fileID: 613758067}
+  MissionInstruction: {fileID: 815407268}
+  startcollectInstruction: {fileID: 347456281}
+--- !u!114 &1709288267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709288258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd0198593f09d947a56e06a9ebf16f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 769911063}
@@ -9552,7 +9579,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1726089750}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15112363388cd4ff1bfe98807bb33bae, type: 3}
   m_Name: 
@@ -10184,7 +10211,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1194076827
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d843bdc711e689e49b636a4b8a824c67, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -10802,7 +10829,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1194076827
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 72186849934bfde4484d95f21e9e9145, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -11274,7 +11301,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1194076827
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 066cc7941702be2409b4c86b8dac4ea9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

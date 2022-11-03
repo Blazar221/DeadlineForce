@@ -1229,7 +1229,7 @@ MonoBehaviour:
   _compressClip: {fileID: 8300000, guid: 89e53216301ec724487853bdadebce4c, type: 3}
   _uncompressClip: {fileID: 8300000, guid: 7f3011fbe18293447a818246ee12a81d, type: 3}
   _source: {fileID: 1550545333}
-  ChosenLevel: Tutorial
+  ChosenLevel: CollectTutorial
 --- !u!114 &1550545335
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1883,58 +1883,58 @@ public class ObjectToJson : MonoBehaviour
         new Object(new [] { 5f, 6.5f }, 1, 2, false), 
 
         
-        new Object(new []{18.75f, 18.75f}, 1, 1, false, 2),
-        new Object(new []{18.75f, 18.75f}, 2, 1, false, 0),
-        new Object(new []{19.5f, 19.5f}, 1, 1, false, 2),
-        new Object(new []{19.5f, 19.5f}, 2, 1, false, 0),
-        new Object(new []{20.25f, 20.25f}, 1, 1, false, 2),
-        new Object(new []{20.25f, 20.25f}, 2, 1, false, 0),
-        new Object(new []{23.67f, 23.67f}, 1, 1, false, 0),
-        new Object(new []{23.67f, 23.67f}, 2, 1, false, 2),
-        new Object(new []{24.27f, 24.27f}, 1, 1, false, 0),
-        new Object(new []{24.27f, 24.27f}, 2, 1, false, 2),
-        new Object(new []{24.87f, 24.87f}, 1, 1, false, 0),
-        new Object(new []{24.87f, 24.87f}, 2, 1, false, 2),
-        new Object(new []{25.47f, 25.47f}, 1, 1, false, 0),
-        new Object(new []{25.47f, 25.47f}, 2, 1, false, 2),
-        new Object(new []{26.07f, 26.07f}, 1, 1, false, 0),
-        new Object(new []{26.07f, 26.07f}, 2, 1, false, 2),
-        new Object(new []{26.67f, 26.67f}, 1, 1, false, 0),
-        new Object(new []{26.67f, 26.67f}, 2, 1, false, 2),
-        new Object(new []{27.27f, 27.27f}, 1, 1, false, 0),
-        new Object(new []{27.27f, 27.27f}, 2, 1, false, 2),
-        new Object(new []{27.87f, 27.87f}, 1, 1, false, 0),
-        new Object(new []{27.87f, 27.87f}, 2, 1, false, 2),
-        new Object(new []{28.47f, 28.47f}, 1, 1, false, 0),
-        new Object(new []{28.47f, 28.47f}, 2, 1, false, 2),
-        new Object(new []{29.07f, 29.07f}, 1, 1, false, 0),
-        new Object(new []{29.07f, 29.07f}, 2, 1, false, 2),
-        new Object(new []{18.75f, 18.75f}, 0, 1, false, 1),
-        new Object(new []{18.75f, 18.75f}, 3, 1, false, 3),
-        new Object(new []{19.5f, 19.5f}, 0, 1, false, 1),
-        new Object(new []{19.5f, 19.5f}, 3, 1, false, 3),
-        new Object(new []{20.25f, 20.25f}, 0, 1, false, 1),
-        new Object(new []{20.25f, 20.25f}, 3, 1, false, 3),
-        new Object(new []{23.67f, 23.67f}, 0, 1, false, 1),
-        new Object(new []{23.67f, 23.67f}, 3, 1, false, 3),
-        new Object(new []{24.27f, 24.27f}, 0, 1, false, 1),
-        new Object(new []{24.27f, 24.27f}, 3, 1, false, 3),
-        new Object(new []{24.87f, 24.87f}, 0, 1, false, 1),
-        new Object(new []{24.87f, 24.87f}, 3, 1, false, 3),
-        new Object(new []{25.47f, 25.47f}, 0, 1, false, 1),
-        new Object(new []{25.47f, 25.47f}, 3, 1, false, 3),
-        new Object(new []{26.07f, 26.07f}, 0, 1, false, 1),
-        new Object(new []{26.07f, 26.07f}, 3, 1, false, 3),
-        new Object(new []{26.67f, 26.67f}, 0, 1, false, 1),
-        new Object(new []{26.67f, 26.67f}, 3, 1, false, 3),
-        new Object(new []{27.27f, 27.27f}, 0, 1, false, 1),
-        new Object(new []{27.27f, 27.27f}, 3, 1, false, 3),
-        new Object(new []{27.87f, 27.87f}, 0, 1, false, 1),
-        new Object(new []{27.87f, 27.87f}, 3, 1, false, 3),
-        new Object(new []{28.47f, 28.47f}, 0, 1, false, 1),
-        new Object(new []{28.47f, 28.47f}, 3, 1, false, 3),
-        new Object(new []{29.07f, 29.07f}, 0, 1, false, 1),
-        new Object(new []{29.07f, 29.07f}, 3, 1, false, 3),
+        // new Object(new []{18.75f, 18.75f}, 1, 1, false, 2),
+        // new Object(new []{18.75f, 18.75f}, 2, 1, false, 0),
+        // new Object(new []{19.5f, 19.5f}, 1, 1, false, 2),
+        // new Object(new []{19.5f, 19.5f}, 2, 1, false, 0),
+        // new Object(new []{20.25f, 20.25f}, 1, 1, false, 2),
+        // new Object(new []{20.25f, 20.25f}, 2, 1, false, 0),
+        // new Object(new []{23.67f, 23.67f}, 1, 1, false, 0),
+        // new Object(new []{23.67f, 23.67f}, 2, 1, false, 2),
+        // new Object(new []{24.27f, 24.27f}, 1, 1, false, 0),
+        // new Object(new []{24.27f, 24.27f}, 2, 1, false, 2),
+        // new Object(new []{24.87f, 24.87f}, 1, 1, false, 0),
+        // new Object(new []{24.87f, 24.87f}, 2, 1, false, 2),
+        // new Object(new []{25.47f, 25.47f}, 1, 1, false, 0),
+        // new Object(new []{25.47f, 25.47f}, 2, 1, false, 2),
+        // new Object(new []{26.07f, 26.07f}, 1, 1, false, 0),
+        // new Object(new []{26.07f, 26.07f}, 2, 1, false, 2),
+        // new Object(new []{26.67f, 26.67f}, 1, 1, false, 0),
+        // new Object(new []{26.67f, 26.67f}, 2, 1, false, 2),
+        // new Object(new []{27.27f, 27.27f}, 1, 1, false, 0),
+        // new Object(new []{27.27f, 27.27f}, 2, 1, false, 2),
+        // new Object(new []{27.87f, 27.87f}, 1, 1, false, 0),
+        // new Object(new []{27.87f, 27.87f}, 2, 1, false, 2),
+        // new Object(new []{28.47f, 28.47f}, 1, 1, false, 0),
+        // new Object(new []{28.47f, 28.47f}, 2, 1, false, 2),
+        // new Object(new []{29.07f, 29.07f}, 1, 1, false, 0),
+        // new Object(new []{29.07f, 29.07f}, 2, 1, false, 2),
+        // new Object(new []{18.75f, 18.75f}, 0, 1, false, 1),
+        // new Object(new []{18.75f, 18.75f}, 3, 1, false, 3),
+        // new Object(new []{19.5f, 19.5f}, 0, 1, false, 1),
+        // new Object(new []{19.5f, 19.5f}, 3, 1, false, 3),
+        // new Object(new []{20.25f, 20.25f}, 0, 1, false, 1),
+        // new Object(new []{20.25f, 20.25f}, 3, 1, false, 3),
+        // new Object(new []{23.67f, 23.67f}, 0, 1, false, 1),
+        // new Object(new []{23.67f, 23.67f}, 3, 1, false, 3),
+        // new Object(new []{24.27f, 24.27f}, 0, 1, false, 1),
+        // new Object(new []{24.27f, 24.27f}, 3, 1, false, 3),
+        // new Object(new []{24.87f, 24.87f}, 0, 1, false, 1),
+        // new Object(new []{24.87f, 24.87f}, 3, 1, false, 3),
+        // new Object(new []{25.47f, 25.47f}, 0, 1, false, 1),
+        // new Object(new []{25.47f, 25.47f}, 3, 1, false, 3),
+        // new Object(new []{26.07f, 26.07f}, 0, 1, false, 1),
+        // new Object(new []{26.07f, 26.07f}, 3, 1, false, 3),
+        // new Object(new []{26.67f, 26.67f}, 0, 1, false, 1),
+        // new Object(new []{26.67f, 26.67f}, 3, 1, false, 3),
+        // new Object(new []{27.27f, 27.27f}, 0, 1, false, 1),
+        // new Object(new []{27.27f, 27.27f}, 3, 1, false, 3),
+        // new Object(new []{27.87f, 27.87f}, 0, 1, false, 1),
+        // new Object(new []{27.87f, 27.87f}, 3, 1, false, 3),
+        // new Object(new []{28.47f, 28.47f}, 0, 1, false, 1),
+        // new Object(new []{28.47f, 28.47f}, 3, 1, false, 3),
+        // new Object(new []{29.07f, 29.07f}, 0, 1, false, 1),
+        // new Object(new []{29.07f, 29.07f}, 3, 1, false, 3),
 
         
         // new Object(new float[] { 5.5f, 5.5f }, 0, 1, false), 
@@ -1943,19 +1943,34 @@ public class ObjectToJson : MonoBehaviour
         // new Object(new float[] { 8.25f, 8.25f }, 0, 1, false), 
         
     };
+     Object[] AttackTutorialobjArr = new Object[]
+    {
+        new Object(new [] { 0f, 0f }, 1, 1, false,1), 
+        new Object(new [] { 0f, 0f }, 1, 1, false,0), 
+        new Object(new [] { 1f, 1f }, 1, 1, false,1), 
+        new Object(new [] { 2f, 2f }, 1, 1, false,2), 
+        new Object(new [] { 3f, 3f }, 1, 1, false,3), 
+        new Object(new [] { 6f, 6f }, 1, 1, false,2), 
+        new Object(new [] { 7f, 7f }, 1, 1, false,2), 
+        
+
+    };
         string path = Application.dataPath + "/Resources";
         string L1fileName = "L1Spawner.json";//Add your Filename Here
         string L2fileName = "L2Spawner.json";
         string L3fileName = "L3Spawner.json";
         string TutorialfileName = "TutorialSpawner.json";
+        string AttackTutorialfileName = "AttackTutorialSpawner.json";
         string L1playerToJson = JsonHelper.ToJson(L1objArr);
         string L2playerToJson = JsonHelper.ToJson(L2objArr);
         string L3playerToJson = JsonHelper.ToJson(L3objArr);
         string TutorialplayerToJson = JsonHelper.ToJson(TutorialobjArr);
+        string AttackTutorialplayerToJson = JsonHelper.ToJson(AttackTutorialobjArr);
         Debug.Log("L1: "+L1playerToJson);
         Debug.Log("L2: "+L2playerToJson);
         Debug.Log("L3: "+L3playerToJson);
-        Debug.Log("Tutorial: "+TutorialplayerToJson);
+        Debug.Log("CollectTutorial: "+TutorialplayerToJson);
+        Debug.Log("AttackTutorial: "+AttackTutorialplayerToJson);
         if (!Directory.Exists(path))
         {
 
@@ -1966,6 +1981,7 @@ public class ObjectToJson : MonoBehaviour
         L2fileName = Path.Combine(path, L2fileName); 
         L3fileName = Path.Combine(path, L3fileName); 
         TutorialfileName = Path.Combine(path, TutorialfileName); 
+        AttackTutorialfileName = Path.Combine(path, AttackTutorialfileName); 
 
         if (!File.Exists(L1fileName))     //判断文件是否已经存在不存在就创建一个文件；
         {
@@ -2003,6 +2019,15 @@ public class ObjectToJson : MonoBehaviour
 
         }
         File.WriteAllText(TutorialfileName, TutorialplayerToJson, Encoding.UTF8);
+        if (!File.Exists(AttackTutorialfileName))     //判断文件是否已经存在不存在就创建一个文件；
+        {
+
+            FileStream fs = File.Create(AttackTutorialfileName);
+
+            fs.Close();
+
+        }
+        File.WriteAllText(AttackTutorialfileName, AttackTutorialplayerToJson, Encoding.UTF8);
     }
 
     // Update is called once per frame

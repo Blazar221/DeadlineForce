@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelMenu.unity
     guid: 1b55d3a79a950814d9f0f8958c3502f8
   - enabled: 0
-    path: Assets/Scenes/TutorialLevel.unity
+    path: Assets/Scenes/MoveTutorial.unity
     guid: d2f200ef103acee47ad7c62708ff3580
   - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
+    path: Assets/Scenes/CollectTutorial.unity
     guid: 04f39a770b5d54a46a25785cb7bd1ec2
   - enabled: 1
     path: Assets/Scenes/Level1.unity
@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/OldLevel3.unity
     guid: 603bc5766d97e5c4b8c249df501e7e23
+  - enabled: 1
+    path: Assets/Scenes/AttackTutorial.unity
+    guid: b113828282b740f4ca858845f0faf09b
   m_configObjects: {}

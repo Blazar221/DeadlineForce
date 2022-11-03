@@ -103,7 +103,15 @@ public class TargetPanel : MonoBehaviour
                 _targets = _level3Target;
                 _targetLoopIndex = Level3LoopIndex;
                 break;
-            case "Tutorial":
+            case "CollectTutorial":
+                _targets = _level1Target;
+                _targetLoopIndex = Level1LoopIndex;
+                break;
+            case "MoveTutorial":
+                _targets = _level1Target;
+                _targetLoopIndex = Level1LoopIndex;
+                break;
+            case "AttackTutorial":
                 _targets = _level1Target;
                 _targetLoopIndex = Level1LoopIndex;
                 break;
