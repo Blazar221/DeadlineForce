@@ -65,8 +65,11 @@ public class PlayerControl : MonoBehaviour
     private bool missMine;
     private bool pressingK;
 
-    float[] playerYPosArr;
+    public float[] playerYPosArr;
     public int curYPos;
+
+    // The clone should has the reverse control of the origin
+    private bool reverseControl = false;
 
     // for hitting and blood effect
     public GameObject hitEffect, goodEffect, perfectEffect ,missEffect, bloodEffectCeil, bloodEffectFloor;
@@ -74,10 +77,10 @@ public class PlayerControl : MonoBehaviour
     private TargetPanel targetPanel;
     private Inventory inventory;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {   
         instance = this;
+
         pressingK = false;
         hitScore = 0;
         missScore = 0;
@@ -134,11 +137,25 @@ public class PlayerControl : MonoBehaviour
 		{
             if((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
             {
-                SetYPos((curYPos+3)%4);
+                if(!reverseControl)
+                {
+                    SetYPos((curYPos+3)%4);
+                }
+                else
+                {
+                    SetYPos((curYPos+1)%4);
+                }
             }
             if((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)))
             {
-                SetYPos((curYPos+1)%4);
+                if(!reverseControl)
+                {
+                    SetYPos((curYPos+1)%4);
+                }
+                else
+                {
+                    SetYPos((curYPos+3)%4);
+                }
             }
 		}
 
@@ -188,14 +205,33 @@ public class PlayerControl : MonoBehaviour
 		}
     }
 
+    public void EnableClone()
+    {
+        GetComponent<SpriteRenderer>().color = new Color(39f/255f, 183f/255f, 162f/255f, 0.8f);
+        reverseControl = true;
+    }
+
+    public int GetYPos()
+    {
+        return curYPos;
+    }
+
     public void SetYPos(int yPos)
     {
-        Debug.Log(yPos);
         curYPos = yPos;
-        // transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, playerYPosArr[yPos], transform.position.z), 2f);
+        // Directly move position
         transform.position = new Vector3(transform.position.x, playerYPosArr[yPos], transform.position.z);
-        rb2D.gravityScale*=-1;
-        isUpsideDown = !isUpsideDown;
+        // Set Gravity Direction and isUpsideDown Flag
+        if(yPos == 0 || yPos == 2)
+        {
+            rb2D.gravityScale = -1f;
+            isUpsideDown = true;
+        }
+        else
+        {
+            rb2D.gravityScale = 1f;
+            isUpsideDown = false;
+        }
         canChangeGravity = false;
         animator.SetBool("UpsideDown",isUpsideDown);
     }
