@@ -164,7 +164,7 @@ public class PlayerControl : MonoBehaviour
             if (canGetSingleScore){
                 ScoreSingle(Time.time);
             }
-            else {
+            else if (canGetLongScore == false){
                 TakeDamage(5);
             }
             if (canAvoidDamage){
