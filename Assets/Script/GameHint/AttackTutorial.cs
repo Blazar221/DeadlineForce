@@ -15,12 +15,15 @@ public class AttackTutorial : MonoBehaviour
     [SerializeField] private Image arrowtobar;
     [SerializeField] private Image arrowtoboss;
     [SerializeField] private Image arrowtoMission;
+    [SerializeField] private Image arrowtoplayer;
     [SerializeField] private TextMeshProUGUI finishInstruction;
     [SerializeField] private TextMeshProUGUI collectlastInstruction;
     [SerializeField] private TextMeshProUGUI gemcollectionInstruction;
     [SerializeField] private TextMeshProUGUI PressJInstruction;
     [SerializeField] private TextMeshProUGUI DamageInstruction;
     [SerializeField] private TextMeshProUGUI MissionInstruction;
+    [SerializeField] private TextMeshProUGUI selfdamageInstruction;
+    [SerializeField] private TextMeshProUGUI pointtoselfInstruction;
    
     
     private PlayerControl playerControl;
@@ -38,8 +41,11 @@ public class AttackTutorial : MonoBehaviour
     
     private bool damageLearned = false;
     private bool seconddamageLearned = false;
+    private bool selfdamageLearned = false;
+    private bool selfdamagePressLearned = false;
+    private bool pointtoselfLearned = false;
     
-    private bool startcollectLearned = false;
+    
 
     private float firstShortNoteTime = 2f;
    
@@ -52,8 +58,10 @@ public class AttackTutorial : MonoBehaviour
     private float t5ShortNoteTime = 9f;
     
     private float secondDamageTime = 10f;
+    private float selfdamageTime = 12f;
+    private float pointtoselfTime = 13f;
     
-    private float finishTime = 12f;
+    private float finishTime = 15f;
     
     // Start is called before the first frame update
     void Start()
@@ -69,13 +77,17 @@ public class AttackTutorial : MonoBehaviour
         PressJInstruction.enabled=false;
         MissionInstruction.enabled=false;
         DamageInstruction.enabled=false;
+        selfdamageInstruction.enabled=false;
         arrowtoMission.enabled=false;
+        pointtoselfInstruction.enabled=false;
+        arrowtoplayer.enabled=false;
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Debug.Log("currtime="+Time.timeSinceLevelLoad);
 
         // if(fading){
         //     Alpha = Alpha - (Time.deltaTime)/2;
@@ -133,11 +145,13 @@ public class AttackTutorial : MonoBehaviour
          if(!tripleLearned3 && Time.timeSinceLevelLoad >= t3ShortNoteTime){
             Time.timeScale = 0f;
             PressJInstruction.enabled = true;
+            arrowtobar.enabled=true;
             collectlastInstruction.enabled=true;
             if (Input.GetKeyDown(KeyCode.Space)) {
                 tripleLearned3 = true;
                 PressJInstruction.enabled = false;
                 collectlastInstruction.enabled=false;
+                arrowtobar.enabled=false;
                 Time.timeScale = 1f;
             }
         }
@@ -175,8 +189,10 @@ public class AttackTutorial : MonoBehaviour
         if(!tripleLearned4 && Time.timeSinceLevelLoad >= t4ShortNoteTime){
             Time.timeScale = 0f;
             PressJInstruction.enabled = true;
+            arrowtoMission.enabled=true;
             if (Input.GetKeyDown(KeyCode.Space)) {
                 tripleLearned4 = true;
+                arrowtoMission.enabled=false;
                 PressJInstruction.enabled = false;
                 Time.timeScale = 1f;
             }
@@ -184,8 +200,10 @@ public class AttackTutorial : MonoBehaviour
         if(!tripleLearned5 && Time.timeSinceLevelLoad >= t5ShortNoteTime){
             Time.timeScale = 0f;
             PressJInstruction.enabled = true;
+            arrowtoMission.enabled=true;
             if (Input.GetKeyDown(KeyCode.Space)) {
                 tripleLearned5 = true;
+                arrowtoMission.enabled=false;
                 PressJInstruction.enabled = false;
                 Time.timeScale = 1f;
             }
@@ -206,6 +224,37 @@ public class AttackTutorial : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
+        if(!selfdamageLearned && Time.timeSinceLevelLoad >= selfdamageTime){
+            Time.timeScale = 0f;
+            
+            PressJInstruction.enabled = true;
+            arrowtoplayer.enabled=true;
+            selfdamageInstruction.enabled=true;
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                selfdamageLearned=true;
+                selfdamageInstruction.enabled=false;
+                PressJInstruction.enabled = false;
+                arrowtoplayer.enabled=false;
+
+                Time.timeScale = 1f;
+            }
+        }
+
+        if(!pointtoselfLearned  && Time.timeSinceLevelLoad >= pointtoselfTime){
+            Time.timeScale = 0f;
+            
+            PressJInstruction.enabled = true;
+            arrowtoplayer.enabled=true;
+            pointtoselfInstruction.enabled=true;
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                pointtoselfLearned=true;
+                pointtoselfInstruction.enabled=false;
+                PressJInstruction.enabled = false;
+                arrowtoplayer.enabled=false;
+
+                Time.timeScale = 1f;
+            }
+        }
 
 
 
@@ -218,6 +267,7 @@ public class AttackTutorial : MonoBehaviour
             Time.timeScale = 0f;
             finishInstruction.enabled = true;
             if (Input.GetKeyDown(KeyCode.J)) {
+                Time.timeScale = 1f;
                 SceneManager.LoadScene("MoveTutorial");
             }
         }

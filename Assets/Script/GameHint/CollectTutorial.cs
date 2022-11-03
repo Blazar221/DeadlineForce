@@ -80,7 +80,7 @@ public class CollectTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         // if(fading){
         //     Alpha = Alpha - (Time.deltaTime)/2;
         //     colorOri.a = Alpha;
@@ -162,6 +162,7 @@ public class CollectTutorial : MonoBehaviour
             Time.timeScale = 0f;
             finishInstruction.enabled = true;
             if (Input.GetKeyDown(KeyCode.J)) {
+                Time.timeScale = 1f;
                 SceneManager.LoadScene("AttackTutorial");
             }
         }
