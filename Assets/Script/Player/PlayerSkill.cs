@@ -28,8 +28,13 @@ public class PlayerSkill : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.X)){
-            CallShieldSkill();
+            CallFreezeSkill();
         }
+    }
+
+    void CallFreezeSkill()
+    {
+        BossBehavior.instance.Freeze();
     }
 
     void CallShieldSkill()
