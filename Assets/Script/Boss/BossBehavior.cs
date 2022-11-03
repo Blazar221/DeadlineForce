@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BossBehavior : MonoBehaviour
 {
+    public static BossBehavior instance;
+
     [SerializeField] public PlayerControl player;
     [SerializeField] private float bossMoveSpeed = 0.3f;
     [SerializeField] private float bossAttackPeriod = 5f;
@@ -15,16 +17,15 @@ public class BossBehavior : MonoBehaviour
     private int _count=0;
     private float _moveDestY;
     public Vector3 moveDest;
-    public bool startMove;
+    public bool startMove = false;
     [SerializeField] private Animator bossAnimator;
     
-
     private GameObject _newBullet;
-    // Start is called before the first frame update
-    void Start()
-    {
+
+    void Awake()
+    {   
+        instance = this;
         bossAnimator = GetComponent<Animator>();
-        startMove = false;
     }
 
     // Update is called once per frame
@@ -67,6 +68,22 @@ public class BossBehavior : MonoBehaviour
             bossAnimator.SetBool("isMove", false);
             bossAnimator.SetTrigger("Attack");
         }
+    }
+
+    public void Freeze()
+    {
+        bossMoveSpeed /= 10;
+        bossAttackPeriod *= 2;
+        BossUI.instance.SetColor(Color.blue);
+        StartCoroutine(Unfreeze());
+    }
+
+    IEnumerator Unfreeze()
+    {
+        yield return new WaitForSeconds(8f);
+        bossMoveSpeed *= 10;
+        bossAttackPeriod /=2;
+        BossUI.instance.SetColor(Color.white);
     }
     
     public void Attack()
