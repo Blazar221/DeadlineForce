@@ -65,19 +65,21 @@ public class PlayerControl : MonoBehaviour
     private bool missMine;
     private bool pressingK;
 
-    float[] playerYPosArr;
+    public float[] playerYPosArr;
     public int curYPos;
+
+    // The clone should has the reverse control of the origin
+    private bool reverseControl = false;
 
     // for hitting and blood effect
     public GameObject hitEffect, goodEffect, perfectEffect ,missEffect, bloodEffectCeil, bloodEffectFloor;
     
-    private TargetPanel targetPanel;
     private Inventory inventory;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {   
         instance = this;
+
         pressingK = false;
         hitScore = 0;
         missScore = 0;
@@ -103,11 +105,7 @@ public class PlayerControl : MonoBehaviour
         
         animator = GetComponent<Animator>();
         _bossHandler = _boss.GetComponent<BossBehavior>();
-
         
-        targetPanel = TargetPanel.Instance;
-        // inventory = targetPanel.inventory;
-
         fireBar.SetMinHealth(fireCount);
         grassBar.SetMinHealth(grassCount);
         waterBar.SetMinHealth(waterCount);
@@ -117,6 +115,8 @@ public class PlayerControl : MonoBehaviour
         grassRenderer = grassDiamond.GetComponent<SpriteRenderer>();
         waterRenderer = waterDiamond.GetComponent<SpriteRenderer>();
         rockRenderer = rockDiamond.GetComponent<SpriteRenderer>();
+        
+        // inventory = targetPanel.inventory;
         
     }
 
@@ -134,11 +134,25 @@ public class PlayerControl : MonoBehaviour
 		{
             if((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
             {
-                SetYPos((curYPos+3)%4);
+                if(!reverseControl)
+                {
+                    SetYPos((curYPos+3)%4);
+                }
+                else
+                {
+                    SetYPos((curYPos+1)%4);
+                }
             }
             if((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)))
             {
-                SetYPos((curYPos+1)%4);
+                if(!reverseControl)
+                {
+                    SetYPos((curYPos+1)%4);
+                }
+                else
+                {
+                    SetYPos((curYPos+3)%4);
+                }
             }
 		}
 
@@ -188,14 +202,33 @@ public class PlayerControl : MonoBehaviour
 		}
     }
 
+    public void EnableClone()
+    {
+        GetComponent<SpriteRenderer>().color = new Color(39f/255f, 183f/255f, 162f/255f, 0.8f);
+        reverseControl = true;
+    }
+
+    public int GetYPos()
+    {
+        return curYPos;
+    }
+
     public void SetYPos(int yPos)
     {
-        Debug.Log(yPos);
         curYPos = yPos;
-        // transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, playerYPosArr[yPos], transform.position.z), 2f);
+        // Directly move position
         transform.position = new Vector3(transform.position.x, playerYPosArr[yPos], transform.position.z);
-        rb2D.gravityScale*=-1;
-        isUpsideDown = !isUpsideDown;
+        // Set Gravity Direction and isUpsideDown Flag
+        if(yPos == 0 || yPos == 2)
+        {
+            rb2D.gravityScale = -1f;
+            isUpsideDown = true;
+        }
+        else
+        {
+            rb2D.gravityScale = 1f;
+            isUpsideDown = false;
+        }
         canChangeGravity = false;
         animator.SetBool("UpsideDown",isUpsideDown);
     }
@@ -204,7 +237,7 @@ public class PlayerControl : MonoBehaviour
     void ScoreSingle(float scoreTime)
     {
         hitScore++;
-        targetPanel.TargetHit(toHit.GetComponent<SpriteRenderer>().color);
+        TargetPanel.Instance.TargetHit(toHit.GetComponent<SpriteRenderer>().color);
         
         if (toHit.GetComponent<SpriteRenderer>().color == fireRenderer.color)
         {
@@ -283,6 +316,14 @@ public class PlayerControl : MonoBehaviour
         Destroy(toHit);
         // damage
         TakeDamage(damage);
+        
+    }
+
+    // TakeDamage function
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
         // add blood effect
         if (isUpsideDown){
             Instantiate(bloodEffectCeil, transform.position + new Vector3(0, -0.2f, 0), bloodEffectCeil.transform.rotation);
@@ -291,13 +332,6 @@ public class PlayerControl : MonoBehaviour
         {
             Instantiate(bloodEffectFloor, transform.position + new Vector3(0,0.2f,0), bloodEffectFloor.transform.rotation);
         }
-    }
-
-    // TakeDamage function
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
         if(currentHealth <= 0) 
         {
             currentHealth = 0;

@@ -67,6 +67,22 @@ public class TargetPanel : MonoBehaviour
         new(new[] { 8, 4 }, new[] { 15f, 20f }),
     };
     private const int Level3LoopIndex = 0;
+    
+    private readonly Target[] _level4Target = {
+        
+        // new(new[] { 0, 1,2,3,4 }, new[] { 5f,5f,5f,5f,5f}), // for test
+        // new(new[] { 5,6,7,8,9 }, new[] { 5f,5f,5f,5f,5f }), // for test
+        new(new[] { 9, 0 }, new[] { 15f, 20f }),
+        new(new[] { 5, 3, 8 }, new[] { 15f, 20f, 25f }),
+        new(new[] { 6, 1 }, new[] { 15f, 20f }),
+        new(new[] { 8, 4, 9}, new[] { 15f, 20f, 25f }),
+        new(new[] { 7, 2}, new[] { 15f, 20f }),
+        new(new[] { 6, 1, 8}, new[] { 15f, 20f, 25f }),
+        new(new[] { 5, 3 }, new[] { 15f, 20f }),
+        new(new[] { 9, 0, 5}, new[] { 15f, 20f, 25f }),
+        new(new[] { 8, 4 }, new[] { 15f, 20f }),
+    };
+    private const int Level4LoopIndex = 0;
 
     // 0: blue*3 = waterWeapon
     // 1: green*3 = grassWeapon
@@ -112,6 +128,14 @@ public class TargetPanel : MonoBehaviour
                 _targetLoopIndex = Level1LoopIndex;
                 break;
             case "AttackTutorial":
+                _targets = _level1Target;
+                _targetLoopIndex = Level1LoopIndex;
+                break;
+            case "SampleScene":
+                _targets = _level4Target;
+                _targetLoopIndex = Level4LoopIndex;
+                break;
+            default:
                 _targets = _level1Target;
                 _targetLoopIndex = Level1LoopIndex;
                 break;
