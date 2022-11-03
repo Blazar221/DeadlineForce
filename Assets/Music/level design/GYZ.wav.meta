@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 6d95fd2f0af274b089d4217385d93ae6
+=======
+guid: 0bc1d5f479467be41bd93260e4b2236d
+>>>>>>> 2597521 (spotlight set up for collect tutorial)
 AudioImporter:
   externalObjects: {}
   serializedVersion: 6
