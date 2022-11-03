@@ -74,7 +74,6 @@ public class PlayerControl : MonoBehaviour
     // for hitting and blood effect
     public GameObject hitEffect, goodEffect, perfectEffect ,missEffect, bloodEffectCeil, bloodEffectFloor;
     
-    private TargetPanel targetPanel;
     private Inventory inventory;
 
     void Awake()
@@ -106,11 +105,7 @@ public class PlayerControl : MonoBehaviour
         
         animator = GetComponent<Animator>();
         _bossHandler = _boss.GetComponent<BossBehavior>();
-
         
-        targetPanel = TargetPanel.Instance;
-        // inventory = targetPanel.inventory;
-
         fireBar.SetMinHealth(fireCount);
         grassBar.SetMinHealth(grassCount);
         waterBar.SetMinHealth(waterCount);
@@ -120,6 +115,8 @@ public class PlayerControl : MonoBehaviour
         grassRenderer = grassDiamond.GetComponent<SpriteRenderer>();
         waterRenderer = waterDiamond.GetComponent<SpriteRenderer>();
         rockRenderer = rockDiamond.GetComponent<SpriteRenderer>();
+        
+        // inventory = targetPanel.inventory;
         
     }
 
@@ -240,7 +237,7 @@ public class PlayerControl : MonoBehaviour
     void ScoreSingle(float scoreTime)
     {
         hitScore++;
-        targetPanel.TargetHit(toHit.GetComponent<SpriteRenderer>().color);
+        TargetPanel.Instance.TargetHit(toHit.GetComponent<SpriteRenderer>().color);
         
         if (toHit.GetComponent<SpriteRenderer>().color == fireRenderer.color)
         {
@@ -319,6 +316,14 @@ public class PlayerControl : MonoBehaviour
         Destroy(toHit);
         // damage
         TakeDamage(damage);
+        
+    }
+
+    // TakeDamage function
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
         // add blood effect
         if (isUpsideDown){
             Instantiate(bloodEffectCeil, transform.position + new Vector3(0, -0.2f, 0), bloodEffectCeil.transform.rotation);
@@ -327,13 +332,6 @@ public class PlayerControl : MonoBehaviour
         {
             Instantiate(bloodEffectFloor, transform.position + new Vector3(0,0.2f,0), bloodEffectFloor.transform.rotation);
         }
-    }
-
-    // TakeDamage function
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
         if(currentHealth <= 0) 
         {
             currentHealth = 0;
