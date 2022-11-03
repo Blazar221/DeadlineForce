@@ -104,6 +104,7 @@ public class AttackTutorial : MonoBehaviour
         //         fading=true;
         //     }
         // }
+        playerControl.canChangeGravity = false;
 
         if(!shortNoteLearned && Time.timeSinceLevelLoad >= firstShortNoteTime){
             Time.timeScale = 0f;
