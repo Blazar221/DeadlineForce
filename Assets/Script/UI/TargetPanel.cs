@@ -197,13 +197,13 @@ public class TargetPanel : MonoBehaviour
                     // the line is completed
                     switch(objL.GetItemType()){
                         case ItemType.Shield:
-                            PlayerSkill.instance.CallShieldSkill();
+                            SkillController.Instance.CallShieldSkill();
                             break;
                         case ItemType.Clone:
-                            PlayerSkill.instance.CallCloneSkill();
+                            SkillController.Instance.CallCloneSkill();
                             break;
                         case ItemType.Freeze:
-                            PlayerSkill.instance.CallFreezeSkill();
+                            SkillController.Instance.CallFreezeSkill();
                             break;
                     }
                     BossUI.instance.TakeDamage(patternDamage);
