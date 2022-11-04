@@ -95,6 +95,8 @@ public class PlayerAttack : MonoBehaviour
                 ScoreSingle(Time.time);
             }
             else if (canGetLongScore == false){
+                Debug.Log("Miss");
+                Debug.Log("CanGetSingleScore: " + canGetSingleScore + " CanGetLongScore: " + canGetLongScore + " CanAvoidDamage: " + canAvoidDamage + " CanChangeGravity: " + canChangeGravity + " CanCross: " + canCross + " MissFood: " + missFood + " MissMine: " + missMine + " IsUpsideDown: " + isUpsideDown) ;
                 PlayerHealth.Instance.TakeDamage(5);
             }
             if (canAvoidDamage){
@@ -129,6 +131,9 @@ public class PlayerAttack : MonoBehaviour
         if(toHit != null)
         {
             TargetPanel.Instance.TargetHit(toHit.GetComponent<SpriteRenderer>().color);
+        }
+        else{
+            Debug.Log("No target to hit");
         }        
         if (toHit.GetComponent<SpriteRenderer>().color == fireRenderer.color)
         {

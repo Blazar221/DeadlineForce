@@ -48,7 +48,7 @@ public class Spawner : MonoBehaviour
     private void Awake()
     {
         string json = Jsonfile.text;
-        Debug.Log("MyJson= "+json);
+        // Debug.Log("MyJson= "+json);
         objArr= JsonHelper.FromJson<Object>(json);
 
         fireDiamondHandler = fireDiamond.GetComponent<Diamond>();

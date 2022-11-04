@@ -220,8 +220,10 @@ public class TargetPanel : MonoBehaviour
                         case ItemType.Freeze:
                             SkillController.Instance.CallFreezeSkill();
                             break;
+                        case ItemType.Common:
+                            BossUI.instance.TakeDamage(patternDamage);
+                            break;
                     }
-                    BossUI.instance.TakeDamage(patternDamage);
                     UpdateAnalytics(objL);
                     var toDestroy = objL.GetGameObj();
                     Destroy(toDestroy);

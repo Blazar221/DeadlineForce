@@ -46,8 +46,8 @@ public class BossUI : MonoBehaviour
 
     public void SetColor(Color nextColor)
     {
-        Debug.Log("nextColor");
-        Debug.Log(nextColor);
+        // Debug.Log("nextColor");
+        // Debug.Log(nextColor);
         foreach(SpriteRenderer renderer in bossRenderers)
         {
             renderer.color = Color.Lerp(renderer.color, nextColor, 1);
