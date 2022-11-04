@@ -24,6 +24,8 @@ public class CollectTutorial : MonoBehaviour
     [SerializeField] private TextMeshProUGUI PressJInstruction;
     [SerializeField] private TextMeshProUGUI MissionInstruction;
     [SerializeField] private TextMeshProUGUI startcollectInstruction;
+    [SerializeField] private UnityEngine.Rendering.Universal.Light2D GlobalLight;
+    [SerializeField] private UnityEngine.Rendering.Universal.Light2D SpotLight;
     
     private PlayerControl playerControl;
     
@@ -31,7 +33,6 @@ public class CollectTutorial : MonoBehaviour
     private bool tripleLearned1 = false;
     private bool tripleLearned2 = false;
     private bool tripleLearned3 = false;
-    private bool differentcolorLearned = false;
     private bool gemcollectionLearned = false;
     
     private bool longNoteLearned = false;
@@ -46,7 +47,6 @@ public class CollectTutorial : MonoBehaviour
     private float t1ShortNoteTime = 3f;
     private float t2ShortNoteTime = 4f;
     private float t3ShortNoteTime = 5f;
-    private float differentcolorShortNoteTime = 6f;
     
     private float firstLongNoteTime = 7f;
     private float firstgemcollectionTime = 10f;
@@ -75,6 +75,8 @@ public class CollectTutorial : MonoBehaviour
         PressJInstruction.enabled=false;
         MissionInstruction.enabled=false;
         startcollectInstruction.enabled=false;
+        GlobalLight.enabled = false;
+        SpotLight.enabled = false;
     }
 
     // Update is called once per frame
@@ -109,10 +111,16 @@ public class CollectTutorial : MonoBehaviour
         }
         if(!tripleLearned1 && Time.timeSinceLevelLoad >= t1ShortNoteTime){
             Time.timeScale = 0f;
+            differentcolorInstruction.enabled = true;
             PressJInstruction.enabled = true;
+            GlobalLight.enabled = true;
+            SpotLight.enabled = true;
             if (Input.GetKeyDown(KeyCode.Space)) {
                 tripleLearned1 = true;
                 PressJInstruction.enabled = false;
+                differentcolorInstruction.enabled = false;
+                GlobalLight.enabled = false;
+                SpotLight.enabled = false;
                 Time.timeScale = 1f;
             }
         }
@@ -134,26 +142,18 @@ public class CollectTutorial : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
-
-        if(!differentcolorLearned && Time.timeSinceLevelLoad >= differentcolorShortNoteTime){
-            Time.timeScale = 0f;
-            differentcolorInstruction.enabled = true;
-            PressJInstruction.enabled = true;
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                differentcolorLearned = true;
-                PressJInstruction.enabled = false;
-                differentcolorInstruction.enabled = false;
-                Time.timeScale = 1f;
-            }
-        }
        
         
         if(!longNoteLearned && Time.timeSinceLevelLoad >= firstLongNoteTime){
             Time.timeScale = 0f;
             longNoteInstruction.enabled = true;
+            GlobalLight.enabled = true;
+            SpotLight.enabled = true;
             if (Input.GetKeyDown(KeyCode.Space)) {
                 longNoteLearned = true;
                 longNoteInstruction.enabled = false;
+                GlobalLight.enabled = false;
+                SpotLight.enabled = false;
                 Time.timeScale = 1f;
             }
         }

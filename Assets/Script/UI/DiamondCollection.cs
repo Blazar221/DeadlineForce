@@ -83,4 +83,28 @@ public class DiamondCollection : MonoBehaviour
         rockCount += 1;
         rockBar.SetHealth(rockCount);
     }
+    
+    public void SetFireAlmostFull()
+    {
+        fireCount = 8;
+        fireBar.SetHealth(fireCount);
+    }
+    
+    public void SetGrassAlmostFull()
+    {
+        grassCount = 8;
+        grassBar.SetHealth(grassCount);
+    }
+    
+    public void SetWaterAlmostFull()
+    {
+        waterCount = 8;
+        waterBar.SetHealth(waterCount);
+    }
+    
+    public void SetRockAlmostFull()
+    {
+        rockCount = 8;
+        rockBar.SetHealth(rockCount);
+    }
 }
