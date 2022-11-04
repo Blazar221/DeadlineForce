@@ -25,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
     void Awake()
     {
         instance = this;
+        
         currentHealth = maxHealth;
         healthBar.SetMaxValue(maxHealth);
         isUpsideDown = false;
