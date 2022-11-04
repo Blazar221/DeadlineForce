@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DiamondCollection : MonoBehaviour
+public class CollectionController : MonoBehaviour
 {
-    public static DiamondCollection Instance;
+    public static CollectionController Instance;
     public string time = "";
     private float lastTime = 0f;
     private int timeCount_i = 0;

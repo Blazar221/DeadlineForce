@@ -64,7 +64,6 @@ public class SkillController : MonoBehaviour
     IEnumerator CloseCloneSkill()
     {
         yield return new WaitForSeconds(3f);
-        Debug.Log("Close");
         playerClone.SetActive(false);
     }
 }

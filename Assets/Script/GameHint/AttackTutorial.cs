@@ -75,10 +75,10 @@ public class AttackTutorial : MonoBehaviour
         BossSpotLight.enabled = false;
         TargetPanelSpotLight.enabled = false;
         HealthBarSpotLight.enabled = false;
-        DiamondCollection.Instance.SetFireAlmostFull();
-        DiamondCollection.Instance.SetGrassAlmostFull();
-        DiamondCollection.Instance.SetWaterAlmostFull();
-        DiamondCollection.Instance.SetRockAlmostFull();
+        CollectionController.Instance.SetFireAlmostFull();
+        CollectionController.Instance.SetGrassAlmostFull();
+        CollectionController.Instance.SetWaterAlmostFull();
+        CollectionController.Instance.SetRockAlmostFull();
     }
 
     // Update is called once per frame

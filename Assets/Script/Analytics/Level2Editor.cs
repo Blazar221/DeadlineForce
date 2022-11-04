@@ -83,7 +83,7 @@ public class Level2Editor : MonoBehaviour
         _playtime = Time.timeSinceLevelLoad;
         _bossHealth = (BossUI.instance != null)?BossUI.instance.bossHealth:0;
         _playerHealth = PlayerControl.instance.currentHealth;
-        _timer = DiamondCollection.Instance.time;
+        _timer = CollectionController.Instance.time;
         CalculatePath();
         StartCoroutine(Post(_sessionId.ToString(), _playtime.ToString(), _bossHealth.ToString(), _playerHealth.ToString(),
                         _subQuests, pathOption, _timer));

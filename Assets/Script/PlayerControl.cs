@@ -186,7 +186,7 @@ public class PlayerControl : MonoBehaviour
         ScoreManager.instance.GetRank();
         //Debug.Log(hitScore + "/" + missScore);
         // Reset diamond
-        DiamondCollection.Instance.Reset();
+        CollectionController.Instance.Reset();
     }
 
     void FixedUpdate() {
@@ -243,16 +243,16 @@ public class PlayerControl : MonoBehaviour
         }        
         if (toHit.GetComponent<SpriteRenderer>().color == fireRenderer.color)
         {
-            DiamondCollection.Instance.AddFireCount();
+            CollectionController.Instance.AddFireCount();
         } else if (toHit.GetComponent<SpriteRenderer>().color == grassRenderer.color)
         {
-            DiamondCollection.Instance.AddGrassCount();
+            CollectionController.Instance.AddGrassCount();
         } else if (toHit.GetComponent<SpriteRenderer>().color == waterRenderer.color)
         {
-            DiamondCollection.Instance.AddWaterCount();
+            CollectionController.Instance.AddWaterCount();
         } else if (toHit.GetComponent<SpriteRenderer>().color == rockRenderer.color)
         {
-            DiamondCollection.Instance.AddRockCount();
+            CollectionController.Instance.AddRockCount();
         }
         // best way is to set tag for each color of gem
         // if(toHit.tag == "food"){
@@ -282,10 +282,10 @@ public class PlayerControl : MonoBehaviour
     {
         if(longNoteScoreTimeCounter > longNoteScoreTimeBar){
             longNoteScoreTimeCounter = 0;
-            DiamondCollection.Instance.AddFireCount();
-            DiamondCollection.Instance.AddWaterCount();
-            DiamondCollection.Instance.AddGrassCount();
-            DiamondCollection.Instance.AddRockCount();
+            CollectionController.Instance.AddFireCount();
+            CollectionController.Instance.AddWaterCount();
+            CollectionController.Instance.AddGrassCount();
+            CollectionController.Instance.AddRockCount();
         }
     }
 
