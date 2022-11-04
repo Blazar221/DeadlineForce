@@ -237,7 +237,8 @@ public class PlayerControl : MonoBehaviour
     void ScoreSingle(float scoreTime)
     {
         hitScore++;
-        TargetPanel.Instance.TargetHit(toHit.GetComponent<SpriteRenderer>().color);
+        if(toHit != null)
+            TargetPanel.Instance.TargetHit(toHit.GetComponent<SpriteRenderer>().color);
         
         if (toHit.GetComponent<SpriteRenderer>().color == fireRenderer.color)
         {

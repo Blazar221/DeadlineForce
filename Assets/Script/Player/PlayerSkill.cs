@@ -32,12 +32,12 @@ public class PlayerSkill : MonoBehaviour
         }
     }
 
-    void CallFreezeSkill()
+    public void CallFreezeSkill()
     {
         BossBehavior.instance.Freeze();
     }
 
-    void CallShieldSkill()
+    public void CallShieldSkill()
     {
         shield.SetActive(true);
         StartCoroutine(CloseShieldSkill());
@@ -49,7 +49,7 @@ public class PlayerSkill : MonoBehaviour
         shield.SetActive(false);
     }
 
-    void CallCloneSkill()
+    public void CallCloneSkill()
     {
         int yPos = 3 - originPlayerControl.GetYPos();
         

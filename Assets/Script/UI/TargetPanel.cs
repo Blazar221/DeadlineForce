@@ -9,6 +9,9 @@ public class TargetPanel : MonoBehaviour
     public static TargetPanel Instance;
 
     [SerializeField] private Sprite[] items;
+    // 0: shield
+    // 1: clone
+    // 2: freeze
 
     public int patternDamage = 20;
 
@@ -21,8 +24,13 @@ public class TargetPanel : MonoBehaviour
     private readonly Color _green = new(0.43f, 1f, 0.058f, 1.0f);
     private readonly Color _red = new(1.0f, 0.5f, 0f, 1.0f);
     private readonly Color _yellow = new(1f, 0.76f, 0f, 1f);
-    private readonly Color _brownSaber = new(0.58f, 0.3f, 0f, 1f);
+    // private readonly Color _brownSaber = new(0.58f, 0.3f, 0f, 1f);
     
+    public enum ItemType{
+        Shield,
+        Clone,
+        Freeze
+    }
     
     private List<ObjectLine> _objectLines;
     private Target[] _targets ;
@@ -70,8 +78,8 @@ public class TargetPanel : MonoBehaviour
     
     private readonly Target[] _level4Target = {
         
-        // new(new[] { 0, 1,2,3,4 }, new[] { 5f,5f,5f,5f,5f}), // for test
-        // new(new[] { 5,6,7,8,9 }, new[] { 5f,5f,5f,5f,5f }), // for test
+        new(new[] { 0, 1,2,3,4 }, new[] { 35f,35f,35f,35f,35f}), // for test
+        new(new[] { 5,6,7,8,9 }, new[] { 5f,5f,5f,5f,5f }), // for test
         new(new[] { 9, 0 }, new[] { 15f, 20f }),
         new(new[] { 5, 3, 8 }, new[] { 15f, 20f, 25f }),
         new(new[] { 6, 1 }, new[] { 15f, 20f }),
@@ -84,16 +92,16 @@ public class TargetPanel : MonoBehaviour
     };
     private const int Level4LoopIndex = 0;
 
-    // 0: blue*3 = waterWeapon
-    // 1: green*3 = grassWeapon
-    // 2: red*3 = fireWeapon
-    // 3: yellow*3 = yellowWeapon
-    // 4: red*2 + blue*1 = RB
-    // 5: red*2 + green*1 = RG
-    // 6: red*2 + yellow*1 = RY
-    // 7: blue*2 + green*1 = BG
-    // 8: blue*2 + yellow*1 = BY
-    // 9: green*2 + yellow*1 = GY
+    // 0: blue*3 = shield
+    // 1: green*3 = clone
+    // 2: red*3 = freeze
+    // 3: yellow*3 = shield
+    // 4: red*2 + blue*1 = clone
+    // 5: red*2 + green*1 = freeze
+    // 6: red*2 + yellow*1 = shield
+    // 7: blue*2 + green*1 = clone
+    // 8: blue*2 + yellow*1 = freeze
+    // 9: green*2 + yellow*1 = shield
     
     private int _targetIndex;
     
@@ -187,6 +195,17 @@ public class TargetPanel : MonoBehaviour
                 if (objL.RemoveFirstGem())
                 {
                     // the line is completed
+                    switch(objL.GetItemType()){
+                        case ItemType.Shield:
+                            PlayerSkill.instance.CallShieldSkill();
+                            break;
+                        case ItemType.Clone:
+                            PlayerSkill.instance.CallCloneSkill();
+                            break;
+                        case ItemType.Freeze:
+                            PlayerSkill.instance.CallFreezeSkill();
+                            break;
+                    }
                     BossUI.instance.TakeDamage(patternDamage);
                     UpdateAnalytics(objL);
                     var toDestroy = objL.GetGameObj();
@@ -268,6 +287,7 @@ public class TargetPanel : MonoBehaviour
             var blueCount = 0;
             var greenCount = 0;
             var brownCount = 0;
+            ItemType itemType = ItemType.Shield;
             
             switch (lines[i])
             {
@@ -279,11 +299,12 @@ public class TargetPanel : MonoBehaviour
                     secondGem.sprite = sources[0];
                     thirdGem.sprite = sources[0];
                     item.sprite = items[0];
-                    if (rectTransform != null)
-                    {
-                        rectTransform.Rotate(new Vector3(0, 0, 45));
-                        rectTransform.localScale = new Vector3(0.5f, 1, 1);
-                    }
+                    itemType = ItemType.Shield;
+                    // if (rectTransform != null)
+                    // {
+                    //     rectTransform.Rotate(new Vector3(0, 0, 45));
+                    //     rectTransform.localScale = new Vector3(0.5f, 1, 1);
+                    // }
                     blueCount = 3;
                     missionDescription = "blue blue blue";
                     break;
@@ -295,11 +316,12 @@ public class TargetPanel : MonoBehaviour
                     secondGem.sprite = sources[1];
                     thirdGem.sprite = sources[1];
                     item.sprite = items[1];
-                    if (rectTransform != null)
-                    {
-                        rectTransform.Rotate(new Vector3(0, 0, 45));
-                        rectTransform.localScale = new Vector3(0.5f, 1, 1);
-                    }
+                    itemType = ItemType.Clone;
+                    // if (rectTransform != null)
+                    // {
+                    //     rectTransform.Rotate(new Vector3(0, 0, 45));
+                    //     rectTransform.localScale = new Vector3(0.5f, 1, 1);
+                    // }
                     greenCount = 3;
                     missionDescription = "green green green";
                     break;
@@ -311,11 +333,12 @@ public class TargetPanel : MonoBehaviour
                     secondGem.sprite = sources[2];
                     thirdGem.sprite = sources[2];
                     item.sprite = items[2];
-                    if (rectTransform != null)
-                    {
-                        rectTransform.Rotate(new Vector3(0, 0, 45));
-                        rectTransform.localScale = new Vector3(0.5f, 1, 1);
-                    }
+                    itemType = ItemType.Freeze;
+                    // if (rectTransform != null)
+                    // {
+                    //     rectTransform.Rotate(new Vector3(0, 0, 45));
+                    //     rectTransform.localScale = new Vector3(0.5f, 1, 1);
+                    // }
                     redCount = 3;
                     missionDescription = "red red red";
                     break;
@@ -326,13 +349,13 @@ public class TargetPanel : MonoBehaviour
                     firstGem.sprite = sources[3];
                     secondGem.sprite = sources[3];
                     thirdGem.sprite = sources[3];
-                    item.sprite = items[3];
-                    if (rectTransform != null)
-                    {
-                        rectTransform.Rotate(new Vector3(0, 0, 45));
-                        rectTransform.localScale = new Vector3(0.5f, 1, 1);
-                    }
-                    item.color = _brownSaber;
+                    item.sprite = items[0];
+                    itemType = ItemType.Shield;
+                    // if (rectTransform != null)
+                    // {
+                    //     rectTransform.Rotate(new Vector3(0, 0, 45));
+                    //     rectTransform.localScale = new Vector3(0.5f, 1, 1);
+                    // }
                     brownCount = 3;
                     missionDescription = "yellow yellow yellow";
                     break;
@@ -344,12 +367,13 @@ public class TargetPanel : MonoBehaviour
                     firstGem.sprite = sources[2];
                     secondGem.sprite = sources[2];
                     thirdGem.sprite = sources[0];
-                    item.sprite = items[4];
-                    if (rectTransform != null)
-                    {
-                        rectTransform.Rotate(new Vector3(0, 0, 45));
-                        rectTransform.localScale = new Vector3(0.5f, 1, 1);
-                    }
+                    item.sprite = items[1];
+                    itemType = ItemType.Clone;
+                    // if (rectTransform != null)
+                    // {
+                    //     rectTransform.Rotate(new Vector3(0, 0, 45));
+                    //     rectTransform.localScale = new Vector3(0.5f, 1, 1);
+                    // }
                     redCount = 2;
                     blueCount = 1;
                     missionDescription = "red red blue";
@@ -362,7 +386,8 @@ public class TargetPanel : MonoBehaviour
                     firstGem.sprite = sources[2];
                     secondGem.sprite = sources[2];
                     thirdGem.sprite = sources[1];
-                    item.sprite = items[5];
+                    item.sprite = items[2];
+                    itemType = ItemType.Freeze;
                     redCount = 2;
                     greenCount = 1;
                     missionDescription = "red red green";
@@ -375,7 +400,8 @@ public class TargetPanel : MonoBehaviour
                     firstGem.sprite = sources[2];
                     secondGem.sprite = sources[2];
                     thirdGem.sprite = sources[3];
-                    item.sprite = items[6];
+                    item.sprite = items[0];
+                    itemType = ItemType.Shield;
                     redCount = 2;
                     brownCount = 1;
                     missionDescription = "red red yellow";
@@ -388,7 +414,8 @@ public class TargetPanel : MonoBehaviour
                     firstGem.sprite = sources[0];
                     secondGem.sprite = sources[0];
                     thirdGem.sprite = sources[1];
-                    item.sprite = items[7];
+                    item.sprite = items[1];
+                    itemType = ItemType.Clone;
                     blueCount = 2;
                     greenCount = 1;
                     missionDescription = "blue blue green";
@@ -401,7 +428,8 @@ public class TargetPanel : MonoBehaviour
                     firstGem.sprite = sources[0];
                     secondGem.sprite = sources[0];
                     thirdGem.sprite = sources[3];
-                    item.sprite = items[8];
+                    item.sprite = items[2];
+                    itemType = ItemType.Freeze;
                     blueCount = 2;
                     brownCount = 1;
                     missionDescription = "blue blue yellow";
@@ -414,7 +442,8 @@ public class TargetPanel : MonoBehaviour
                     firstGem.sprite = sources[1];
                     secondGem.sprite = sources[1];
                     thirdGem.sprite = sources[3];
-                    item.sprite = items[9];
+                    item.sprite = items[0];
+                    itemType = ItemType.Shield;
                     greenCount = 2;
                     brownCount = 1;
                     missionDescription = "green green yellow";
@@ -425,6 +454,7 @@ public class TargetPanel : MonoBehaviour
             var objectLine = new ObjectLine(new List<Image> { firstGem, secondGem, thirdGem }, 
                 item, obj, times[i], redCount, blueCount, greenCount, brownCount);
             objectLine.SetStats(_targetCounter, missionDescription);
+            objectLine.SetItemType(itemType);
             _objectLines.Add(objectLine);
             // set timer
             obj.GetComponent<TargetTimer>().timeLeft = times[i];
@@ -492,6 +522,9 @@ public class ObjectLine
     private readonly Color _yellow;
 
     private Color _firstColor;
+    private TargetPanel.ItemType _itemType;
+
+    
 
     // constructor
     public ObjectLine(List<Image> gemList, Image upgradeItem, GameObject obj, float timeLeft, int redCount, int blueCount, int greenCount, int yellowCount)
@@ -530,6 +563,7 @@ public class ObjectLine
     public int GetBlueCount() { return _blueCount; }
     public int GetGreenCount() { return _greenCount; }
     public int GetYellowCount() { return _yellowCount; }
+    public TargetPanel.ItemType GetItemType() { return _itemType; }
 
     // return true if the line is completed
     public bool RemoveFirstGem()
@@ -550,6 +584,11 @@ public class ObjectLine
         this._missionIndex = missionIndex;
         this._missionDescription = missionDescription;
         this._isMissionCompleted = "0";
+    }
+
+    public void SetItemType(TargetPanel.ItemType itemType)
+    {
+        this._itemType = itemType;
     }
 
     // return true if the time is up
