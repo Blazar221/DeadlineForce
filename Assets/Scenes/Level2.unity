@@ -5712,10 +5712,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1203535960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48895d644d57bea40b27727473ef0c09, type: 3}
+  m_Script: {fileID: 11500000, guid: e6f699ca867c1a44095709b6ac27ac93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSePxRWGYbqNQTvQqzZ8-tNrJP6a0PG7Kk4OiF0VgM7jRo945A/formResponse
+  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSdl4DxQQvCkrAy4uAwxfDkplZFRlgc1zKRPS9lvE972EvMuVQ/formResponse
 --- !u!114 &1203535964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5725,10 +5725,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1203535960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 242f120d3961af740ae4ad6940549e82, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e2378d31171bf143b45b0d8c657e724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSeseaM4A3SVcs-gxBN6GviSGPkskhEYZuQBio32UzYeRBUfQw/formResponse
+  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLScmx9MyVfNDgaEwqioyTLk_Hl0d3H6BA7OxI_sr7tIQwgIJAQ/formResponse
 --- !u!1 &1237845008
 GameObject:
   m_ObjectHideFlags: 0
@@ -6191,6 +6191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70c54fe14e655d42928ee4402d16b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
   bossHealth: 1500
   flashTime: 0.3
   healthBar: {fileID: 808834014}

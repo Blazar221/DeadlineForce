@@ -5679,8 +5679,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1203535962}
-  - component: {fileID: 1203535963}
   - component: {fileID: 1203535964}
+  - component: {fileID: 1203535963}
   m_Layer: 0
   m_Name: AnalyticManager
   m_TagString: Untagged
@@ -6191,6 +6191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70c54fe14e655d42928ee4402d16b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
   bossHealth: 1500
   flashTime: 0.3
   healthBar: {fileID: 808834014}

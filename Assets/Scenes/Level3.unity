@@ -5679,8 +5679,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1203535962}
-  - component: {fileID: 1203535963}
   - component: {fileID: 1203535964}
+  - component: {fileID: 1203535963}
   m_Layer: 0
   m_Name: AnalyticManager
   m_TagString: Untagged
@@ -5712,10 +5712,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1203535960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48895d644d57bea40b27727473ef0c09, type: 3}
+  m_Script: {fileID: 11500000, guid: 68e79a98de8e41643a894cb44c8fb43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSePxRWGYbqNQTvQqzZ8-tNrJP6a0PG7Kk4OiF0VgM7jRo945A/formResponse
+  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSdVSYMwMuMjZggAZ27HjHviN4vPFeGnTrj_sd6wxGTgP9iDnA/formResponse
 --- !u!114 &1203535964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5725,10 +5725,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1203535960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 242f120d3961af740ae4ad6940549e82, type: 3}
+  m_Script: {fileID: 11500000, guid: f5492a782fe6ae842852e28214e7c3af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSeseaM4A3SVcs-gxBN6GviSGPkskhEYZuQBio32UzYeRBUfQw/formResponse
+  formURL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSd35Ssc9tK9JWp4gJ0OYyznJKXc5eYwhsQS4r0Ec0_infQmpQ/formResponse
 --- !u!1 &1237845008
 GameObject:
   m_ObjectHideFlags: 0
@@ -6191,6 +6191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70c54fe14e655d42928ee4402d16b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
   bossHealth: 1500
   flashTime: 0.3
   healthBar: {fileID: 808834014}
