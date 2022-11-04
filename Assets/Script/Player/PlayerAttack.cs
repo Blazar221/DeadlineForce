@@ -11,6 +11,7 @@ public class PlayerAttack : MonoBehaviour
     private int hitScore;
     private int missScore;
     private bool isUpsideDown;
+    private bool isEating;
     private float nextTime;
     private float collsionTime;
     private float longNoteScoreTimeCounter = 0f;

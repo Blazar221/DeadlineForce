@@ -1248,9 +1248,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1610716ce066e4bb6850aa1de7470ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canCross: 0
   hitEffect: {fileID: 7385447010465876087, guid: 5f5019da551236a46a2e361d2bd1fd06, type: 3}
   missEffect: {fileID: 6635266172521709411, guid: dbb14eaa2f88a7241adc09cba52c3960, type: 3}
+  goodEffect: {fileID: 2802313049072304034, guid: c146c70ad0350f743a6620b8cc363bbd, type: 3}
+  perfectEffect: {fileID: 2494714996470128700, guid: 7481da4ae9a13b3498b72745925926b6, type: 3}
   fireDiamond: {fileID: 6793344568998294521, guid: 0942592310d901b4ca2d102f56a13991, type: 3}
   fireBar: {fileID: 132229189}
   grassDiamond: {fileID: 6793344568998294521, guid: 0020b74fc6d5612468084ca21a688ffd, type: 3}
@@ -1259,6 +1260,7 @@ MonoBehaviour:
   waterBar: {fileID: 576531392}
   rockDiamond: {fileID: 6793344568998294521, guid: 6e3699c2f9bc3814981deaa2df1eda7e, type: 3}
   rockBar: {fileID: 921351582}
+  _boss: {fileID: 1307346853}
 --- !u!1 &197709530
 GameObject:
   m_ObjectHideFlags: 0
