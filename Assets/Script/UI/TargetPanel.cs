@@ -13,6 +13,10 @@ public class TargetPanel : MonoBehaviour
     // 1: clone
     // 2: freeze
 
+    private Sprite _shield;
+    private Sprite _clone;
+    private Sprite _freeze;
+
     public int patternDamage = 20;
 
     // [SerializeField] private Image[] gems;
@@ -29,7 +33,8 @@ public class TargetPanel : MonoBehaviour
     public enum ItemType{
         Shield,
         Clone,
-        Freeze
+        Freeze,
+        Common
     }
     
     private List<ObjectLine> _objectLines;
@@ -41,21 +46,21 @@ public class TargetPanel : MonoBehaviour
 
     private readonly Target[] _level1Target = {
 
-        new(new[] { 0, 1 }, new[] { 6f, 10f }),
-        new(new[] { 1, 0 }, new[] { 6f, 10f }),
+        new(new[] { 0, 1 }, new[] { 6f, 10f },new[]{ItemType.Common,ItemType.Common}),
+        new(new[] { 1, 0 }, new[] { 6f, 10f }, new[]{ItemType.Common, ItemType.Common}),
         // loop
-        new(new[] { 0, 1 }, new[] { 5.5f, 9f }),
-        new(new[] { 1, 0 }, new[] { 5.5f, 9f }),
+        new(new[] { 0, 1 }, new[] { 5.5f, 9f }, new[]{ItemType.Common, ItemType.Common}),
+        new(new[] { 1, 0 }, new[] { 5.5f, 9f }, new[]{ItemType.Common, ItemType.Common}),
     };
     private const int Level1LoopIndex = 2;
 
     private readonly Target[] _level2Target = {
-        new(new[] { 0, 3}, new[] { 15f, 20f }),
-        new(new[] { 1, 2}, new[] { 15f, 20f }),
-        new(new[] { 0, 1, 3}, new[] { 15f, 20f, 25f }),
-        new(new[] { 1, 3}, new[] { 15f, 20f }),
-        new(new[] { 0, 2}, new[] { 15f, 20f }),
-        new(new[] { 1, 2, 3}, new[] { 15f, 20f, 25f }),
+        new(new[] { 0, 2}, new[] { 15f, 20f }, new[]{ItemType.Shield, ItemType.Common}),
+        new(new[] { 1, 3}, new[] { 15f, 20f }, new[]{ItemType.Common, ItemType.Shield}),
+        new(new[] { 0, 1, 2}, new[] { 15f, 20f, 25f }, new[]{ItemType.Shield, ItemType.Common, ItemType.Common}),
+        new(new[] { 1, 3}, new[] { 15f, 20f }, new[]{ItemType.Common, ItemType.Shield}),
+        new(new[] { 0, 2}, new[] { 15f, 20f }, new[]{ItemType.Shield, ItemType.Common}),
+        new(new[] { 1, 2, 3}, new[] { 15f, 20f, 25f }, new[]{ItemType.Common, ItemType.Common, ItemType.Shield}),
     };
 
     private const int Level2LoopIndex = 0;
@@ -64,31 +69,31 @@ public class TargetPanel : MonoBehaviour
         
         // new(new[] { 0, 1,2,3,4 }, new[] { 5f,5f,5f,5f,5f}), // for test
         // new(new[] { 5,6,7,8,9 }, new[] { 5f,5f,5f,5f,5f }), // for test
-        new(new[] { 9, 0 }, new[] { 15f, 20f }),
-        new(new[] { 5, 3, 8 }, new[] { 15f, 20f, 25f }),
-        new(new[] { 6, 1 }, new[] { 15f, 20f }),
-        new(new[] { 8, 4, 9}, new[] { 15f, 20f, 25f }),
-        new(new[] { 7, 2}, new[] { 15f, 20f }),
-        new(new[] { 6, 1, 8}, new[] { 15f, 20f, 25f }),
-        new(new[] { 5, 3 }, new[] { 15f, 20f }),
-        new(new[] { 9, 0, 5}, new[] { 15f, 20f, 25f }),
-        new(new[] { 8, 4 }, new[] { 15f, 20f }),
+        new(new[] { 8, 0 }, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Shield}),
+        new(new[] { 4, 3 }, new[] { 20f, 25f }, new[]{ItemType.Common, ItemType.Shield}),
+        new(new[] { 6, 1 }, new[] { 15f, 20f }, new[]{ItemType.Shield, ItemType.Common}),
+        new(new[] { 8, 4, 9}, new[] { 15f, 20f, 25f },new[]{ItemType.Freeze, ItemType.Common, ItemType.Shield}),
+        new(new[] { 7, 2}, new[] { 15f, 20f }, new[]{ItemType.Common, ItemType.Freeze}),
+        new(new[] { 6, 1, 8}, new[] { 15f, 20f, 25f }, new[]{ItemType.Shield, ItemType.Common, ItemType.Freeze}),
+        new(new[] { 5, 3 }, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Shield}),
+        new(new[] { 9, 5}, new[] { 20f, 25f }, new[]{ItemType.Shield, ItemType.Freeze}),
+        new(new[] { 8, 4 }, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Common}),
     };
     private const int Level3LoopIndex = 0;
     
     private readonly Target[] _level4Target = {
         
-        new(new[] { 0, 1,2,3,4 }, new[] { 35f,35f,35f,35f,35f}), // for test
-        new(new[] { 5,6,7,8,9 }, new[] { 5f,5f,5f,5f,5f }), // for test
-        new(new[] { 9, 0 }, new[] { 15f, 20f }),
-        new(new[] { 5, 3, 8 }, new[] { 15f, 20f, 25f }),
-        new(new[] { 6, 1 }, new[] { 15f, 20f }),
-        new(new[] { 8, 4, 9}, new[] { 15f, 20f, 25f }),
-        new(new[] { 7, 2}, new[] { 15f, 20f }),
-        new(new[] { 6, 1, 8}, new[] { 15f, 20f, 25f }),
-        new(new[] { 5, 3 }, new[] { 15f, 20f }),
-        new(new[] { 9, 0, 5}, new[] { 15f, 20f, 25f }),
-        new(new[] { 8, 4 }, new[] { 15f, 20f }),
+        // new(new[] { 0, 1,2,3,4 }, new[] { 5f,5f,5f,5f,5f}), // for test
+        // new(new[] { 5,6,7,8,9 }, new[] { 5f,5f,5f,5f,5f }), // for test
+        new(new[] { 8, 0 }, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Shield}),
+        new(new[] { 4, 3 }, new[] { 20f, 25f }, new[]{ItemType.Clone, ItemType.Shield}),
+        new(new[] { 6, 1 }, new[] { 15f, 20f }, new[]{ItemType.Shield, ItemType.Clone}),
+        new(new[] { 8, 4, 9}, new[] { 15f, 20f, 25f },new[]{ItemType.Freeze, ItemType.Clone, ItemType.Shield}),
+        new(new[] { 7, 2}, new[] { 15f, 20f }, new[]{ItemType.Clone, ItemType.Freeze}),
+        new(new[] { 6, 1, 8}, new[] { 15f, 20f, 25f }, new[]{ItemType.Shield, ItemType.Clone, ItemType.Freeze}),
+        new(new[] { 5, 3 }, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Shield}),
+        new(new[] { 9, 5}, new[] { 20f, 25f }, new[]{ItemType.Shield, ItemType.Freeze}),
+        new(new[] { 8, 4 }, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Clone}),
     };
     private const int Level4LoopIndex = 0;
 
@@ -113,19 +118,29 @@ public class TargetPanel : MonoBehaviour
     {
         Instance = this;
         var scene = SceneManager.GetActiveScene();
+        _shield = items[0];
+        _clone = items[1];
+        _freeze = items[2];
+        
         switch (scene.name)
         {
             case "Level1":
                 _targets = _level1Target;
                 _targetLoopIndex = Level1LoopIndex;
+                _shield = items[3];
+                _clone = items[3];
+                _freeze = items[3];
                 break;
             case "Level2":
                 _targets = _level2Target;
                 _targetLoopIndex = Level2LoopIndex;
+                _clone = items[3];
+                _freeze = items[3];
                 break;
             case "Level3":
                 _targets = _level3Target;
                 _targetLoopIndex = Level3LoopIndex;
+                _clone = items[3];
                 break;
             case "CollectTutorial":
                 _targets = _level1Target;
@@ -272,6 +287,7 @@ public class TargetPanel : MonoBehaviour
     {
         var lines = _targets[_targetIndex].GetFormulaIndex();
         var times = _targets[_targetIndex].GetTimeToCollect();
+        var itemTypes = _targets[_targetIndex].GetItemTypes();
         for(var i = 0; i <  _targets[_targetIndex].TargetLength(); i++)
         {
             GameObject obj = Instantiate(targetLine, transform);
@@ -287,7 +303,7 @@ public class TargetPanel : MonoBehaviour
             var blueCount = 0;
             var greenCount = 0;
             var brownCount = 0;
-            ItemType itemType = ItemType.Shield;
+            ItemType itemType = itemTypes[i];
             
             switch (lines[i])
             {
@@ -298,8 +314,7 @@ public class TargetPanel : MonoBehaviour
                     firstGem.sprite = sources[0];
                     secondGem.sprite = sources[0];
                     thirdGem.sprite = sources[0];
-                    item.sprite = items[0];
-                    itemType = ItemType.Shield;
+                    item.sprite = _shield;
                     // if (rectTransform != null)
                     // {
                     //     rectTransform.Rotate(new Vector3(0, 0, 45));
@@ -315,8 +330,7 @@ public class TargetPanel : MonoBehaviour
                     firstGem.sprite = sources[1];
                     secondGem.sprite = sources[1];
                     thirdGem.sprite = sources[1];
-                    item.sprite = items[1];
-                    itemType = ItemType.Clone;
+                    item.sprite = _clone;
                     // if (rectTransform != null)
                     // {
                     //     rectTransform.Rotate(new Vector3(0, 0, 45));
@@ -332,8 +346,7 @@ public class TargetPanel : MonoBehaviour
                     firstGem.sprite = sources[2];
                     secondGem.sprite = sources[2];
                     thirdGem.sprite = sources[2];
-                    item.sprite = items[2];
-                    itemType = ItemType.Freeze;
+                    item.sprite = _freeze;
                     // if (rectTransform != null)
                     // {
                     //     rectTransform.Rotate(new Vector3(0, 0, 45));
@@ -349,8 +362,7 @@ public class TargetPanel : MonoBehaviour
                     firstGem.sprite = sources[3];
                     secondGem.sprite = sources[3];
                     thirdGem.sprite = sources[3];
-                    item.sprite = items[0];
-                    itemType = ItemType.Shield;
+                    item.sprite = _shield;
                     // if (rectTransform != null)
                     // {
                     //     rectTransform.Rotate(new Vector3(0, 0, 45));
@@ -367,8 +379,7 @@ public class TargetPanel : MonoBehaviour
                     firstGem.sprite = sources[2];
                     secondGem.sprite = sources[2];
                     thirdGem.sprite = sources[0];
-                    item.sprite = items[1];
-                    itemType = ItemType.Clone;
+                    item.sprite = _clone;
                     // if (rectTransform != null)
                     // {
                     //     rectTransform.Rotate(new Vector3(0, 0, 45));
@@ -386,8 +397,7 @@ public class TargetPanel : MonoBehaviour
                     firstGem.sprite = sources[2];
                     secondGem.sprite = sources[2];
                     thirdGem.sprite = sources[1];
-                    item.sprite = items[2];
-                    itemType = ItemType.Freeze;
+                    item.sprite = _freeze;
                     redCount = 2;
                     greenCount = 1;
                     missionDescription = "red red green";
@@ -400,8 +410,7 @@ public class TargetPanel : MonoBehaviour
                     firstGem.sprite = sources[2];
                     secondGem.sprite = sources[2];
                     thirdGem.sprite = sources[3];
-                    item.sprite = items[0];
-                    itemType = ItemType.Shield;
+                    item.sprite = _shield;
                     redCount = 2;
                     brownCount = 1;
                     missionDescription = "red red yellow";
@@ -414,8 +423,7 @@ public class TargetPanel : MonoBehaviour
                     firstGem.sprite = sources[0];
                     secondGem.sprite = sources[0];
                     thirdGem.sprite = sources[1];
-                    item.sprite = items[1];
-                    itemType = ItemType.Clone;
+                    item.sprite = _clone;
                     blueCount = 2;
                     greenCount = 1;
                     missionDescription = "blue blue green";
@@ -428,8 +436,7 @@ public class TargetPanel : MonoBehaviour
                     firstGem.sprite = sources[0];
                     secondGem.sprite = sources[0];
                     thirdGem.sprite = sources[3];
-                    item.sprite = items[2];
-                    itemType = ItemType.Freeze;
+                    item.sprite = _freeze;
                     blueCount = 2;
                     brownCount = 1;
                     missionDescription = "blue blue yellow";
@@ -442,8 +449,7 @@ public class TargetPanel : MonoBehaviour
                     firstGem.sprite = sources[1];
                     secondGem.sprite = sources[1];
                     thirdGem.sprite = sources[3];
-                    item.sprite = items[0];
-                    itemType = ItemType.Shield;
+                    item.sprite = _shield;
                     greenCount = 2;
                     brownCount = 1;
                     missionDescription = "green green yellow";
@@ -479,10 +485,12 @@ public readonly struct Target
 {
     private readonly int[] _formulaIndex;
     private readonly float[] _timeToCollect;
-    public Target(int[] formulaIndex, float[] timeToCollect)
+    private readonly TargetPanel.ItemType[] _itemTypes;
+    public Target(int[] formulaIndex, float[] timeToCollect, TargetPanel.ItemType[] itemTypes)
     {
-        this._formulaIndex = formulaIndex;
-        this._timeToCollect = timeToCollect;
+        _formulaIndex = formulaIndex;
+        _timeToCollect = timeToCollect;
+        _itemTypes = itemTypes;
     }
 
     public int[] GetFormulaIndex()
@@ -493,6 +501,11 @@ public readonly struct Target
     public float[] GetTimeToCollect()
     {
         return _timeToCollect;
+    }
+
+    public TargetPanel.ItemType[] GetItemTypes()
+    {
+        return _itemTypes;
     }
     
     public int TargetLength()

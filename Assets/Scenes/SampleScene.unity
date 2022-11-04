@@ -7592,7 +7592,7 @@ MonoBehaviour:
   moveDest: {x: 0, y: 0, z: 0}
   startMove: 0
   bossAnimator: {fileID: 1307346858}
-  bgm: {fileID: 0}
+  bgm: {fileID: 1006874500}
   struggleStartTime: 0
 --- !u!1 &1327278763
 GameObject:
@@ -9017,6 +9017,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4033bbe87fe84ec40b0bd1b71dcff2e0, type: 3}
   - {fileID: 21300000, guid: e5920d10dc88ed544b41cef24de20a3d, type: 3}
   - {fileID: 21300000, guid: e29fbc27ecf248f4584e9a0a65adfdea, type: 3}
+  - {fileID: 21300000, guid: f3b727047ac29a64f92eff243e489a65, type: 3}
   patternDamage: 80
   sources:
   - {fileID: -1855127044, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
