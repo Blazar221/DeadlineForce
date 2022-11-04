@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement instance;
     private bool canChangeGravity;
     private Animator animator;
     private Rigidbody2D rb2D;
@@ -14,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
+        instance = this;
+
         canChangeGravity = true;
 
         playerYPosArr = new float[4];

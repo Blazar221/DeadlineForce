@@ -9,10 +9,9 @@ public class PlayerHealth : MonoBehaviour
     // To call game over menu
     public static event Action OnPlayerDeath;
 
-    private Rigidbody2D rb2D;
-    private bool isUpsideDown;
     private Animator animator;
     private int curYPos;
+    private bool isUpsideDown;
 
     [SerializeField]
     // Control health of player
@@ -37,13 +36,14 @@ public class PlayerHealth : MonoBehaviour
         playerYPosArr[3] = -3.4f;
         curYPos = 1;
         isUpsideDown = false;
-        rb2D = gameObject.GetComponent<Rigidbody2D>();
+        
         animator = GetComponent<Animator>();
     }
 
     // TakeDamage Function
     public void TakeDamage(int damage)
     {
+        PlayerMovement.instance.SetYPos(curYPos);
         currentHealth -= damage;
         healthBar.SetValue(currentHealth);
         // add blood effect
@@ -60,24 +60,5 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("You are dead!");
             OnPlayerDeath?.Invoke();
         }
-    }
-
-    public void SetYPos(int yPos)
-    {
-        curYPos = yPos;
-        // Directly move position
-        transform.position = new Vector3(transform.position.x, playerYPosArr[yPos], transform.position.z);
-        // Set Gravity Direction and isUpsideDown Flag
-        if(yPos == 0 || yPos == 2)
-        {
-            rb2D.gravityScale = -1f;
-            isUpsideDown = true;
-        }
-        else
-        {
-            rb2D.gravityScale = 1f;
-            isUpsideDown = false;
-        }
-        animator.SetBool("UpsideDown",isUpsideDown);
     }
 }
