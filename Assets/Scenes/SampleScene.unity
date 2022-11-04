@@ -656,6 +656,7 @@ GameObject:
   - component: {fileID: 178061456}
   - component: {fileID: 178061458}
   - component: {fileID: 178061459}
+  - component: {fileID: 178061460}
   m_Layer: 3
   m_Name: DinasourRunner
   m_TagString: Untagged
@@ -868,6 +869,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originPlayer: {fileID: 178061451}
   shield: {fileID: 929830243}
+--- !u!114 &178061460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178061451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d66de108e9b4287bc10efc345ac978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 1534913340}
+  playerYPosArr: []
+  bloodEffectCeil: {fileID: 7490847215641814726, guid: 925521c9452454e4b9878642d6668dd2, type: 3}
+  bloodEffectFloor: {fileID: 7490847215641814726, guid: 454480fa64e9c314291b0cf6ca7e3a0e, type: 3}
 --- !u!1 &197709530
 GameObject:
   m_ObjectHideFlags: 0
@@ -5865,6 +5884,8 @@ MonoBehaviour:
   moveDest: {x: 0, y: 0, z: 0}
   startMove: 0
   bossAnimator: {fileID: 1307346858}
+  bgm: {fileID: 0}
+  struggleStartTime: 0
 --- !u!1 &1327278763
 GameObject:
   m_ObjectHideFlags: 0
@@ -5941,8 +5962,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327278763}
   m_CullTransparentMesh: 1
-  bgm: {fileID: 1006874500}
-  struggleStartTime: 10
 --- !u!1 &1353258434
 GameObject:
   m_ObjectHideFlags: 0
