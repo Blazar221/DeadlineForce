@@ -85,6 +85,17 @@ public class PlayerMovement : MonoBehaviour
         canChangeGravity = false;
         animator.SetBool("UpsideDown",isUpsideDown);
     }
+    public void EnableClone()
+    {
+        GetComponent<SpriteRenderer>().color = new Color(39f/255f, 183f/255f, 162f/255f, 0.8f);
+        reverseControl = true;
+    }
+
+    public int GetYPos()
+    {
+        return curYPos;
+    }
+    
     void OnTriggerEnter2D(Collider2D collision)
     {
         // if(collision.gameObject.tag == "GravSwitch")
