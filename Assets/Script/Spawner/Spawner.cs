@@ -32,7 +32,6 @@ public class Spawner : MonoBehaviour
     private Diamond grassDiamondHandler;
     private Diamond rockDiamondHandler;
     
-    private PlayerControl playerHadler;
     private BgmController _bgmHandler;
 
     [SerializeField]
@@ -61,7 +60,6 @@ public class Spawner : MonoBehaviour
         grassDiamondHandler.SetSpeed(moveSpeed);
         rockDiamondHandler.SetSpeed(moveSpeed);
 
-        playerHadler = player.GetComponent<PlayerControl>();
         _bgmHandler = bgm.GetComponent<BgmController>();
         // sort the notes by time
         var watch = Stopwatch.StartNew();
@@ -72,7 +70,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerX = playerHadler.transform.position.x;
+        playerX = player.transform.position.x;
         StartCoroutine(SpawnNewItem());
     }
     

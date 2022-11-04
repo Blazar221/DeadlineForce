@@ -11,8 +11,8 @@ public class SkillController : MonoBehaviour
     [SerializeField]
     private GameObject playerClone;
 
-    private PlayerControl playerOriginControl;
-    private PlayerControl playerCloneControl;
+    private PlayerMovement playerOriginMovement;
+    private PlayerMovement playerCloneMovement;
     
     [SerializeField]
     private GameObject shield;
@@ -23,8 +23,8 @@ public class SkillController : MonoBehaviour
 
     private void Awake() {
         Instance = this;
-        playerOriginControl = playerOrigin.GetComponent<PlayerControl>();
-        playerCloneControl = playerClone.GetComponent<PlayerControl>();
+        playerOriginMovement = playerOrigin.GetComponent<PlayerMovement>();
+        playerCloneMovement = playerClone.GetComponent<PlayerMovement>();
     }
 
 
@@ -55,15 +55,15 @@ public class SkillController : MonoBehaviour
     public void CallCloneSkill()
     {
         playerClone.SetActive(true);
-        int yPos = 3 - playerOriginControl.GetYPos();
-        playerCloneControl.EnableClone();
-        playerCloneControl.SetYPos(yPos);
+        int yPos = 3 - playerOriginMovement.GetYPos();
+        playerCloneMovement.EnableClone();
+        playerCloneMovement.SetYPos(yPos);
         StartCoroutine(CloseCloneSkill());
     }
 
     IEnumerator CloseCloneSkill()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(cloneExistingTime);
         playerClone.SetActive(false);
     }
 }
