@@ -90,10 +90,10 @@ public class BossBehavior : MonoBehaviour
     {
         float yPos = _attackingLine switch
         {
-            0 => 4,
-            1 => 1,
-            2 => -1,
-            3 => -4,
+            0 => 4.2f,
+            1 => 1.25f,
+            2 => -1.25f,
+            3 => -4.2f,
             _ => 0,
         };
         switch (_count)
@@ -103,7 +103,7 @@ public class BossBehavior : MonoBehaviour
                 Destroy(_newBullet, 1f);
                 break;
             default:
-                _newBullet = Instantiate(bandit, new Vector3(3, yPos, 0), Quaternion.identity);
+                _newBullet = Instantiate(bandit, new Vector3(6, yPos, 0), Quaternion.identity);
                 Destroy(_newBullet, 2f);
                 break;
                 ;

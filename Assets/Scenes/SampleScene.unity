@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 60805064}
   - component: {fileID: 60805063}
   - component: {fileID: 60805062}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: PlatformTop
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.7490196, g: 0.57254905, b: 0.8588236, a: 1}
   m_FlipX: 0
@@ -326,7 +326,7 @@ Transform:
   m_GameObject: {fileID: 60805061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 5.3517, z: 0}
-  m_LocalScale: {x: 21.516277, y: 1.2844828, z: 1}
+  m_LocalScale: {x: 21.516277, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4886,7 +4886,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.7490196, g: 0.57254905, b: 0.8588236, a: 1}
   m_FlipX: 0
