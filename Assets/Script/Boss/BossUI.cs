@@ -14,7 +14,7 @@ public class BossUI : MonoBehaviour
     [SerializeField] public int bossHealth = 100;
     
     public float flashTime = 0.3f;
-    public HealthBar healthBar;
+    public SliderBar healthBar;
     public GameObject deathEffect;
 
     public GameObject bossBody;
@@ -37,7 +37,7 @@ public class BossUI : MonoBehaviour
     {
         instance = this;
         
-        healthBar.SetMaxHealth(bossHealth);
+        healthBar.SetMaxValue(bossHealth);
         // Get the corresponding property of the gameObject
         bossRenderers = new List<SpriteRenderer>();
         bossRenderers.Add(bossBody.GetComponent<SpriteRenderer>());
@@ -66,7 +66,7 @@ public class BossUI : MonoBehaviour
         FlashColor(flashTime);
 
         bossHealth -= damage;
-        healthBar.SetHealth(bossHealth);
+        healthBar.SetValue(bossHealth);
 
         if (bossHealth <= 0)
         {

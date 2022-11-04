@@ -24,13 +24,13 @@ public class DiamondCollection : MonoBehaviour
 
 
     [SerializeField] public GameObject fireDiamond;
-    public HealthBar fireBar;
+    public SliderBar fireBar;
     public GameObject grassDiamond;
-    public HealthBar grassBar;
+    public SliderBar grassBar;
     public GameObject waterDiamond;
-    public HealthBar waterBar;
+    public SliderBar waterBar;
     public GameObject rockDiamond;
-    public HealthBar rockBar;
+    public SliderBar rockBar;
 
     // Update is called once per frame
     void Awake()
@@ -49,10 +49,10 @@ public class DiamondCollection : MonoBehaviour
             grassCount = 0;
             waterCount = 0;
             rockCount = 0;
-            fireBar.SetHealth(fireCount);
-            grassBar.SetHealth(grassCount);
-            waterBar.SetHealth(waterCount);
-            rockBar.SetHealth(rockCount);
+            fireBar.SetValue(fireCount);
+            grassBar.SetValue(grassCount);
+            waterBar.SetValue(waterCount);
+            rockBar.SetValue(rockCount);
             time += (Time.timeSinceLevelLoad - lastTime).ToString() + "|";
             lastTime = Time.timeSinceLevelLoad;
             Debug.Log(time);
@@ -63,48 +63,48 @@ public class DiamondCollection : MonoBehaviour
     public void AddFireCount()
     {
         fireCount += 1;
-        fireBar.SetHealth(fireCount);
+        fireBar.SetValue(fireCount);
     }
 
     public void AddGrassCount()
     {
         grassCount += 1;
-        grassBar.SetHealth(grassCount);
+        grassBar.SetValue(grassCount);
     }
 
     public void AddWaterCount()
     {
         waterCount += 1;
-        waterBar.SetHealth(waterCount);
+        waterBar.SetValue(waterCount);
     }
 
     public void AddRockCount()
     {
         rockCount += 1;
-        rockBar.SetHealth(rockCount);
+        rockBar.SetValue(rockCount);
     }
     
     public void SetFireAlmostFull()
     {
         fireCount = 8;
-        fireBar.SetHealth(fireCount);
+        fireBar.SetValue(fireCount);
     }
     
     public void SetGrassAlmostFull()
     {
         grassCount = 8;
-        grassBar.SetHealth(grassCount);
+        grassBar.SetValue(grassCount);
     }
     
     public void SetWaterAlmostFull()
     {
         waterCount = 8;
-        waterBar.SetHealth(waterCount);
+        waterBar.SetValue(waterCount);
     }
     
     public void SetRockAlmostFull()
     {
         rockCount = 8;
-        rockBar.SetHealth(rockCount);
+        rockBar.SetValue(rockCount);
     }
 }

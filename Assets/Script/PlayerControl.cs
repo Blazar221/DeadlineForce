@@ -19,16 +19,16 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     public int maxHealth = 100; 
     public int currentHealth;
-    public HealthBar healthBar;
+    public SliderBar healthBar;
 
     public GameObject fireDiamond;
-    public HealthBar fireBar;
+    public SliderBar fireBar;
     public GameObject grassDiamond;
-    public HealthBar grassBar;
+    public SliderBar grassBar;
     public GameObject waterDiamond;
-    public HealthBar waterBar;
+    public SliderBar waterBar;
     public GameObject rockDiamond;
-    public HealthBar rockBar;
+    public SliderBar rockBar;
     private int fireCount = 0;
     private int grassCount = 0;
     private int waterCount = 0;
@@ -88,7 +88,7 @@ public class PlayerControl : MonoBehaviour
         numOfFood = 0;
 
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetMaxValue(maxHealth);
 
         nextTime = Time.time;
         canGetSingleScore = false;
@@ -106,10 +106,10 @@ public class PlayerControl : MonoBehaviour
         animator = GetComponent<Animator>();
         _bossHandler = _boss.GetComponent<BossBehavior>();
         
-        fireBar.SetMinHealth(fireCount);
-        grassBar.SetMinHealth(grassCount);
-        waterBar.SetMinHealth(waterCount);
-        rockBar.SetMinHealth(rockCount);
+        fireBar.SetMinValue(fireCount);
+        grassBar.SetMinValue(grassCount);
+        waterBar.SetMinValue(waterCount);
+        rockBar.SetMinValue(rockCount);
 
         fireRenderer = fireDiamond.GetComponent<SpriteRenderer>();
         grassRenderer = grassDiamond.GetComponent<SpriteRenderer>();
@@ -324,7 +324,7 @@ public class PlayerControl : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
+        healthBar.SetValue(currentHealth);
         // add blood effect
         if (isUpsideDown){
             Instantiate(bloodEffectCeil, transform.position + new Vector3(0, -0.2f, 0), bloodEffectCeil.transform.rotation);
