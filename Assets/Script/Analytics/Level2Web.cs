@@ -82,7 +82,7 @@ public class Level2Web : MonoBehaviour
     public void Send(){
         _playtime = Time.timeSinceLevelLoad;
         _bossHealth = (BossUI.instance != null)?BossUI.instance.bossHealth:0;
-        _playerHealth = PlayerControl.instance.currentHealth;
+        _playerHealth = PlayerHealth.Instance.currentHealth;
         _timer = CollectionController.Instance.time;
         CalculatePath();
         StartCoroutine(Post(_sessionId.ToString(), _playtime.ToString(), _bossHealth.ToString(), _playerHealth.ToString(),
