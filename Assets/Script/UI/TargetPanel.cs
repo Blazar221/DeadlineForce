@@ -159,8 +159,8 @@ public class TargetPanel : MonoBehaviour
                 _targetLoopIndex = Level4LoopIndex;
                 break;
             default:
-                _targets = _level1Target;
-                _targetLoopIndex = Level1LoopIndex;
+                _targets = _level4Target;
+                _targetLoopIndex = Level4LoopIndex;
                 break;
         }
         // targetLine = transform.Find("TargetLine").gameObject;
