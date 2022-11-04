@@ -238,9 +238,8 @@ public class PlayerControl : MonoBehaviour
     {
         hitScore++;
         if(toHit != null)
-        {
             TargetPanel.Instance.TargetHit(toHit.GetComponent<SpriteRenderer>().color);
-        }        
+        
         if (toHit.GetComponent<SpriteRenderer>().color == fireRenderer.color)
         {
             DiamondCollection.Instance.AddFireCount();
