@@ -24,14 +24,9 @@ public class BossUI : MonoBehaviour
     List<SpriteRenderer> bossRenderers;
 
     public GameObject bloodEffect;
-    private BossBehavior bossBehavior;
-    
-    private bool isFrozen = false;
 
-    void Awake()
-    {
-        bossBehavior = GetComponent<BossBehavior>();
-    }
+    private bool isFrozen = false;
+    
     
     void Start()
     {
@@ -47,8 +42,6 @@ public class BossUI : MonoBehaviour
 
         originalColor = Color.white;
         SetColor(originalColor);
-
-        StartCoroutine(bossBehavior.AutoAttack());
     }
 
     public void SetColor(Color nextColor)
@@ -91,6 +84,11 @@ public class BossUI : MonoBehaviour
     {
         SetColor(Color.red);
         Invoke("ResetColor", time);
+    }
+
+    public void struggleColor()
+    {
+        SetColor(Color.black);
     }
 
     void ResetColor()

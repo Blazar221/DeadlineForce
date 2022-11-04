@@ -5941,6 +5941,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327278763}
   m_CullTransparentMesh: 1
+  bgm: {fileID: 1006874500}
+  struggleStartTime: 10
 --- !u!1 &1353258434
 GameObject:
   m_ObjectHideFlags: 0

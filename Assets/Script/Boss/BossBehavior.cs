@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,13 +20,26 @@ public class BossBehavior : MonoBehaviour
     public Vector3 moveDest;
     public bool startMove = false;
     [SerializeField] private Animator bossAnimator;
+    private BossUI _bossUI;
     
     private GameObject _newBullet;
+    
+    [SerializeField] private GameObject bgm;
+    [SerializeField] private float struggleStartTime;
+    private BgmController _bgmHandler;
+    private bool _startStruggle = false;
 
     void Awake()
     {   
         instance = this;
         bossAnimator = GetComponent<Animator>();
+        _bossUI = GetComponent<BossUI>();
+        _bgmHandler = bgm.GetComponent<BgmController>();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(AutoAttack());
     }
 
     // Update is called once per frame
@@ -57,6 +71,13 @@ public class BossBehavior : MonoBehaviour
             moveDest = new Vector3(9.34f, _moveDestY, 0);
             startMove = true;
             bossAnimator.SetBool("isMove", true);
+            
+            if (_startStruggle == false && _bgmHandler.songPosition > struggleStartTime)
+            {
+                Struggle();
+                _bossUI.struggleColor();
+                _startStruggle = true;
+            }
         }
     }
     
@@ -113,7 +134,7 @@ public class BossBehavior : MonoBehaviour
 
     public void Struggle()
     {
-        bossAttackPeriod *= 0.6f;
+        bossAttackPeriod *= 0.8f;
         laserHarm = (int)(laserHarm*1.5f);
         banditHarm = (int)(banditHarm*1.5f);
     }
