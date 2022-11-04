@@ -37,18 +37,21 @@ public class SkillController : MonoBehaviour
 
     public void CallFreezeSkill()
     {
+        Debug.Log("Freeze");
         BossBehavior.instance.Freeze();
     }
 
     public void CallShieldSkill()
     {
         shield.SetActive(true);
+        PlayerHealth.Instance.EnableShield();
         StartCoroutine(CloseShieldSkill());
     }
 
     IEnumerator CloseShieldSkill()
     {
         yield return new WaitForSeconds(3f);
+        PlayerHealth.Instance.DisableShield();
         shield.SetActive(false);
     }
 

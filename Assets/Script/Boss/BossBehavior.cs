@@ -11,7 +11,7 @@ public class BossBehavior : MonoBehaviour
 
     [SerializeField] private float bossMoveSpeed = 0.3f;
     [SerializeField] private float bossAttackPeriod = 5f;
-    
+
     [SerializeField] private GameObject laser;
     [SerializeField] private GameObject bandit;
     public int laserHarm=20, banditHarm=10;
@@ -98,6 +98,7 @@ public class BossBehavior : MonoBehaviour
         bossMoveSpeed /= 10;
         bossAttackPeriod *= 2;
         BossUI.instance.SetColor(Color.blue);
+        Debug.Log("Boss Freeze");
         StartCoroutine(Unfreeze());
     }
 

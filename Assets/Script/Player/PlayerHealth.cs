@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public static PlayerHealth instance;
+    public static PlayerHealth Instance;
     // To call game over menu
     public static event Action OnPlayerDeath;
 
@@ -18,13 +18,16 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public SliderBar healthBar;
 
+    //
+    public bool hasShield = false;
+
     // Blood Effect
     public GameObject bloodEffectCeil;
     public GameObject bloodEffectFloor;
 
     void Awake()
     {
-        instance = this;
+        Instance = this;
         
         currentHealth = maxHealth;
         healthBar.SetMaxValue(maxHealth);
@@ -33,9 +36,23 @@ public class PlayerHealth : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    public void EnableShield()
+    {
+        hasShield = true;
+    }
+
+    public void DisableShield()
+    {
+        hasShield = false;
+    }
+
     // TakeDamage Function
     public void TakeDamage(int damage)
     {
+        if(hasShield)
+        {
+            damage/=10;
+        }
         currentHealth -= damage;
         healthBar.SetValue(currentHealth);
         // add blood effect

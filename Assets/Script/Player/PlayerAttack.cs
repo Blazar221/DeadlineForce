@@ -95,7 +95,7 @@ public class PlayerAttack : MonoBehaviour
                 ScoreSingle(Time.time);
             }
             else if (canGetLongScore == false){
-                PlayerHealth.instance.TakeDamage(5);
+                PlayerHealth.Instance.TakeDamage(5);
             }
             if (canAvoidDamage){
                 avoidMine();
@@ -202,7 +202,7 @@ public class PlayerAttack : MonoBehaviour
         addHitEffect(missEffect);
         Destroy(toHit);
         // damage
-        PlayerHealth.instance.TakeDamage(damage);
+        PlayerHealth.Instance.TakeDamage(damage);
         
     }
 
