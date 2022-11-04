@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement instance;
     private bool canChangeGravity;
+    private bool canCross;
     private Animator animator;
     private Rigidbody2D rb2D;
     private bool isUpsideDown;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
         instance = this;
 
         canChangeGravity = true;
+        canCross = false;
 
         playerYPosArr = new float[4];
         playerYPosArr[0] = 3.4f;
@@ -82,5 +84,23 @@ public class PlayerMovement : MonoBehaviour
         }
         canChangeGravity = false;
         animator.SetBool("UpsideDown",isUpsideDown);
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        // if(collision.gameObject.tag == "GravSwitch")
+        // {
+        //     canChangeGravity = true;
+        // }
+        
+        if( collision.gameObject.tag == "OriginalPlatForm")
+        {
+            canChangeGravity = true;
+            canCross = false;
+        }
+
+        if(collision.gameObject.tag == "Platform"){
+            canChangeGravity = true;
+            canCross = true;
+        }
     }
 }

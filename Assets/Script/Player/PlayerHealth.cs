@@ -10,7 +10,6 @@ public class PlayerHealth : MonoBehaviour
     public static event Action OnPlayerDeath;
 
     private Animator animator;
-    private int curYPos;
     private bool isUpsideDown;
 
     [SerializeField]
@@ -19,7 +18,6 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public SliderBar healthBar;
 
-    private float[] playerYPosArr;
     // Blood Effect
     public GameObject bloodEffectCeil;
     public GameObject bloodEffectFloor;
@@ -29,12 +27,6 @@ public class PlayerHealth : MonoBehaviour
         instance = this;
         currentHealth = maxHealth;
         healthBar.SetMaxValue(maxHealth);
-        playerYPosArr = new float[4];
-        playerYPosArr[0] = 3.4f;
-        playerYPosArr[1] = 1.6f;
-        playerYPosArr[2] = -1.6f;
-        playerYPosArr[3] = -3.4f;
-        curYPos = 1;
         isUpsideDown = false;
         
         animator = GetComponent<Animator>();
@@ -43,7 +35,6 @@ public class PlayerHealth : MonoBehaviour
     // TakeDamage Function
     public void TakeDamage(int damage)
     {
-        PlayerMovement.instance.SetYPos(curYPos);
         currentHealth -= damage;
         healthBar.SetValue(currentHealth);
         // add blood effect

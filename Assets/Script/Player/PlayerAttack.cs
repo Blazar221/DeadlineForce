@@ -57,8 +57,8 @@ public class PlayerAttack : MonoBehaviour
     void Awake()
     {
         hitScore = 0;
+        missScore = 0;
         pressingK = false;
-        canCross = false;
         isUpsideDown = false;
         canChangeGravity = true;
 
@@ -66,6 +66,7 @@ public class PlayerAttack : MonoBehaviour
         canGetSingleScore = false;
 
         animator = GetComponent<Animator>();
+        _bossHandler = _boss.GetComponent<BossBehavior>();
 
         fireBar.SetMinValue(fireCount);
         grassBar.SetMinValue(grassCount);
@@ -220,22 +221,6 @@ public class PlayerAttack : MonoBehaviour
     // The following two functions can be used to set the changing gravity point.
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // if(collision.gameObject.tag == "GravSwitch")
-        // {
-        //     canChangeGravity = true;
-        // }
-        
-        if( collision.gameObject.tag == "OriginalPlatForm")
-        {
-            canChangeGravity = true;
-            canCross = false;
-        }
-
-        if(collision.gameObject.tag == "Platform"){
-            canChangeGravity = true;
-            canCross = true;
-        }
-
 
         if(collision.gameObject.tag == "food")
         {
