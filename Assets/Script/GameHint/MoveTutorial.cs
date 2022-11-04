@@ -12,34 +12,45 @@ public class MoveTutorial : MonoBehaviour
     ///private Text shortNoteInstruction;
     [SerializeField] private GameObject Player;
     [SerializeField] private TextMeshProUGUI firstmoveInstruction;
-    [SerializeField] private TextMeshProUGUI upSwitchInstruction;
-    [SerializeField] private TextMeshProUGUI downSwitchInstruction;
+    [SerializeField] private TextMeshProUGUI Switch10Instruction;
+    [SerializeField] private TextMeshProUGUI Switch01Instruction;
     [SerializeField] private TextMeshProUGUI finishInstruction;
-    [SerializeField] private TextMeshProUGUI passdownInstruction;
-    [SerializeField] private TextMeshProUGUI passupInstruction; 
-    [SerializeField] private TextMeshProUGUI PressJInstruction;
+    [SerializeField] private TextMeshProUGUI Switch12Instruction;
+    [SerializeField] private TextMeshProUGUI Switch21Instruction; 
+    [SerializeField] private TextMeshProUGUI Switch23Instruction;
+    [SerializeField] private TextMeshProUGUI Switch30Instruction;
+    [SerializeField] private TextMeshProUGUI Switch03Instruction;
+    [SerializeField] private TextMeshProUGUI Switch32Instruction;
+    [SerializeField] private TextMeshProUGUI ContinueInstruction;
     [SerializeField] private TextMeshProUGUI freemoveInstruction;
    
     
     private PlayerControl playerControl;
     
     private bool firstmoveLearned = false;
-    private bool upSwitchLearned = false;
-    private bool downSwitchLearned = false;
-    
-    private bool passdownLearned = false;
-    private bool passupLearned = false;
+    private bool Switch10Learned = false;
+    private bool Switch01Learned = false;
+    private bool Switch12Learned = false;
+    private bool Switch23Learned = false;
+    private bool Switch30Learned = false;
+    private bool Switch03Learned = false;
+    private bool Switch32Learned = false;
+    private bool Switch21Learned = false;
     private bool freemoveLearned = false;
 
     private float firstmoveTime = 2f;
-    private float upSwitchTime = 3f;
-    private float downSwitchTime = 4f;
-    private float passdownTime = 5f;
-    private float passupTime = 6f;
+    private float Switch10Time = 3f;
+    private float Switch01Time = 4f;
+    private float Switch12Time = 5f;
+    private float Switch23Time = 6f;
+    private float Switch30Time = 7f;
+    private float Switch03Time = 8f;
+    private float Switch32Time = 9f;
+    private float Switch21Time = 10f;
     
-    private float freemoveTime = 7f;
+    private float freemoveTime = 11f;
     
-    private float finishTime = 13f;
+    private float finishTime = 15f;
     
     // Start is called before the first frame update
     void Start()
@@ -47,13 +58,17 @@ public class MoveTutorial : MonoBehaviour
         playerControl = Player.GetComponent<PlayerControl>();
         playerControl.canChangeGravity = true;
         firstmoveInstruction.enabled = false;
-        upSwitchInstruction.enabled = false;
-        downSwitchInstruction.enabled = false;
-        finishInstruction.enabled = false;
-        passdownInstruction.enabled = false;
-        passupInstruction.enabled = false;
-        PressJInstruction.enabled = false;
+        Switch10Instruction.enabled = false;
+        Switch01Instruction.enabled = false;
+        Switch12Instruction.enabled = false;
+        Switch21Instruction.enabled = false;
+        Switch23Instruction.enabled = false;
+        Switch30Instruction.enabled = false;
+        Switch03Instruction.enabled = false;
+        Switch32Instruction.enabled = false;
+        ContinueInstruction.enabled = false;
         freemoveInstruction.enabled = false;
+        finishInstruction.enabled = false;
     }
 
     // Update is called once per frame
@@ -86,55 +101,83 @@ public class MoveTutorial : MonoBehaviour
        if(!firstmoveLearned && Time.timeSinceLevelLoad >= firstmoveTime){
             Time.timeScale = 0f;
             firstmoveInstruction.enabled = true;
-            PressJInstruction.enabled = true;
-            if (Input.GetKeyDown(KeyCode.Space)) {
+            ContinueInstruction.enabled = true;
+            if (Input.GetKeyDown(KeyCode.Return)) {
                 firstmoveLearned = true;
                 firstmoveInstruction.enabled = false;
-                PressJInstruction.enabled = false;
+                ContinueInstruction.enabled = false;
                 Time.timeScale = 1f;
             }
         }
-        if(!upSwitchLearned && Time.timeSinceLevelLoad >= upSwitchTime){
+        if(!Switch10Learned && Time.timeSinceLevelLoad >= Switch10Time){
             Time.timeScale = 0f;
-            upSwitchInstruction.enabled = true;
-            
+            Switch10Instruction.enabled = true;
             if (Input.GetKeyDown(KeyCode.W)) {
-                upSwitchLearned = true;
-                upSwitchInstruction.enabled = false;
-                
+                Switch10Learned = true;
+                Switch10Instruction.enabled = false;
                 Time.timeScale = 1f;
             }
         }
-        if(!downSwitchLearned && Time.timeSinceLevelLoad >= downSwitchTime){
+        if(!Switch01Learned && Time.timeSinceLevelLoad >= Switch01Time){
             Time.timeScale = 0f;
-            downSwitchInstruction.enabled = true;
-            
+            Switch01Instruction.enabled = true;
             if (Input.GetKeyDown(KeyCode.S)) {
-                downSwitchLearned = true;
-                downSwitchInstruction.enabled = false;
-                
+                Switch01Learned = true;
+                Switch01Instruction.enabled = false;
                 Time.timeScale = 1f;
             }
         }
-        if(!passdownLearned && Time.timeSinceLevelLoad >= passdownTime){
+        if(!Switch12Learned && Time.timeSinceLevelLoad >= Switch12Time){
             Time.timeScale = 0f;
-            passdownInstruction.enabled = true;
-            
+            Switch12Instruction.enabled = true;
             if (Input.GetKeyDown(KeyCode.S)) {
-                passdownLearned = true;
-                passdownInstruction.enabled = false;
-                
+                Switch12Learned = true;
+                Switch12Instruction.enabled = false;
                 Time.timeScale = 1f;
             }
         }
-        if(!passupLearned && Time.timeSinceLevelLoad >= passupTime){
+        if(!Switch23Learned && Time.timeSinceLevelLoad >= Switch23Time){
             Time.timeScale = 0f;
-            passupInstruction.enabled = true;
-            
+            Switch23Instruction.enabled = true;
+            if (Input.GetKeyDown(KeyCode.S)) {
+                Switch23Learned = true;
+                Switch23Instruction.enabled = false;
+                Time.timeScale = 1f;
+            }
+        }
+        if(!Switch30Learned && Time.timeSinceLevelLoad >= Switch30Time){
+            Time.timeScale = 0f;
+            Switch30Instruction.enabled = true;
+            if (Input.GetKeyDown(KeyCode.S)) {
+                Switch30Learned = true;
+                Switch30Instruction.enabled = false;
+                Time.timeScale = 1f;
+            }
+        }
+        if(!Switch03Learned && Time.timeSinceLevelLoad >= Switch03Time){
+            Time.timeScale = 0f;
+            Switch03Instruction.enabled = true;
             if (Input.GetKeyDown(KeyCode.W)) {
-                passupLearned = true;
-                passupInstruction.enabled = false;
-                
+                Switch03Learned = true;
+                Switch03Instruction.enabled = false;
+                Time.timeScale = 1f;
+            }
+        }
+        if(!Switch32Learned && Time.timeSinceLevelLoad >= Switch32Time){
+            Time.timeScale = 0f;
+            Switch32Instruction.enabled = true;
+            if (Input.GetKeyDown(KeyCode.W)) {
+                Switch32Learned = true;
+                Switch32Instruction.enabled = false;
+                Time.timeScale = 1f;
+            }
+        }
+        if(!Switch21Learned && Time.timeSinceLevelLoad >= Switch21Time){
+            Time.timeScale = 0f;
+            Switch21Instruction.enabled = true;
+            if (Input.GetKeyDown(KeyCode.W)) {
+                Switch21Learned = true;
+                Switch21Instruction.enabled = false;
                 Time.timeScale = 1f;
             }
         }
@@ -142,13 +185,12 @@ public class MoveTutorial : MonoBehaviour
         if(!freemoveLearned && Time.timeSinceLevelLoad >=  freemoveTime){
             Time.timeScale = 0f;
             freemoveInstruction.enabled = true;
-            PressJInstruction.enabled = true;
-            if (Input.GetKeyDown(KeyCode.Space)) {
+            ContinueInstruction.enabled = true;
+            if (Input.GetKeyDown(KeyCode.Return)) {
                 freemoveLearned = true;
                 freemoveInstruction.enabled = false;
-                PressJInstruction.enabled = false;
+                ContinueInstruction.enabled = false;
                 Time.timeScale = 1f;
-                
             }
         }
         if(Time.timeSinceLevelLoad >= finishTime){

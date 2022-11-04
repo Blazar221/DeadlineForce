@@ -162,7 +162,7 @@ public class CollectTutorial : MonoBehaviour
         if(Time.timeSinceLevelLoad >= finishTime){
             Time.timeScale = 0f;
             finishInstruction.enabled = true;
-            if (Input.GetKeyDown(KeyCode.J)) {
+            if (Input.GetKeyDown(KeyCode.Return)) {
                 Time.timeScale = 1f;
                 SceneManager.LoadScene("AttackTutorial");
             }
