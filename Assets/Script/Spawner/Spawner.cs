@@ -98,10 +98,10 @@ public class Spawner : MonoBehaviour
 
                 float yPos = toSpawn.Pos switch
                 {
-                    0 => 4,
-                    1 => 1,
-                    2 => -1,
-                    3 => -4,
+                    0 => 4.2f,
+                    1 => 1.25f,
+                    2 => -1.25f,
+                    3 => -4.2f,
                     _ => 0,
                 };
                 // start spawn
