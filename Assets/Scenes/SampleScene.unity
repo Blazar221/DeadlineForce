@@ -6521,6 +6521,8 @@ MonoBehaviour:
   moveDest: {x: 0, y: 0, z: 0}
   startMove: 0
   bossAnimator: {fileID: 1307346858}
+  bgm: {fileID: 1006874500}
+  struggleStartTime: 10
 --- !u!1 &1353258434
 GameObject:
   m_ObjectHideFlags: 0
