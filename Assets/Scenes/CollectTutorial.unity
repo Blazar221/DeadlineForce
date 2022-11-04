@@ -314,8 +314,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ranbow is a Chance! Long press <sprite index= 0> to cellect the rainbow
-    and increase all four diamond bars!
+  m_text: 'Ranbow is a Chance!
+
+    Long press <sprite index= 0> to cellect rainbow
+    and increase all four diamond bars!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
   m_sharedMaterial: {fileID: -1571771168669490468, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
@@ -2434,7 +2436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 387, y: 193}
+  m_AnchoredPosition: {x: -129, y: 391}
   m_SizeDelta: {x: 1909.2446, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &509945988
@@ -3230,7 +3232,7 @@ GameObject:
   - component: {fileID: 613758068}
   - component: {fileID: 613758067}
   m_Layer: 5
-  m_Name: PressJInstruct(TMP)
+  m_Name: PressSpaceInstruct(TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3276,7 +3278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press <sprite index=0> to Continue
+  m_text: Press <sprite index=0> to collect
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
   m_sharedMaterial: {fileID: -1571771168669490468, guid: 76a1c4d7afe2ee547bfd9798064997de, type: 2}
@@ -5675,7 +5677,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 51771e0a9c668e4429a0b7484ab9c400, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 8557a97a6ebba2844934fdbf85781a16, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901

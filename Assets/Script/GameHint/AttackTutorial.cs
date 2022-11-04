@@ -13,13 +13,12 @@ public class AttackTutorial : MonoBehaviour
     [SerializeField] private GameObject Player;
     [SerializeField] private TextMeshProUGUI StartInstruction;
     [SerializeField] private TextMeshProUGUI finishInstruction;
-    [SerializeField] private TextMeshProUGUI collectlastInstruction;
-    [SerializeField] private TextMeshProUGUI gemcollectionInstruction;
     [SerializeField] private TextMeshProUGUI PressJInstruction;
     [SerializeField] private TextMeshProUGUI DamageInstruction;
     [SerializeField] private TextMeshProUGUI MissionInstruction;
     [SerializeField] private TextMeshProUGUI selfdamageInstruction;
     [SerializeField] private TextMeshProUGUI pointtoselfInstruction;
+    [SerializeField] private TextMeshProUGUI ContinueInstruction;
     [SerializeField] private UnityEngine.Rendering.Universal.Light2D GlobalLight;
     [SerializeField] private UnityEngine.Rendering.Universal.Light2D DiamondBarSpotLight;
     [SerializeField] private UnityEngine.Rendering.Universal.Light2D BossSpotLight;
@@ -65,13 +64,12 @@ public class AttackTutorial : MonoBehaviour
         playerControl.canChangeGravity = false;
         StartInstruction.enabled = false;
         finishInstruction.enabled = false;
-        collectlastInstruction.enabled=false;
-        gemcollectionInstruction.enabled=false;
         PressJInstruction.enabled=false;
         MissionInstruction.enabled=false;
         DamageInstruction.enabled=false;
         selfdamageInstruction.enabled=false;
         pointtoselfInstruction.enabled=false;
+        ContinueInstruction.enabled = false;
         GlobalLight.enabled = false;
         DiamondBarSpotLight.enabled = false;
         BossSpotLight.enabled = false;
@@ -144,13 +142,11 @@ public class AttackTutorial : MonoBehaviour
          if(!tripleLearned3 && Time.timeSinceLevelLoad >= t3ShortNoteTime){
             Time.timeScale = 0f;
             PressJInstruction.enabled = true;
-            collectlastInstruction.enabled=true;
             DamageInstruction.enabled=true;
             BossSpotLight.enabled = true;
             if (Input.GetKeyDown(KeyCode.Space)) {
                 tripleLearned3 = true;
                 PressJInstruction.enabled = false;
-                collectlastInstruction.enabled=false;
                 DamageInstruction.enabled=false;
                 DiamondBarSpotLight.enabled = false;
                 Time.timeScale = 1f;
@@ -199,12 +195,12 @@ public class AttackTutorial : MonoBehaviour
         if(!pointtoselfLearned  && Time.timeSinceLevelLoad >= pointtoselfTime){
             Time.timeScale = 0f;
             
-            PressJInstruction.enabled = true;
+            ContinueInstruction.enabled = true;
             pointtoselfInstruction.enabled=true;
-            if (Input.GetKeyDown(KeyCode.Space)) {
+            if (Input.GetKeyDown(KeyCode.Return)) {
                 pointtoselfLearned=true;
                 pointtoselfInstruction.enabled=false;
-                PressJInstruction.enabled = false;
+                ContinueInstruction.enabled = false;
                 GlobalLight.enabled = false;
                 HealthBarSpotLight.enabled = false;
 
@@ -216,7 +212,7 @@ public class AttackTutorial : MonoBehaviour
             Time.timeScale = 0f;
             GlobalLight.enabled = true;
             finishInstruction.enabled = true;
-            if (Input.GetKeyDown(KeyCode.J)) {
+            if (Input.GetKeyDown(KeyCode.Return)) {
                 Time.timeScale = 1f;
                 SceneManager.LoadScene("MoveTutorial");
             }
