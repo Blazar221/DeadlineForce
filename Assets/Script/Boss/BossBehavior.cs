@@ -140,5 +140,6 @@ public class BossBehavior : MonoBehaviour
         bossAttackPeriod *= 0.8f;
         laserHarm = (int)(laserHarm*1.5f);
         banditHarm = (int)(banditHarm*1.5f);
+        _bossUI.originalColor = Color.black;
     }
 }

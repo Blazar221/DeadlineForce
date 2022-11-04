@@ -9,7 +9,7 @@ public class BossUI : MonoBehaviour
     public static BossUI instance;
 
     public static event Action OnBossDeath;
-    private Color originalColor;
+    public Color originalColor;
 
     [SerializeField] public int bossHealth = 100;
     
