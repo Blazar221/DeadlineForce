@@ -112,6 +112,7 @@ public class BossBehavior : MonoBehaviour
     
     public void Attack()
     {
+        /*
         float yPos = _attackingLine switch
         {
             0 => 4.2f,
@@ -120,14 +121,26 @@ public class BossBehavior : MonoBehaviour
             3 => -4.2f,
             _ => 0,
         };
+        */
+        float pos1 = LineIndToPos(_attackingLine),
+            pos2 = LineIndToPos((_attackingLine + 3) % 4),
+            pos3 = LineIndToPos((_attackingLine + 1) % 4);
         switch (_count)
         {
             case 0:
-                _newBullet = Instantiate(laser, new Vector3(-2, yPos, 0), Quaternion.identity);
+                _newBullet = Instantiate(laser, new Vector3(-2, pos1, 0), Quaternion.identity);
                 Destroy(_newBullet, 1f);
+                _newBullet = Instantiate(bandit, new Vector3(6, pos2, 0), Quaternion.identity);
+                Destroy(_newBullet, 2f);
+                _newBullet = Instantiate(bandit, new Vector3(6, pos3, 0), Quaternion.identity);
+                Destroy(_newBullet, 2f);
                 break;
             default:
-                _newBullet = Instantiate(bandit, new Vector3(6, yPos, 0), Quaternion.identity);
+                _newBullet = Instantiate(bandit, new Vector3(6, pos1, 0), Quaternion.identity);
+                Destroy(_newBullet, 2f);
+                _newBullet = Instantiate(bandit, new Vector3(6, pos2, 0), Quaternion.identity);
+                Destroy(_newBullet, 2f);
+                _newBullet = Instantiate(bandit, new Vector3(6, pos3, 0), Quaternion.identity);
                 Destroy(_newBullet, 2f);
                 break;
                 ;
@@ -141,5 +154,18 @@ public class BossBehavior : MonoBehaviour
         laserHarm = (int)(laserHarm*1.5f);
         banditHarm = (int)(banditHarm*1.5f);
         _bossUI.originalColor = Color.black;
+    }
+
+    float LineIndToPos(int ind)
+    {
+        var yPos = ind switch
+        {
+            0 => 4.2f,
+            1 => 1.25f,
+            2 => -1.25f,
+            3 => -4.2f,
+            _ => 0,
+        };
+        return yPos;
     }
 }
