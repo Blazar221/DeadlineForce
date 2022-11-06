@@ -22,10 +22,10 @@ public class PlayerMovement : MonoBehaviour
         canCross = false;
 
         playerYPosArr = new float[4];
-        playerYPosArr[0] = 3.4f;
-        playerYPosArr[1] = 1.6f;
-        playerYPosArr[2] = -1.6f;
-        playerYPosArr[3] = -3.4f;
+        playerYPosArr[0] = 3.86f;
+        playerYPosArr[1] = 1.69f;
+        playerYPosArr[2] = -1.67f;
+        playerYPosArr[3] = -3.84f;
         curYPos = 1;
         isUpsideDown = false;
 
