@@ -112,16 +112,11 @@ public class BossBehavior : MonoBehaviour
     
     public void Attack()
     {
-        /*
-        float yPos = _attackingLine switch
-        {
-            0 => 4.2f,
-            1 => 1.25f,
-            2 => -1.25f,
-            3 => -4.2f,
-            _ => 0,
-        };
-        */
+        StartCoroutine(SpawnAttack());
+    }
+
+    IEnumerator SpawnAttack()
+    {
         float pos1 = LineIndToPos(_attackingLine),
             pos2 = LineIndToPos((_attackingLine + 3) % 4),
             pos3 = LineIndToPos((_attackingLine + 1) % 4);
@@ -130,16 +125,20 @@ public class BossBehavior : MonoBehaviour
             case 0:
                 _newBullet = Instantiate(laser, new Vector3(-2, pos1, 0), Quaternion.identity);
                 Destroy(_newBullet, 1f);
+                yield return new WaitForSeconds(0.3f);
                 _newBullet = Instantiate(bandit, new Vector3(6, pos2, 0), Quaternion.identity);
                 Destroy(_newBullet, 2f);
+                yield return new WaitForSeconds(0.6f);
                 _newBullet = Instantiate(bandit, new Vector3(6, pos3, 0), Quaternion.identity);
                 Destroy(_newBullet, 2f);
                 break;
             default:
                 _newBullet = Instantiate(bandit, new Vector3(6, pos1, 0), Quaternion.identity);
                 Destroy(_newBullet, 2f);
+                yield return new WaitForSeconds(0.5f);
                 _newBullet = Instantiate(bandit, new Vector3(6, pos2, 0), Quaternion.identity);
                 Destroy(_newBullet, 2f);
+                yield return new WaitForSeconds(0.5f);
                 _newBullet = Instantiate(bandit, new Vector3(6, pos3, 0), Quaternion.identity);
                 Destroy(_newBullet, 2f);
                 break;

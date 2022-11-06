@@ -6282,11 +6282,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 178061461}
   bossMoveSpeed: 0.03
-  bossAttackPeriod: 3
+  bossAttackPeriod: 8
   laser: {fileID: 3364694483412564346, guid: 6f3bf51229f147047a094637825a9436, type: 3}
   bandit: {fileID: 2425594156374542513, guid: 28777205d87fb1e4a8eb462b7e0b6b70, type: 3}
-  laserHarm: 20
-  banditHarm: 10
+  laserHarm: 10
+  banditHarm: 5
   moveDest: {x: 0, y: 0, z: 0}
   startMove: 0
   bossAnimator: {fileID: 1307346858}
