@@ -77,13 +77,14 @@ public class GameController : MonoBehaviour
             switch (SceneManager.GetActiveScene().name)
             {
                 case "Level1":
-                    Level1Editor.instance.Send();
+                    // Level1Editor.instance.Send();
                     break;
                 case "Level2":
+                    // Debug.Log(Level2Editor.instance);
                     Level2Editor.instance.Send();
                     break;
                 case "Level3":
-                    Level3Editor.instance.Send();
+                    // Level3Editor.instance.Send();
                     break;
             }
         }

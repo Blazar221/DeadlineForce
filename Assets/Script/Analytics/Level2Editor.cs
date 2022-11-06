@@ -25,6 +25,7 @@ public class Level2Editor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("lvl2 editor is running");
         instance = this;
         _sessionId = DateTime.Now.Ticks;
         player = GameObject.Find("DinasourRunner");
