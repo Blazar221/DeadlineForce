@@ -17,6 +17,15 @@ public class TargetPanel : MonoBehaviour
     private Sprite _clone;
     private Sprite _freeze;
 
+    public GameObject fireDiamond;
+    public SliderBar fireBar;
+    public GameObject grassDiamond;
+    public SliderBar grassBar;
+    public GameObject waterDiamond;
+    public SliderBar waterBar;
+    public GameObject rockDiamond;
+    public SliderBar rockBar;
+
     public int patternDamage = 20;
 
     // [SerializeField] private Image[] gems;
@@ -170,13 +179,15 @@ public class TargetPanel : MonoBehaviour
         // uiInventory.SetInventory(inventory);
         _objectLines = new List<ObjectLine>();
         _targetCounter = 1;
+
+        
     }
 
 
     void Start()
-    {        
-
+    {       
         SetNextTarget();
+
     }
 
     private void FixedUpdate()
@@ -206,7 +217,7 @@ public class TargetPanel : MonoBehaviour
         {
             var objL = _objectLines[i];
             if (IsSameColor(color, objL.GetFirstColor()))
-            {
+            { 
                 if (objL.RemoveFirstGem())
                 {
                     // the line is completed
@@ -221,6 +232,17 @@ public class TargetPanel : MonoBehaviour
                             SkillController.Instance.CallFreezeSkill();
                             break;
                         case ItemType.Common:
+                            if (color == _red){
+                                FireBall.acitivated = true;
+                            } else if (color == _green){
+                                GrassBall.acitivated = true;
+                            } else if (color == _blue){
+                                WaterBall.acitivated = true;
+                            } else if (color == _yellow){
+                                RockBall.acitivated = true;
+                            } else {
+                                RainbowBall.acitivated = true;
+                            }
                             BossUI.instance.TakeDamage(patternDamage);
                             break;
                     }
