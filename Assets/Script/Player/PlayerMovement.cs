@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement instance;
-    private bool canChangeGravity;
+    public bool canChangeGravity;
     private bool canCross;
     private Animator animator;
     private Rigidbody2D rb2D;

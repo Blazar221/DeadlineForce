@@ -35,7 +35,7 @@ public class TutorialSpawner : MonoBehaviour
     private Diamond grassDiamondHandler;
     private Diamond rockDiamondHandler;
     
-    private PlayerControl playerHadler;
+    private PlayerMovement playerHadler;
     private BgmController _bgmHandler;
 
     [SerializeField]
@@ -67,7 +67,7 @@ public class TutorialSpawner : MonoBehaviour
         blockHandler = bandit.GetComponent<Bandit>();
         blockHandler.SetSpeed(moveSpeed);
         
-        playerHadler = player.GetComponent<PlayerControl>();
+        playerHadler = player.GetComponent<PlayerMovement>();
         _bgmHandler = bgm.GetComponent<BgmController>();
         // sort the notes by time
         var watch = Stopwatch.StartNew();

@@ -163,6 +163,10 @@ public class TargetPanel : MonoBehaviour
                 _targets = _level1Target;
                 _targetLoopIndex = Level1LoopIndex;
                 break;
+            case "TryoutTutorial":
+                _targets = _level1Target;
+                _targetLoopIndex = Level1LoopIndex;
+                break;
             case "SampleScene":
                 _targets = _level4Target;
                 _targetLoopIndex = Level4LoopIndex;

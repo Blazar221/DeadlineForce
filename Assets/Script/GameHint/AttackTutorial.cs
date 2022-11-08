@@ -25,7 +25,7 @@ public class AttackTutorial : MonoBehaviour
     [SerializeField] private UnityEngine.Rendering.Universal.Light2D TargetPanelSpotLight;
     [SerializeField] private UnityEngine.Rendering.Universal.Light2D HealthBarSpotLight;
     
-    private PlayerControl playerControl;
+    private PlayerMovement playerMovement;
     
     private bool shortNoteLearned = false;
    
@@ -60,8 +60,8 @@ public class AttackTutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerControl = Player.GetComponent<PlayerControl>();
-        playerControl.canChangeGravity = false;
+        playerMovement = Player.GetComponent<PlayerMovement>();
+        playerMovement.canChangeGravity = false;
         StartInstruction.enabled = false;
         finishInstruction.enabled = false;
         PressJInstruction.enabled=false;
@@ -101,7 +101,7 @@ public class AttackTutorial : MonoBehaviour
         //         fading=true;
         //     }
         // }
-        playerControl.canChangeGravity = false;
+        playerMovement.canChangeGravity = false;
 
         if(!shortNoteLearned && Time.timeSinceLevelLoad >= firstShortNoteTime){
             Time.timeScale = 0f;

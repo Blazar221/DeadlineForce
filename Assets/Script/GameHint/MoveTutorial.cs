@@ -22,10 +22,9 @@ public class MoveTutorial : MonoBehaviour
     [SerializeField] private TextMeshProUGUI Switch03Instruction;
     [SerializeField] private TextMeshProUGUI Switch32Instruction;
     [SerializeField] private TextMeshProUGUI ContinueInstruction;
-    [SerializeField] private TextMeshProUGUI freemoveInstruction;
    
     
-    private PlayerControl playerControl;
+    private PlayerMovement playerMovement;
     
     private bool firstmoveLearned = false;
     private bool Switch10Learned = false;
@@ -36,7 +35,6 @@ public class MoveTutorial : MonoBehaviour
     private bool Switch03Learned = false;
     private bool Switch32Learned = false;
     private bool Switch21Learned = false;
-    private bool freemoveLearned = false;
 
     private float firstmoveTime = 2f;
     private float Switch10Time = 3f;
@@ -48,15 +46,13 @@ public class MoveTutorial : MonoBehaviour
     private float Switch32Time = 9f;
     private float Switch21Time = 10f;
     
-    private float freemoveTime = 11f;
-    
-    private float finishTime = 15f;
+    private float finishTime = 12f;
     
     // Start is called before the first frame update
     void Start()
     {
-        playerControl = Player.GetComponent<PlayerControl>();
-        playerControl.canChangeGravity = true;
+        playerMovement = Player.GetComponent<PlayerMovement>();
+        playerMovement.canChangeGravity = true;
         firstmoveInstruction.enabled = false;
         Switch10Instruction.enabled = false;
         Switch01Instruction.enabled = false;
@@ -67,7 +63,6 @@ public class MoveTutorial : MonoBehaviour
         Switch03Instruction.enabled = false;
         Switch32Instruction.enabled = false;
         ContinueInstruction.enabled = false;
-        freemoveInstruction.enabled = false;
         finishInstruction.enabled = false;
     }
 
@@ -181,24 +176,12 @@ public class MoveTutorial : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
-
-        if(!freemoveLearned && Time.timeSinceLevelLoad >=  freemoveTime){
-            Time.timeScale = 0f;
-            freemoveInstruction.enabled = true;
-            ContinueInstruction.enabled = true;
-            if (Input.GetKeyDown(KeyCode.Return)) {
-                freemoveLearned = true;
-                freemoveInstruction.enabled = false;
-                ContinueInstruction.enabled = false;
-                Time.timeScale = 1f;
-            }
-        }
         if(Time.timeSinceLevelLoad >= finishTime){
             Time.timeScale = 0f;
             finishInstruction.enabled = true;
-            if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (Input.GetKeyDown(KeyCode.Return)) {
                 Time.timeScale = 1f;
-                SceneManager.LoadScene("LevelMenu");
+                SceneManager.LoadScene("TryoutTutorial");
             }
         }
     }

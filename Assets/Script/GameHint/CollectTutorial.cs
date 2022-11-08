@@ -13,68 +13,39 @@ public class CollectTutorial : MonoBehaviour
     [SerializeField] private GameObject Player;
     [SerializeField] private TextMeshProUGUI shortNoteInstruction;
     [SerializeField] private TextMeshProUGUI longNoteInstruction;
-    [SerializeField] private TextMeshProUGUI upSwitchInstruction;
-    [SerializeField] private TextMeshProUGUI downSwitchInstruction;
     [SerializeField] private TextMeshProUGUI differentcolorInstruction;
     [SerializeField] private TextMeshProUGUI finishInstruction;
     [SerializeField] private TextMeshProUGUI TripleInstruction;
-    [SerializeField] private TextMeshProUGUI passdownInstruction;
-    [SerializeField] private TextMeshProUGUI passupInstruction;
-    [SerializeField] private TextMeshProUGUI gemcollectionInstruction;
     [SerializeField] private TextMeshProUGUI PressJInstruction;
-    [SerializeField] private TextMeshProUGUI MissionInstruction;
-    [SerializeField] private TextMeshProUGUI startcollectInstruction;
     [SerializeField] private UnityEngine.Rendering.Universal.Light2D GlobalLight;
     [SerializeField] private UnityEngine.Rendering.Universal.Light2D SpotLight;
     
-    private PlayerControl playerControl;
+    private PlayerMovement playerMovement;
     
     private bool shortNoteLearned = false;
     private bool tripleLearned1 = false;
     private bool tripleLearned2 = false;
     private bool tripleLearned3 = false;
-    private bool gemcollectionLearned = false;
-    
     private bool longNoteLearned = false;
-    private bool upSwitchLearned = false;
-    private bool downSwitchLearned = false;
-    private bool blockLearned = false;
-    private bool passdownLearned = false;
-    private bool passupLearned = false;
-    private bool startcollectLearned = false;
 
     private float firstShortNoteTime = 2f;
     private float t1ShortNoteTime = 3f;
     private float t2ShortNoteTime = 4f;
     private float t3ShortNoteTime = 5f;
-    
     private float firstLongNoteTime = 7f;
-    private float firstgemcollectionTime = 10f;
-    private float firstUpSwitchTime = 12f;
-    private float firstDownSwitchTime = 14f;
-    private float passdownSwitchTime = 16f;
-    private float passupSwitchTime = 18f;
-    private float startcollectTime = 18.5f;
     private float finishTime = 9f;
     
     // Start is called before the first frame update
     void Start()
     {
-        playerControl = Player.GetComponent<PlayerControl>();
-        playerControl.canChangeGravity = false;
+        playerMovement = Player.GetComponent<PlayerMovement>();
+        playerMovement.canChangeGravity = false;
         shortNoteInstruction.enabled = false;
         longNoteInstruction.enabled = false;
-        upSwitchInstruction.enabled = false;
-        downSwitchInstruction.enabled = false;
         differentcolorInstruction.enabled = false;
         finishInstruction.enabled = false;
         TripleInstruction.enabled=false;
-        passdownInstruction.enabled=false;
-        passupInstruction.enabled=false;
-        gemcollectionInstruction.enabled=false;
         PressJInstruction.enabled=false;
-        MissionInstruction.enabled=false;
-        startcollectInstruction.enabled=false;
         GlobalLight.enabled = false;
         SpotLight.enabled = false;
     }
@@ -98,7 +69,7 @@ public class CollectTutorial : MonoBehaviour
         //         fading=true;
         //     }
         // }
-        playerControl.canChangeGravity = false;
+        playerMovement.canChangeGravity = false;
 
         if(!shortNoteLearned && Time.timeSinceLevelLoad >= firstShortNoteTime){
             Time.timeScale = 0f;
