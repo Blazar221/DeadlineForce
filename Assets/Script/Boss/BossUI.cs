@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class BossUI : MonoBehaviour
 {
@@ -23,10 +22,6 @@ public class BossUI : MonoBehaviour
     public GameObject bossLeftLeg;
     public GameObject bossRightLeg;
     List<SpriteRenderer> bossRenderers;
-
-    // Damage text
-    public GameObject prefab;
-    public Vector3 offset = new Vector3(0, 10, 0);
 
     public GameObject bloodEffect;
 
@@ -67,12 +62,6 @@ public class BossUI : MonoBehaviour
 
         bossHealth -= damage;
         healthBar.SetValue(bossHealth);
-
-        // add damage text
-        GameObject temp = GameObject.Instantiate(prefab);
-        temp.transform.parent = GameObject.Find("Canvas").transform;
-        temp.transform.position = Camera.main.WorldToScreenPoint(transform.position) + offset;
-        temp.GetComponent<Text>().text = "-" + damage.ToString() ; 
 
         if (bossHealth <= 0)
         {

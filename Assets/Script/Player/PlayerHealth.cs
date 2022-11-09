@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -25,9 +24,6 @@ public class PlayerHealth : MonoBehaviour
     // Blood Effect
     public GameObject bloodEffectCeil;
     public GameObject bloodEffectFloor;
-    // Damage text
-    public GameObject prefab;
-    public Vector3 offset = new Vector3(0, 120, 0);
 
     void Awake()
     {
@@ -59,11 +55,6 @@ public class PlayerHealth : MonoBehaviour
         }
         currentHealth -= damage;
         healthBar.SetValue(currentHealth);
-        // add damage text
-        GameObject temp = GameObject.Instantiate(prefab);
-        temp.transform.parent = GameObject.Find("Canvas").transform;
-        temp.transform.position = Camera.main.WorldToScreenPoint(transform.position) + offset;
-        temp.GetComponent<Text>().text = "-" + damage.ToString() ; 
         // add blood effect
         if (isUpsideDown){
             Instantiate(bloodEffectCeil, transform.position + new Vector3(0, -0.2f, 0), bloodEffectCeil.transform.rotation);

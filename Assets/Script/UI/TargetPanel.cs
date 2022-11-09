@@ -78,31 +78,31 @@ public class TargetPanel : MonoBehaviour
         
         // new(new[] { 0, 1,2,3,4 }, new[] { 5f,5f,5f,5f,5f}), // for test
         // new(new[] { 5,6,7,8,9 }, new[] { 5f,5f,5f,5f,5f }), // for test
-        new(new[] { 5, 0 }, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Shield}),
+        new(new[] { 8, 0 }, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Shield}),
         new(new[] { 4, 3 }, new[] { 20f, 25f }, new[]{ItemType.Common, ItemType.Shield}),
         new(new[] { 6, 1 }, new[] { 15f, 20f }, new[]{ItemType.Shield, ItemType.Common}),
-        new(new[] { 4, 9}, new[] { 20f, 25f },new[]{ItemType.Common, ItemType.Shield}),
+        new(new[] { 8, 4, 9}, new[] { 15f, 20f, 25f },new[]{ItemType.Freeze, ItemType.Common, ItemType.Shield}),
         new(new[] { 7, 2}, new[] { 15f, 20f }, new[]{ItemType.Common, ItemType.Freeze}),
-        new(new[] { 6, 8}, new[] { 15f, 25f }, new[]{ItemType.Shield, ItemType.Freeze}),
+        new(new[] { 6, 1, 8}, new[] { 15f, 20f, 25f }, new[]{ItemType.Shield, ItemType.Common, ItemType.Freeze}),
         new(new[] { 5, 3 }, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Shield}),
-        new(new[] { 6, 7}, new[] { 20f, 25f }, new[]{ItemType.Shield, ItemType.Common}),
-        new(new[] { 8, 1 }, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Common}),
+        new(new[] { 9, 5}, new[] { 20f, 25f }, new[]{ItemType.Shield, ItemType.Freeze}),
+        new(new[] { 8, 4 }, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Common}),
     };
     private const int Level3LoopIndex = 0;
     
     private readonly Target[] _level4Target = {
         
-        // new(new[] { 1, 1, 0, 0, 2, 2 }, new[] { 20f, 20f, 20f, 20f, 20f, 20f }, new[]{ItemType.Freeze, ItemType.Shield, ItemType.Shield, ItemType.Shield, ItemType.Shield, ItemType.Shield}), // test
-        
-        new(new[] { 5, 0 }, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Shield}),
+        // new(new[] { 0, 1,2,3,4 }, new[] { 5f,5f,5f,5f,5f}), // for test
+        // new(new[] { 5,6,7,8,9 }, new[] { 5f,5f,5f,5f,5f }), // for test
+        new(new[] { 8, 0 }, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Shield}),
         new(new[] { 4, 3 }, new[] { 20f, 25f }, new[]{ItemType.Clone, ItemType.Shield}),
         new(new[] { 6, 1 }, new[] { 15f, 20f }, new[]{ItemType.Shield, ItemType.Clone}),
-        new(new[] { 4, 9}, new[] { 15f, 20f, 25f },new[]{ItemType.Clone, ItemType.Shield}),
+        new(new[] { 8, 4, 9}, new[] { 15f, 20f, 25f },new[]{ItemType.Freeze, ItemType.Clone, ItemType.Shield}),
         new(new[] { 7, 2}, new[] { 15f, 20f }, new[]{ItemType.Clone, ItemType.Freeze}),
-        new(new[] { 6, 8}, new[] { 15f, 20f, 25f }, new[]{ItemType.Shield, ItemType.Freeze}),
+        new(new[] { 6, 1, 8}, new[] { 15f, 20f, 25f }, new[]{ItemType.Shield, ItemType.Clone, ItemType.Freeze}),
         new(new[] { 5, 3 }, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Shield}),
-        new(new[] { 6, 7}, new[] { 20f, 25f }, new[]{ItemType.Shield, ItemType.Clone}),
-        new(new[] { 8, 1}, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Clone}),
+        new(new[] { 9, 5}, new[] { 20f, 25f }, new[]{ItemType.Shield, ItemType.Freeze}),
+        new(new[] { 8, 4 }, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Clone}),
     };
     private const int Level4LoopIndex = 0;
 
