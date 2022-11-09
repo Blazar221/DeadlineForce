@@ -21,7 +21,7 @@ public class WaterBall : MonoBehaviour
         if (acitivated) {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
             transform.position = PlayerMovement.instance.transform.position;
-            Vector3 targ = new Vector3(BossUI.instance.transform.position.x, BossUI.instance.transform.position.y-4, BossUI.instance.transform.position.z);
+            Vector3 targ = new Vector3(BossUI.instance.transform.position.x, BossUI.instance.transform.position.y-8, BossUI.instance.transform.position.z);
             Vector2 dire = targ - transform.position;
             GetComponent<Rigidbody2D>().AddForce(dire*100);
             acitivated = false;
