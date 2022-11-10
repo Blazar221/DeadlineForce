@@ -220,9 +220,10 @@ public class TargetPanel : MonoBehaviour
         for (var i = 0; i < _objectLines.Count; i++)
         {
             var objL = _objectLines[i];
-            if (IsSameColor(color, objL.GetFirstColor()))
+            var gemIndex = objL.GetGemIndex(color);
+            if ( gemIndex != -1)
             { 
-                if (objL.RemoveFirstGem())
+                if (objL.RemoveGem(gemIndex))
                 {
                     // the line is completed
                     switch(objL.GetItemType()){
@@ -562,10 +563,8 @@ public class ObjectLine
     private readonly Color _red;
     private readonly Color _yellow;
 
-    private Color _firstColor;
     private TargetPanel.ItemType _itemType;
 
-    
 
     // constructor
     public ObjectLine(List<Image> gemList, Image upgradeItem, GameObject obj, float timeLeft, int redCount, int blueCount, int greenCount, int yellowCount)
@@ -582,12 +581,6 @@ public class ObjectLine
         this._green = new Color(0.0f, 1.0f, 0.0f);
         this._red = new Color(1.0f, 0.0f, 0.0f);
         this._yellow = new Color(1f, 0.76f, 0f, 1f);;
-        _firstColor = gemList[0].color;
-    }
-
-    public Color GetFirstColor()
-    {
-        return _firstColor;
     }
     
     public GameObject GetGameObj()
@@ -607,16 +600,15 @@ public class ObjectLine
     public TargetPanel.ItemType GetItemType() { return _itemType; }
 
     // return true if the line is completed
-    public bool RemoveFirstGem()
+    public bool RemoveGem(int index)
     {
-        _gemList[0].color = new Color(0f, 0f, 0f, 0.0f);
-        _gemList.RemoveAt(0);
+        _gemList[index].color = new Color(0f, 0f, 0f, 0.0f);
+        _gemList.RemoveAt(index);
         if (_gemList.Count == 0)
         {
             _isMissionCompleted = "1";
             return true;
         }
-        _firstColor = _gemList[0].color;
         return false;
     }
 
@@ -637,6 +629,20 @@ public class ObjectLine
     {
         _timeLeft -= time;
         return _timeLeft <= 0;
+    }
+    
+    // return the index of the corresponding gem
+    // return -1 if the gem is not found
+    public int GetGemIndex(Color gemColor)
+    {
+        for (var i = 0; i < _gemList.Count; i++)
+        {
+            if (IsSameColor(_gemList[i].color, gemColor))
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     private bool IsSameColor(Color color1, Color color2)
