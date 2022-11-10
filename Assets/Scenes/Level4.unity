@@ -1113,6 +1113,8 @@ MonoBehaviour:
   hasShield: 0
   bloodEffectCeil: {fileID: 7490847215641814726, guid: 925521c9452454e4b9878642d6668dd2, type: 3}
   bloodEffectFloor: {fileID: 7490847215641814726, guid: 454480fa64e9c314291b0cf6ca7e3a0e, type: 3}
+  prefab: {fileID: 6773181634080557151, guid: f26dd276ad2184f1899ec732cd8a4971, type: 3}
+  offset: {x: 0, y: 120, z: 0}
 --- !u!114 &178061461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6412,6 +6414,8 @@ MonoBehaviour:
   bossHead: {fileID: 203480176}
   bossLeftLeg: {fileID: 483930902}
   bossRightLeg: {fileID: 2059247978}
+  prefab: {fileID: 6773181634080557151, guid: f26dd276ad2184f1899ec732cd8a4971, type: 3}
+  offset: {x: 0, y: 10, z: 0}
   bloodEffect: {fileID: 7684543134659561662, guid: ae0d4e81658269946b040554832eb4cb, type: 3}
 --- !u!95 &1307346858
 Animator:
