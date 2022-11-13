@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6793344568998294527}
   - component: {fileID: 6793344568998294526}
   - component: {fileID: -7320357969136632013}
-  m_Layer: 1
+  m_Layer: 4
   m_Name: FireDiamond
   m_TagString: food
   m_Icon: {fileID: 0}
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1158747247
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 887685491, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
   m_Color: {r: 1, g: 0.5, b: 0, a: 1}

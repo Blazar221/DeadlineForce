@@ -21,6 +21,9 @@ public class BossBehavior : MonoBehaviour
     private float _moveDestY;
     public Vector3 moveDest;
     public bool startMove = false;
+
+    private Vector3 originalLocalScale;
+
     [SerializeField] private Animator bossAnimator;
     private BossUI _bossUI;
     
@@ -37,6 +40,8 @@ public class BossBehavior : MonoBehaviour
         bossAnimator = GetComponent<Animator>();
         _bossUI = GetComponent<BossUI>();
         _bgmHandler = bgm.GetComponent<BgmController>();
+
+        originalLocalScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
     }
 
     private void Start()
@@ -63,14 +68,23 @@ public class BossBehavior : MonoBehaviour
             _attackingLine = playerMovement.GetYPos();
             _moveDestY = _attackingLine switch
             {
-                0 => 7,
-                1 => 4,
-                2 => 2,
-                3 => -1,
+                0 => 4.92f,
+                1 => 0.57f,
+                2 => -0.57f,
+                3 => -4.92f,
                 _ => 0,
             };
 
-            moveDest = new Vector3(9.34f, _moveDestY, 0);
+            if(_attackingLine == 0 || _attackingLine == 2)
+            {
+                transform.localScale = new Vector3(originalLocalScale.x, -originalLocalScale.y, originalLocalScale.z);
+            }
+            else
+            {
+                transform.localScale = new Vector3(originalLocalScale.x, originalLocalScale.y, originalLocalScale.z);
+            }
+
+            moveDest = new Vector3(transform.position.x, _moveDestY, transform.position.z);
             startMove = true;
             bossAnimator.SetBool("isMove", true);
             
@@ -89,7 +103,7 @@ public class BossBehavior : MonoBehaviour
         if(transform.position.y == _moveDestY){
             startMove = false;
             bossAnimator.SetBool("isMove", false);
-            bossAnimator.SetTrigger("Attack");
+            bossAnimator.SetTrigger("attack");
         }
     }
 
