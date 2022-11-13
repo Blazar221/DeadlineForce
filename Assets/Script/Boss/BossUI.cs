@@ -19,10 +19,9 @@ public class BossUI : MonoBehaviour
     public GameObject deathEffect;
 
     public GameObject bossBody;
-    public GameObject bossHead;
-    public GameObject bossLeftLeg;
-    public GameObject bossRightLeg;
-    List<SpriteRenderer> bossRenderers;
+    private SpriteRenderer bossBodyRenderer;
+
+    private Animator bossAnimator;
 
     // Damage text
     public GameObject prefab;
@@ -38,12 +37,10 @@ public class BossUI : MonoBehaviour
         instance = this;
         
         healthBar.SetMaxValue(bossHealth);
-        // Get the corresponding property of the gameObject
-        bossRenderers = new List<SpriteRenderer>();
-        bossRenderers.Add(bossBody.GetComponent<SpriteRenderer>());
-        bossRenderers.Add(bossHead.GetComponent<SpriteRenderer>());
-        bossRenderers.Add(bossLeftLeg.GetComponent<SpriteRenderer>());
-        bossRenderers.Add(bossRightLeg.GetComponent<SpriteRenderer>());
+        
+        bossBodyRenderer = bossBody.GetComponent<SpriteRenderer>();
+
+        bossAnimator = GetComponent<Animator>();
 
         originalColor = Color.white;
         SetColor(originalColor);
@@ -51,20 +48,15 @@ public class BossUI : MonoBehaviour
 
     public void SetColor(Color nextColor)
     {
-        // Debug.Log("nextColor");
-        // Debug.Log(nextColor);
-        foreach(SpriteRenderer renderer in bossRenderers)
-        {
-            renderer.color = Color.Lerp(renderer.color, nextColor, 1);
-        }
+        bossBodyRenderer.color = Color.Lerp(bossBodyRenderer.color, nextColor, 1);
     }
     
     public void TakeDamage(int damage)
     {
-        Instantiate(bloodEffect, bossHead.transform.position, Quaternion.identity);
-
-        FlashColor(flashTime);
-
+        // Instantiate(bloodEffect, bossBody.transform.position, Quaternion.identity);
+        Debug.Log("take damage");
+        bossAnimator.SetTrigger("damage");
+        
         bossHealth -= damage;
         healthBar.SetValue(bossHealth);
 
@@ -101,7 +93,7 @@ public class BossUI : MonoBehaviour
 
     public void struggleColor()
     {
-        SetColor(Color.black);
+        SetColor(new Color(253f/255f, 150f/255f, 9f/255f));
     }
 
     void ResetColor()
