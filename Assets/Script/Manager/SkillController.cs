@@ -37,8 +37,7 @@ public class SkillController : MonoBehaviour
 
     public void CallFreezeSkill()
     {
-        Debug.Log("Freeze");
-        BossBehavior.instance.Freeze();
+        BossBehavior.Instance.Freeze();
     }
 
     public void CallShieldSkill()

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BossBehavior : MonoBehaviour
 {
-    public static BossBehavior instance;
+    public static BossBehavior Instance;
 
     [SerializeField] private PlayerMovement playerMovement;
 
@@ -36,7 +36,7 @@ public class BossBehavior : MonoBehaviour
 
     void Awake()
     {   
-        instance = this;
+        Instance = this;
         bossAnimator = GetComponent<Animator>();
         _bossUI = GetComponent<BossUI>();
         _bgmHandler = bgm.GetComponent<BgmController>();
@@ -91,7 +91,7 @@ public class BossBehavior : MonoBehaviour
             if (_startStruggle == false && _bgmHandler.songPosition > struggleStartTime)
             {
                 Struggle();
-                _bossUI.struggleColor();
+                _bossUI.StruggleColor();
                 _startStruggle = true;
             }
         }
@@ -111,8 +111,7 @@ public class BossBehavior : MonoBehaviour
     {
         bossMoveSpeed /= 10;
         bossAttackPeriod *= 2;
-        BossUI.instance.SetColor(Color.blue);
-        Debug.Log("Boss Freeze");
+        BossUI.Instance.SetColor(Color.blue);
         StartCoroutine(Unfreeze());
     }
 
@@ -121,7 +120,7 @@ public class BossBehavior : MonoBehaviour
         yield return new WaitForSeconds(8f);
         bossMoveSpeed *= 10;
         bossAttackPeriod /=2;
-        BossUI.instance.SetColor(Color.white);
+        BossUI.Instance.SetColor(Color.white);
     }
     
     public void Attack()

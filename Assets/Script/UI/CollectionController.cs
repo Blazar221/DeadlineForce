@@ -42,7 +42,7 @@ public class CollectionController : MonoBehaviour
     {
         if (fireCount >= singleLimit && grassCount >= singleLimit && waterCount >= singleLimit && rockCount >= singleLimit)
         {
-            BossUI.instance.TakeDamage(fullDamage);
+            BossHealth.Instance.TakeDamage(fullDamage);
             RainbowBall.acitivated = true;
             fireCount = 0;
             grassCount = 0;

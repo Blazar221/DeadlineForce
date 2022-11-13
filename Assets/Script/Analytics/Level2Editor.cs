@@ -82,7 +82,7 @@ public class Level2Editor : MonoBehaviour
 
     public void Send(){
         _playtime = Time.timeSinceLevelLoad;
-        _bossHealth = (BossUI.instance != null)?BossUI.instance.bossHealth:0;
+        _bossHealth = (BossHealth.Instance != null)?BossHealth.Instance.bossHealth:0;
         _playerHealth = PlayerHealth.Instance.currentHealth;
         _timer = CollectionController.Instance.time;
         CalculatePath();

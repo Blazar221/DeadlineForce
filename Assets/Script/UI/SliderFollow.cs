@@ -53,6 +53,7 @@ public class SliderFollow : MonoBehaviour
 
     void Update()
     {
+        // TODO change rg judge to transform judge
         bool isUpsideDown = transform.parent.gameObject.GetComponent<Rigidbody2D>().gravityScale < 0;
         if(isUpsideDown)
         {

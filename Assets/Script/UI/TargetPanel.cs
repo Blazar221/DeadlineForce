@@ -248,7 +248,7 @@ public class TargetPanel : MonoBehaviour
                             } else {
                                 RainbowBall.acitivated = true;
                             }
-                            BossUI.instance.TakeDamage(patternDamage);
+                            BossHealth.Instance.TakeDamage(patternDamage);
                             break;
                     }
                     UpdateAnalytics(objL);
