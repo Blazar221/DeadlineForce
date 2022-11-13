@@ -136,7 +136,7 @@ public class BossBehavior : MonoBehaviour
         switch (_count)
         {
             case 0:
-                _newBullet = Instantiate(laser, new Vector3(-2, pos1, 0), Quaternion.identity);
+                _newBullet = Instantiate(laser, new Vector3(-4, pos1, 0), Quaternion.identity);
                 Destroy(_newBullet, 1f);
                 yield return new WaitForSeconds(0.3f);
                 _newBullet = Instantiate(bandit, new Vector3(6, pos2, 0), Quaternion.identity);
