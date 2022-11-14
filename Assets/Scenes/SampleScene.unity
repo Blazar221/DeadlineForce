@@ -8395,10 +8395,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 21300000, guid: 1141ac8297487ed459a3354b2721df68, type: 3}
-  - {fileID: 21300000, guid: 7b385aa5d61809d4084b15677848a260, type: 3}
-  - {fileID: 21300000, guid: 233287c7e4bf9364d9b7daffc8c0d492, type: 3}
-  - {fileID: 21300000, guid: d2d6ffd20daa50e4ebd3987d643eaca4, type: 3}
+  - {fileID: 21300000, guid: 06f28022d9285834c9e031c6d5711ba3, type: 3}
+  - {fileID: 21300000, guid: 664a46c0a7d22da46bd83a0e3689c86e, type: 3}
+  - {fileID: 21300000, guid: 94959360fddcdca4d83a59b5ff5d2885, type: 3}
+  - {fileID: 21300000, guid: 680f93e8b6b897b49bc619d58da5c362, type: 3}
   fireDiamond: {fileID: 0}
   fireBar: {fileID: 0}
   grassDiamond: {fileID: 0}
