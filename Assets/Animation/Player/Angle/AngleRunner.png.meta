@@ -107,9 +107,9 @@ TextureImporter:
       name: AngleRunner_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 0
-        width: 36
+        x: 9
+        y: 11
+        width: 34
         height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -118,8 +118,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88e8656b85e115a41b15960d3acaffac
-      internalID: 977206126
+      spriteID: 30aa9c604a6ec894b9083f9f902a9466
+      internalID: 815395589
       vertices: []
       indices: 
       edges: []
@@ -128,8 +128,8 @@ TextureImporter:
       name: AngleRunner_1
       rect:
         serializedVersion: 2
-        x: 43
-        y: 0
+        x: 52
+        y: 11
         width: 35
         height: 35
       alignment: 0
@@ -139,8 +139,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d5aabdac2326f14093ff739bd30e375
-      internalID: 171592280
+      spriteID: 012ea1c64ee49b74c8760dc93a937bdd
+      internalID: -1572133717
       vertices: []
       indices: 
       edges: []
@@ -149,260 +149,8 @@ TextureImporter:
       name: AngleRunner_2
       rect:
         serializedVersion: 2
-        x: 80
-        y: 0
-        width: 32
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a4459d9090512dd4a86068d82f16b694
-      internalID: -341104653
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleRunner_3
-      rect:
-        serializedVersion: 2
-        x: 115
-        y: 0
-        width: 32
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5e2c6812d4320e24ab062b1508a53b47
-      internalID: -138492274
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleRunner_4
-      rect:
-        serializedVersion: 2
-        x: 152
-        y: 0
-        width: 35
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dff0297326e62a24a98842295e80e576
-      internalID: 261263300
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleRunner_5
-      rect:
-        serializedVersion: 2
-        x: 197
-        y: 0
-        width: 30
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c8f160f70f8091c408cbb6b0bfcf24ae
-      internalID: 1658070455
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleRunner_6
-      rect:
-        serializedVersion: 2
-        x: 233
-        y: 0
-        width: 32
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4c0a1724f79a0c7459bb6087f912ebb6
-      internalID: -1656786995
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleRunner_7
-      rect:
-        serializedVersion: 2
-        x: 272
-        y: 0
-        width: 26
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: baf08ba99d8aa2244aefa1f2025b1eb0
-      internalID: 771178546
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleRunner_8
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 0
-        width: 30
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 409c26b960b42a74da0873007a1af6dd
-      internalID: 358298844
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleRunner_9
-      rect:
-        serializedVersion: 2
-        x: 336
-        y: 0
-        width: 26
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b6421bc6b849ba24e9058f4cc97bc422
-      internalID: -1155134050
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleRunner_10
-      rect:
-        serializedVersion: 2
-        x: 382
-        y: 0
-        width: 30
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e5f171fbe38676a4c9152430a709bb83
-      internalID: -137216178
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleRunner_11
-      rect:
-        serializedVersion: 2
-        x: 436
-        y: 0
-        width: 29
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 302a5f89fa4323e498ffdb6af9f4bb09
-      internalID: 885249650
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleRunner_12
-      rect:
-        serializedVersion: 2
-        x: 468
-        y: 0
-        width: 31
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d65edfb60f70c3149893191aa6017d97
-      internalID: -1996413738
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleRunner_13
-      rect:
-        serializedVersion: 2
-        x: 501
-        y: 0
-        width: 30
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9ad0840b666047a40a6f5e259085e748
-      internalID: 1872602114
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleRunner_14
-      rect:
-        serializedVersion: 2
-        x: 533
-        y: 0
+        x: 90
+        y: 11
         width: 33
         height: 35
       alignment: 0
@@ -412,19 +160,103 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1df6a4160d24ed342b2b1c1d20c57f46
-      internalID: 2075497757
+      spriteID: 3ebdca7e2e7872b4d978e5b85b968675
+      internalID: 2039973433
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AngleRunner_15
+      name: AngleRunner_3
       rect:
         serializedVersion: 2
-        x: 568
-        y: 0
-        width: 31
+        x: 128
+        y: 11
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1942d26be4bdc044087ec751c07ae2f8
+      internalID: -623836537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleRunner_4
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 11
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbc4fdc349574d441abe63a3d00e7512
+      internalID: -107040865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleRunner_5
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 11
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45693702f513f2143af183b3014a07c9
+      internalID: -840982180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleRunner_6
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 11
+        width: 29
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa88672e2115dd7489330b9afd9b0352
+      internalID: -1162941378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleRunner_7
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 11
+        width: 29
         height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -433,8 +265,176 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5840a75fe23d64249b5c9c8d56e0ccaa
-      internalID: 1899332791
+      spriteID: afc573e4d10757449bb55e3fc43e38da
+      internalID: -1247849378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleRunner_8
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 11
+        width: 28
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c3f45cdfefb18440af818e5a23f7c49
+      internalID: -1447168364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleRunner_9
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 11
+        width: 27
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 564f0ce7f511ceb41b27214f74fcba16
+      internalID: 1958856108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleRunner_10
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 11
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1828a92c2bdd49347a8f29b3e31fe3e6
+      internalID: -946184774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleRunner_11
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 11
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae77f47cfb125784f99b367b87fc9f6f
+      internalID: 126895382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleRunner_12
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 11
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc8f6f09b2a28e84c874e11a0541e8aa
+      internalID: -767631512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleRunner_13
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 11
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b545004acd02634f813d41354c22942
+      internalID: -1635604794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleRunner_14
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 11
+        width: 34
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d182d22545bcc9b44ae1117423cf8a3a
+      internalID: 1826693307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleRunner_15
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 11
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1787ffb474652b24ea3aee5787718497
+      internalID: 1566785940
       vertices: []
       indices: 
       edges: []
@@ -450,22 +450,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      AngleRunner_8: 358298844
-      AngleRunner_13: 1872602114
-      AngleRunner_6: -1656786995
-      AngleRunner_9: -1155134050
-      AngleRunner_12: -1996413738
-      AngleRunner_0: 977206126
-      AngleRunner_2: -341104653
-      AngleRunner_3: -138492274
-      AngleRunner_15: 1899332791
-      AngleRunner_14: 2075497757
-      AngleRunner_7: 771178546
-      AngleRunner_4: 261263300
-      AngleRunner_5: 1658070455
-      AngleRunner_1: 171592280
-      AngleRunner_10: -137216178
-      AngleRunner_11: 885249650
+      AngleRunner_8: -1447168364
+      AngleRunner_13: -1635604794
+      AngleRunner_6: -1162941378
+      AngleRunner_9: 1958856108
+      AngleRunner_12: -767631512
+      AngleRunner_0: 815395589
+      AngleRunner_2: 2039973433
+      AngleRunner_3: -623836537
+      AngleRunner_15: 1566785940
+      AngleRunner_14: 1826693307
+      AngleRunner_7: -1247849378
+      AngleRunner_4: -107040865
+      AngleRunner_5: -840982180
+      AngleRunner_1: -1572133717
+      AngleRunner_10: -946184774
+      AngleRunner_11: 126895382
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

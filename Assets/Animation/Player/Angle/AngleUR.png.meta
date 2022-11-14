@@ -107,9 +107,9 @@ TextureImporter:
       name: AngleUR_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 0
-        width: 36
+        x: 9
+        y: 4
+        width: 34
         height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -118,8 +118,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f2864946df3f6a488b2509a88588600
-      internalID: -952075930
+      spriteID: 7c01d8cd09482884dbabc64229e62132
+      internalID: 1571073432
       vertices: []
       indices: 
       edges: []
@@ -128,8 +128,8 @@ TextureImporter:
       name: AngleUR_1
       rect:
         serializedVersion: 2
-        x: 43
-        y: 0
+        x: 52
+        y: 4
         width: 35
         height: 35
       alignment: 0
@@ -139,8 +139,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40463d09de73f50438074255d43afa37
-      internalID: 1791589635
+      spriteID: e049e1f2614051044aa58bbc0b28f189
+      internalID: 664992004
       vertices: []
       indices: 
       edges: []
@@ -149,260 +149,8 @@ TextureImporter:
       name: AngleUR_2
       rect:
         serializedVersion: 2
-        x: 80
-        y: 0
-        width: 32
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5014649631e9cb2498f811f25987208f
-      internalID: -91199790
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleUR_3
-      rect:
-        serializedVersion: 2
-        x: 115
-        y: 0
-        width: 32
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6dd55c82c9eb45943b083e3fc5297469
-      internalID: 337179401
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleUR_4
-      rect:
-        serializedVersion: 2
-        x: 152
-        y: 3
-        width: 35
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9c30cd1a39edf19469aa280ffbea1cae
-      internalID: -1654283097
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleUR_5
-      rect:
-        serializedVersion: 2
-        x: 197
-        y: 0
-        width: 30
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 47c5ab742ca23184582e8f13ab4c114c
-      internalID: 1497177685
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleUR_6
-      rect:
-        serializedVersion: 2
-        x: 233
-        y: 0
-        width: 32
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fb24179e2c488324abe796e94d1d723a
-      internalID: 1201664527
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleUR_7
-      rect:
-        serializedVersion: 2
-        x: 272
-        y: 0
-        width: 26
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ed8b633dc1b1d0b49831ad0f08ead265
-      internalID: 788500575
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleUR_8
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 3
-        width: 30
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8c058e44b4c2de046a50e92bb030b0e1
-      internalID: -492889562
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleUR_9
-      rect:
-        serializedVersion: 2
-        x: 336
-        y: 0
-        width: 26
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 10ae3c1b02ad03e47b768377cbdba727
-      internalID: -1846338982
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleUR_10
-      rect:
-        serializedVersion: 2
-        x: 382
-        y: 0
-        width: 30
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63271d4b78e1ec647955fee38b216785
-      internalID: -317846542
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleUR_11
-      rect:
-        serializedVersion: 2
-        x: 436
-        y: 0
-        width: 29
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c05a6087d05a3a345b2120db69c2ce80
-      internalID: 1957097950
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleUR_12
-      rect:
-        serializedVersion: 2
-        x: 468
-        y: 0
-        width: 31
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ae2d26ba441717b488ea4ffa25e77e1d
-      internalID: -354517252
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleUR_13
-      rect:
-        serializedVersion: 2
-        x: 501
-        y: 0
-        width: 30
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b55fde94f72b8c149846dbe165cdee4b
-      internalID: -1267664253
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AngleUR_14
-      rect:
-        serializedVersion: 2
-        x: 533
-        y: 0
+        x: 90
+        y: 4
         width: 33
         height: 35
       alignment: 0
@@ -412,19 +160,103 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59646679dc19f794a845ce22e54a8586
-      internalID: -2128560592
+      spriteID: 38cca070858883f43b09f44cf8a700fe
+      internalID: 1576031439
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AngleUR_15
+      name: AngleUR_3
       rect:
         serializedVersion: 2
-        x: 568
-        y: 0
-        width: 31
+        x: 128
+        y: 5
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59a901463d258a446a2fd6e3634133cb
+      internalID: 371687802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleUR_4
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 5
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a3a18952fd8bc34ab8da26f4e0396e8
+      internalID: -1524232783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleUR_5
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 5
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1304ee2f52cce174796a1d54c2cd35ea
+      internalID: -1244433649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleUR_6
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 5
+        width: 29
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 427f834e9958e1248af6a8a946e69aa5
+      internalID: 1552575017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleUR_7
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 4
+        width: 29
         height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -433,8 +265,176 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 120eec15016fb754a87250b112274369
-      internalID: 1845126998
+      spriteID: b03ba19fc5ae0364380203399df2fa3b
+      internalID: 1348349309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleUR_8
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 3
+        width: 28
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77bed1f7b34c619418db778497bb1381
+      internalID: -905450940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleUR_9
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 5
+        width: 27
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7d75f61714940f40ae5d934b3c3741b
+      internalID: 353453797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleUR_10
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 5
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbb847a0611e511458dbe484dfde284b
+      internalID: 1823976557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleUR_11
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 5
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b49da54ecad8ac540adfad43edb48539
+      internalID: -1669157851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleUR_12
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 6
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6d5590f6e39d1a42b48b6b0d6a40c00
+      internalID: -437419216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleUR_13
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 6
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 895ed50614304b548a514a94c2f4c422
+      internalID: -1821104763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleUR_14
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 4
+        width: 34
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d7b46dcc3abd9a4f9c7672ac2f1e6b0
+      internalID: -622239583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AngleUR_15
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 4
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebd04d746bdb7c740a58ebd8739f35c9
+      internalID: 52302215
       vertices: []
       indices: 
       edges: []
@@ -450,22 +450,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      AngleUR_6: 1201664527
-      AngleUR_11: 1957097950
-      AngleUR_5: 1497177685
-      AngleUR_3: 337179401
-      AngleUR_4: -1654283097
-      AngleUR_9: -1846338982
-      AngleUR_7: 788500575
-      AngleUR_0: -952075930
-      AngleUR_8: -492889562
-      AngleUR_13: -1267664253
-      AngleUR_10: -317846542
-      AngleUR_2: -91199790
-      AngleUR_14: -2128560592
-      AngleUR_15: 1845126998
-      AngleUR_1: 1791589635
-      AngleUR_12: -354517252
+      AngleUR_6: 1552575017
+      AngleUR_11: -1669157851
+      AngleUR_5: -1244433649
+      AngleUR_3: 371687802
+      AngleUR_4: -1524232783
+      AngleUR_9: 353453797
+      AngleUR_7: 1348349309
+      AngleUR_0: 1571073432
+      AngleUR_8: -905450940
+      AngleUR_13: -1821104763
+      AngleUR_10: 1823976557
+      AngleUR_2: 1576031439
+      AngleUR_14: -622239583
+      AngleUR_15: 52302215
+      AngleUR_1: 664992004
+      AngleUR_12: -437419216
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
