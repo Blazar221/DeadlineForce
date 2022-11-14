@@ -32,6 +32,9 @@ public class PlayerAttack : MonoBehaviour
     public GameObject missEffect;
     public GameObject goodEffect;
     public GameObject perfectEffect;
+    public GameObject EatGemAnim1;
+    public GameObject EatGemAnim2;
+    public GameObject EatGemAnim3;
     // Diamond collection
     SpriteRenderer fireRenderer;
     SpriteRenderer grassRenderer;
@@ -92,6 +95,7 @@ public class PlayerAttack : MonoBehaviour
             animator.SetBool("isEating",true);
             nextTime = Time.time + 0.1f; //Eating time lasts for 0.1s
             if (canGetSingleScore){
+                StartCoroutine(EatGemAnim());
                 ScoreSingle(Time.time);
             }
             else if (canGetLongScore == false){
@@ -109,6 +113,19 @@ public class PlayerAttack : MonoBehaviour
         }
         // Reset diamond
         CollectionController.Instance.Reset();
+    }
+
+    IEnumerator EatGemAnim()
+    {
+        EatGemAnim1.SetActive(true);
+        yield return new WaitForSeconds(0.02f);
+        EatGemAnim1.SetActive(false);
+        EatGemAnim2.SetActive(true);
+        yield return new WaitForSeconds(0.02f);
+        EatGemAnim2.SetActive(false);
+        EatGemAnim3.SetActive(true);
+        yield return new WaitForSeconds(0.02f);
+        EatGemAnim3.SetActive(false);
     }
 
     void FixedUpdate() {
