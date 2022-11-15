@@ -32,16 +32,9 @@ public class PlayerAttack : MonoBehaviour
     public GameObject missEffect;
     public GameObject goodEffect;
     public GameObject perfectEffect;
-    [SerializeField] private GameObject EatGemRing1;
-    [SerializeField] private GameObject EatGemRing2;
-    [SerializeField] private GameObject EatGemRing3;
-    [SerializeField] private GameObject EatGemStar1;
-    [SerializeField] private GameObject EatGemStar2;
-    [SerializeField] private GameObject EatGemStar3;
-    [SerializeField] private GameObject EatGemStar4;
-    [SerializeField] private GameObject EatGemStar5;
-    [SerializeField] private GameObject EatGemStar6;
-    
+    public GameObject EatGemAnim1;
+    public GameObject EatGemAnim2;
+    public GameObject EatGemAnim3;
     // Diamond collection
     SpriteRenderer fireRenderer;
     SpriteRenderer grassRenderer;
@@ -124,29 +117,15 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator EatGemAnim()
     {
-        EatGemRing1.SetActive(true);
-        EatGemStar1.SetActive(true);
-        EatGemStar2.SetActive(true);
-        yield return new WaitForSeconds(0.15f);
-        EatGemRing1.SetActive(false);
-        EatGemStar1.SetActive(false);
-        EatGemStar2.SetActive(false);
-        
-        EatGemRing2.SetActive(true);
-        EatGemStar3.SetActive(true);
-        EatGemStar4.SetActive(true);
-        yield return new WaitForSeconds(0.15f);
-        EatGemRing2.SetActive(false);
-        EatGemStar3.SetActive(false);
-        EatGemStar4.SetActive(false);
-
-        EatGemRing3.SetActive(true);
-        EatGemStar5.SetActive(true);
-        EatGemStar6.SetActive(true);
-        yield return new WaitForSeconds(0.15f);
-        EatGemRing3.SetActive(false);
-        EatGemStar5.SetActive(false);
-        EatGemStar6.SetActive(false);
+        EatGemAnim1.SetActive(true);
+        yield return new WaitForSeconds(0.02f);
+        EatGemAnim1.SetActive(false);
+        EatGemAnim2.SetActive(true);
+        yield return new WaitForSeconds(0.02f);
+        EatGemAnim2.SetActive(false);
+        EatGemAnim3.SetActive(true);
+        yield return new WaitForSeconds(0.02f);
+        EatGemAnim3.SetActive(false);
     }
 
     void FixedUpdate() {
