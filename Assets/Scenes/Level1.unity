@@ -328,6 +328,9 @@ MonoBehaviour:
   missEffect: {fileID: 6635266172521709411, guid: dbb14eaa2f88a7241adc09cba52c3960, type: 3}
   goodEffect: {fileID: 2802313049072304034, guid: c146c70ad0350f743a6620b8cc363bbd, type: 3}
   perfectEffect: {fileID: 2494714996470128700, guid: 7481da4ae9a13b3498b72745925926b6, type: 3}
+  EatGemAnim1: {fileID: 0}
+  EatGemAnim2: {fileID: 0}
+  EatGemAnim3: {fileID: 0}
   fireDiamond: {fileID: 6793344568998294521, guid: 0942592310d901b4ca2d102f56a13991, type: 3}
   fireBar: {fileID: 132229189}
   grassDiamond: {fileID: 6793344568998294521, guid: 0020b74fc6d5612468084ca21a688ffd, type: 3}
@@ -1144,6 +1147,9 @@ MonoBehaviour:
   missEffect: {fileID: 6635266172521709411, guid: dbb14eaa2f88a7241adc09cba52c3960, type: 3}
   goodEffect: {fileID: 2802313049072304034, guid: c146c70ad0350f743a6620b8cc363bbd, type: 3}
   perfectEffect: {fileID: 2494714996470128700, guid: 7481da4ae9a13b3498b72745925926b6, type: 3}
+  EatGemAnim1: {fileID: 0}
+  EatGemAnim2: {fileID: 0}
+  EatGemAnim3: {fileID: 0}
   fireDiamond: {fileID: 6793344568998294521, guid: 0942592310d901b4ca2d102f56a13991, type: 3}
   fireBar: {fileID: 132229189}
   grassDiamond: {fileID: 6793344568998294521, guid: 0020b74fc6d5612468084ca21a688ffd, type: 3}
