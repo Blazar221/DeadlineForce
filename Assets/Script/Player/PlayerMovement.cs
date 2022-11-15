@@ -13,6 +13,10 @@ public class PlayerMovement : MonoBehaviour
     private bool reverseControl = false;
     private float[] playerYPosArr;
     private int curYPos;
+    
+    [SerializeField] private GameObject EatGemRing1;
+    [SerializeField] private GameObject EatGemRing2;
+    [SerializeField] private GameObject EatGemRing3;
 
     void Awake()
     {
@@ -69,6 +73,25 @@ public class PlayerMovement : MonoBehaviour
     public void SetYPos(int yPos)
     {
         curYPos = yPos;
+        var selfPos = transform.position;
+        /*
+        var shift = new Vector3(0, 1.2f, 0);;
+        if (yPos >= 1)
+        {
+            EatGemRing1.transform.position = selfPos + shift;
+            EatGemRing2.transform.position = selfPos + shift;
+            EatGemRing3.transform.position = selfPos + shift;
+
+        }
+        else
+        {
+            EatGemRing1.transform.position = selfPos - shift;
+            EatGemRing2.transform.position = selfPos - shift;
+            EatGemRing3.transform.position = selfPos - shift;
+        }
+        */
+        Debug.Log("selfPos:" + selfPos + " animPos:" + EatGemRing1.transform.position);
+        
         // Directly move position
         transform.position = new Vector3(transform.position.x, playerYPosArr[yPos], transform.position.z);
         // Set Gravity Direction and isUpsideDown Flag
@@ -99,11 +122,7 @@ public class PlayerMovement : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // if(collision.gameObject.tag == "GravSwitch")
-        // {
-        //     canChangeGravity = true;
-        // }
-        
+
         if( collision.gameObject.tag == "OriginalPlatForm")
         {
             canChangeGravity = true;

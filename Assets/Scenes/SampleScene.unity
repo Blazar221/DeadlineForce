@@ -312,6 +312,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canChangeGravity: 0
+  EatGemRing1: {fileID: 961893207}
+  EatGemRing2: {fileID: 1320547538}
+  EatGemRing3: {fileID: 2005038135}
 --- !u!114 &23490016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,15 +331,15 @@ MonoBehaviour:
   missEffect: {fileID: 6635266172521709411, guid: dbb14eaa2f88a7241adc09cba52c3960, type: 3}
   goodEffect: {fileID: 2802313049072304034, guid: c146c70ad0350f743a6620b8cc363bbd, type: 3}
   perfectEffect: {fileID: 2494714996470128700, guid: 7481da4ae9a13b3498b72745925926b6, type: 3}
-  EatGemRing1: {fileID: 0}
-  EatGemRing2: {fileID: 0}
-  EatGemRing3: {fileID: 0}
-  EatGemStar1: {fileID: 0}
-  EatGemStar2: {fileID: 0}
-  EatGemStar3: {fileID: 0}
-  EatGemStar4: {fileID: 0}
-  EatGemStar5: {fileID: 0}
-  EatGemStar6: {fileID: 0}
+  EatGemRing1: {fileID: 961893207}
+  EatGemRing2: {fileID: 1320547538}
+  EatGemRing3: {fileID: 2005038135}
+  EatGemStar1: {fileID: 1600780470}
+  EatGemStar2: {fileID: 127898213}
+  EatGemStar3: {fileID: 1781761506}
+  EatGemStar4: {fileID: 396584552}
+  EatGemStar5: {fileID: 764026098}
+  EatGemStar6: {fileID: 1088235612}
   fireDiamond: {fileID: 6793344568998294521, guid: 0942592310d901b4ca2d102f56a13991, type: 3}
   fireBar: {fileID: 132229189}
   grassDiamond: {fileID: 6793344568998294521, guid: 0020b74fc6d5612468084ca21a688ffd, type: 3}
@@ -1343,6 +1346,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canChangeGravity: 0
+  EatGemRing1: {fileID: 961893207}
+  EatGemRing2: {fileID: 1320547538}
+  EatGemRing3: {fileID: 2005038135}
 --- !u!114 &178061462
 MonoBehaviour:
   m_ObjectHideFlags: 0
