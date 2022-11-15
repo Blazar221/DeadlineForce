@@ -1520,7 +1520,7 @@ public class ObjectToJson : MonoBehaviour
         new (new []{ 75.338f, 75.338f }, 3 , 1 , false , 1 ),  
         };
         
-        Object[] L3objArr = new Object[]
+        Object[] L2objArr = new Object[]
     {
         new (new []{ 1.57f, 1.57f }, 0 , 1 , false , 3 ), 
         new (new []{ 1.57f, 1.57f }, 1 , 1 , false , 0 ), 
@@ -1980,7 +1980,7 @@ public class ObjectToJson : MonoBehaviour
         new (new []{ 74.69f, 76.10f }, 3 , 2 , false , 0 ),  
     };
 
-    Object[] L2objArr = new Object[]
+    Object[] L3objArr = new Object[]
     {
         new Object(new []{0.477f, 0.818f}, 0, 2, true, -1),
         new Object(new []{0.477f, 0.818f}, 1, 2, true, -1),

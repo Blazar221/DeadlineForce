@@ -83,7 +83,7 @@ public class TargetPanel : MonoBehaviour
         new(new[] { 6, 1 }, new[] { 15f, 20f }, new[]{ItemType.Shield, ItemType.Common}),
         new(new[] { 4, 9}, new[] { 20f, 25f },new[]{ItemType.Common, ItemType.Shield}),
         new(new[] { 7, 2}, new[] { 15f, 20f }, new[]{ItemType.Common, ItemType.Freeze}),
-        new(new[] { 6, 8}, new[] { 15f, 25f }, new[]{ItemType.Shield, ItemType.Freeze}),
+        new(new[] { 1, 8}, new[] { 15f, 25f }, new[]{ItemType.Common, ItemType.Freeze}),
         new(new[] { 5, 3 }, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Shield}),
         new(new[] { 6, 7}, new[] { 20f, 25f }, new[]{ItemType.Shield, ItemType.Common}),
         new(new[] { 8, 1 }, new[] { 15f, 20f }, new[]{ItemType.Freeze, ItemType.Common}),
