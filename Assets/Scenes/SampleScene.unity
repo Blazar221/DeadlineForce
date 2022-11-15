@@ -8385,7 +8385,7 @@ RectTransform:
   m_GameObject: {fileID: 1620707934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.74995, y: 0.74995, z: 0.74995}
+  m_LocalScale: {x: 1.0405556, y: 1.0405556, z: 1.0405556}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1956226382}
@@ -8394,7 +8394,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -832, y: -293}
+  m_AnchoredPosition: {x: -786, y: -407}
   m_SizeDelta: {x: 334.13, y: 784.6918}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1620707936
@@ -8496,10 +8496,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 21300000, guid: 06f28022d9285834c9e031c6d5711ba3, type: 3}
+  - {fileID: 21300000, guid: 4b8bad3dd0b39e84a8ff5b7a9f58154a, type: 2}
   - {fileID: 21300000, guid: 664a46c0a7d22da46bd83a0e3689c86e, type: 3}
-  - {fileID: 21300000, guid: 94959360fddcdca4d83a59b5ff5d2885, type: 3}
-  - {fileID: 21300000, guid: 680f93e8b6b897b49bc619d58da5c362, type: 3}
+  - {fileID: 21300000, guid: c9cf472abf644e643bba973a8b50347c, type: 2}
+  - {fileID: 21300000, guid: dd3fcf8afdf117a4395bba9253fd7565, type: 2}
   fireDiamond: {fileID: 0}
   fireBar: {fileID: 0}
   grassDiamond: {fileID: 0}
