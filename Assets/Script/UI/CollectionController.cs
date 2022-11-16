@@ -44,6 +44,7 @@ public class CollectionController : MonoBehaviour
         {
             BossHealth.Instance.TakeDamage(fullDamage);
             RainbowBall.acitivated = true;
+            PlayerAttack.AttackAnimation();
             fireCount = 0;
             grassCount = 0;
             waterCount = 0;

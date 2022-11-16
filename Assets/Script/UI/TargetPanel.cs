@@ -249,6 +249,7 @@ public class TargetPanel : MonoBehaviour
                                 RainbowBall.acitivated = true;
                             }
                             BossHealth.Instance.TakeDamage(patternDamage);
+                            PlayerAttack.AttackAnimation();
                             break;
                     }
                     UpdateAnalytics(objL);
