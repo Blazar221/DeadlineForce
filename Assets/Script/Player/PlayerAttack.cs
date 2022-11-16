@@ -1,13 +1,9 @@
-using System.Diagnostics;
-using System.Threading;
-using System.Security.Cryptography.X509Certificates;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public static PlayerAttack Instance;
     private bool pressingK;
     // The diamond to destroy
     private GameObject toHit;
@@ -16,7 +12,7 @@ public class PlayerAttack : MonoBehaviour
     private int missScore;
     private bool isUpsideDown;
     private bool isEating;
-    private static float nextTime;
+    private float nextTime;
     private float collsionTime;
     private float longNoteScoreTimeCounter = 0f;
     private float longNoteScoreTimeBar = 0.2f;
@@ -29,7 +25,7 @@ public class PlayerAttack : MonoBehaviour
     private bool missFood;
     private bool missMine;
 
-    private static Animator animator;
+    private Animator animator;
 
     [SerializeField]
     public GameObject hitEffect;
@@ -97,9 +93,6 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Time.time >= nextTime && !pressingK) {
             animator.SetBool("isEating",false);
-        }
-        if (Time.time >= nextTime) {
-            animator.SetBool("isAttack",false);
             animator.SetBool("isDamaged",false);
         }
 
@@ -326,12 +319,5 @@ public class PlayerAttack : MonoBehaviour
             toHit = null;
             canAvoidDamage = false;
         }
-    }
-
-    public static void AttackAnimation(){
-        animator.SetBool("isAttack", true);
-        animator.SetBool("isEating", false);
-        
-        nextTime = Time.time + 0.3f;
     }
 }

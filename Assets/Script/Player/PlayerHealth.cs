@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     // To call game over menu
     public static event Action OnPlayerDeath;
 
+    private Animator animator;
     private bool isUpsideDown;
 
     [SerializeField]
@@ -36,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
         healthBar.SetMaxValue(maxHealth);
         isUpsideDown = false;
         
+        animator = GetComponent<Animator>();
     }
 
     public void EnableShield()
