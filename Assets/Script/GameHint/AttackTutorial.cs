@@ -23,7 +23,6 @@ public class AttackTutorial : MonoBehaviour
     [SerializeField] private UnityEngine.Rendering.Universal.Light2D DiamondBarSpotLight;
     [SerializeField] private UnityEngine.Rendering.Universal.Light2D BossSpotLight;
     [SerializeField] private UnityEngine.Rendering.Universal.Light2D TargetPanelSpotLight;
-    [SerializeField] private UnityEngine.Rendering.Universal.Light2D HealthBarSpotLight;
     
     private PlayerMovement playerMovement;
     
@@ -74,7 +73,6 @@ public class AttackTutorial : MonoBehaviour
         DiamondBarSpotLight.enabled = false;
         BossSpotLight.enabled = false;
         TargetPanelSpotLight.enabled = false;
-        HealthBarSpotLight.enabled = false;
         CollectionController.Instance.SetFireAlmostFull();
         CollectionController.Instance.SetGrassAlmostFull();
         CollectionController.Instance.SetWaterAlmostFull();
@@ -183,7 +181,7 @@ public class AttackTutorial : MonoBehaviour
             PressJInstruction.enabled = true;
             selfdamageInstruction.enabled=true;
             BossSpotLight.enabled = false;
-            HealthBarSpotLight.enabled = true;
+            DiamondBarSpotLight.enabled = true;
             if (Input.GetKeyDown(KeyCode.Space)) {
                 selfdamageLearned=true;
                 selfdamageInstruction.enabled=false;
@@ -202,7 +200,7 @@ public class AttackTutorial : MonoBehaviour
                 pointtoselfInstruction.enabled=false;
                 ContinueInstruction.enabled = false;
                 GlobalLight.enabled = false;
-                HealthBarSpotLight.enabled = false;
+                DiamondBarSpotLight.enabled = false;
 
                 Time.timeScale = 1f;
             }
