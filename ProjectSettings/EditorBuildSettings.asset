@@ -22,5 +22,20 @@ EditorBuildSettings:
     guid: d1f20f62fdbcea343be4b11da8968a89
   - enabled: 1
     path: Assets/Scenes/TryoutTutorial.unity
-    guid: db4ef5bdf585faf4abedbd5585c1b019
+    guid: 245c8d6530698054096262a4643b46b2
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 7b5adf99252c6f64496bf86109419884
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: ccc236ac0b3fb774cbf86329f88c605e
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 872ca9cba5bb7cf4ca4497780ed6dd45
+  - enabled: 1
+    path: Assets/Scenes/Level4.unity
+    guid: a45257410fbe0c448bdb904db99a1bd0
+  - enabled: 1
+    path: Assets/Scenes/Level5.unity
+    guid: d1ba3cc9793944a4ea81f8c9982b36a1
   m_configObjects: {}
