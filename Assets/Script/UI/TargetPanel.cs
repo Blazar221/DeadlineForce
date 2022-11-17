@@ -231,7 +231,10 @@ public class TargetPanel : MonoBehaviour
                             SkillController.Instance.CallShieldSkill();
                             break;
                         case ItemType.Clone:
-                            SkillController.Instance.CallCloneSkill();
+                            if (SkillController.Instance.IsCloneState() == false) {
+                                SkillController.Instance.CallCloneSkill();
+                            }
+                            // SkillController.Instance.CallCloneSkill();
                             break;
                         case ItemType.Freeze:
                             SkillController.Instance.CallFreezeSkill();

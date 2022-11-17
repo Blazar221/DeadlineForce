@@ -56,6 +56,7 @@ public class SkillController : MonoBehaviour
 
     public void CallCloneSkill()
     {
+        hasClone = true;
         playerClone.SetActive(true);
         int yPos = 3 - playerOriginMovement.GetYPos();
         playerCloneMovement.EnableClone();
@@ -65,7 +66,14 @@ public class SkillController : MonoBehaviour
 
     IEnumerator CloseCloneSkill()
     {
+        hasClone = false;
         yield return new WaitForSeconds(cloneExistingTime);
         playerClone.SetActive(false);
+    }
+
+    // 判断是否处于克隆状态
+    public bool IsCloneState()
+    {
+        return hasClone;
     }
 }
