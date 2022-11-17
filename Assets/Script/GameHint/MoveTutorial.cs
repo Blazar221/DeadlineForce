@@ -44,9 +44,9 @@ public class MoveTutorial : MonoBehaviour
     private float Switch30Time = 7f;
     private float Switch03Time = 8f;
     private float Switch32Time = 9f;
-    private float Switch21Time = 10f;
+    private float Switch21Time = 11f;
     
-    private float finishTime = 12f;
+    private float finishTime = 13f;
     
     // Start is called before the first frame update
     void Start()

@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/AttackTutorial.unity
     guid: a2e6b50105719434fb15023b05408d7f
   - enabled: 1
+    path: Assets/Scenes/MoveTutorial.unity
+    guid: d1f20f62fdbcea343be4b11da8968a89
+  - enabled: 1
     path: Assets/Scenes/TryoutTutorial.unity
     guid: db4ef5bdf585faf4abedbd5585c1b019
   m_configObjects: {}
