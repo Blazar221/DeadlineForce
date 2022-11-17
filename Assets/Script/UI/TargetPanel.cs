@@ -154,18 +154,30 @@ public class TargetPanel : MonoBehaviour
             case "CollectTutorial":
                 _targets = _level1Target;
                 _targetLoopIndex = Level1LoopIndex;
+                _shield = items[3];
+                _clone = items[3];
+                _freeze = items[3];
                 break;
             case "MoveTutorial":
                 _targets = _level1Target;
                 _targetLoopIndex = Level1LoopIndex;
+                _shield = items[3];
+                _clone = items[3];
+                _freeze = items[3];
                 break;
             case "AttackTutorial":
                 _targets = _level1Target;
                 _targetLoopIndex = Level1LoopIndex;
+                _shield = items[3];
+                _clone = items[3];
+                _freeze = items[3];
                 break;
             case "TryoutTutorial":
                 _targets = _level1Target;
                 _targetLoopIndex = Level1LoopIndex;
+                _shield = items[3];
+                _clone = items[3];
+                _freeze = items[3];
                 break;
             case "SampleScene":
                 _targets = _level4Target;

@@ -170,9 +170,6 @@ public class PlayerAttack : MonoBehaviour
         {
             TargetPanel.Instance.TargetHit(toHit.GetComponent<SpriteRenderer>().color);
         }
-        else{
-            //Debug.Log("No target to hit");
-        }        
         if (toHit.GetComponent<SpriteRenderer>().color == fireRenderer.color)
         {
             CollectionController.Instance.AddFireCount();
@@ -253,11 +250,11 @@ public class PlayerAttack : MonoBehaviour
     {
         if (isUpsideDown)
         {
-            Instantiate(effectType, transform.position + new Vector3(-2.0f,-1.0f,0), effectType.transform.rotation);
+            Instantiate(effectType, transform.position + new Vector3(-3.0f,0.0f,0), effectType.transform.rotation);
         }
         else
         {
-            Instantiate(effectType, transform.position + new Vector3(-2.0f,1.0f,0), effectType.transform.rotation);
+            Instantiate(effectType, transform.position + new Vector3(-3.0f,0.0f,0), effectType.transform.rotation);
         }
     }
 
