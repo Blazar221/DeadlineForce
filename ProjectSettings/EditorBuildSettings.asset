@@ -13,29 +13,29 @@ EditorBuildSettings:
     guid: 1b55d3a79a950814d9f0f8958c3502f8
   - enabled: 1
     path: Assets/Scenes/CollectTutorial.unity
-    guid: 434020ed8a7849447a41c5803ee0fb21
+    guid: 3e889da0a3850234785ef2fd1205b49a
   - enabled: 1
     path: Assets/Scenes/AttackTutorial.unity
     guid: 7d0966f30be29e1478e29ac8488a879f
-  - enabled: 1
-    path: Assets/Scenes/MoveTutorialOld.unity
-    guid: d2f200ef103acee47ad7c62708ff3580
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/TryoutTutorial.unity
     guid: db4ef5bdf585faf4abedbd5585c1b019
-  - enabled: 1
-    path: Assets/Scenes/Level1.unity
-    guid: 9b7cc7990560a4447b46b1f18a5d00b7
-  - enabled: 1
-    path: Assets/Scenes/Level2.unity
-    guid: 2b026d46ff872448b9d182c38d1559ca
-  - enabled: 1
-    path: Assets/Scenes/Level3.unity
-    guid: 1eaef5c24e77c4bf3a5cc6f6ecab38b8
-  - enabled: 1
-    path: Assets/Scenes/Level4.unity
-    guid: ec9b5ae2a0b3344e3b5fa63794714cc3
-  - enabled: 1
-    path: Assets/Scenes/Level5.unity
-    guid: 62c15403616014e55a16f4ef8710dd20
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
