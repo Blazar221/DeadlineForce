@@ -60,7 +60,9 @@ public class SkillController : MonoBehaviour
         playerClone.SetActive(true);
         int yPos = 3 - playerOriginMovement.GetYPos();
         playerCloneMovement.EnableClone();
-        playerCloneMovement.SetYPos(yPos);
+        if (playerCloneMovement.GetYPos() != yPos) {
+            playerCloneMovement.SetYPos(yPos);
+        }
         StartCoroutine(CloseCloneSkill());
     }
 
