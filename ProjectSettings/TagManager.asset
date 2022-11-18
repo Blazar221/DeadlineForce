@@ -13,6 +13,7 @@ TagManager:
   - Laser
   - GravSwitch
   - Bandit
+  - Note
   layers:
   - Default
   - TransparentFX

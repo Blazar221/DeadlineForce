@@ -32,21 +32,22 @@ public class CollectionController : MonoBehaviour
     public GameObject rockDiamond;
     public SliderBar rockBar;
 
+    private PlayerAttack originalPlayerAttack;
+
     // Update is called once per frame
     void Awake()
     {
         Instance = this;
+        originalPlayerAttack = GameObject.Find("Player").GetComponent<PlayerAttack>();
     }
 
     public void Reset()
     {
         if (fireCount >= singleLimit && grassCount >= singleLimit && waterCount >= singleLimit && rockCount >= singleLimit)
         {
-            BossHealth.Instance.TakeDamage(fullDamage);
-            
-            RainbowBall.acitivated = true;
+            NoteShooter.Instance.Shoot();
 
-            PlayerAttack.Instance.CallAttack();
+            originalPlayerAttack.CallAttack();
 
             fireCount = 0;
             grassCount = 0;

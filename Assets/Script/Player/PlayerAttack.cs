@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public static PlayerAttack Instance;
-
     private bool pressingK;
     // The diamond to destroy
     private GameObject toHit;
@@ -68,8 +66,6 @@ public class PlayerAttack : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
-
         hitScore = 0;
         missScore = 0;
         pressingK = false;
@@ -97,7 +93,6 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Time.time >= nextTime && !pressingK) {
             animator.SetBool("isEating",false);
-            animator.SetBool("isDamaged",false);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -242,18 +237,16 @@ public class PlayerAttack : MonoBehaviour
     void Collide(int damage)
     {
         nextTime = Time.time + 0.3f;
-        animator.SetBool("isDamaged",true);
         addHitEffect(missEffect);
         Destroy(toHit);
         // damage
         PlayerHealth.Instance.TakeDamage(damage);
-        
     }
 
     public void CallAttack()
     {
         Debug.Log("call attack");
-        animator.SetBool("attack", true);
+        animator.SetTrigger("attack");
     }
 
     void addHitEffect(GameObject effectType)

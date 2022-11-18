@@ -206,17 +206,17 @@ public class TargetPanel : MonoBehaviour
                             SkillController.Instance.CallFreezeSkill();
                             break;
                         case ItemType.Common:
-                            if (color == _red){
-                                FireBall.acitivated = true;
-                            } else if (color == _green){
-                                GrassBall.acitivated = true;
-                            } else if (color == _blue){
-                                WaterBall.acitivated = true;
-                            } else if (color == _yellow){
-                                RockBall.acitivated = true;
-                            } else {
-                                RainbowBall.acitivated = true;
-                            }
+                            // if (color == _red){
+                            //     FireBall.acitivated = true;
+                            // } else if (color == _green){
+                            //     GrassBall.acitivated = true;
+                            // } else if (color == _blue){
+                            //     WaterBall.acitivated = true;
+                            // } else if (color == _yellow){
+                            //     RockBall.acitivated = true;
+                            // } else {
+                            //     NoteShooter.Instance.Shoot();
+                            // }
                             BossHealth.Instance.TakeDamage(patternDamage);
                             break;
                     }

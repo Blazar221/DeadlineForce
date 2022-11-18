@@ -17,8 +17,6 @@ public class AttackTutorial : MonoBehaviour
     [SerializeField] private TextMeshProUGUI DamageInstruction;
     [SerializeField] private TextMeshProUGUI MissionInstruction;
     [SerializeField] private TextMeshProUGUI selfdamageInstruction;
-    [SerializeField] private TextMeshProUGUI SkillCDInstruction;
-    [SerializeField] private TextMeshProUGUI MoreSkillInstruction;
     [SerializeField] private TextMeshProUGUI pointtoselfInstruction;
     [SerializeField] private TextMeshProUGUI ContinueInstruction;
     [SerializeField] private UnityEngine.Rendering.Universal.Light2D GlobalLight;
@@ -34,8 +32,6 @@ public class AttackTutorial : MonoBehaviour
     private bool tripleLearned3 = false;
     private bool tripleLearned4 = false;
     private bool tripleLearned5 = false;
-    private bool tripleLearned6 = false;
-    private bool tripleLearned7 = false;
     
     
     private bool gemcollectionLearned = false;
@@ -54,25 +50,20 @@ public class AttackTutorial : MonoBehaviour
     private float firstmissioncollectionTime = 7f;
     private float t4ShortNoteTime = 8f;
     private float t5ShortNoteTime = 9f;
-    private float t6ShortNoteTime = 10f;
-    private float t7ShortNoteTime = 11f;
     
-    private float selfdamageTime = 13f;
-    private float pointtoselfTime = 14f;
+    private float selfdamageTime = 10f;
+    private float pointtoselfTime = 11f;
     
-    private float finishTime = 16f;
+    private float finishTime = 13f;
     
     // Start is called before the first frame update
     void Start()
     {
         playerMovement = Player.GetComponent<PlayerMovement>();
-        playerMovement.canChangeGravity = false;
         StartInstruction.enabled = false;
         finishInstruction.enabled = false;
         PressJInstruction.enabled=false;
         MissionInstruction.enabled=false;
-        SkillCDInstruction.enabled=false;
-        MoreSkillInstruction.enabled=false;
         DamageInstruction.enabled=false;
         selfdamageInstruction.enabled=false;
         pointtoselfInstruction.enabled=false;
@@ -107,7 +98,6 @@ public class AttackTutorial : MonoBehaviour
         //         fading=true;
         //     }
         // }
-        playerMovement.canChangeGravity = false;
 
         if(!shortNoteLearned && Time.timeSinceLevelLoad >= firstShortNoteTime){
             Time.timeScale = 0f;
@@ -168,7 +158,6 @@ public class AttackTutorial : MonoBehaviour
             TargetPanelSpotLight.enabled = true;
             if (Input.GetKeyDown(KeyCode.Space)) {
                 tripleLearned4 = true;
-                MissionInstruction.enabled=false;
                 PressJInstruction.enabled = false;
                 Time.timeScale = 1f;
             }
@@ -176,34 +165,11 @@ public class AttackTutorial : MonoBehaviour
         if(!tripleLearned5 && Time.timeSinceLevelLoad >= t5ShortNoteTime){
             Time.timeScale = 0f;
             PressJInstruction.enabled = true;
-            
             if (Input.GetKeyDown(KeyCode.Space)) {
                 tripleLearned5 = true;
                 PressJInstruction.enabled = false;
-                Time.timeScale = 1f;
-            }
-        }
-        if(!tripleLearned6 && Time.timeSinceLevelLoad >= t6ShortNoteTime){
-            Time.timeScale = 0f;
-            PressJInstruction.enabled = true;
-            SkillCDInstruction.enabled=true;
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                tripleLearned6 = true;
-                PressJInstruction.enabled = false;
-                SkillCDInstruction.enabled=false;
+                MissionInstruction.enabled=false;
                 TargetPanelSpotLight.enabled = false;
-                Time.timeScale = 1f;
-            }
-        }
-        if(!tripleLearned7 && Time.timeSinceLevelLoad >= t7ShortNoteTime){
-            Time.timeScale = 0f;
-            PressJInstruction.enabled = true;
-            MoreSkillInstruction.enabled=true;
-            
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                tripleLearned7 = true;
-                PressJInstruction.enabled = false;
-                MoreSkillInstruction.enabled=false;
                 Time.timeScale = 1f;
             }
         }
