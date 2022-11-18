@@ -311,6 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2b229484d084d4bb3af0684f5bd7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canChangeGravity: 0
   EatGemRing1: {fileID: 961893207}
   EatGemRing2: {fileID: 1320547538}
   EatGemRing3: {fileID: 2005038135}
@@ -1216,6 +1217,8 @@ MonoBehaviour:
   currentHealth: 0
   healthBar: {fileID: 1534913340}
   hasShield: 0
+  bloodEffectCeil: {fileID: 0}
+  bloodEffectFloor: {fileID: 0}
   prefab: {fileID: 6773181634080557151, guid: f26dd276ad2184f1899ec732cd8a4971, type: 3}
   offset: {x: 0, y: 120, z: 0}
 --- !u!114 &178061461
@@ -1230,6 +1233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2b229484d084d4bb3af0684f5bd7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canChangeGravity: 0
   EatGemRing1: {fileID: 961893207}
   EatGemRing2: {fileID: 1320547538}
   EatGemRing3: {fileID: 2005038135}
@@ -6563,7 +6567,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1203535962
 Transform:
   m_ObjectHideFlags: 0
