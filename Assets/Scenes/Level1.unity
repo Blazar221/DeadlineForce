@@ -1026,12 +1026,11 @@ GameObject:
   - component: {fileID: 178061453}
   - component: {fileID: 178061457}
   - component: {fileID: 178061456}
-  - component: {fileID: 178061458}
   - component: {fileID: 178061460}
   - component: {fileID: 178061461}
   - component: {fileID: 178061462}
   m_Layer: 3
-  m_Name: DinasourRunner
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1047,7 +1046,7 @@ Animator:
   m_GameObject: {fileID: 178061451}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16a0721bcc9c9f34d985b72ea7b363c7, type: 2}
+  m_Controller: {fileID: 9100000, guid: d8307c71a61aeb143812521659eb5386, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1185,22 +1184,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!111 &178061458
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 178061451}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 030361a392ba6cb438fcc11dad53f130, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 7c37ee6f1837b724296380ae8279eff8, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &178061460
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1166,7 +1166,7 @@ GameObject:
   - component: {fileID: 178061461}
   - component: {fileID: 178061462}
   m_Layer: 3
-  m_Name: DinasourRunner
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
