@@ -53,8 +53,7 @@ public class SliderFollow : MonoBehaviour
 
     void Update()
     {
-        // TODO change rg judge to transform judge
-        bool isUpsideDown = transform.parent.gameObject.GetComponent<Rigidbody2D>().gravityScale < 0;
+        bool isUpsideDown = transform.parent.gameObject.transform.localScale.y < 0;
         if(isUpsideDown)
         {
             healthSlider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + hsUpsideOffset);        

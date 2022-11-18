@@ -134,9 +134,7 @@ GameObject:
   - component: {fileID: 23490014}
   - component: {fileID: 23490013}
   - component: {fileID: 23490012}
-  - component: {fileID: 23490010}
   - component: {fileID: 23490009}
-  - component: {fileID: 23490008}
   - component: {fileID: 23490015}
   - component: {fileID: 23490016}
   m_Layer: 3
@@ -146,22 +144,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!111 &23490008
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23490006}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 030361a392ba6cb438fcc11dad53f130, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 7c37ee6f1837b724296380ae8279eff8, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!61 &23490009
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -188,27 +170,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.17310876, y: 0.20028326}
   m_EdgeRadius: 0
---- !u!50 &23490010
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23490006}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 5
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!95 &23490012
 Animator:
   serializedVersion: 4
@@ -311,7 +272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2b229484d084d4bb3af0684f5bd7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canChangeGravity: 0
   EatGemRing1: {fileID: 961893207}
   EatGemRing2: {fileID: 1320547538}
   EatGemRing3: {fileID: 2005038135}
@@ -1024,11 +984,11 @@ GameObject:
   - component: {fileID: 178061455}
   - component: {fileID: 178061454}
   - component: {fileID: 178061453}
-  - component: {fileID: 178061457}
   - component: {fileID: 178061456}
   - component: {fileID: 178061460}
   - component: {fileID: 178061461}
   - component: {fileID: 178061462}
+  - component: {fileID: 178061463}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -1163,27 +1123,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15, y: 0.20028326}
   m_EdgeRadius: 0
---- !u!50 &178061457
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 178061451}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 5
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!114 &178061460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1200,8 +1139,6 @@ MonoBehaviour:
   currentHealth: 0
   healthBar: {fileID: 1534913340}
   hasShield: 0
-  bloodEffectCeil: {fileID: 7490847215641814726, guid: 925521c9452454e4b9878642d6668dd2, type: 3}
-  bloodEffectFloor: {fileID: 7490847215641814726, guid: 454480fa64e9c314291b0cf6ca7e3a0e, type: 3}
   prefab: {fileID: 6773181634080557151, guid: f26dd276ad2184f1899ec732cd8a4971, type: 3}
   offset: {x: 0, y: 120, z: 0}
 --- !u!114 &178061461
@@ -1216,7 +1153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2b229484d084d4bb3af0684f5bd7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canChangeGravity: 0
   EatGemRing1: {fileID: 961893207}
   EatGemRing2: {fileID: 1320547538}
   EatGemRing3: {fileID: 2005038135}
@@ -1254,6 +1190,27 @@ MonoBehaviour:
   rockDiamond: {fileID: 6793344568998294521, guid: 6e3699c2f9bc3814981deaa2df1eda7e, type: 3}
   rockBar: {fileID: 921351582}
   _boss: {fileID: 1307346853}
+--- !u!50 &178061463
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178061451}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &190928516
 GameObject:
   m_ObjectHideFlags: 0

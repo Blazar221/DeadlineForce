@@ -52,7 +52,6 @@ public class MoveTutorial : MonoBehaviour
     void Start()
     {
         playerMovement = Player.GetComponent<PlayerMovement>();
-        playerMovement.canChangeGravity = true;
         firstmoveInstruction.enabled = false;
         Switch10Instruction.enabled = false;
         Switch01Instruction.enabled = false;

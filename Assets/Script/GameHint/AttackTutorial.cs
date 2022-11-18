@@ -60,7 +60,6 @@ public class AttackTutorial : MonoBehaviour
     void Start()
     {
         playerMovement = Player.GetComponent<PlayerMovement>();
-        playerMovement.canChangeGravity = false;
         StartInstruction.enabled = false;
         finishInstruction.enabled = false;
         PressJInstruction.enabled=false;
@@ -99,7 +98,6 @@ public class AttackTutorial : MonoBehaviour
         //         fading=true;
         //     }
         // }
-        playerMovement.canChangeGravity = false;
 
         if(!shortNoteLearned && Time.timeSinceLevelLoad >= firstShortNoteTime){
             Time.timeScale = 0f;
