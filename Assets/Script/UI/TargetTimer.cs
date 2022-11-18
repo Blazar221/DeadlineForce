@@ -9,6 +9,8 @@ public class TargetTimer : MonoBehaviour
     public float timeLeft;
 
     private float fillSpeed;
+    
+    private bool isCooldown;
 
     [SerializeField] private Slider slider;
     // Start is called before the first frame update
