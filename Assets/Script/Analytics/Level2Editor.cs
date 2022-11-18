@@ -28,7 +28,7 @@ public class Level2Editor : MonoBehaviour
         Debug.Log("lvl2 editor is running");
         instance = this;
         _sessionId = DateTime.Now.Ticks;
-        player = GameObject.Find("DinasourRunner");
+        player = GameObject.Find("Player");
         for (int i = 0; i < onPathTime.GetLength(0); i++)
             for (int j = 0; j < onPathTime.GetLength(1); j++)
                 onPathTime[i, j] = 0;

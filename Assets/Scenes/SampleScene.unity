@@ -8558,7 +8558,7 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 334, y: 102}
+  m_CellSize: {x: 334, y: 70}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 1
@@ -10862,7 +10862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 857988776250520980, guid: 02949a31d5356a942868a233a36e4e50, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1173127249812542923, guid: 02949a31d5356a942868a233a36e4e50, type: 3}
       propertyPath: m_Layer
@@ -10914,7 +10914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2726639976758368000, guid: 02949a31d5356a942868a233a36e4e50, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 102
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2726639976758368000, guid: 02949a31d5356a942868a233a36e4e50, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10950,7 +10950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2726639976758368000, guid: 02949a31d5356a942868a233a36e4e50, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -51
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2726639976758368000, guid: 02949a31d5356a942868a233a36e4e50, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10970,11 +10970,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4623801996857766711, guid: 02949a31d5356a942868a233a36e4e50, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4623801996857766711, guid: 02949a31d5356a942868a233a36e4e50, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7785535325758471481, guid: 02949a31d5356a942868a233a36e4e50, type: 3}
       propertyPath: m_Layer
