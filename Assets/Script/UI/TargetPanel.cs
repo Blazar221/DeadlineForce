@@ -382,7 +382,7 @@ public class TargetPanel : MonoBehaviour
             objectLine.SetCDList(cdList);
             _objectLines.Add(objectLine);
             // set timer
-            objectLine.GetGameObj().GetComponent<TargetTimer>().timeLeft = objectLine.GetTotalTime();
+            // objectLine.GetGameObj().GetComponent<TargetTimer>().timeLeft = objectLine.GetTotalTime();
         }
         
         _targetIndex++;
