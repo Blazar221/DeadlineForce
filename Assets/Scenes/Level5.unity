@@ -8902,6 +8902,8 @@ MonoBehaviour:
   - {fileID: 887685491, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
   - {fileID: 1867268703, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
   targetLine: {fileID: 857988776250520980, guid: 02949a31d5356a942868a233a36e4e50, type: 3}
+  _targetLoopIndex: 0
+  _targetIndex: 0
   uiInventory: {fileID: 107642924}
 --- !u!114 &1620707939
 MonoBehaviour:
@@ -8940,10 +8942,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 21300000, guid: 4f924edaaea43564bbfdacf07ea49d18, type: 3}
-  - {fileID: 21300000, guid: 664a46c0a7d22da46bd83a0e3689c86e, type: 3}
-  - {fileID: 21300000, guid: 0b6303cfc1e761548ba2974d67f7c094, type: 3}
   - {fileID: 21300000, guid: 4347df8697c6bb04b8a2047ecc7acbf7, type: 3}
+  - {fileID: 21300000, guid: 664a46c0a7d22da46bd83a0e3689c86e, type: 3}
+  - {fileID: 21300000, guid: 4f924edaaea43564bbfdacf07ea49d18, type: 3}
+  - {fileID: 21300000, guid: 0b6303cfc1e761548ba2974d67f7c094, type: 3}
   fireDiamond: {fileID: 0}
   fireBar: {fileID: 0}
   grassDiamond: {fileID: 0}
