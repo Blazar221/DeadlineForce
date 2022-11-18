@@ -3321,8 +3321,10 @@ public class ObjectToJson : MonoBehaviour
         new Object(new [] { 1f, 1f }, 1, 1, false,1), 
         new Object(new [] { 2f, 2f }, 1, 1, false,2), 
         new Object(new [] { 3f, 3f }, 1, 1, false,3), 
-        new Object(new [] { 6f, 6f }, 1, 1, false,2), 
-        new Object(new [] { 7f, 7f }, 1, 1, false,2), 
+        new Object(new [] { 6f, 6f }, 1, 1, false,0), 
+        new Object(new [] { 7f, 7f }, 1, 1, false,0), 
+        new Object(new [] { 8f, 8f }, 1, 1, false,0), 
+        new Object(new [] { 9f, 9f }, 1, 1, false,0), 
         
 
     };

@@ -241,7 +241,6 @@ public class PlayerAttack : MonoBehaviour
 
     void Collide(int damage)
     {
-        Debug.Log(damage);
         nextTime = Time.time + 0.3f;
         animator.SetBool("isDamaged",true);
         addHitEffect(missEffect);

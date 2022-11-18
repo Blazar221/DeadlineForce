@@ -39,6 +39,7 @@ public class CollectTutorial : MonoBehaviour
     void Start()
     {
         playerMovement = Player.GetComponent<PlayerMovement>();
+        playerMovement.canChangeGravity = false;
         shortNoteInstruction.enabled = false;
         longNoteInstruction.enabled = false;
         differentcolorInstruction.enabled = false;
@@ -68,6 +69,7 @@ public class CollectTutorial : MonoBehaviour
         //         fading=true;
         //     }
         // }
+        playerMovement.canChangeGravity = false;
 
         if(!shortNoteLearned && Time.timeSinceLevelLoad >= firstShortNoteTime){
             Time.timeScale = 0f;
