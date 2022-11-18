@@ -9340,7 +9340,6 @@ GameObject:
   - component: {fileID: 1620707935}
   - component: {fileID: 1620707937}
   - component: {fileID: 1620707936}
-  - component: {fileID: 1620707938}
   - component: {fileID: 1620707939}
   - component: {fileID: 1620707940}
   m_Layer: 5
@@ -9409,30 +9408,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620707934}
   m_CullTransparentMesh: 1
---- !u!114 &1620707938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1620707934}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5db10a90a43ae644f845a056990b73d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items:
-  - {fileID: 21300000, guid: d5879f7a5670391449d6799346e84ffa, type: 3}
-  - {fileID: 21300000, guid: eb4ba228208e30a47afcd25eef996105, type: 3}
-  - {fileID: 21300000, guid: ee436c6aa223b864b8656b29b01a0bfd, type: 3}
-  - {fileID: 21300000, guid: 03431bfd2c6078947a9c8aa7c23aa2c2, type: 3}
-  sources:
-  - {fileID: -1855127044, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
-  - {fileID: -1955337794, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
-  - {fileID: 887685491, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
-  - {fileID: 1867268703, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
-  targetLine: {fileID: 857988776250520980, guid: 02949a31d5356a942868a233a36e4e50, type: 3}
-  uiInventory: {fileID: 107642924}
 --- !u!114 &1620707939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9466,7 +9441,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1620707934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1327d8b1d10425bb34db92498406e0b, type: 3}
+  m_Script: {fileID: 11500000, guid: bc8dfb749697d1f4e9ee9c6d79e08ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   items:
@@ -9474,10 +9449,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 664a46c0a7d22da46bd83a0e3689c86e, type: 3}
   - {fileID: 21300000, guid: 4f924edaaea43564bbfdacf07ea49d18, type: 3}
   - {fileID: 21300000, guid: 0b6303cfc1e761548ba2974d67f7c094, type: 3}
-  _shield: {fileID: 0}
-  _clone: {fileID: 0}
-  _freeze: {fileID: 0}
-  _common: {fileID: 0}
   fireDiamond: {fileID: 0}
   fireBar: {fileID: 0}
   grassDiamond: {fileID: 0}
@@ -9493,9 +9464,6 @@ MonoBehaviour:
   - {fileID: 887685491, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
   - {fileID: 1867268703, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
   targetLine: {fileID: 857988776250520980, guid: 02949a31d5356a942868a233a36e4e50, type: 3}
-  _targetLoopIndex: 0
-  _targetCounter: 0
-  _targetIndex: 0
 --- !u!1 &1631687719
 GameObject:
   m_ObjectHideFlags: 0
