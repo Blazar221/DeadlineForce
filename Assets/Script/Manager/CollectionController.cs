@@ -89,9 +89,9 @@ public class CollectionController : MonoBehaviour
         rockBar.SetValue(rockCount);
     }
     
-    public void SetFireAlmostFull()
+    public void SetFireFull()
     {
-        fireCount = 8;
+        fireCount = 9;
         fireBar.SetValue(fireCount);
     }
     
