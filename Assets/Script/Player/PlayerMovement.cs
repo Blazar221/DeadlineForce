@@ -5,11 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement instance;
-    public bool canChangeGravity;
-    private bool canCross;
+
     private Animator animator;
-    private Rigidbody2D rb2D;
-    private bool isUpsideDown;
+
     private bool reverseControl = false;
     private float[] playerYPosArr;
     private int curYPos;
@@ -18,12 +16,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject EatGemRing2;
     [SerializeField] private GameObject EatGemRing3;
 
+    private Vector3 originalLocalScale;
+
     void Awake()
     {
         instance = this;
-
-        canChangeGravity = true;
-        canCross = false;
 
         playerYPosArr = new float[4];
         playerYPosArr[0] = 3.86f;
@@ -31,11 +28,10 @@ public class PlayerMovement : MonoBehaviour
         playerYPosArr[2] = -1.67f;
         playerYPosArr[3] = -3.84f;
         curYPos = 1;
-        isUpsideDown = false;
-
-        rb2D = gameObject.GetComponent<Rigidbody2D>();
 
         animator = GetComponent<Animator>();
+
+        originalLocalScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
     }
 
     // Update is called once per frame
@@ -43,31 +39,29 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 curPosition = transform.position;
         
-        if (canChangeGravity)
-		{
-            if((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
+        if((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
+        {
+            if(!reverseControl)
             {
-                if(!reverseControl)
-                {
-                    SetYPos((curYPos+3)%4);
-                }
-                else
-                {
-                    SetYPos((curYPos+1)%4);
-                }
+                SetYPos((curYPos+3)%4);
             }
-            if((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)))
+            else
             {
-                if(!reverseControl)
-                {
-                    SetYPos((curYPos+1)%4);
-                }
-                else
-                {
-                    SetYPos((curYPos+3)%4);
-                }
+                SetYPos((curYPos+1)%4);
             }
-		}
+        }
+        if((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)))
+        {
+            if(!reverseControl)
+            {
+                SetYPos((curYPos+1)%4);
+            }
+            else
+            {
+                SetYPos((curYPos+3)%4);
+            }
+        }
+		
     }
 
     public void SetYPos(int yPos)
@@ -78,19 +72,15 @@ public class PlayerMovement : MonoBehaviour
         
         // Directly move position
         transform.position = new Vector3(transform.position.x, playerYPosArr[yPos], transform.position.z);
-        // Set Gravity Direction and isUpsideDown Flag
+        // Set Gravity Direction and local Scale
         if(yPos == 0 || yPos == 2)
         {
-            rb2D.gravityScale = -1f;
-            isUpsideDown = true;
+            transform.localScale = new Vector3(originalLocalScale.x, -originalLocalScale.y, originalLocalScale.z);
         }
         else
         {
-            rb2D.gravityScale = 1f;
-            isUpsideDown = false;
+            transform.localScale = new Vector3(originalLocalScale.x, originalLocalScale.y, originalLocalScale.z);
         }
-        canChangeGravity = false;
-        animator.SetBool("UpsideDown",isUpsideDown);
     }
 
     public void EnableClone()
@@ -102,20 +92,5 @@ public class PlayerMovement : MonoBehaviour
     public int GetYPos()
     {
         return curYPos;
-    }
-    
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        if( collision.gameObject.tag == "OriginalPlatForm")
-        {
-            canChangeGravity = true;
-            canCross = false;
-        }
-
-        if(collision.gameObject.tag == "Platform"){
-            canChangeGravity = true;
-            canCross = true;
-        }
     }
 }
