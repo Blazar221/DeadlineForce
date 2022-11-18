@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    public static PlayerAttack Instance;
+
     private bool pressingK;
     // The diamond to destroy
     private GameObject toHit;
@@ -66,6 +68,8 @@ public class PlayerAttack : MonoBehaviour
 
     void Awake()
     {
+        Instance = this;
+
         hitScore = 0;
         missScore = 0;
         pressingK = false;
@@ -247,6 +251,12 @@ public class PlayerAttack : MonoBehaviour
         
     }
 
+    public void CallAttack()
+    {
+        Debug.Log("call attack");
+        animator.SetBool("attack", true);
+    }
+
     void addHitEffect(GameObject effectType)
     {
         if (isUpsideDown)
@@ -262,7 +272,6 @@ public class PlayerAttack : MonoBehaviour
     // The following two functions can be used to set the changing gravity point.
     void OnTriggerEnter2D(Collider2D collision)
     {
-
         if(collision.gameObject.tag == "food")
         {
             missFood = true;

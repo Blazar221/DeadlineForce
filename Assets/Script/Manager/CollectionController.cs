@@ -43,7 +43,11 @@ public class CollectionController : MonoBehaviour
         if (fireCount >= singleLimit && grassCount >= singleLimit && waterCount >= singleLimit && rockCount >= singleLimit)
         {
             BossHealth.Instance.TakeDamage(fullDamage);
+            
             RainbowBall.acitivated = true;
+
+            PlayerAttack.Instance.CallAttack();
+
             fireCount = 0;
             grassCount = 0;
             waterCount = 0;
@@ -52,6 +56,7 @@ public class CollectionController : MonoBehaviour
             grassBar.SetValue(grassCount);
             waterBar.SetValue(waterCount);
             rockBar.SetValue(rockCount);
+            
             time += (Time.timeSinceLevelLoad - lastTime).ToString() + "|";
             lastTime = Time.timeSinceLevelLoad;
             Debug.Log(time);
