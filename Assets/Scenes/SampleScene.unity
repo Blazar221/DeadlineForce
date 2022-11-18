@@ -1026,12 +1026,11 @@ GameObject:
   - component: {fileID: 178061453}
   - component: {fileID: 178061457}
   - component: {fileID: 178061456}
-  - component: {fileID: 178061458}
   - component: {fileID: 178061460}
   - component: {fileID: 178061461}
   - component: {fileID: 178061462}
   m_Layer: 3
-  m_Name: DinasourRunner
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1047,7 +1046,7 @@ Animator:
   m_GameObject: {fileID: 178061451}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16a0721bcc9c9f34d985b72ea7b363c7, type: 2}
+  m_Controller: {fileID: 9100000, guid: d8307c71a61aeb143812521659eb5386, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1185,22 +1184,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!111 &178061458
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 178061451}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 030361a392ba6cb438fcc11dad53f130, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 7c37ee6f1837b724296380ae8279eff8, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &178061460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9108,26 +9091,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1327d8b1d10425bb34db92498406e0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 21300000, guid: 4347df8697c6bb04b8a2047ecc7acbf7, type: 3}
-  - {fileID: 21300000, guid: 664a46c0a7d22da46bd83a0e3689c86e, type: 3}
-  - {fileID: 21300000, guid: 4f924edaaea43564bbfdacf07ea49d18, type: 3}
-  - {fileID: 21300000, guid: 0b6303cfc1e761548ba2974d67f7c094, type: 3}
-  fireDiamond: {fileID: 0}
-  fireBar: {fileID: 0}
-  grassDiamond: {fileID: 0}
-  grassBar: {fileID: 0}
-  waterDiamond: {fileID: 0}
-  waterBar: {fileID: 0}
-  rockDiamond: {fileID: 0}
-  rockBar: {fileID: 0}
-  patternDamage: 80
-  sources:
-  - {fileID: 887685491, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
-  - {fileID: -1955337794, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
-  - {fileID: 1867268703, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
-  - {fileID: -1855127044, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
-  targetLine: {fileID: 857988776250520980, guid: 02949a31d5356a942868a233a36e4e50, type: 3}
 --- !u!1 &1631687719
 GameObject:
   m_ObjectHideFlags: 0

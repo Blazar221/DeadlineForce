@@ -74,22 +74,6 @@ public class PlayerMovement : MonoBehaviour
     {
         curYPos = yPos;
         var selfPos = transform.position;
-        /*
-        var shift = new Vector3(0, 1.2f, 0);;
-        if (yPos >= 1)
-        {
-            EatGemRing1.transform.position = selfPos + shift;
-            EatGemRing2.transform.position = selfPos + shift;
-            EatGemRing3.transform.position = selfPos + shift;
-
-        }
-        else
-        {
-            EatGemRing1.transform.position = selfPos - shift;
-            EatGemRing2.transform.position = selfPos - shift;
-            EatGemRing3.transform.position = selfPos - shift;
-        }
-        */
         Debug.Log("selfPos:" + selfPos + " animPos:" + EatGemRing1.transform.position);
         
         // Directly move position
