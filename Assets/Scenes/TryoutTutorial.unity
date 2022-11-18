@@ -311,7 +311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2b229484d084d4bb3af0684f5bd7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canChangeGravity: 0
   EatGemRing1: {fileID: 961893207}
   EatGemRing2: {fileID: 1320547538}
   EatGemRing3: {fileID: 2005038135}
@@ -1031,7 +1030,7 @@ GameObject:
   - component: {fileID: 178061461}
   - component: {fileID: 178061462}
   m_Layer: 3
-  m_Name: DinasourRunner
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1217,8 +1216,6 @@ MonoBehaviour:
   currentHealth: 0
   healthBar: {fileID: 1534913340}
   hasShield: 0
-  bloodEffectCeil: {fileID: 7490847215641814726, guid: 925521c9452454e4b9878642d6668dd2, type: 3}
-  bloodEffectFloor: {fileID: 7490847215641814726, guid: 454480fa64e9c314291b0cf6ca7e3a0e, type: 3}
   prefab: {fileID: 6773181634080557151, guid: f26dd276ad2184f1899ec732cd8a4971, type: 3}
   offset: {x: 0, y: 120, z: 0}
 --- !u!114 &178061461
@@ -1233,7 +1230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2b229484d084d4bb3af0684f5bd7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canChangeGravity: 0
   EatGemRing1: {fileID: 961893207}
   EatGemRing2: {fileID: 1320547538}
   EatGemRing3: {fileID: 2005038135}
