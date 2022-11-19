@@ -18,6 +18,7 @@ public class PlayerAttack : MonoBehaviour
     private float longNoteScoreTimeBar = 0.2f;
     
     private bool canGetSingleScore;
+    private int _collideGemNum;
     private bool canGetLongScore;
     private bool canAvoidDamage;
     private bool canChangeGravity;
@@ -74,6 +75,7 @@ public class PlayerAttack : MonoBehaviour
 
         nextTime = Time.time;
         canGetSingleScore = false;
+        _collideGemNum = 0;
 
         animator = GetComponent<Animator>();
         _bossHandler = _boss.GetComponent<BossBehavior>();
@@ -269,7 +271,9 @@ public class PlayerAttack : MonoBehaviour
             missFood = true;
             toHit = collision.gameObject;
             canGetSingleScore = true;
+            _collideGemNum++;
             collsionTime = Time.time;
+            Debug.Log("onEnter: "+ _collideGemNum);
         }
 
         if(collision.gameObject.tag == "LongNote")
@@ -301,8 +305,13 @@ public class PlayerAttack : MonoBehaviour
                 MissSingle();
             }
             missFood = false;
-            toHit = null;
-            canGetSingleScore = false;
+            _collideGemNum--;
+            if (_collideGemNum == 0)
+            {
+                toHit = null;
+                canGetSingleScore = false;
+            }
+            Debug.Log("onExit: "+ _collideGemNum);
         }
 
         if(collision.gameObject.tag == "LongNote")
