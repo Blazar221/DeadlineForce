@@ -6,7 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     private bool pressingK;
     // The diamond to destroy
-    private GameObject toHit;
+    private GameObject toHit, toGemHit;
 
     private int hitScore;
     private int missScore;
@@ -167,20 +167,20 @@ public class PlayerAttack : MonoBehaviour
     void ScoreSingle(float scoreTime)
     {
         hitScore++;
-        if(toHit != null)
+        if(toGemHit != null)
         {
-            TargetPanel.Instance.TargetHit(toHit.GetComponent<SpriteRenderer>().color);
+            TargetPanel.Instance.TargetHit(toGemHit.GetComponent<SpriteRenderer>().color);
         }
-        if (toHit.GetComponent<SpriteRenderer>().color == fireRenderer.color)
+        if (toGemHit.GetComponent<SpriteRenderer>().color == fireRenderer.color)
         {
             CollectionController.Instance.AddFireCount();
-        } else if (toHit.GetComponent<SpriteRenderer>().color == grassRenderer.color)
+        } else if (toGemHit.GetComponent<SpriteRenderer>().color == grassRenderer.color)
         {
             CollectionController.Instance.AddGrassCount();
-        } else if (toHit.GetComponent<SpriteRenderer>().color == waterRenderer.color)
+        } else if (toGemHit.GetComponent<SpriteRenderer>().color == waterRenderer.color)
         {
             CollectionController.Instance.AddWaterCount();
-        } else if (toHit.GetComponent<SpriteRenderer>().color == rockRenderer.color)
+        } else if (toGemHit.GetComponent<SpriteRenderer>().color == rockRenderer.color)
         {
             CollectionController.Instance.AddRockCount();
         }
@@ -188,7 +188,7 @@ public class PlayerAttack : MonoBehaviour
         // if(toHit.tag == "food"){
             // toHit.SetActive(false);
         // }else{
-            Destroy(toHit);
+            Destroy(toGemHit);
         // }
         if (scoreTime - collsionTime < 0.03f){
             addHitEffect(hitEffect);
@@ -269,7 +269,7 @@ public class PlayerAttack : MonoBehaviour
         if(collision.gameObject.tag == "food")
         {
             missFood = true;
-            toHit = collision.gameObject;
+            toGemHit = collision.gameObject;
             canGetSingleScore = true;
             _collideGemNum++;
             collsionTime = Time.time;
@@ -308,7 +308,7 @@ public class PlayerAttack : MonoBehaviour
             _collideGemNum--;
             if (_collideGemNum == 0)
             {
-                toHit = null;
+                toGemHit = null;
                 canGetSingleScore = false;
             }
             Debug.Log("onExit: "+ _collideGemNum);
