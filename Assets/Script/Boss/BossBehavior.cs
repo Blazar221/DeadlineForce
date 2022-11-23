@@ -1,11 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BossBehavior : MonoBehaviour
 {
     public static BossBehavior Instance;
+
+    [SerializeField] private TextMeshProUGUI Alert0;
+    [SerializeField] private TextMeshProUGUI Alert1;
+    [SerializeField] private TextMeshProUGUI Alert2;
+    [SerializeField] private TextMeshProUGUI Alert3;
 
     [SerializeField] private PlayerMovement playerMovement;
 
@@ -46,6 +52,14 @@ public class BossBehavior : MonoBehaviour
 
     private void Start()
     {
+        Alert0.enabled = false;
+        Alert0.GetComponent<Animator>().enabled = false;
+        Alert1.enabled = false;
+        Alert1.GetComponent<Animator>().enabled = false;
+        Alert2.enabled = false;
+        Alert2.GetComponent<Animator>().enabled = false;
+        Alert3.enabled = false;
+        Alert3.GetComponent<Animator>().enabled = false;
         StartCoroutine(AutoAttack());
     }
 
@@ -127,7 +141,57 @@ public class BossBehavior : MonoBehaviour
     {
         StartCoroutine(SpawnAttack());
     }
-
+    
+    public void StartAlert(int pos)
+    {
+        switch (pos)
+        {
+            case 0:
+                Alert0.enabled = true;
+                Alert0.GetComponent<Animator>().enabled = true;
+                break;
+            case 1:
+                Alert1.enabled = true;
+                Alert1.GetComponent<Animator>().enabled = true;
+                break;
+            case 2:
+                Alert2.enabled = true;
+                Alert2.GetComponent<Animator>().enabled = true;
+                break;
+            case 3:
+                Alert3.enabled = true;
+                Alert3.GetComponent<Animator>().enabled = true;
+                break;
+            default:
+                break;
+        }
+    }
+    
+    public void EndAlert(int pos)
+    {
+        switch (pos)
+        {
+            case 0:
+                Alert0.enabled = false;
+                Alert0.GetComponent<Animator>().enabled = false;
+                break;
+            case 1:
+                Alert1.enabled = false;
+                Alert1.GetComponent<Animator>().enabled = false;
+                break;
+            case 2:
+                Alert2.enabled = false;
+                Alert2.GetComponent<Animator>().enabled = false;
+                break;
+            case 3:
+                Alert3.enabled = false;
+                Alert3.GetComponent<Animator>().enabled = false;
+                break;
+            default:
+                break;
+        }
+    }
+    
     IEnumerator SpawnAttack()
     {
         float pos1 = LineIndToPos(_attackingLine),
@@ -136,24 +200,50 @@ public class BossBehavior : MonoBehaviour
         switch (_count)
         {
             case 0:
+                StartAlert(_attackingLine);
+                yield return new WaitForSeconds(1.2f);
                 _newBullet = Instantiate(laser, new Vector3(-4, pos1, 0), Quaternion.identity);
                 Destroy(_newBullet, 1f);
+                EndAlert(_attackingLine);
+                
                 yield return new WaitForSeconds(0.3f);
+                
+                StartAlert((_attackingLine + 3) % 4);
+                yield return new WaitForSeconds(1.2f);
                 _newBullet = Instantiate(bandit, new Vector3(6, pos2, 0), Quaternion.identity);
                 Destroy(_newBullet, 2f);
-                yield return new WaitForSeconds(0.6f);
+                EndAlert((_attackingLine + 3) % 4);
+                
+                yield return new WaitForSeconds(0.3f);
+                
+                StartAlert((_attackingLine + 1) % 4);
+                yield return new WaitForSeconds(1.2f);
                 _newBullet = Instantiate(bandit, new Vector3(6, pos3, 0), Quaternion.identity);
                 Destroy(_newBullet, 2f);
+                EndAlert((_attackingLine + 1) % 4);
                 break;
             default:
+                StartAlert(_attackingLine);
+                yield return new WaitForSeconds(1.2f);
                 _newBullet = Instantiate(bandit, new Vector3(6, pos1, 0), Quaternion.identity);
                 Destroy(_newBullet, 2f);
-                yield return new WaitForSeconds(0.5f);
+                EndAlert(_attackingLine);
+                
+                yield return new WaitForSeconds(0.3f);
+                
+                StartAlert((_attackingLine + 3) % 4);
+                yield return new WaitForSeconds(1.2f);
                 _newBullet = Instantiate(bandit, new Vector3(6, pos2, 0), Quaternion.identity);
                 Destroy(_newBullet, 2f);
-                yield return new WaitForSeconds(0.5f);
+                EndAlert((_attackingLine + 3) % 4);
+                
+                yield return new WaitForSeconds(0.3f);
+                
+                StartAlert((_attackingLine + 1) % 4);
+                yield return new WaitForSeconds(1.2f);
                 _newBullet = Instantiate(bandit, new Vector3(6, pos3, 0), Quaternion.identity);
                 Destroy(_newBullet, 2f);
+                EndAlert((_attackingLine + 1) % 4);
                 break;
                 ;
         }
@@ -162,7 +252,7 @@ public class BossBehavior : MonoBehaviour
 
     public void Struggle()
     {
-        bossAttackPeriod *= 0.8f;
+        bossAttackPeriod *= 0.9f;
         laserHarm = (int)(laserHarm*1.5f);
         banditHarm = (int)(banditHarm*1.5f);
         _bossUI.originalColor = Color.black;
