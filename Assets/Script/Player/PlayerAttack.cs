@@ -184,12 +184,9 @@ public class PlayerAttack : MonoBehaviour
         {
             CollectionController.Instance.AddRockCount();
         }
-        // best way is to set tag for each color of gem
-        // if(toHit.tag == "food"){
-            // toHit.SetActive(false);
-        // }else{
-            Destroy(toGemHit);
-        // }
+
+        Destroy(toGemHit);
+
         if (scoreTime - collsionTime < 0.03f){
             addHitEffect(hitEffect);
             GameOverScreen.instance.IncreaseScore();

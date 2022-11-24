@@ -8764,7 +8764,7 @@ GameObject:
   - component: {fileID: 1575365428}
   - component: {fileID: 1575365427}
   m_Layer: 0
-  m_Name: NoteShooter
+  m_Name: AttackShooter
   m_TagString: Note
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8823,7 +8823,7 @@ SpriteRenderer:
   m_SortingLayerID: 1158747247
   m_SortingLayer: 1
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 4b4dd31151f629c4bba60d0d74a58812, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bde305871cc070f47914d8c555a80754, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8842,8 +8842,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575365426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.46795368, y: 1.3345551, z: 0}
-  m_LocalScale: {x: 7.6655726, y: 7.6655726, z: 7.6655726}
+  m_LocalPosition: {x: 0.46795368, y: 1.3346, z: 0}
+  m_LocalScale: {x: 0.20666496, y: 0.20666496, z: 0.20666496}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -9353,9 +9353,9 @@ MonoBehaviour:
   rockBar: {fileID: 0}
   patternDamage: 80
   sources:
-  - {fileID: 887685491, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
-  - {fileID: -1955337794, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
-  - {fileID: 1867268703, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
+  - {fileID: -724817256, guid: 32c39dce68c80a64e8dad17c26f9aa57, type: 3}
+  - {fileID: -2044733606, guid: 32c39dce68c80a64e8dad17c26f9aa57, type: 3}
+  - {fileID: -294956611, guid: 32c39dce68c80a64e8dad17c26f9aa57, type: 3}
   - {fileID: -1855127044, guid: b6df73aba4e4f7b49b1a656c4ae1963c, type: 3}
   targetLine: {fileID: 857988776250520980, guid: 02949a31d5356a942868a233a36e4e50, type: 3}
 --- !u!1 &1631687719

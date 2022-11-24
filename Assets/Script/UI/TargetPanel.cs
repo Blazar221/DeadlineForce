@@ -39,8 +39,8 @@ public class TargetPanel : MonoBehaviour
     // colors constants
     private readonly Color _blue = new(0.016f, 0.67f, 1f, 1.0f);
     private readonly Color _green = new(0.43f, 1f, 0.058f, 1.0f);
-    private readonly Color _red = new(1.0f, 0.5f, 0f, 1.0f);
-    private readonly Color _yellow = new(1f, 0.76f, 0f, 1f);
+    private readonly Color _red = new(1.0f, 0.5543104f, 0.4849057f, 1.0f);
+    private readonly Color _yellow = new(0.9579f, 1f, 0f, 1f);
     // private readonly Color _brownSaber = new(0.58f, 0.3f, 0f, 1f);
     
     public enum ItemType{
