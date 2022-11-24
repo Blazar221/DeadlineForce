@@ -102,7 +102,7 @@ public class PlayerAttack : MonoBehaviour
             }
             else if (canGetLongScore == false){
                 if(!isClone){
-                    PlayerHealth.Instance.TakeDamage(5);
+                    PlayerHealth.Instance.TakeDamage(5, false);
                 }
             }
             if (canAvoidDamage){
@@ -214,7 +214,6 @@ public class PlayerAttack : MonoBehaviour
 
     public void CallAttack()
     {
-        Debug.Log("call attack");
         animator.SetTrigger("attack");
     }
 

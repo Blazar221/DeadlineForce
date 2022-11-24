@@ -48,7 +48,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // TakeDamage Function
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool hasAnim = true)
     {
         if(!hasShield)
         {
@@ -60,8 +60,9 @@ public class PlayerHealth : MonoBehaviour
             temp.transform.position = Camera.main.WorldToScreenPoint(transform.position) + offset;
             temp.GetComponent<Text>().text = "-" + damage.ToString() ; 
             // take damage anim
-
-            animator.SetTrigger("takeDamage");
+            if(hasAnim){
+                animator.SetTrigger("takeDamage");
+            }
 
             if(currentHealth <= 0) 
             {
