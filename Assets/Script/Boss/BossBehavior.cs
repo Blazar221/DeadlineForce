@@ -1,17 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class BossBehavior : MonoBehaviour
 {
     public static BossBehavior Instance;
 
-    [SerializeField] private TextMeshProUGUI Alert0;
-    [SerializeField] private TextMeshProUGUI Alert1;
-    [SerializeField] private TextMeshProUGUI Alert2;
-    [SerializeField] private TextMeshProUGUI Alert3;
+    [SerializeField] private GameObject Alert0;
+    [SerializeField] private GameObject Alert1;
+    [SerializeField] private GameObject Alert2;
+    [SerializeField] private GameObject Alert3;
 
     [SerializeField] private PlayerMovement playerMovement;
 
@@ -52,13 +51,13 @@ public class BossBehavior : MonoBehaviour
 
     private void Start()
     {
-        Alert0.enabled = false;
+        Alert0.GetComponent<SpriteRenderer>().enabled = false;
         Alert0.GetComponent<Animator>().enabled = false;
-        Alert1.enabled = false;
+        Alert1.GetComponent<SpriteRenderer>().enabled = false;
         Alert1.GetComponent<Animator>().enabled = false;
-        Alert2.enabled = false;
+        Alert2.GetComponent<SpriteRenderer>().enabled = false;
         Alert2.GetComponent<Animator>().enabled = false;
-        Alert3.enabled = false;
+        Alert3.GetComponent<SpriteRenderer>().enabled = false;
         Alert3.GetComponent<Animator>().enabled = false;
         StartCoroutine(AutoAttack());
     }
@@ -147,19 +146,19 @@ public class BossBehavior : MonoBehaviour
         switch (pos)
         {
             case 0:
-                Alert0.enabled = true;
+                Alert0.GetComponent<SpriteRenderer>().enabled = true;
                 Alert0.GetComponent<Animator>().enabled = true;
                 break;
             case 1:
-                Alert1.enabled = true;
+                Alert1.GetComponent<SpriteRenderer>().enabled = true;
                 Alert1.GetComponent<Animator>().enabled = true;
                 break;
             case 2:
-                Alert2.enabled = true;
+                Alert2.GetComponent<SpriteRenderer>().enabled = true;
                 Alert2.GetComponent<Animator>().enabled = true;
                 break;
             case 3:
-                Alert3.enabled = true;
+                Alert3.GetComponent<SpriteRenderer>().enabled = true;
                 Alert3.GetComponent<Animator>().enabled = true;
                 break;
             default:
@@ -172,19 +171,19 @@ public class BossBehavior : MonoBehaviour
         switch (pos)
         {
             case 0:
-                Alert0.enabled = false;
+                Alert0.GetComponent<SpriteRenderer>().enabled = false;
                 Alert0.GetComponent<Animator>().enabled = false;
                 break;
             case 1:
-                Alert1.enabled = false;
+                Alert1.GetComponent<SpriteRenderer>().enabled = false;
                 Alert1.GetComponent<Animator>().enabled = false;
                 break;
             case 2:
-                Alert2.enabled = false;
+                Alert2.GetComponent<SpriteRenderer>().enabled = false;
                 Alert2.GetComponent<Animator>().enabled = false;
                 break;
             case 3:
-                Alert3.enabled = false;
+                Alert3.GetComponent<SpriteRenderer>().enabled = false;
                 Alert3.GetComponent<Animator>().enabled = false;
                 break;
             default:
