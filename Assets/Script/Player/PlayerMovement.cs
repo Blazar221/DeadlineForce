@@ -10,10 +10,6 @@ public class PlayerMovement : MonoBehaviour
     private float[] playerYPosArr;
     private int curYPos;
     
-    [SerializeField] private GameObject EatGemRing1;
-    [SerializeField] private GameObject EatGemRing2;
-    [SerializeField] private GameObject EatGemRing3;
-
     private Vector3 originalLocalScale;
 
     void Awake()
@@ -28,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
 
         originalLocalScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
+        if(name == "PlayerClone"){
+            GetComponent<SpriteRenderer>().color = new Color(39f/255f, 183f/255f, 162f/255f, 0.8f);
+            reverseControl = true;
+        }
     }
 
     // Update is called once per frame
@@ -63,9 +64,7 @@ public class PlayerMovement : MonoBehaviour
     public void SetYPos(int yPos)
     {
         curYPos = yPos;
-        var selfPos = transform.position;
-        Debug.Log("selfPos:" + selfPos + " animPos:" + EatGemRing1.transform.position);
-        
+
         // Directly move position
         transform.position = new Vector3(transform.position.x, playerYPosArr[yPos], transform.position.z);
         // Set Gravity Direction and local Scale
@@ -77,12 +76,6 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(originalLocalScale.x, originalLocalScale.y, originalLocalScale.z);
         }
-    }
-
-    public void EnableClone()
-    {
-        GetComponent<SpriteRenderer>().color = new Color(39f/255f, 183f/255f, 162f/255f, 0.8f);
-        reverseControl = true;
     }
 
     public int GetYPos()

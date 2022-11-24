@@ -33,15 +33,6 @@ public class PlayerAttack : MonoBehaviour
     public GameObject missEffect;
     public GameObject goodEffect;
     public GameObject perfectEffect;
-    [SerializeField] private GameObject EatGemRing1;
-    [SerializeField] private GameObject EatGemRing2;
-    [SerializeField] private GameObject EatGemRing3;
-    [SerializeField] private GameObject EatGemStar1;
-    [SerializeField] private GameObject EatGemStar2;
-    [SerializeField] private GameObject EatGemStar3;
-    [SerializeField] private GameObject EatGemStar4;
-    [SerializeField] private GameObject EatGemStar5;
-    [SerializeField] private GameObject EatGemStar6;
     
     // Diamond collection
     SpriteRenderer fireRenderer;
@@ -60,6 +51,8 @@ public class PlayerAttack : MonoBehaviour
     private int grassCount = 0;
     private int waterCount = 0;
     private int rockCount = 0;
+
+    private bool isClone;
 
     // Boss 
     [SerializeField] private GameObject _boss;
@@ -88,6 +81,8 @@ public class PlayerAttack : MonoBehaviour
         grassRenderer = grassDiamond.GetComponent<SpriteRenderer>();
         waterRenderer = waterDiamond.GetComponent<SpriteRenderer>();
         rockRenderer = rockDiamond.GetComponent<SpriteRenderer>();
+
+        isClone = (name == "PlayerClone");
     }
 
     // Update is called once per frame
@@ -103,13 +98,12 @@ public class PlayerAttack : MonoBehaviour
             animator.SetBool("isEating",true);
             nextTime = Time.time + 0.1f; //Eating time lasts for 0.1s
             if (canGetSingleScore){
-                StartCoroutine(EatGemAnim());
                 ScoreSingle(Time.time);
             }
             else if (canGetLongScore == false){
-                //Debug.Log("Miss");
-                //Debug.Log("CanGetSingleScore: " + canGetSingleScore + " CanGetLongScore: " + canGetLongScore + " CanAvoidDamage: " + canAvoidDamage + " CanChangeGravity: " + canChangeGravity + " CanCross: " + canCross + " MissFood: " + missFood + " MissMine: " + missMine + " IsUpsideDown: " + isUpsideDown) ;
-                PlayerHealth.Instance.TakeDamage(5);
+                if(!isClone){
+                    PlayerHealth.Instance.TakeDamage(5);
+                }
             }
             if (canAvoidDamage){
                 avoidMine();
@@ -123,33 +117,7 @@ public class PlayerAttack : MonoBehaviour
         CollectionController.Instance.Reset();
     }
 
-    IEnumerator EatGemAnim()
-    {
-        EatGemRing1.SetActive(true);
-        EatGemStar1.SetActive(true);
-        EatGemStar2.SetActive(true);
-        yield return new WaitForSeconds(0.15f);
-        EatGemRing1.SetActive(false);
-        EatGemStar1.SetActive(false);
-        EatGemStar2.SetActive(false);
-        
-        EatGemRing2.SetActive(true);
-        EatGemStar3.SetActive(true);
-        EatGemStar4.SetActive(true);
-        yield return new WaitForSeconds(0.15f);
-        EatGemRing2.SetActive(false);
-        EatGemStar3.SetActive(false);
-        EatGemStar4.SetActive(false);
-
-        EatGemRing3.SetActive(true);
-        EatGemStar5.SetActive(true);
-        EatGemStar6.SetActive(true);
-        yield return new WaitForSeconds(0.15f);
-        EatGemRing3.SetActive(false);
-        EatGemStar5.SetActive(false);
-        EatGemStar6.SetActive(false);
-    }
-
+   
     void FixedUpdate() {
         if (Input.GetKey(KeyCode.Space))
 		{  
@@ -239,7 +207,9 @@ public class PlayerAttack : MonoBehaviour
         addHitEffect(missEffect);
         Destroy(toHit);
         // damage
-        PlayerHealth.Instance.TakeDamage(damage);
+        if(!isClone){
+            PlayerHealth.Instance.TakeDamage(damage);
+        }
     }
 
     public void CallAttack()
