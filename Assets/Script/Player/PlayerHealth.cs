@@ -50,23 +50,25 @@ public class PlayerHealth : MonoBehaviour
     // TakeDamage Function
     public void TakeDamage(int damage)
     {
-        if(hasShield)
+        if(!hasShield)
         {
-            damage/=10;
-        }
-        currentHealth -= damage;
-        healthBar.SetValue(currentHealth);
-        // add damage text
-        GameObject temp = GameObject.Instantiate(prefab);
-        temp.transform.parent = GameObject.Find("Canvas").transform;
-        temp.transform.position = Camera.main.WorldToScreenPoint(transform.position) + offset;
-        temp.GetComponent<Text>().text = "-" + damage.ToString() ; 
+            currentHealth -= damage;
+            healthBar.SetValue(currentHealth);
+            // add damage text
+            GameObject temp = GameObject.Instantiate(prefab);
+            temp.transform.parent = GameObject.Find("Canvas").transform;
+            temp.transform.position = Camera.main.WorldToScreenPoint(transform.position) + offset;
+            temp.GetComponent<Text>().text = "-" + damage.ToString() ; 
+            // take damage anim
 
-        if(currentHealth <= 0) 
-        {
-            currentHealth = 0;
-            Debug.Log("You are dead!");
-            OnPlayerDeath?.Invoke();
+            animator.SetTrigger("takeDamage");
+
+            if(currentHealth <= 0) 
+            {
+                currentHealth = 0;
+                Debug.Log("You are dead!");
+                OnPlayerDeath?.Invoke();
+            }
         }
     }
 }
