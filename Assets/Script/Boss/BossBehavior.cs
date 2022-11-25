@@ -24,7 +24,7 @@ public class BossBehavior : MonoBehaviour
     private int _attackingLine;
     private int _count=0;
     private float _moveDestY;
-    public Vector3 moveDest;
+    private Vector3 moveDest;
     public bool startMove = false;
 
     private Vector3 originalLocalScale;

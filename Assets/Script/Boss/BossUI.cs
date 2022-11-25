@@ -13,14 +13,10 @@ public class BossUI : MonoBehaviour
     private SpriteRenderer bossBodyRenderer;
 
     public Color originalColor;
-    
-    public float flashTime = 0.3f;
 
     // Damage text
-    public GameObject prefab;
-    public Vector3 offset = new Vector3(0, 10, 0);
-
-    public GameObject bloodEffect;
+    public GameObject damageText;
+    private Vector3 damageTextOffset = new Vector3(0, 10, 0);
 
     private bool isFrozen = false;
     
@@ -42,10 +38,10 @@ public class BossUI : MonoBehaviour
     public void CallDamageHint(int damage)
     {
         // add damage text
-        GameObject temp = GameObject.Instantiate(prefab);
+        GameObject temp = GameObject.Instantiate(damageText);
         temp.transform.parent = GameObject.Find("Canvas").transform;
-        temp.transform.position = Camera.main.WorldToScreenPoint(transform.position) + offset;
-        temp.GetComponent<Text>().text = "-" + damage.ToString() ; 
+        temp.transform.position = Camera.main.WorldToScreenPoint(transform.position) + damageTextOffset;
+        temp.GetComponent<Text>().text = "-" + damage.ToString(); 
     }
     
     // Effect of being attacked
