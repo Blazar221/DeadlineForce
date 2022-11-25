@@ -1026,7 +1026,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178061451}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -5142,7 +5142,6 @@ MonoBehaviour:
   bandit: {fileID: 2425594156374542513, guid: 28777205d87fb1e4a8eb462b7e0b6b70, type: 3}
   laserHarm: 10
   banditHarm: 5
-  startMove: 0
   bossAnimator: {fileID: 957091791}
   bgm: {fileID: 1006874500}
   struggleStartTime: 10
@@ -10334,7 +10333,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998834978}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.93, y: 1.8224945, z: 3.522716}
+  m_LocalPosition: {x: 4.93, y: 1.8224945, z: 0}
   m_LocalScale: {x: -9.286746, y: 9.286746, z: 9.286746}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10359,13 +10358,12 @@ MonoBehaviour:
   Alert2: {fileID: 2080780821}
   Alert3: {fileID: 1678477072}
   playerMovement: {fileID: 178061461}
-  bossMoveSpeed: 0.03
-  bossAttackPeriod: 8
+  bossMoveSpeed: 0.3
+  bossAttackPeriod: 5
   laser: {fileID: 6688004811162054379, guid: 6f3bf51229f147047a094637825a9436, type: 3}
   bandit: {fileID: 2425594156374542513, guid: 28777205d87fb1e4a8eb462b7e0b6b70, type: 3}
   laserHarm: 10
   banditHarm: 5
-  startMove: 0
   bossAnimator: {fileID: 1998834985}
   bgm: {fileID: 1006874500}
   struggleStartTime: 10
@@ -10381,7 +10379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131012fbfaf34354bbd35848d38ecbcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossHealth: 100
+  bossHealth: 1200
   healthBar: {fileID: 808834014}
 --- !u!114 &1998834982
 MonoBehaviour:
@@ -10397,7 +10395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossBody: {fileID: 1998834978}
   originalColor: {r: 1, g: 1, b: 1, a: 0}
-  damageText: {fileID: 828323473338945818, guid: 4896e2bb45b83a643aebeee58c71dd24, type: 3}
+  damageText: {fileID: 6773181634080557151, guid: f26dd276ad2184f1899ec732cd8a4971, type: 3}
 --- !u!50 &1998834983
 Rigidbody2D:
   serializedVersion: 4
@@ -10406,7 +10404,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998834978}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -10417,8 +10415,8 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 7
 --- !u!61 &1998834984
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10503,8 +10501,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1194076827
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -988540559, guid: 8e063a8bd8174654797f03c8ef1667fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
