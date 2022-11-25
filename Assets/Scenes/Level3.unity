@@ -5498,10 +5498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734289b36e662c94880ea62b6787b708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Alert0: {fileID: 1755955719}
-  Alert1: {fileID: 2112798777}
-  Alert2: {fileID: 142968924}
-  Alert3: {fileID: 981395391}
   playerMovement: {fileID: 178061461}
   bossMoveSpeed: 0.03
   bossAttackPeriod: 8
@@ -5509,7 +5505,6 @@ MonoBehaviour:
   bandit: {fileID: 2425594156374542513, guid: 28777205d87fb1e4a8eb462b7e0b6b70, type: 3}
   laserHarm: 10
   banditHarm: 5
-  moveDest: {x: 0, y: 0, z: 0}
   startMove: 0
   bossAnimator: {fileID: 957091791}
   bgm: {fileID: 1006874500}
@@ -5575,10 +5570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossBody: {fileID: 957091790}
   originalColor: {r: 0, g: 0, b: 0, a: 0}
-  flashTime: 0.3
-  prefab: {fileID: 6773181634080557151, guid: f26dd276ad2184f1899ec732cd8a4971, type: 3}
-  offset: {x: 0, y: 10, z: 0}
-  bloodEffect: {fileID: 7684543134659561662, guid: ae0d4e81658269946b040554832eb4cb, type: 3}
+  damageText: {fileID: 0}
 --- !u!114 &957091798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7983,6 +7975,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1411923805}
+  - component: {fileID: 1411923806}
   m_Layer: 0
   m_Name: AlertSystem
   m_TagString: Untagged
@@ -8009,6 +8002,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1411923806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411923804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87f73b7d552b7f4eabeac7fe6348df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Alert0: {fileID: 1755955719}
+  Alert1: {fileID: 2112798777}
+  Alert2: {fileID: 142968924}
+  Alert3: {fileID: 981395391}
 --- !u!1 &1456990245
 GameObject:
   m_ObjectHideFlags: 0

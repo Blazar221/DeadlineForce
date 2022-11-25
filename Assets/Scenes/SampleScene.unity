@@ -2440,6 +2440,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 472743183}
+  - component: {fileID: 472743184}
   m_Layer: 0
   m_Name: AlertSystem
   m_TagString: Untagged
@@ -2466,6 +2467,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &472743184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472743182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87f73b7d552b7f4eabeac7fe6348df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Alert0: {fileID: 915938686}
+  Alert1: {fileID: 1242458088}
+  Alert2: {fileID: 2080780821}
+  Alert3: {fileID: 1678477072}
 --- !u!1 &488652889
 GameObject:
   m_ObjectHideFlags: 0
@@ -5131,10 +5148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734289b36e662c94880ea62b6787b708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Alert0: {fileID: 915938686}
-  Alert1: {fileID: 1242458088}
-  Alert2: {fileID: 2080780821}
-  Alert3: {fileID: 1678477072}
   playerMovement: {fileID: 178061461}
   bossMoveSpeed: 0.03
   bossAttackPeriod: 8
@@ -10353,10 +10366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734289b36e662c94880ea62b6787b708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Alert0: {fileID: 915938686}
-  Alert1: {fileID: 1242458088}
-  Alert2: {fileID: 2080780821}
-  Alert3: {fileID: 1678477072}
   playerMovement: {fileID: 178061461}
   bossMoveSpeed: 0.3
   bossAttackPeriod: 5
