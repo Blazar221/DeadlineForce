@@ -7,45 +7,40 @@ public class BossBehavior : MonoBehaviour
 {
     public static BossBehavior Instance;
 
-    [SerializeField] private PlayerMovement playerMovement;
-
-    [SerializeField] private float bossMoveSpeed = 0.8f;
-    [SerializeField] private float bossAttackPeriod = 5f;
-
-    [SerializeField] private GameObject laser;
-    [SerializeField] private GameObject bandit;
-    public int laserHarm=20, banditHarm=10;
-    
-    private int _count=0;
-    
-    private int attackingLine;
-    private float moveDestY;
-    private Vector3 moveDest;
-
-    bool moving = false;
-    bool attackWaiting = false;
-    bool retreatWaiting = false;
-
-    bool canHurtPlayer = true;
+    private PlayerMovement playerMovement;
 
     private Vector3 originalLocalScale;
 
-    [SerializeField] private Animator bossAnimator;
-    private BossUI _bossUI;
-    
-    private GameObject _newBullet;
-    
-    [SerializeField] private GameObject bgm;
-    [SerializeField] private float struggleStartTime;
-    private BgmController _bgmHandler;
-    private bool _startStruggle = false;
+    private Animator bossAnimator;
 
+    private GameObject _newBullet;
+
+    [SerializeField] private GameObject laser;
+    [SerializeField] private GameObject bandit;
+
+    public int laserHarm = 20, banditHarm = 10;
+    
     private float playerX = -2f;
     private float bossX = 5f;
 
-    private float[] bigRedYArr = {3.77f, 1.81f, -1.55f, -3.53f};
-    private float[] currentYArr;
-
+    private int attackCounter = 0;
+    // Boss Track & Attack Var
+    private int attackingLine;
+    private float moveDestY;
+    private Vector3 moveDest;
+    // Boss State Flag    
+    bool moving = false;
+    bool attackWaiting = false;
+    bool retreatWaiting = false;
+    bool canHurtPlayer = true;
+    bool startStruggle = false;
+    // Boss Unique Data
+    private float[] bossYArr;
+    private float bossMoveSpeed;
+    private float bossAttackPeriod;
+    private int bossMeleeHarm;
+    private float bossAttackPoint;
+    // Boss Color Change
     private Color freezeColor = new Color(0f, 0.9f, 0.9f, 1f);
 
     void Awake()
@@ -53,13 +48,24 @@ public class BossBehavior : MonoBehaviour
         Instance = this;
         bossAnimator = GetComponent<Animator>();
 
-        _bossUI = GetComponent<BossUI>();
-        _bgmHandler = bgm.GetComponent<BgmController>();
+        playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
 
+        //Init Boss Unique Data
         switch(name)
         {
             case "BigRed":
-                currentYArr = bigRedYArr;
+                bossYArr = new float[]{3.77f, 1.81f, -1.55f, -3.53f};
+                bossMoveSpeed = 0.3f;
+                bossAttackPeriod = 8f;
+                bossMeleeHarm = 20;
+                bossAttackPoint = 0.3f;
+                break;
+            case "Orc":
+                bossYArr = new float[]{3.77f, 1.81f, -1.55f, -3.53f};
+                bossMoveSpeed = 0.3f;
+                bossAttackPeriod = 7f;
+                bossMeleeHarm = 20;
+                bossAttackPoint = 0.3f;
                 break;
             default:
                 break;
@@ -72,14 +78,26 @@ public class BossBehavior : MonoBehaviour
     {
         AlertController.Instance.EndAllAlert();
         
-        switch(name){
-            case "BigRed":
-                StartCoroutine(BigRedAutoAttack());
-                break;
-            default:
-                break;
+        StartCoroutine(AutoAttack());
+    }
+
+    IEnumerator AutoAttack()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(bossAttackPeriod);
+            switch(name)
+            {
+                case "BigRed":
+                    CallBigRedTrack();
+                    break;
+                case "Orc":
+                    CallOrcTrack();
+                    break;
+                default:
+                    break;
+            }
         }
-        // StartCoroutine(AutoAttack());
     }
 
     // Update is called once per frame
@@ -113,13 +131,27 @@ public class BossBehavior : MonoBehaviour
         switch(name)
         {
             case "BigRed":
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(bossAttackPoint);
                 bossAnimator.SetTrigger("attack");
                 
                 AlertController.Instance.EndAllAlert();
 
                 if(canHurtPlayer){
-                    PlayerHealth.Instance.TakeDamage(20);
+                    PlayerHealth.Instance.TakeDamage(bossMeleeHarm);
+                }
+                break;
+            case "Orc":
+                yield return new WaitForSeconds(bossAttackPoint);
+                bossAnimator.SetTrigger("attack");
+                
+                AlertController.Instance.EndAllAlert();
+
+                if(canHurtPlayer){
+                    PlayerHealth.Instance.TakeDamage(bossMeleeHarm);
+                }
+                if(attackCounter%2==1){
+                    yield return new WaitForSeconds(bossAttackPoint);
+                    CallOrcTrack();
                 }
                 break;
             default:
@@ -133,6 +165,10 @@ public class BossBehavior : MonoBehaviour
             case "BigRed":
                 yield return new WaitForSeconds(1f);
                 CallBigRedRetreat();
+                break;
+            case "Orc":
+                yield return new WaitForSeconds(1f);
+                CallOrcRetreat();
                 break;
             default:
                 break;
@@ -166,22 +202,27 @@ public class BossBehavior : MonoBehaviour
         }
     }
 
-    /***********************************
-    **          Boss: BigRed          **
-    ************************************/
-    IEnumerator BigRedAutoAttack()
-    {
-        while (true)
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.name == "Player")
         {
-            yield return new WaitForSeconds(bossAttackPeriod);
-            CallBigRedTrack();
+            canHurtPlayer = true;
         }
     }
 
+    private void OnCollisionExit2D(Collision2D other) {
+        if(other.gameObject.name == "Player")
+        {
+            canHurtPlayer = false;
+        }
+    }
+
+    /***********************************
+    **          Boss: BigRed          **
+    ************************************/
     void CallBigRedTrack()
     {
         attackingLine = playerMovement.GetYPos();
-        moveDestY = currentYArr[attackingLine];
+        moveDestY = bossYArr[attackingLine];
         moveDest = new Vector3(playerX, moveDestY, 0);
 
         SetLocalScale();
@@ -198,7 +239,7 @@ public class BossBehavior : MonoBehaviour
     void CallBigRedRetreat()
     {
         attackingLine = playerMovement.GetYPos();
-        moveDestY = currentYArr[attackingLine];
+        moveDestY = bossYArr[attackingLine];
         moveDest = new Vector3(bossX, moveDestY, 0);
 
         SetLocalScale();
@@ -210,20 +251,45 @@ public class BossBehavior : MonoBehaviour
         bossAnimator.SetBool("isMove", true);
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.name == "Player")
-        {
-            canHurtPlayer = true;
+    /***********************************
+    **          Boss: Orc          **
+    ************************************/
+    void CallOrcTrack()
+    {
+        attackingLine = playerMovement.GetYPos();
+        moveDestY = bossYArr[attackingLine];
+        moveDest = new Vector3(playerX, moveDestY, 0);
+
+        SetLocalScale();
+
+        moving = true;
+        attackWaiting = true;
+        if(attackCounter%2==0){
+            retreatWaiting = false;
+        }else{
+            retreatWaiting = true;
         }
+        attackCounter += 1;
+
+        bossAnimator.SetBool("isMove", true);
+
+        AlertController.Instance.StartAlert(attackingLine);
     }
 
-    private void OnCollisionExit2D(Collision2D other) {
-        if(other.gameObject.name == "Player")
-        {
-            canHurtPlayer = false;
-        }
-    }
+    void CallOrcRetreat()
+    {
+        attackingLine = playerMovement.GetYPos();
+        moveDestY = bossYArr[attackingLine];
+        moveDest = new Vector3(bossX, moveDestY, 0);
 
+        SetLocalScale();
+
+        moving = true;
+        attackWaiting = false;
+        retreatWaiting = false;
+
+        bossAnimator.SetBool("isMove", true);
+    }
     
     // // Line Index from top to bottom: 0, 1, 2, 3
     // public IEnumerator AutoAttack()
@@ -234,7 +300,7 @@ public class BossBehavior : MonoBehaviour
     //         yield return new WaitForSeconds(bossAttackPeriod);
 
     //         attackingLine = playerMovement.GetYPos();
-    //         moveDestY = currentYArr[attackingLine];
+    //         moveDestY = bossYArr[attackingLine];
 
     //         if(attackingLine == 0 || attackingLine == 2)
     //         {
@@ -249,11 +315,11 @@ public class BossBehavior : MonoBehaviour
     //         moving = true;
     //         bossAnimator.SetBool("isMove", true);
             
-    //         if (_startStruggle == false && _bgmHandler.songPosition > struggleStartTime)
+    //         if (startStruggle == false && BgmController.instance.songPosition > struggleStartTime)
     //         {
     //             Struggle();
     //             _bossUI.StruggleColor();
-    //             _startStruggle = true;
+    //             startStruggle = true;
     //         }
     //     }
     // }
@@ -275,7 +341,7 @@ public class BossBehavior : MonoBehaviour
     //     float pos1 = LineIndToPos(attackingLine),
     //         pos2 = LineIndToPos((attackingLine + 3) % 4),
     //         pos3 = LineIndToPos((attackingLine + 1) % 4);
-    //     switch (_count)
+    //     switch (attackCounter)
     //     {
     //         case 0:
     //             StartAlert(attackingLine);
@@ -325,7 +391,7 @@ public class BossBehavior : MonoBehaviour
     //             break;
     //             ;
     //     }
-    //     _count = (_count + 1)%3;
+    //     attackCounter = (attackCounter + 1)%3;
     // }
 
     public void Struggle()
@@ -333,7 +399,7 @@ public class BossBehavior : MonoBehaviour
         bossAttackPeriod *= 0.9f;
         laserHarm = (int)(laserHarm*1.5f);
         banditHarm = (int)(banditHarm*1.5f);
-        _bossUI.originalColor = Color.black;
+        BossUI.Instance.originalColor = Color.black;
     }
 
     float LineIndToPos(int ind)
