@@ -256,7 +256,7 @@ public class PlayerAttack : MonoBehaviour
         }
         if(collision.gameObject.tag == "Laser")
         {
-            Collide(_bossHandler.laserHarm);
+            Collide(20);
             toHit = null;
             canAvoidDamage = false;
         }

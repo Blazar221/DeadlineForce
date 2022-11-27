@@ -13,10 +13,10 @@ public class BossBehavior : MonoBehaviour
 
     private Animator bossAnimator;
 
-    private GameObject _newBullet;
 
     [SerializeField] private GameObject laser;
     [SerializeField] private GameObject missile;
+    private GameObject newItem;
 
     public int laserHarm = 20, missileHarm = 10;
     
@@ -33,7 +33,7 @@ public class BossBehavior : MonoBehaviour
     bool meleeAttackWaiting = false;
     bool rangeAttackWaiting = false;
     bool retreatWaiting = false;
-    bool canHurtPlayer = true;
+    
     bool startStruggle = false;
     // Boss Unique Data
     private float[] bossYArr;
@@ -59,21 +59,21 @@ public class BossBehavior : MonoBehaviour
                 bossMoveSpeed = 0.3f;
                 bossAttackPeriod = 8f;
                 bossMeleeHarm = 20;
-                bossAttackPoint = 0.3f;
+                bossAttackPoint = 0.1f;
                 break;
             case "Orc":
                 bossYArr = new float[]{3.77f, 1.81f, -1.55f, -3.53f};
                 bossMoveSpeed = 0.3f;
                 bossAttackPeriod = 7f;
                 bossMeleeHarm = 20;
-                bossAttackPoint = 0.3f;
+                bossAttackPoint = 0.1f;
                 break;
             case "Rebo":
                 bossYArr = new float[]{3.77f, 1.81f, -1.55f, -3.53f};
                 bossMoveSpeed = 0.3f;
                 bossAttackPeriod = 7f;
                 bossMeleeHarm = 20;
-                bossAttackPoint = 0.3f;
+                bossAttackPoint = 0.1f;
                 break;
             default:
                 break;
@@ -134,7 +134,7 @@ public class BossBehavior : MonoBehaviour
             if(rangeAttackWaiting)
             {  
                 rangeAttackWaiting = false;
-                StartCoroutine(CallRangeAttack());
+                CallRangeAttack();
             }
             if(retreatWaiting){
                 retreatWaiting = false;
@@ -152,7 +152,7 @@ public class BossBehavior : MonoBehaviour
                 
                 AlertController.Instance.EndAllAlert();
 
-                if(canHurtPlayer){
+                if(canHurtPlayer()){
                     PlayerHealth.Instance.TakeDamage(bossMeleeHarm);
                 }
                 break;
@@ -162,7 +162,7 @@ public class BossBehavior : MonoBehaviour
                 
                 AlertController.Instance.EndAllAlert();
 
-                if(canHurtPlayer){
+                if(canHurtPlayer()){
                     PlayerHealth.Instance.TakeDamage(bossMeleeHarm);
                 }
                 if(attackCounter%2==1){
@@ -176,7 +176,7 @@ public class BossBehavior : MonoBehaviour
                 
                 AlertController.Instance.EndAllAlert();
 
-                if(canHurtPlayer){
+                if(canHurtPlayer()){
                     PlayerHealth.Instance.TakeDamage(bossMeleeHarm);
                 }
                 break;
@@ -185,18 +185,11 @@ public class BossBehavior : MonoBehaviour
         }
     }
 
-    IEnumerator CallRangeAttack(){
+    void CallRangeAttack(){
         switch(name)
         {
             case "Rebo":
-                yield return new WaitForSeconds(bossAttackPoint);
-                bossAnimator.SetTrigger("attack");
-                
-                AlertController.Instance.EndAllAlert();
-
-                if(canHurtPlayer){
-                    PlayerHealth.Instance.TakeDamage(bossMeleeHarm);
-                }
+                newItem = Instantiate(missile, new Vector3(bossX, bossYArr[attackingLine], 0), Quaternion.identity);
                 break;
             default:
                 break;
@@ -235,6 +228,13 @@ public class BossBehavior : MonoBehaviour
         BossUI.Instance.SetColor(Color.white);
     }
 
+    bool canHurtPlayer()
+    {   
+        float distance = Vector3.Distance(GameObject.Find("Player").transform.position, transform.position);
+        Debug.Log(distance);
+        return distance < 1.2f;
+    }
+
     void SetLocalScale(){
         if(attackingLine == 0 || attackingLine == 2)
         {
@@ -243,20 +243,6 @@ public class BossBehavior : MonoBehaviour
         else
         {
             transform.localScale = new Vector3(originalLocalScale.x, originalLocalScale.y, originalLocalScale.z);
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.name == "Player")
-        {
-            canHurtPlayer = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D other) {
-        if(other.gameObject.name == "Player")
-        {
-            canHurtPlayer = false;
         }
     }
 
@@ -312,13 +298,25 @@ public class BossBehavior : MonoBehaviour
     {
         attackingLine = playerMovement.GetYPos();
         moveDestY = bossYArr[attackingLine];
-        moveDest = new Vector3(playerX, moveDestY, 0);
 
         SetLocalScale();
 
         moving = true;
-        meleeAttackWaiting = true;
-        retreatWaiting = true;
+        if(attackCounter%1==0)
+        {
+            meleeAttackWaiting = true;
+            rangeAttackWaiting = false;
+            retreatWaiting = true;
+            moveDest = new Vector3(playerX, moveDestY, 0);
+        }
+        else
+        {
+            meleeAttackWaiting = false;
+            rangeAttackWaiting = true;
+            retreatWaiting = true;
+            moveDest = new Vector3(bossX, moveDestY, 0);
+        }
+        attackCounter += 1;
 
         bossAnimator.SetBool("isMove", true);
 
@@ -380,47 +378,47 @@ public class BossBehavior : MonoBehaviour
     //         case 0:
     //             StartAlert(attackingLine);
     //             yield return new WaitForSeconds(1.2f);
-    //             _newBullet = Instantiate(laser, new Vector3(-4, pos1, 0), Quaternion.identity);
-    //             Destroy(_newBullet, 1f);
+    //             newItem = Instantiate(laser, new Vector3(-4, pos1, 0), Quaternion.identity);
+    //             Destroy(newItem, 1f);
     //             EndAlert(attackingLine);
                 
     //             yield return new WaitForSeconds(0.3f);
                 
     //             StartAlert((attackingLine + 3) % 4);
     //             yield return new WaitForSeconds(1.2f);
-    //             _newBullet = Instantiate(missile, new Vector3(6, pos2, 0), Quaternion.identity);
-    //             Destroy(_newBullet, 2f);
+    //             newItem = Instantiate(missile, new Vector3(6, pos2, 0), Quaternion.identity);
+    //             Destroy(newItem, 2f);
     //             EndAlert((attackingLine + 3) % 4);
                 
     //             yield return new WaitForSeconds(0.3f);
                 
     //             StartAlert((attackingLine + 1) % 4);
     //             yield return new WaitForSeconds(1.2f);
-    //             _newBullet = Instantiate(missile, new Vector3(6, pos3, 0), Quaternion.identity);
-    //             Destroy(_newBullet, 2f);
+    //             newItem = Instantiate(missile, new Vector3(6, pos3, 0), Quaternion.identity);
+    //             Destroy(newItem, 2f);
     //             EndAlert((attackingLine + 1) % 4);
     //             break;
     //         default:
     //             StartAlert(attackingLine);
     //             yield return new WaitForSeconds(1.2f);
-    //             _newBullet = Instantiate(missile, new Vector3(6, pos1, 0), Quaternion.identity);
-    //             Destroy(_newBullet, 2f);
+    //             newItem = Instantiate(missile, new Vector3(6, pos1, 0), Quaternion.identity);
+    //             Destroy(newItem, 2f);
     //             EndAlert(attackingLine);
                 
     //             yield return new WaitForSeconds(0.3f);
                 
     //             StartAlert((attackingLine + 3) % 4);
     //             yield return new WaitForSeconds(1.2f);
-    //             _newBullet = Instantiate(missile, new Vector3(6, pos2, 0), Quaternion.identity);
-    //             Destroy(_newBullet, 2f);
+    //             newItem = Instantiate(missile, new Vector3(6, pos2, 0), Quaternion.identity);
+    //             Destroy(newItem, 2f);
     //             EndAlert((attackingLine + 3) % 4);
                 
     //             yield return new WaitForSeconds(0.3f);
                 
     //             StartAlert((attackingLine + 1) % 4);
     //             yield return new WaitForSeconds(1.2f);
-    //             _newBullet = Instantiate(missile, new Vector3(6, pos3, 0), Quaternion.identity);
-    //             Destroy(_newBullet, 2f);
+    //             newItem = Instantiate(missile, new Vector3(6, pos3, 0), Quaternion.identity);
+    //             Destroy(newItem, 2f);
     //             EndAlert((attackingLine + 1) % 4);
     //             break;
     //             ;

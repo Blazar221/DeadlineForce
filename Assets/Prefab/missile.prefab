@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3533325459829142522}
   - component: {fileID: 7403533359690374267}
   - component: {fileID: 378813081725884748}
-  - component: {fileID: 4014162791852561347}
+  - component: {fileID: -5170166044183029925}
   m_Layer: 6
-  m_Name: bandit
+  m_Name: missile
   m_TagString: Bandit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2425594156374542513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2035, y: -13.1095, z: 0}
-  m_LocalScale: {x: 4.5519433, y: 3.3888614, z: 1}
+  m_LocalPosition: {x: 0.1887, y: -12.9914, z: 0}
+  m_LocalScale: {x: 9.454938, y: 6.3432965, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -112,24 +112,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.08}
   m_EdgeRadius: 0
---- !u!50 &4014162791852561347
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &-5170166044183029925
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2425594156374542513}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302a59d96f035a946a7449b36c4017a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

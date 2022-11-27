@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-    private float speed = 0.3f;
+    private float speed = 0.03f;
 
     GameObject player;
 
