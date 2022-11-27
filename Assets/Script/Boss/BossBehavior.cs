@@ -13,10 +13,8 @@ public class BossBehavior : MonoBehaviour
 
     private Animator bossAnimator;
 
-
     [SerializeField] private GameObject laser;
     [SerializeField] private GameObject missile;
-    private GameObject newItem;
 
     public int laserHarm = 20, missileHarm = 10;
     
@@ -105,6 +103,9 @@ public class BossBehavior : MonoBehaviour
                 case "Rebo":
                     CallReboTrack();
                     break;
+                case "Tank":
+                    CallTankTrack();
+                    break;
                 default:
                     break;
             }
@@ -189,7 +190,10 @@ public class BossBehavior : MonoBehaviour
         switch(name)
         {
             case "Rebo":
-                newItem = Instantiate(missile, new Vector3(bossX, bossYArr[attackingLine], 0), Quaternion.identity);
+                Instantiate(missile, BossUI.Instance.transform.position, Quaternion.identity);
+                break;
+            case "Tank":
+                Instantiate(missile, new Vector3(bossX, bossYArr[attackingLine], 0), Quaternion.identity);
                 break;
             default:
                 break;
@@ -302,25 +306,45 @@ public class BossBehavior : MonoBehaviour
         SetLocalScale();
 
         moving = true;
+        // Melee Attack
         if(attackCounter%2==0)
         {
             meleeAttackWaiting = true;
             rangeAttackWaiting = false;
             retreatWaiting = true;
             moveDest = new Vector3(playerX, moveDestY, 0);
+            AlertController.Instance.StartAlert(attackingLine);
         }
         else
+        // Range Attack
         {
             meleeAttackWaiting = false;
             rangeAttackWaiting = true;
             retreatWaiting = true;
-            moveDest = new Vector3(bossX, moveDestY, 0);
         }
         attackCounter += 1;
 
         bossAnimator.SetBool("isMove", true);
+    }
+    /***********************************
+    **          Boss: Tank          **
+    ************************************/
+    void CallTankTrack()
+    {
+        attackingLine = playerMovement.GetYPos();
+        moveDestY = bossYArr[attackingLine];
 
-        AlertController.Instance.StartAlert(attackingLine);
+        SetLocalScale();
+
+        moving = true;        
+        meleeAttackWaiting = false;
+        rangeAttackWaiting = true;
+        retreatWaiting = false;
+        moveDest = new Vector3(bossX, moveDestY, 0);
+        
+        attackCounter += 1;
+
+        bossAnimator.SetBool("isMove", true);
     }
     
     // // Line Index from top to bottom: 0, 1, 2, 3
