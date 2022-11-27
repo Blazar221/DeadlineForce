@@ -28,6 +28,12 @@ public class levelButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     
     public void IsClicked()
     {
-        SceneManager.LoadScene(nextScene);
+        if (nextScene == "restart") {
+            SceneManager.LoadScene(PlayerPrefs.GetInt("CurrentLevel"));
+        }
+        else if (nextScene == "next") {
+            SceneManager.LoadScene(PlayerPrefs.GetInt("CurrentLevel") + 1);
+        }
+        else SceneManager.LoadScene(nextScene);
     }
 }

@@ -55,9 +55,11 @@ public class GameController : MonoBehaviour
     public void EnableGameOverMenu()
     {
         SendAnalytics();
-        gameOverMenu.SetActive(true);
-        Time.timeScale = 0f;
+        //gameOverMenu.SetActive(true);
+        //Time.timeScale = 0f;
         BgmController.instance.StopBgm();
+        PlayerPrefs.SetInt("CurrentLevel", SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("GameOverMenu");
     }
 
     // 通关游戏结束
@@ -65,9 +67,11 @@ public class GameController : MonoBehaviour
     {
         SendAnalytics();
         ScoreManager.instance.GetTotalScore();
-        congratsMenu.SetActive(true);
-        Time.timeScale = 0f;
+        //congratsMenu.SetActive(true);
+        //Time.timeScale = 0f;
         BgmController.instance.StopBgm();
+        PlayerPrefs.SetInt("CurrentLevel", SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("CongratsMenu");
     }
 
     public void SendAnalytics()
