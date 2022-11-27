@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-    private float speed = 0.03f;
+    private float speed = 0.05f;
 
     GameObject player;
 
@@ -16,9 +16,11 @@ public class Missile : MonoBehaviour
     private void FixedUpdate()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed);
-        if(transform.position == player.transform.position)
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+        if(distance < 1.2f)
         {
-            Destroy(this);
+            PlayerHealth.Instance.TakeDamage(40);
+            Destroy(gameObject);
         }
     }
 }

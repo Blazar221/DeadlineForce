@@ -59,21 +59,21 @@ public class BossBehavior : MonoBehaviour
                 bossMoveSpeed = 0.3f;
                 bossAttackPeriod = 8f;
                 bossMeleeHarm = 20;
-                bossAttackPoint = 0.1f;
+                bossAttackPoint = 0.0f;
                 break;
             case "Orc":
                 bossYArr = new float[]{3.77f, 1.81f, -1.55f, -3.53f};
                 bossMoveSpeed = 0.3f;
                 bossAttackPeriod = 7f;
                 bossMeleeHarm = 20;
-                bossAttackPoint = 0.1f;
+                bossAttackPoint = 0.3f;
                 break;
             case "Rebo":
                 bossYArr = new float[]{3.77f, 1.81f, -1.55f, -3.53f};
                 bossMoveSpeed = 0.3f;
                 bossAttackPeriod = 7f;
                 bossMeleeHarm = 20;
-                bossAttackPoint = 0.1f;
+                bossAttackPoint = 0.0f;
                 break;
             default:
                 break;
@@ -152,7 +152,7 @@ public class BossBehavior : MonoBehaviour
                 
                 AlertController.Instance.EndAllAlert();
 
-                if(canHurtPlayer()){
+                if(CanHurtPlayer()){
                     PlayerHealth.Instance.TakeDamage(bossMeleeHarm);
                 }
                 break;
@@ -162,7 +162,7 @@ public class BossBehavior : MonoBehaviour
                 
                 AlertController.Instance.EndAllAlert();
 
-                if(canHurtPlayer()){
+                if(CanHurtPlayer()){
                     PlayerHealth.Instance.TakeDamage(bossMeleeHarm);
                 }
                 if(attackCounter%2==1){
@@ -176,7 +176,7 @@ public class BossBehavior : MonoBehaviour
                 
                 AlertController.Instance.EndAllAlert();
 
-                if(canHurtPlayer()){
+                if(CanHurtPlayer()){
                     PlayerHealth.Instance.TakeDamage(bossMeleeHarm);
                 }
                 break;
@@ -228,7 +228,7 @@ public class BossBehavior : MonoBehaviour
         BossUI.Instance.SetColor(Color.white);
     }
 
-    bool canHurtPlayer()
+    bool CanHurtPlayer()
     {   
         float distance = Vector3.Distance(GameObject.Find("Player").transform.position, transform.position);
         Debug.Log(distance);
@@ -302,7 +302,7 @@ public class BossBehavior : MonoBehaviour
         SetLocalScale();
 
         moving = true;
-        if(attackCounter%1==0)
+        if(attackCounter%2==0)
         {
             meleeAttackWaiting = true;
             rangeAttackWaiting = false;
