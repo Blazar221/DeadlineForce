@@ -9,7 +9,6 @@ public class BossUI : MonoBehaviour
 {
     public static BossUI Instance;
 
-    public GameObject bossBody;
     private SpriteRenderer bossBodyRenderer;
 
     public Color originalColor;
@@ -24,7 +23,7 @@ public class BossUI : MonoBehaviour
     {
         Instance = this;
                 
-        bossBodyRenderer = bossBody.GetComponent<SpriteRenderer>();
+        bossBodyRenderer = GetComponent<SpriteRenderer>();
 
         originalColor = Color.white;
         SetColor(originalColor);

@@ -16,9 +16,9 @@ public class BossBehavior : MonoBehaviour
     private GameObject _newBullet;
 
     [SerializeField] private GameObject laser;
-    [SerializeField] private GameObject bandit;
+    [SerializeField] private GameObject missile;
 
-    public int laserHarm = 20, banditHarm = 10;
+    public int laserHarm = 20, missileHarm = 10;
     
     private float playerX = -2f;
     private float bossX = 5f;
@@ -30,7 +30,8 @@ public class BossBehavior : MonoBehaviour
     private Vector3 moveDest;
     // Boss State Flag    
     bool moving = false;
-    bool attackWaiting = false;
+    bool meleeAttackWaiting = false;
+    bool rangeAttackWaiting = false;
     bool retreatWaiting = false;
     bool canHurtPlayer = true;
     bool startStruggle = false;
@@ -67,6 +68,13 @@ public class BossBehavior : MonoBehaviour
                 bossMeleeHarm = 20;
                 bossAttackPoint = 0.3f;
                 break;
+            case "Rebo":
+                bossYArr = new float[]{3.77f, 1.81f, -1.55f, -3.53f};
+                bossMoveSpeed = 0.3f;
+                bossAttackPeriod = 7f;
+                bossMeleeHarm = 20;
+                bossAttackPoint = 0.3f;
+                break;
             default:
                 break;
         }
@@ -94,6 +102,9 @@ public class BossBehavior : MonoBehaviour
                 case "Orc":
                     CallOrcTrack();
                     break;
+                case "Rebo":
+                    CallReboTrack();
+                    break;
                 default:
                     break;
             }
@@ -115,10 +126,15 @@ public class BossBehavior : MonoBehaviour
         if(transform.position == moveDest){
             moving = false;
             bossAnimator.SetBool("isMove", false);
-            if(attackWaiting)
+            if(meleeAttackWaiting)
             {  
-                attackWaiting = false;
-                StartCoroutine(CallAttack());
+                meleeAttackWaiting = false;
+                StartCoroutine(CallMeleeAttack());
+            }
+            if(rangeAttackWaiting)
+            {  
+                rangeAttackWaiting = false;
+                StartCoroutine(CallRangeAttack());
             }
             if(retreatWaiting){
                 retreatWaiting = false;
@@ -127,7 +143,7 @@ public class BossBehavior : MonoBehaviour
         }
     }
 
-    IEnumerator CallAttack(){
+    IEnumerator CallMeleeAttack(){
         switch(name)
         {
             case "BigRed":
@@ -154,25 +170,53 @@ public class BossBehavior : MonoBehaviour
                     CallOrcTrack();
                 }
                 break;
+            case "Rebo":
+                yield return new WaitForSeconds(bossAttackPoint);
+                bossAnimator.SetTrigger("attack");
+                
+                AlertController.Instance.EndAllAlert();
+
+                if(canHurtPlayer){
+                    PlayerHealth.Instance.TakeDamage(bossMeleeHarm);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    IEnumerator CallRangeAttack(){
+        switch(name)
+        {
+            case "Rebo":
+                yield return new WaitForSeconds(bossAttackPoint);
+                bossAnimator.SetTrigger("attack");
+                
+                AlertController.Instance.EndAllAlert();
+
+                if(canHurtPlayer){
+                    PlayerHealth.Instance.TakeDamage(bossMeleeHarm);
+                }
+                break;
             default:
                 break;
         }
     }
 
     IEnumerator CallRetreat(){
-        switch(name)
-        {
-            case "BigRed":
-                yield return new WaitForSeconds(1f);
-                CallBigRedRetreat();
-                break;
-            case "Orc":
-                yield return new WaitForSeconds(1f);
-                CallOrcRetreat();
-                break;
-            default:
-                break;
-        }
+        yield return new WaitForSeconds(1f);
+
+        attackingLine = playerMovement.GetYPos();
+        moveDestY = bossYArr[attackingLine];
+        moveDest = new Vector3(bossX, moveDestY, 0);
+
+        SetLocalScale();
+
+        moving = true;
+        meleeAttackWaiting = false;
+        retreatWaiting = false;
+
+        bossAnimator.SetBool("isMove", true);
     }
 
     public void Freeze()
@@ -228,27 +272,12 @@ public class BossBehavior : MonoBehaviour
         SetLocalScale();
 
         moving = true;
-        attackWaiting = true;
+        meleeAttackWaiting = true;
         retreatWaiting = true;
 
         bossAnimator.SetBool("isMove", true);
 
         AlertController.Instance.StartAlert(attackingLine);
-    }
-
-    void CallBigRedRetreat()
-    {
-        attackingLine = playerMovement.GetYPos();
-        moveDestY = bossYArr[attackingLine];
-        moveDest = new Vector3(bossX, moveDestY, 0);
-
-        SetLocalScale();
-
-        moving = true;
-        attackWaiting = false;
-        retreatWaiting = false;
-
-        bossAnimator.SetBool("isMove", true);
     }
 
     /***********************************
@@ -263,7 +292,7 @@ public class BossBehavior : MonoBehaviour
         SetLocalScale();
 
         moving = true;
-        attackWaiting = true;
+        meleeAttackWaiting = true;
         if(attackCounter%2==0){
             retreatWaiting = false;
         }else{
@@ -276,19 +305,24 @@ public class BossBehavior : MonoBehaviour
         AlertController.Instance.StartAlert(attackingLine);
     }
 
-    void CallOrcRetreat()
+    /***********************************
+    **          Boss: Rebo          **
+    ************************************/
+    void CallReboTrack()
     {
         attackingLine = playerMovement.GetYPos();
         moveDestY = bossYArr[attackingLine];
-        moveDest = new Vector3(bossX, moveDestY, 0);
+        moveDest = new Vector3(playerX, moveDestY, 0);
 
         SetLocalScale();
 
         moving = true;
-        attackWaiting = false;
-        retreatWaiting = false;
+        meleeAttackWaiting = true;
+        retreatWaiting = true;
 
         bossAnimator.SetBool("isMove", true);
+
+        AlertController.Instance.StartAlert(attackingLine);
     }
     
     // // Line Index from top to bottom: 0, 1, 2, 3
@@ -354,7 +388,7 @@ public class BossBehavior : MonoBehaviour
                 
     //             StartAlert((attackingLine + 3) % 4);
     //             yield return new WaitForSeconds(1.2f);
-    //             _newBullet = Instantiate(bandit, new Vector3(6, pos2, 0), Quaternion.identity);
+    //             _newBullet = Instantiate(missile, new Vector3(6, pos2, 0), Quaternion.identity);
     //             Destroy(_newBullet, 2f);
     //             EndAlert((attackingLine + 3) % 4);
                 
@@ -362,14 +396,14 @@ public class BossBehavior : MonoBehaviour
                 
     //             StartAlert((attackingLine + 1) % 4);
     //             yield return new WaitForSeconds(1.2f);
-    //             _newBullet = Instantiate(bandit, new Vector3(6, pos3, 0), Quaternion.identity);
+    //             _newBullet = Instantiate(missile, new Vector3(6, pos3, 0), Quaternion.identity);
     //             Destroy(_newBullet, 2f);
     //             EndAlert((attackingLine + 1) % 4);
     //             break;
     //         default:
     //             StartAlert(attackingLine);
     //             yield return new WaitForSeconds(1.2f);
-    //             _newBullet = Instantiate(bandit, new Vector3(6, pos1, 0), Quaternion.identity);
+    //             _newBullet = Instantiate(missile, new Vector3(6, pos1, 0), Quaternion.identity);
     //             Destroy(_newBullet, 2f);
     //             EndAlert(attackingLine);
                 
@@ -377,7 +411,7 @@ public class BossBehavior : MonoBehaviour
                 
     //             StartAlert((attackingLine + 3) % 4);
     //             yield return new WaitForSeconds(1.2f);
-    //             _newBullet = Instantiate(bandit, new Vector3(6, pos2, 0), Quaternion.identity);
+    //             _newBullet = Instantiate(missile, new Vector3(6, pos2, 0), Quaternion.identity);
     //             Destroy(_newBullet, 2f);
     //             EndAlert((attackingLine + 3) % 4);
                 
@@ -385,7 +419,7 @@ public class BossBehavior : MonoBehaviour
                 
     //             StartAlert((attackingLine + 1) % 4);
     //             yield return new WaitForSeconds(1.2f);
-    //             _newBullet = Instantiate(bandit, new Vector3(6, pos3, 0), Quaternion.identity);
+    //             _newBullet = Instantiate(missile, new Vector3(6, pos3, 0), Quaternion.identity);
     //             Destroy(_newBullet, 2f);
     //             EndAlert((attackingLine + 1) % 4);
     //             break;
@@ -398,7 +432,7 @@ public class BossBehavior : MonoBehaviour
     {
         bossAttackPeriod *= 0.9f;
         laserHarm = (int)(laserHarm*1.5f);
-        banditHarm = (int)(banditHarm*1.5f);
+        missileHarm = (int)(missileHarm*1.5f);
         BossUI.Instance.originalColor = Color.black;
     }
 

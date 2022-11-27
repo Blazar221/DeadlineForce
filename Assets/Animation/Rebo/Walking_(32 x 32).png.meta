@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cc0cb52896e73aa4cad69125cd9be2e4
+guid: 366894f3d23a3744298fbe3974603305
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,169 +116,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: attack_0
+      name: Walking_(32 x 32)_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 24
-        width: 41
-        height: 40
-      alignment: 9
-      pivot: {x: 0.7, y: 0}
+        x: 5
+        y: 0
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1faa327852a7324ca1ce74c793fe8a2
-      internalID: 1462874997
+      spriteID: 05c1b0599eba4404bb09b5fbbdfa3980
+      internalID: 160740829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack_9
+      name: Walking_(32 x 32)_1
       rect:
         serializedVersion: 2
-        x: 329
-        y: 11
-        width: 40
-        height: 33
-      alignment: 9
-      pivot: {x: 0.3, y: 0.4}
+        x: 38
+        y: 0
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9fe7921b7aa04940b342682878a5496
-      internalID: -1618543776
+      spriteID: d51f5ea4bf02db744b86a1a8f2c20132
+      internalID: 58642361
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack_10
+      name: Walking_(32 x 32)_2
       rect:
         serializedVersion: 2
-        x: 386
-        y: 9
-        width: 38
-        height: 35
-      alignment: 9
-      pivot: {x: 0.4, y: 0.45}
+        x: 70
+        y: 0
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d1348c8fe5821c4794732259f536df4
-      internalID: 1552376097
+      spriteID: 4ad9881405d4dc143bdae903df813374
+      internalID: -826295642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack_11
+      name: Walking_(32 x 32)_3
       rect:
         serializedVersion: 2
-        x: 432
-        y: 8
-        width: 30
-        height: 36
-      alignment: 9
-      pivot: {x: 0.5, y: 0.46}
+        x: 101
+        y: 0
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdf7faa64ce96714a9964c4dba0bb564
-      internalID: -990826666
+      spriteID: 16ef598b88ab3084298773417013bd6e
+      internalID: 1970617232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack_12
+      name: Walking_(32 x 32)_4
       rect:
         serializedVersion: 2
-        x: 73
-        y: 24
-        width: 34
-        height: 34
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
+        x: 132
+        y: 0
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6053255bc04f854ebb78ba733ce1734
-      internalID: 1025563240
+      spriteID: 8a2eb72006b66c34489aaab70c18af87
+      internalID: -1041263844
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack_1
+      name: Walking_(32 x 32)_5
       rect:
         serializedVersion: 2
-        x: 126
-        y: 24
-        width: 38
-        height: 36
-      alignment: 9
-      pivot: {x: 0.3, y: 0}
+        x: 164
+        y: 0
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e8d201aa55f08148a232739a16b616b
-      internalID: -1051918947
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attack_2
-      rect:
-        serializedVersion: 2
-        x: 179
-        y: 12
-        width: 63
-        height: 48
-      alignment: 9
-      pivot: {x: 0.2, y: 0.26}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9de24e1b2d3d7534581a7cd2961912ea
-      internalID: -1181967873
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attack_3
-      rect:
-        serializedVersion: 2
-        x: 253
-        y: 11
-        width: 66
-        height: 49
-      alignment: 9
-      pivot: {x: 0.2, y: 0.26}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf36318243a6af547813040d496d33cd
-      internalID: 781673607
+      spriteID: 486eac38bbd9a464ea0af09b1d1c47fb
+      internalID: 967604312
       vertices: []
       indices: 
       edges: []
@@ -294,19 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      attack_4: -1160347042
-      attack_10: 1552376097
-      attack_2: -1181967873
-      attack_12: -2049115487
-      attack_7: 871712708
-      attack_6: 1153400921
-      attack_9: -1618543776
-      attack_1: -1051918947
-      attack_5: 441166655
-      attack_3: 781673607
-      attack_11: -990826666
-      attack_8: -1260569229
-      attack_0: 1462874997
+      Walking_(32 x 32)_4: -1041263844
+      Walking_(32 x 32)_2: -826295642
+      Walking_(32 x 32)_1: 58642361
+      Walking_(32 x 32)_3: 1970617232
+      Walking_(32 x 32)_5: 967604312
+      Walking_(32 x 32)_0: 160740829
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

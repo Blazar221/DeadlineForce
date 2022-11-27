@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fa8539554a54d884ca8f5d463ed98fef
+guid: 92cb56c322485f442935f80e1810ca51
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,211 +116,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: damage_0
+      name: Spin-attack_(32 x 32)_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 9
-        width: 38
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 4
+        y: 0
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a4a74ae3fefdd942baf46e36643322d
-      internalID: 605911672
+      spriteID: 100bdb1cab4e13b428c727cb0f934b4d
+      internalID: -609865659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: damage_1
+      name: Spin-attack_(32 x 32)_1
       rect:
         serializedVersion: 2
-        x: 56
-        y: 9
-        width: 29
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 36
+        y: 0
+        width: 23
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02531f00fb7b9ba458d62ae81e47e93e
-      internalID: -1274113921
+      spriteID: 485909442b975e54baf4103003bc5206
+      internalID: 1175946769
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: damage_2
+      name: Spin-attack_(32 x 32)_2
       rect:
         serializedVersion: 2
-        x: 97
-        y: 9
-        width: 29
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 69
+        y: 0
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1b2208264b41a34998ab03ec48b4062
-      internalID: -667842208
+      spriteID: 8ee28100f05d89e4a88a0989e794e1ec
+      internalID: 1578407715
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: damage_3
+      name: Spin-attack_(32 x 32)_3
       rect:
         serializedVersion: 2
-        x: 139
-        y: 9
-        width: 29
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 101
+        y: 0
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d28c1862a082eca4fa3b429d15d5314c
-      internalID: 300121977
+      spriteID: 01bb302d7b6f4f44d99f6fa92c66c468
+      internalID: -1023816404
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: damage_4
+      name: Spin-attack_(32 x 32)_4
       rect:
         serializedVersion: 2
-        x: 183
-        y: 9
-        width: 29
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 133
+        y: 0
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a51c90dc08bf104795fb0440ac8e0ca
-      internalID: -904226073
+      spriteID: 30be090ba3fcb8e4ca3b7f93d7952798
+      internalID: 76021548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: damage_5
+      name: Spin-attack_(32 x 32)_5
       rect:
         serializedVersion: 2
-        x: 224
-        y: 9
-        width: 29
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 166
+        y: 0
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e15d9d5bd784d614999a9235e567f86f
-      internalID: 1781452848
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: damage_6
-      rect:
-        serializedVersion: 2
-        x: 266
-        y: 9
-        width: 30
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ff0d0a06aeb5569408c279573cbfe7d3
-      internalID: 1330529602
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: damage_7
-      rect:
-        serializedVersion: 2
-        x: 303
-        y: 9
-        width: 29
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a3755a76544b5a418313a0f1b2b9605
-      internalID: -1993021799
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: damage_8
-      rect:
-        serializedVersion: 2
-        x: 340
-        y: 9
-        width: 29
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8ebdc08cc037abe4a8f4a7b46e184289
-      internalID: -1757223040
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: damage_9
-      rect:
-        serializedVersion: 2
-        x: 376
-        y: 9
-        width: 29
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6d734cea325750845ae485a181607274
-      internalID: 1419761108
+      spriteID: 7fda5a8030964594b8d9afab095d869a
+      internalID: -327229033
       vertices: []
       indices: 
       edges: []
@@ -336,16 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      damage_7: -1993021799
-      damage_9: 1419761108
-      damage_3: 300121977
-      damage_4: -904226073
-      damage_1: -1274113921
-      damage_5: 1781452848
-      damage_0: 605911672
-      damage_6: 1330529602
-      damage_8: -1757223040
-      damage_2: -667842208
+      Spin-attack_(32 x 32)_5: -327229033
+      Spin-attack_(32 x 32)_2: 1578407715
+      Spin-attack_(32 x 32)_0: -609865659
+      Spin-attack_(32 x 32)_1: 1175946769
+      Spin-attack_(32 x 32)_3: -1023816404
+      Spin-attack_(32 x 32)_4: 76021548
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

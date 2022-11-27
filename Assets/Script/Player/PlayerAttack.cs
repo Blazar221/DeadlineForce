@@ -95,6 +95,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
 		{
             missFood = false;
+            Debug.Log("press");
             animator.SetBool("isEating",true);
             nextTime = Time.time + 0.1f; //Eating time lasts for 0.1s
             if (canGetSingleScore){
@@ -288,7 +289,7 @@ public class PlayerAttack : MonoBehaviour
         if(collision.gameObject.tag == "Bandit")
         {
             if (missMine){
-                Collide(_bossHandler.banditHarm);
+                Collide(20);
             }
             toHit = null;
             canAvoidDamage = false;

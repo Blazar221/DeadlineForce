@@ -12,8 +12,8 @@ TagManager:
   - OriginalPlatForm
   - Laser
   - GravSwitch
-  - Bandit
   - Note
+  - Bandit
   layers:
   - Default
   - TransparentFX
