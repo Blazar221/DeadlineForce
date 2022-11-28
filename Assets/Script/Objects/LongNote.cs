@@ -5,7 +5,8 @@ using UnityEngine;
 public class LongNote : MonoBehaviour
 {
     [SerializeField] public float height;
-    
+    public GameObject leftEnd;
+    public GameObject rightEnd;
     public float speed;
 
     private GameObject player;
@@ -51,6 +52,9 @@ public class LongNote : MonoBehaviour
 
         lineRenderer.SetPosition(0, pos1);
         lineRenderer.SetPosition(1, pos2);
+
+        leftEnd.transform.position = new Vector3(pos1.x, pos1.y, 0);
+        rightEnd.transform.position = new Vector3(pos2.x, pos2.y, 0);
 
         boxCollider = GetComponent<BoxCollider2D>();
         boxCollider.size = new Vector3(length+preCheckLength, height);
