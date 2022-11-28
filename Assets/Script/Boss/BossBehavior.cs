@@ -16,6 +16,7 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] private GameObject laser;
     [SerializeField] private GameObject trackingMissile;
     [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject arcaneBall;
 
     public int laserHarm = 20, trackingMissileHarm = 10;
     
@@ -35,7 +36,7 @@ public class BossBehavior : MonoBehaviour
     
     bool startStruggle = false;
     // Boss Unique Data
-    private float[] bossYArr;
+    private float[] bossYArr = {3.77f, 1.81f, -1.55f, -3.53f};
     private float bossMoveSpeed;
     private float bossAttackPeriod;
     private int bossMeleeHarm;
@@ -54,32 +55,35 @@ public class BossBehavior : MonoBehaviour
         switch(name)
         {
             case "BigRed":
-                bossYArr = new float[]{3.77f, 1.81f, -1.55f, -3.53f};
                 bossMoveSpeed = 0.3f;
                 bossAttackPeriod = 8f;
                 bossMeleeHarm = 20;
                 bossAttackPoint = 0.0f;
                 break;
             case "Orc":
-                bossYArr = new float[]{3.77f, 1.81f, -1.55f, -3.53f};
                 bossMoveSpeed = 0.3f;
                 bossAttackPeriod = 7f;
                 bossMeleeHarm = 20;
                 bossAttackPoint = 0.3f;
                 break;
             case "Rebo":
-                bossYArr = new float[]{3.77f, 1.81f, -1.55f, -3.53f};
                 bossMoveSpeed = 0.3f;
                 bossAttackPeriod = 7f;
                 bossMeleeHarm = 20;
                 bossAttackPoint = 0.0f;
                 break;
             case "Tank":
-                bossYArr = new float[]{3.77f, 1.81f, -1.55f, -3.53f};
                 bossMoveSpeed = 0.3f;
                 bossAttackPeriod = 6f;
                 bossMeleeHarm = 0;
                 bossAttackPoint = 0.0f;
+                bossX = 7;
+                break;
+            case "Lil":
+                bossMoveSpeed = 0.3f;
+                bossAttackPeriod = 6f;
+                bossMeleeHarm = 0;
+                bossAttackPoint = 2f;
                 bossX = 7;
                 break;
             default:
@@ -114,6 +118,9 @@ public class BossBehavior : MonoBehaviour
                     break;
                 case "Tank":
                     CallTankTrack();
+                    break;
+                case "Lil":
+                    CallLilTrack();
                     break;
                 default:
                     break;
@@ -233,6 +240,27 @@ public class BossBehavior : MonoBehaviour
                         blt.SetMidTarget(new Vector3(5, bossYArr[yArr[i]], 0));
 
                         blt.SetAlertLine(yArr[i]);
+                    }
+                }
+                break;
+            case "Lil":
+                bossAnimator.SetTrigger("attack");
+                if(attackCounter%2==0)
+                {
+                    StartCoroutine(LaserAttack());
+                }
+                else
+                {
+                    for(int i = 0; i < 4; i++)
+                    {
+                        AlertController.Instance.StartAlert(i);
+                        
+                        Vector3 spawnedPosition = new Vector3(bossX + (attackingLine + i)%4, bossYArr[i], 0);
+                        GameObject arcaneBallX = Instantiate(arcaneBall, spawnedPosition, Quaternion.identity);
+                        Bullet blt = arcaneBallX.GetComponent<Bullet>();
+                        blt.SetMidTarget(new Vector3(5, bossYArr[i], 0));
+
+                        blt.SetAlertLine(i);
                     }
                 }
                 break;
@@ -387,6 +415,57 @@ public class BossBehavior : MonoBehaviour
         attackCounter += 1;
 
         bossAnimator.SetBool("isMove", true);
+    }
+    /***********************************
+    **          Boss: Lil          **
+    ************************************/
+    void CallLilTrack()
+    {
+        attackingLine = playerMovement.GetYPos();
+        moveDestY = bossYArr[attackingLine];
+        moveDest = new Vector3(bossX, moveDestY, 0);
+        
+        SetLocalScale();
+
+        moving = true;
+        meleeAttackWaiting = false;
+        rangeAttackWaiting = true;
+        retreatWaiting = false;
+
+        attackCounter += 1;
+
+        bossAnimator.SetBool("isMove", true);
+    }
+
+    IEnumerator LaserAttack()
+    {
+        if(attackingLine < 2)
+        {
+            AlertController.Instance.StartAlert(0);
+            AlertController.Instance.StartAlert(1);
+        }
+        else{
+            AlertController.Instance.StartAlert(2);
+            AlertController.Instance.StartAlert(3);
+        }
+        yield return new WaitForSeconds(bossAttackPoint);
+        GameObject laser1;
+        GameObject laser2;
+        if(attackingLine < 2)
+        {
+            laser1 = Instantiate(laser, new Vector3(-4, bossYArr[0], 0), Quaternion.identity);
+            laser2 = Instantiate(laser, new Vector3(-4, bossYArr[1], 0), Quaternion.identity);
+            laser1.GetComponent<Laser>().SetAlertLine(0);
+            laser2.GetComponent<Laser>().SetAlertLine(1);
+        }
+        else{
+            laser1 = Instantiate(laser, new Vector3(-4, bossYArr[2], 0), Quaternion.identity);
+            laser2 = Instantiate(laser, new Vector3(-4, bossYArr[3], 0), Quaternion.identity);
+            laser1.GetComponent<Laser>().SetAlertLine(2);
+            laser2.GetComponent<Laser>().SetAlertLine(3);
+        }
+        Destroy(laser1, 3f);
+        Destroy(laser2, 3f);
     }
     
     // // Line Index from top to bottom: 0, 1, 2, 3
