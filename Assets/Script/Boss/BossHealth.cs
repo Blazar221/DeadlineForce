@@ -11,6 +11,7 @@ public class BossHealth : MonoBehaviour
 
     [SerializeField] 
     public int bossHealth = 100;
+    public int maxHealth;
     public SliderBar healthBar;
 
     private Animator bossAnimator;
@@ -21,6 +22,7 @@ public class BossHealth : MonoBehaviour
     {
         Instance = this;
 
+        maxHealth = bossHealth;
         healthBar.SetMaxValue(bossHealth);
 
         bossAnimator = GetComponent<Animator>();
@@ -40,6 +42,10 @@ public class BossHealth : MonoBehaviour
         {
             bossHealth = 0;
             OnBossDeath?.Invoke();
+        }
+        if (bossHealth < maxHealth * 0.35f)
+        {
+            BossBehavior.Instance.Struggle();
         }
     }
 

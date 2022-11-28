@@ -18,7 +18,7 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject arcaneBall;
 
-    public int laserHarm = 20, trackingMissileHarm = 10;
+    [SerializeField] private GameObject fireBg;
     
     private float playerX = -2f;
     private float bossX = 5f;
@@ -285,6 +285,13 @@ public class BossBehavior : MonoBehaviour
         bossAnimator.SetBool("isMove", true);
     }
 
+    public void Struggle()
+    {
+        bossAttackPeriod *= 0.7f;
+        bossMoveSpeed *= 2f;
+        fireBg.SetActive(true);
+    }
+
     public void Freeze()
     {
         bossMoveSpeed /= 10;
@@ -295,10 +302,10 @@ public class BossBehavior : MonoBehaviour
 
     IEnumerator Unfreeze()
     {
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(4f);
         bossMoveSpeed *= 10;
         bossAttackPeriod /=2;
-        BossUI.Instance.SetColor(Color.white);
+        BossUI.Instance.ResetColor();
     }
 
     bool CanHurtPlayer()
@@ -467,128 +474,5 @@ public class BossBehavior : MonoBehaviour
         Destroy(laser1, 3f);
         Destroy(laser2, 3f);
     }
-    
-    // // Line Index from top to bottom: 0, 1, 2, 3
-    // public IEnumerator AutoAttack()
-    // {
 
-    //     while (true)
-    //     {
-    //         yield return new WaitForSeconds(bossAttackPeriod);
-
-    //         attackingLine = playerMovement.GetYPos();
-    //         moveDestY = bossYArr[attackingLine];
-
-    //         if(attackingLine == 0 || attackingLine == 2)
-    //         {
-    //             transform.localScale = new Vector3(originalLocalScale.x, -originalLocalScale.y, originalLocalScale.z);
-    //         }
-    //         else
-    //         {
-    //             transform.localScale = new Vector3(originalLocalScale.x, originalLocalScale.y, originalLocalScale.z);
-    //         }
-
-    //         moveDest = new Vector3(transform.position.x, moveDestY, transform.position.z);
-    //         moving = true;
-    //         bossAnimator.SetBool("isMove", true);
-            
-    //         if (startStruggle == false && BgmController.instance.songPosition > struggleStartTime)
-    //         {
-    //             Struggle();
-    //             _bossUI.StruggleColor();
-    //             startStruggle = true;
-    //         }
-    //     }
-    // }
-    
-    // public void Attack()
-    // {
-    //     switch(name){
-    //         case "BigRed":
-    //             CallBigRedAttack();
-    //             break;
-    //         default:
-    //             break;
-    //     }
-    //     // StartCoroutine(SpawnAttack());
-    // }
-    
-    // IEnumerator SpawnAttack()
-    // {
-    //     float pos1 = LineIndToPos(attackingLine),
-    //         pos2 = LineIndToPos((attackingLine + 3) % 4),
-    //         pos3 = LineIndToPos((attackingLine + 1) % 4);
-    //     switch (attackCounter)
-    //     {
-    //         case 0:
-    //             StartAlert(attackingLine);
-    //             yield return new WaitForSeconds(1.2f);
-    //             newItem = Instantiate(laser, new Vector3(-4, pos1, 0), Quaternion.identity);
-    //             Destroy(newItem, 1f);
-    //             EndAlert(attackingLine);
-                
-    //             yield return new WaitForSeconds(0.3f);
-                
-    //             StartAlert((attackingLine + 3) % 4);
-    //             yield return new WaitForSeconds(1.2f);
-    //             newItem = Instantiate(trackingMissile, new Vector3(6, pos2, 0), Quaternion.identity);
-    //             Destroy(newItem, 2f);
-    //             EndAlert((attackingLine + 3) % 4);
-                
-    //             yield return new WaitForSeconds(0.3f);
-                
-    //             StartAlert((attackingLine + 1) % 4);
-    //             yield return new WaitForSeconds(1.2f);
-    //             newItem = Instantiate(trackingMissile, new Vector3(6, pos3, 0), Quaternion.identity);
-    //             Destroy(newItem, 2f);
-    //             EndAlert((attackingLine + 1) % 4);
-    //             break;
-    //         default:
-    //             StartAlert(attackingLine);
-    //             yield return new WaitForSeconds(1.2f);
-    //             newItem = Instantiate(trackingMissile, new Vector3(6, pos1, 0), Quaternion.identity);
-    //             Destroy(newItem, 2f);
-    //             EndAlert(attackingLine);
-                
-    //             yield return new WaitForSeconds(0.3f);
-                
-    //             StartAlert((attackingLine + 3) % 4);
-    //             yield return new WaitForSeconds(1.2f);
-    //             newItem = Instantiate(trackingMissile, new Vector3(6, pos2, 0), Quaternion.identity);
-    //             Destroy(newItem, 2f);
-    //             EndAlert((attackingLine + 3) % 4);
-                
-    //             yield return new WaitForSeconds(0.3f);
-                
-    //             StartAlert((attackingLine + 1) % 4);
-    //             yield return new WaitForSeconds(1.2f);
-    //             newItem = Instantiate(trackingMissile, new Vector3(6, pos3, 0), Quaternion.identity);
-    //             Destroy(newItem, 2f);
-    //             EndAlert((attackingLine + 1) % 4);
-    //             break;
-    //             ;
-    //     }
-    //     attackCounter = (attackCounter + 1)%3;
-    // }
-
-    public void Struggle()
-    {
-        bossAttackPeriod *= 0.9f;
-        laserHarm = (int)(laserHarm*1.5f);
-        trackingMissileHarm = (int)(trackingMissileHarm*1.5f);
-        BossUI.Instance.originalColor = Color.black;
-    }
-
-    float LineIndToPos(int ind)
-    {
-        var yPos = ind switch
-        {
-            0 => 4.2f,
-            1 => 1.25f,
-            2 => -1.25f,
-            3 => -4.2f,
-            _ => 0,
-        };
-        return yPos;
-    }
 }

@@ -55,7 +55,7 @@ public class BossUI : MonoBehaviour
         SetColor(new Color(253f/255f, 150f/255f, 9f/255f));
     }
 
-    void ResetColor()
+    public void ResetColor()
     {
         SetColor(originalColor);
     }
