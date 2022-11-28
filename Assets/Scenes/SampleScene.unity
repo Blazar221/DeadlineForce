@@ -488,7 +488,7 @@ SpriteRenderer:
   m_Size: {x: 0.24, y: 0.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &23490014
@@ -3505,7 +3505,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.27, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5359,9 +5359,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 6688004811162054379, guid: 6f3bf51229f147047a094637825a9436, type: 3}
-  missile: {fileID: 0}
+  trackingMissile: {fileID: 0}
+  bullet: {fileID: 0}
   laserHarm: 10
-  missileHarm: 10
+  trackingMissileHarm: 10
 --- !u!114 &861681733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6328,7 +6329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1122339371
 Transform:
   m_ObjectHideFlags: 0
@@ -6372,9 +6373,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 6688004811162054379, guid: 6f3bf51229f147047a094637825a9436, type: 3}
-  missile: {fileID: 2425594156374542513, guid: 28777205d87fb1e4a8eb462b7e0b6b70, type: 3}
+  trackingMissile: {fileID: 2425594156374542513, guid: 28777205d87fb1e4a8eb462b7e0b6b70, type: 3}
+  bullet: {fileID: 4589596789252621170, guid: 44262a1ae0b7b4b4981227cf351ae95b, type: 3}
   laserHarm: 10
-  missileHarm: 10
+  trackingMissileHarm: 10
 --- !u!114 &1122339374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7895,7 +7897,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.27, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10931,7 +10933,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1872639271
 Transform:
   m_ObjectHideFlags: 0
@@ -11047,9 +11049,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 6688004811162054379, guid: 6f3bf51229f147047a094637825a9436, type: 3}
-  missile: {fileID: 2425594156374542513, guid: 28777205d87fb1e4a8eb462b7e0b6b70, type: 3}
+  trackingMissile: {fileID: 2425594156374542513, guid: 28777205d87fb1e4a8eb462b7e0b6b70, type: 3}
+  bullet: {fileID: 0}
   laserHarm: 10
-  missileHarm: 10
+  trackingMissileHarm: 10
 --- !u!114 &1872639277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11838,9 +11841,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 6688004811162054379, guid: 6f3bf51229f147047a094637825a9436, type: 3}
-  missile: {fileID: 0}
+  trackingMissile: {fileID: 0}
+  bullet: {fileID: 0}
   laserHarm: 10
-  missileHarm: 10
+  trackingMissileHarm: 10
 --- !u!114 &1998834981
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,9 +14,10 @@ public class BossBehavior : MonoBehaviour
     private Animator bossAnimator;
 
     [SerializeField] private GameObject laser;
-    [SerializeField] private GameObject missile;
+    [SerializeField] private GameObject trackingMissile;
+    [SerializeField] private GameObject bullet;
 
-    public int laserHarm = 20, missileHarm = 10;
+    public int laserHarm = 20, trackingMissileHarm = 10;
     
     private float playerX = -2f;
     private float bossX = 5f;
@@ -72,6 +73,14 @@ public class BossBehavior : MonoBehaviour
                 bossAttackPeriod = 7f;
                 bossMeleeHarm = 20;
                 bossAttackPoint = 0.0f;
+                break;
+            case "Tank":
+                bossYArr = new float[]{3.77f, 1.81f, -1.55f, -3.53f};
+                bossMoveSpeed = 0.3f;
+                bossAttackPeriod = 6f;
+                bossMeleeHarm = 0;
+                bossAttackPoint = 0.0f;
+                bossX = 7;
                 break;
             default:
                 break;
@@ -190,10 +199,42 @@ public class BossBehavior : MonoBehaviour
         switch(name)
         {
             case "Rebo":
-                Instantiate(missile, BossUI.Instance.transform.position, Quaternion.identity);
+                Instantiate(trackingMissile, BossUI.Instance.transform.position, Quaternion.identity);
                 break;
             case "Tank":
-                Instantiate(missile, new Vector3(bossX, bossYArr[attackingLine], 0), Quaternion.identity);
+                int[] yArr;
+                if(attackCounter%2==0)
+                {
+                    AlertController.Instance.StartAlert(attackingLine);
+                    for(int i = 0; i < 5; i++)
+                    {
+                        Vector3 bossPos = BossUI.Instance.transform.position;
+                        Vector3 spawnedPosition = new Vector3(bossPos.x + i, bossYArr[attackingLine], 0);
+                        GameObject bulletX = Instantiate(bullet, spawnedPosition, Quaternion.identity);
+                        Bullet blt = bulletX.GetComponent<Bullet>();
+                        blt.SetMidTarget(new Vector3(-1, bossYArr[attackingLine], 0));
+
+                        if(i == 4)
+                        {
+                            blt.SetAlertLine(attackingLine);
+                        }
+                    }
+                }
+                else
+                {
+                    yArr = new int[]{attackingLine, (attackingLine+1)%4, (attackingLine+3)%4};
+                    for(int i = 0; i < 3; i++)
+                    {
+                        AlertController.Instance.StartAlert(yArr[i]);
+                        
+                        Vector3 spawnedPosition = new Vector3(bossX, bossYArr[attackingLine], 0);
+                        GameObject bulletX = Instantiate(bullet, spawnedPosition, Quaternion.identity);
+                        Bullet blt = bulletX.GetComponent<Bullet>();
+                        blt.SetMidTarget(new Vector3(5, bossYArr[yArr[i]], 0));
+
+                        blt.SetAlertLine(yArr[i]);
+                    }
+                }
                 break;
             default:
                 break;
@@ -300,27 +341,28 @@ public class BossBehavior : MonoBehaviour
     ************************************/
     void CallReboTrack()
     {
-        attackingLine = playerMovement.GetYPos();
-        moveDestY = bossYArr[attackingLine];
-
-        SetLocalScale();
-
-        moving = true;
         // Melee Attack
         if(attackCounter%2==0)
         {
+            attackingLine = playerMovement.GetYPos();
+            moveDestY = bossYArr[attackingLine];
+            moveDest = new Vector3(playerX, moveDestY, 0);
+
+            SetLocalScale();
+
+            moving = true;
             meleeAttackWaiting = true;
             rangeAttackWaiting = false;
             retreatWaiting = true;
-            moveDest = new Vector3(playerX, moveDestY, 0);
             AlertController.Instance.StartAlert(attackingLine);
         }
         else
         // Range Attack
         {
+            moving = true;
             meleeAttackWaiting = false;
             rangeAttackWaiting = true;
-            retreatWaiting = true;
+            retreatWaiting = false;
         }
         attackCounter += 1;
 
@@ -333,15 +375,15 @@ public class BossBehavior : MonoBehaviour
     {
         attackingLine = playerMovement.GetYPos();
         moveDestY = bossYArr[attackingLine];
-
+        moveDest = new Vector3(bossX, moveDestY, 0);
+        
         SetLocalScale();
 
-        moving = true;        
+        moving = true;
         meleeAttackWaiting = false;
         rangeAttackWaiting = true;
         retreatWaiting = false;
-        moveDest = new Vector3(bossX, moveDestY, 0);
-        
+
         attackCounter += 1;
 
         bossAnimator.SetBool("isMove", true);
@@ -410,7 +452,7 @@ public class BossBehavior : MonoBehaviour
                 
     //             StartAlert((attackingLine + 3) % 4);
     //             yield return new WaitForSeconds(1.2f);
-    //             newItem = Instantiate(missile, new Vector3(6, pos2, 0), Quaternion.identity);
+    //             newItem = Instantiate(trackingMissile, new Vector3(6, pos2, 0), Quaternion.identity);
     //             Destroy(newItem, 2f);
     //             EndAlert((attackingLine + 3) % 4);
                 
@@ -418,14 +460,14 @@ public class BossBehavior : MonoBehaviour
                 
     //             StartAlert((attackingLine + 1) % 4);
     //             yield return new WaitForSeconds(1.2f);
-    //             newItem = Instantiate(missile, new Vector3(6, pos3, 0), Quaternion.identity);
+    //             newItem = Instantiate(trackingMissile, new Vector3(6, pos3, 0), Quaternion.identity);
     //             Destroy(newItem, 2f);
     //             EndAlert((attackingLine + 1) % 4);
     //             break;
     //         default:
     //             StartAlert(attackingLine);
     //             yield return new WaitForSeconds(1.2f);
-    //             newItem = Instantiate(missile, new Vector3(6, pos1, 0), Quaternion.identity);
+    //             newItem = Instantiate(trackingMissile, new Vector3(6, pos1, 0), Quaternion.identity);
     //             Destroy(newItem, 2f);
     //             EndAlert(attackingLine);
                 
@@ -433,7 +475,7 @@ public class BossBehavior : MonoBehaviour
                 
     //             StartAlert((attackingLine + 3) % 4);
     //             yield return new WaitForSeconds(1.2f);
-    //             newItem = Instantiate(missile, new Vector3(6, pos2, 0), Quaternion.identity);
+    //             newItem = Instantiate(trackingMissile, new Vector3(6, pos2, 0), Quaternion.identity);
     //             Destroy(newItem, 2f);
     //             EndAlert((attackingLine + 3) % 4);
                 
@@ -441,7 +483,7 @@ public class BossBehavior : MonoBehaviour
                 
     //             StartAlert((attackingLine + 1) % 4);
     //             yield return new WaitForSeconds(1.2f);
-    //             newItem = Instantiate(missile, new Vector3(6, pos3, 0), Quaternion.identity);
+    //             newItem = Instantiate(trackingMissile, new Vector3(6, pos3, 0), Quaternion.identity);
     //             Destroy(newItem, 2f);
     //             EndAlert((attackingLine + 1) % 4);
     //             break;
@@ -454,7 +496,7 @@ public class BossBehavior : MonoBehaviour
     {
         bossAttackPeriod *= 0.9f;
         laserHarm = (int)(laserHarm*1.5f);
-        missileHarm = (int)(missileHarm*1.5f);
+        trackingMissileHarm = (int)(trackingMissileHarm*1.5f);
         BossUI.Instance.originalColor = Color.black;
     }
 
