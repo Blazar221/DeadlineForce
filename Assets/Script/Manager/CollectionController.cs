@@ -45,7 +45,7 @@ public class CollectionController : MonoBehaviour
     {
         if (fireCount >= singleLimit && grassCount >= singleLimit && waterCount >= singleLimit && rockCount >= singleLimit)
         {
-            NoteShooter.Instance.Shoot();
+            AttackShooter.Instance.ShootRainbow();
 
             originalPlayerAttack.CallAttack();
 

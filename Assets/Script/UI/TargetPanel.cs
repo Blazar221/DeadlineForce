@@ -203,7 +203,7 @@ public class TargetPanel : MonoBehaviour
                             // SkillController.Instance.CallCloneSkill();
                             break;
                         case ItemType.Freeze:
-                            SkillController.Instance.CallFreezeSkill();
+                            AttackShooter.Instance.ShootIce();
                             break;
                         case ItemType.Common:
                             // if (color == _red){
@@ -217,7 +217,7 @@ public class TargetPanel : MonoBehaviour
                             // } else {
                             //     NoteShooter.Instance.Shoot();
                             // }
-                            BossHealth.Instance.TakeDamage(patternDamage);
+                            AttackShooter.Instance.ShootFire();
                             break;
                     }
                     UpdateAnalytics(objL);
