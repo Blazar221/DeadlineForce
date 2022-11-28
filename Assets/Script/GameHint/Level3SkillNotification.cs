@@ -11,12 +11,15 @@ public class Level3SkillNotification : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI SkillInstruction;
     [SerializeField] private TextMeshProUGUI PressEnterInstruction;
+    [SerializeField] private Image Box;
     // [SerializeField] private UnityEngine.Rendering.Universal.Light2D GlobalLight;
     // [SerializeField] private UnityEngine.Rendering.Universal.Light2D TargetPanelSpotLight;
      void Start()
     {
         SkillInstruction.enabled = false;
         PressEnterInstruction.enabled = false;
+        Box.enabled=false;
+        
     }
 
     // Update is called once per frame
@@ -29,14 +32,16 @@ public class Level3SkillNotification : MonoBehaviour
             SkillInstruction.enabled = true;
             BgmController.instance.StopBgm();
             AudioListener.pause = true;
+            Box.enabled= true;
             PressEnterInstruction.enabled = true;
         }
 
         if (Input.GetKeyDown(KeyCode.Return)) {
-            SkillInstruction.enabled = false;
+             SkillInstruction.enabled = false;
             PressEnterInstruction.enabled = false;
             BgmController.instance.ContinuePlayBgm();
             AudioListener.pause = false;
+            Box.enabled=false;
             BgmController.instance.songPosition=0.0f;
             PlayerPrefs.SetInt("Level3opened",1);
             Time.timeScale = 1f;

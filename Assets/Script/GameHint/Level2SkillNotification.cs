@@ -11,12 +11,15 @@ public class Level2SkillNotification : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI SkillInstruction;
     [SerializeField] private TextMeshProUGUI PressEnterInstruction;
+    [SerializeField] private Image Box;
     // [SerializeField] private UnityEngine.Rendering.Universal.Light2D GlobalLight;
     // [SerializeField] private UnityEngine.Rendering.Universal.Light2D TargetPanelSpotLight;
      void Start()
     {
         SkillInstruction.enabled = false;
         PressEnterInstruction.enabled = false;
+        Box.enabled=false;
+       
     }
 
     // Update is called once per frame
@@ -29,6 +32,7 @@ public class Level2SkillNotification : MonoBehaviour
             SkillInstruction.enabled = true;
             BgmController.instance.StopBgm();
             AudioListener.pause = true;
+            Box.enabled= true;
             PressEnterInstruction.enabled = true;
         }
 
@@ -37,6 +41,7 @@ public class Level2SkillNotification : MonoBehaviour
             PressEnterInstruction.enabled = false;
             BgmController.instance.ContinuePlayBgm();
             AudioListener.pause = false;
+            Box.enabled=false;
             BgmController.instance.songPosition=0.0f;
             PlayerPrefs.SetInt("Level2opened",1);
             Time.timeScale = 1f;
