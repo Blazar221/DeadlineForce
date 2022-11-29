@@ -19,7 +19,7 @@ public class Level2SkillNotification : MonoBehaviour
         SkillInstruction.enabled = false;
         PressEnterInstruction.enabled = false;
         Box.enabled=false;
-       
+        //PlayerPrefs.DeleteKey("Level2opened");
     }
 
     // Update is called once per frame
