@@ -54,6 +54,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: LongNote
+    uniqueID: 1877400493
+    locked: 0
   - name: Player
     uniqueID: 1158747247
     locked: 0
