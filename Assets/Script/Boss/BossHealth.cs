@@ -14,6 +14,8 @@ public class BossHealth : MonoBehaviour
     public int maxHealth;
     public SliderBar healthBar;
 
+    bool struggle = false;
+
     private Animator bossAnimator;
 
     public static event Action OnBossDeath;
@@ -43,8 +45,9 @@ public class BossHealth : MonoBehaviour
             bossHealth = 0;
             OnBossDeath?.Invoke();
         }
-        if (bossHealth < maxHealth * 0.35f)
+        if (!struggle && bossHealth < maxHealth * 0.35f)
         {
+            struggle = true;
             BossBehavior.Instance.Struggle();
         }
     }

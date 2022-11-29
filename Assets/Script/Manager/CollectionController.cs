@@ -19,9 +19,7 @@ public class CollectionController : MonoBehaviour
     SpriteRenderer waterRenderer;
     SpriteRenderer rockRenderer;
 
-    public int fullDamage = 200;
     public int singleLimit = 5;
-
 
     [SerializeField] public GameObject fireDiamond;
     public SliderBar fireBar;
@@ -97,19 +95,19 @@ public class CollectionController : MonoBehaviour
     
     public void SetGrassAlmostFull()
     {
-        grassCount = 8;
+        grassCount = 4;
         grassBar.SetValue(grassCount);
     }
     
     public void SetWaterAlmostFull()
     {
-        waterCount = 8;
+        waterCount = 4;
         waterBar.SetValue(waterCount);
     }
     
     public void SetRockAlmostFull()
     {
-        rockCount = 8;
+        rockCount = 4;
         rockBar.SetValue(rockCount);
     }
 }
