@@ -6,6 +6,8 @@ public class RainbowBall : MonoBehaviour
 {
     private float speed = 0.25f;
 
+    public int rainbowBallDamage = 80;
+
     private void FixedUpdate()
     {
         Vector3 bossPos = BossUI.Instance.transform.position;
@@ -13,7 +15,7 @@ public class RainbowBall : MonoBehaviour
         float distance = Vector3.Distance(transform.position, bossPos);
         if(distance < 1.2f)
         {
-            BossHealth.Instance.TakeDamage(200);
+            BossHealth.Instance.TakeDamage(rainbowBallDamage);
             Destroy(gameObject);
         }
     }
