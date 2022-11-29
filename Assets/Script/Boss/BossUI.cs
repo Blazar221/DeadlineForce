@@ -15,7 +15,7 @@ public class BossUI : MonoBehaviour
 
     // Damage text
     public GameObject damageText;
-    private Vector3 damageTextOffset = new Vector3(0, 90, 0);
+    private Vector3 damageTextOffset = new Vector3(0, 160, 0);
 
     private bool isFrozen = false;
     
