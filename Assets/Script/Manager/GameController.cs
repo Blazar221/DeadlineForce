@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public static GameController Instance;
 
     private int bossHealth;
+    private int playerHealth;
     [SerializeField]
     private float endTime = 84f;
     private float timeCount = 0f;
@@ -23,11 +24,12 @@ public class GameController : MonoBehaviour
     {
         timeCount += Time.deltaTime;
         bossHealth = BossHealth.Instance.GetBossHealth();
-        if(timeCount > endTime && bossHealth <= 0 && !IsGameEnd())
+        playerHealth = PlayerHealth.Instance.GetPlayerHealth();
+        if(timeCount > endTime && bossHealth <= 0 && playerHealth > 0 && !IsGameEnd())
         {
             gameIsEnd = true;
             EnableCongratsMenu();
-        } else if (timeCount > endTime && bossHealth > 0 && !IsGameEnd())
+        } else if ((timeCount > endTime && bossHealth > 0 && !IsGameEnd()) || playerHealth <= 0)
         {
             gameIsEnd = true;
             EnableGameOverMenu();

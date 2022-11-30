@@ -47,6 +47,10 @@ public class PlayerHealth : MonoBehaviour
         hasShield = false;
     }
 
+    public int GetPlayerHealth()
+    {
+        return currentHealth;
+    }
     // TakeDamage Function
     public void TakeDamage(int damage, bool hasAnim = true)
     {
