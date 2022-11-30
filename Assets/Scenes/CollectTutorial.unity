@@ -11545,7 +11545,7 @@ MonoBehaviour:
   differentcolorInstruction: {fileID: 1964875544}
   finishInstruction: {fileID: 440247431}
   PressJInstruction: {fileID: 747653249}
-  LeftArrow: {fileID: 1090731122}
+  LeftArrow: {fileID: 0}
   GlobalLight: {fileID: 1885406094}
   SpotLight: {fileID: 1024104945}
 --- !u!1 &1726089750
