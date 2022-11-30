@@ -11,6 +11,7 @@ public class TrackingMissile : MonoBehaviour
     void Start()
     {
        player = GameObject.Find("Player");
+       Destroy(gameObject, 5.5f);
     }
 
     private void FixedUpdate()
