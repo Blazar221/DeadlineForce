@@ -25,15 +25,20 @@ public class GameController : MonoBehaviour
         timeCount += Time.deltaTime;
         bossHealth = BossHealth.Instance.GetBossHealth();
         playerHealth = PlayerHealth.Instance.GetPlayerHealth();
-        if(timeCount > endTime && bossHealth <= 0 && playerHealth > 0 && !IsGameEnd())
-        {
+        if(timeCount > endTime && !IsGameEnd()){
             gameIsEnd = true;
-            EnableCongratsMenu();
-        } else if ((timeCount > endTime && bossHealth > 0 && !IsGameEnd()) || playerHealth <= 0)
-        {
-            gameIsEnd = true;
-            EnableGameOverMenu();
+            if(bossHealth <= 0) EnableCongratsMenu();
+            else if(playerHealth <= 0) EnableGameOverMenu();
         }
+        // if(timeCount > endTime && bossHealth <= 0 && playerHealth > 0 && !IsGameEnd())
+        // {
+        //     gameIsEnd = true;
+        //     EnableCongratsMenu();
+        // } else if ((timeCount > endTime && bossHealth > 0 && !IsGameEnd()) || playerHealth <= 0)
+        // {
+        //     gameIsEnd = true;
+        //     EnableGameOverMenu();
+        // }
     }
 
     bool IsGameEnd()
