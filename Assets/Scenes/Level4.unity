@@ -7124,9 +7124,9 @@ MonoBehaviour:
   m_text: 'Wellcome to Level 4
 
     collect  <sprite index=0> <sprite index=0> <sprite
-    index=0> to freeze boss
+    index=0> to freeze enemy
 
-    freeze spell will slow the action of boss'
+    freeze spell slows down their actions'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c502d3b2f15d6e1429c7af1141798f95, type: 2}
   m_sharedMaterial: {fileID: 3660396930450974010, guid: c502d3b2f15d6e1429c7af1141798f95, type: 2}
@@ -7329,7 +7329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131012fbfaf34354bbd35848d38ecbcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossHealth: 1200
+  bossHealth: 1500
   maxHealth: 0
   healthBar: {fileID: 693580010}
 --- !u!114 &1122339373

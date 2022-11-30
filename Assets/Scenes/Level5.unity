@@ -7124,9 +7124,9 @@ MonoBehaviour:
   m_text: 'Wellcome to Level 5
 
     collect  <sprite index=0> <sprite index=0> <sprite
-    index=0> to use fire ball!
+    index=0> to cast fire ball!
 
-    fire ball deal huge damage t boss'
+    fire ball deal huge damage to the enemy'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c502d3b2f15d6e1429c7af1141798f95, type: 2}
   m_sharedMaterial: {fileID: 3660396930450974010, guid: c502d3b2f15d6e1429c7af1141798f95, type: 2}

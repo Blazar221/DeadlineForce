@@ -48,10 +48,10 @@ MonoBehaviour:
   m_SpriteGlyphTable:
   - m_Index: 0
     m_Metrics:
-      m_Width: 240
-      m_Height: 240
-      m_HorizontalBearingX: -120
-      m_HorizontalBearingY: 120
+      m_Width: 275.6
+      m_Height: 254.3
+      m_HorizontalBearingX: -79.5
+      m_HorizontalBearingY: 190.36
       m_HorizontalAdvance: 240
     m_GlyphRect:
       m_X: 0
@@ -98,6 +98,6 @@ Material:
     - _StencilWriteMask: 255
     - _UseUIAlphaClip: 0
     m_Colors:
-    - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
+    - _ClipRect: {r: -32767, g: -32874.4, b: 32767, a: 32767}
     - _Color: {r: 0, g: 1, b: 0.05882353, a: 1}
   m_BuildTextureStacks: []

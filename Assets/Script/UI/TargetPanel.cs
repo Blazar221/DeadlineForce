@@ -154,7 +154,7 @@ public class TargetPanel : MonoBehaviour
     {       
         // skip level1 
         var scene  = SceneManager.GetActiveScene();
-        if(scene.name != "Level1" && scene.name != "CollectTutorial" && scene.name != "MoveTutorial" && scene.name != "TryoutTutorial")
+        if(scene.name != "Level1" && scene.name != "CollectTutorial" && scene.name != "MoveTutorial" && scene.name != "AttackTutorial")
             SetNextTarget();
     }
 

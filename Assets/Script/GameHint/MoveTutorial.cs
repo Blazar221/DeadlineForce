@@ -21,7 +21,10 @@ public class MoveTutorial : MonoBehaviour
     [SerializeField] private TextMeshProUGUI Switch30Instruction;
     [SerializeField] private TextMeshProUGUI Switch03Instruction;
     [SerializeField] private TextMeshProUGUI Switch32Instruction;
+    [SerializeField] private TextMeshProUGUI WarningInstruction;
     [SerializeField] private TextMeshProUGUI ContinueInstruction;
+    [SerializeField] private TextMeshProUGUI UpDownInstruction;
+    [SerializeField] private Image LeftArrow;
    
     
     private PlayerMovement playerMovement;
@@ -35,6 +38,7 @@ public class MoveTutorial : MonoBehaviour
     private bool Switch03Learned = false;
     private bool Switch32Learned = false;
     private bool Switch21Learned = false;
+    private bool UpdownLearned = false;
 
     private float firstmoveTime = 2f;
     private float Switch10Time = 3f;
@@ -42,11 +46,13 @@ public class MoveTutorial : MonoBehaviour
     private float Switch12Time = 5f;
     private float Switch23Time = 6f;
     private float Switch30Time = 7f;
-    private float Switch03Time = 8f;
-    private float Switch32Time = 9f;
-    private float Switch21Time = 11f;
+    private float Switch03Time = 8.3f;
+    private float Switch32Time = 11f;
+    private float Switch21Time = 12f;
     
-    private float finishTime = 13f;
+    private float UpDownTime = 13f;
+    
+    private float finishTime = 14f;
     
     // Start is called before the first frame update
     void Start()
@@ -61,7 +67,10 @@ public class MoveTutorial : MonoBehaviour
         Switch30Instruction.enabled = false;
         Switch03Instruction.enabled = false;
         Switch32Instruction.enabled = false;
+        WarningInstruction.enabled = false;
+        LeftArrow.enabled = false;
         ContinueInstruction.enabled = false;
+        UpDownInstruction.enabled = false;
         finishInstruction.enabled = false;
     }
 
@@ -150,6 +159,8 @@ public class MoveTutorial : MonoBehaviour
         }
         if(!Switch03Learned && Time.timeSinceLevelLoad >= Switch03Time){
             Time.timeScale = 0f;
+            WarningInstruction.enabled = true;
+            LeftArrow.enabled = true;
             Switch03Instruction.enabled = true;
             if (Input.GetKeyDown(KeyCode.W)) {
                 Switch03Learned = true;
@@ -159,6 +170,8 @@ public class MoveTutorial : MonoBehaviour
         }
         if(!Switch32Learned && Time.timeSinceLevelLoad >= Switch32Time){
             Time.timeScale = 0f;
+            WarningInstruction.enabled = false;
+            LeftArrow.enabled = false;
             Switch32Instruction.enabled = true;
             if (Input.GetKeyDown(KeyCode.W)) {
                 Switch32Learned = true;
@@ -175,12 +188,23 @@ public class MoveTutorial : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
+        if(!UpdownLearned && Time.timeSinceLevelLoad >= UpDownTime){
+            Time.timeScale = 0f;
+            UpDownInstruction.enabled = true;
+            ContinueInstruction.enabled = true;
+            if (Input.GetKeyDown(KeyCode.Return)) {
+                UpdownLearned = true;
+                UpDownInstruction.enabled = false;
+                ContinueInstruction.enabled = false;
+                Time.timeScale = 1f;
+            }
+        }
         if(Time.timeSinceLevelLoad >= finishTime){
             Time.timeScale = 0f;
             finishInstruction.enabled = true;
             if (Input.GetKeyDown(KeyCode.Return)) {
                 Time.timeScale = 1f;
-                SceneManager.LoadScene("TryoutTutorial");
+                SceneManager.LoadScene("LevelMenu");
             }
         }
     }
