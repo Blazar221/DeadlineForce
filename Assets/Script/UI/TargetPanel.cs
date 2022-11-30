@@ -47,7 +47,7 @@ public class TargetPanel : MonoBehaviour
         Shield,
         Clone,
         Freeze,
-        Common
+        Fire
     }
     
     private List<ObjectLine> _objectLines;
@@ -62,31 +62,27 @@ public class TargetPanel : MonoBehaviour
     // 2: yellow*3 = shield cd: 15
     // 3: blue*3 = freeze   cd: 15
 
-    private readonly Target[] _level1Target = {
-
-        new(new[] { 0,}, new[] { 8f},new[]{ItemType.Common})
-    };
-    private const int Level1LoopIndex = 0;
-
     private readonly Target[] _level2Target = {
-        new(new[] { 0, 1}, new[] { 8f, 12f }, new[]{ItemType.Common, ItemType.Clone}),
+
+        new(new[] { 1}, new[] { 8f},new[]{ItemType.Clone})
     };
 
-    private const int Level2LoopIndex = 0;
-    
     private readonly Target[] _level3Target = {
-        new(new[] { 0, 1, 2 }, new[] { 8f, 12f, 12f }, new[]{ItemType.Common, ItemType.Clone, ItemType.Shield}),
+        new(new[] { 1, 2}, new[] { 8f, 12f }, new[]{ItemType.Clone, ItemType.Shield}),
     };
-    private const int Level3LoopIndex = 0;
+
     
     private readonly Target[] _level4Target = {
+        new(new[] { 1, 2, 3 }, new[] { 8f, 12f, 12f }, new[]{ItemType.Clone, ItemType.Shield, ItemType.Freeze}),
+    };
+    
+    private readonly Target[] _level5Target = {
         
         // new(new[] { 1, 1, 0, 0, 2, 2 }, new[] { 20f, 20f, 20f, 20f, 20f, 20f }, new[]{ItemType.Freeze, ItemType.Shield, ItemType.Shield, ItemType.Shield, ItemType.Shield, ItemType.Shield}), // test
         
-        new(new[] { 0, 1, 2, 3}, new[] { 8f, 12f, 12f, 12f, }, new[]{ItemType.Common, ItemType.Clone, ItemType.Shield, ItemType.Freeze}),
+        new(new[] { 1, 2, 3, 0 }, new[] { 8f, 12f, 12f, 12f, }, new[]{ItemType.Clone, ItemType.Shield, ItemType.Freeze, ItemType.Fire}),
 
     };
-    private const int Level4LoopIndex = 0;
 
     // 0: blue*3 = shield
     // 1: green*3 = clone
@@ -116,41 +112,35 @@ public class TargetPanel : MonoBehaviour
         
         switch (scene.name)
         {
-            case "Level1":
-                _targets = _level1Target;
-                _targetLoopIndex = Level1LoopIndex;
-                break;
             case "Level2":
                 _targets = _level2Target;
-                _targetLoopIndex = Level2LoopIndex;
                 break;
             case "Level3":
                 _targets = _level3Target;
-                _targetLoopIndex = Level3LoopIndex;
+                break;
+            case "Level4":
+                _targets = _level4Target;
+                break;
+            case "Level5":
+                _targets = _level5Target;
                 break;
             case "CollectTutorial":
-                _targets = _level1Target;
-                _targetLoopIndex = Level1LoopIndex;
+                _targets = _level2Target;
                 break;
             case "MoveTutorial":
-                _targets = _level1Target;
-                _targetLoopIndex = Level1LoopIndex;
+                _targets = _level2Target;
                 break;
             case "AttackTutorial":
-                _targets = _level1Target;
-                _targetLoopIndex = Level1LoopIndex;
+                _targets = _level2Target;
                 break;
             case "TryoutTutorial":
-                _targets = _level1Target;
-                _targetLoopIndex = Level1LoopIndex;
+                _targets = _level2Target;
                 break;
             case "SampleScene":
-                _targets = _level4Target;
-                _targetLoopIndex = Level4LoopIndex;
+                _targets = _level5Target;
                 break;
             default:
-                _targets = _level4Target;
-                _targetLoopIndex = Level4LoopIndex;
+                _targets = _level5Target;
                 break;
         }
         _objectLines = new List<ObjectLine>();
@@ -160,7 +150,10 @@ public class TargetPanel : MonoBehaviour
 
     void Start()
     {       
-        SetNextTarget();
+        // skip level1 
+        var scene  = SceneManager.GetActiveScene();
+        if(scene.name != "Level1")
+            SetNextTarget();
     }
 
     private void FixedUpdate()
@@ -205,7 +198,7 @@ public class TargetPanel : MonoBehaviour
                         case ItemType.Freeze:
                             AttackShooter.Instance.ShootIce();
                             break;
-                        case ItemType.Common:
+                        case ItemType.Fire:
                             // if (color == _red){
                             //     FireBall.acitivated = true;
                             // } else if (color == _green){

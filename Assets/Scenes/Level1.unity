@@ -4556,7 +4556,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 37ebe512f3db61446985101e2f0bf5d5, type: 2}
+  - {fileID: 2100000, guid: 04a7876752e551843998e1083cbbcf40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10817,7 +10817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverMenu: {fileID: 801338847}
   congratsMenu: {fileID: 341597719}
-  endTime: 72
+  endTime: 84
 --- !u!114 &1726089753
 MonoBehaviour:
   m_ObjectHideFlags: 0
