@@ -28,7 +28,8 @@ public class GameController : MonoBehaviour
         if(timeCount > endTime && !IsGameEnd()){
             gameIsEnd = true;
             if(bossHealth <= 0) EnableCongratsMenu();
-            else if(playerHealth <= 0) EnableGameOverMenu();
+            else EnableGameOverMenu();
+            
         }
         // if(timeCount > endTime && bossHealth <= 0 && playerHealth > 0 && !IsGameEnd())
         // {
