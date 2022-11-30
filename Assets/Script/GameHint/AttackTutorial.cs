@@ -12,7 +12,7 @@ public class AttackTutorial : MonoBehaviour
     ///private Text shortNoteInstruction;
     [SerializeField] private GameObject Player;
     [SerializeField] private TextMeshProUGUI StartInstruction;
-    [SerializeField] private TextMeshProUGUI finishInstruction;
+    //[SerializeField] private TextMeshProUGUI finishInstruction;
     [SerializeField] private TextMeshProUGUI PressJInstruction;
     [SerializeField] private TextMeshProUGUI DamageInstruction;
     [SerializeField] private TextMeshProUGUI MissionInstruction;
@@ -66,7 +66,7 @@ public class AttackTutorial : MonoBehaviour
     {
         playerMovement = Player.GetComponent<PlayerMovement>();
         StartInstruction.enabled = false;
-        finishInstruction.enabled = false;
+        //finishInstruction.enabled = false;
         PressJInstruction.enabled=false;
         MissionInstruction.enabled=false;
         DamageInstruction.enabled=false;
@@ -129,7 +129,9 @@ public class AttackTutorial : MonoBehaviour
             DiamondBarSpotLight.enabled = true;
             if (Input.GetKeyDown(KeyCode.Space)) {
                 gemcollectionLearned = true;
+                StartInstruction.enabled = false;
                 PressJInstruction.enabled = false;
+                LeftArrow.enabled = false;
 
                 Time.timeScale = 1f;
             }
@@ -137,7 +139,7 @@ public class AttackTutorial : MonoBehaviour
          if(!tripleLearned3 && Time.timeSinceLevelLoad >= t3ShortNoteTime){
             Time.timeScale = 0f;
             PressJInstruction.enabled = true;
-            StartInstruction.enabled = false;
+            LeftArrow.enabled = true;
             DamageInstruction.enabled=true;
             BossSpotLight.enabled = true;
             if (Input.GetKeyDown(KeyCode.Space)) {

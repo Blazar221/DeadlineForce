@@ -12022,7 +12022,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'A unique  enemy guards each level
+  m_text: 'A unique enemy guards each level
 
     Defeat them to pass the level!
 
