@@ -7121,8 +7121,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Wellcome to Sample Scene\ncollect  <sprite index=0> <sprite index=0> <sprite
-    index=0> to Shadow clone \n"
+  m_text: 'Wellcome to Level 3
+
+    collect  <sprite index=0> <sprite index=0> <sprite
+    index=0> to get a shield
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c502d3b2f15d6e1429c7af1141798f95, type: 2}
   m_sharedMaterial: {fileID: 3660396930450974010, guid: c502d3b2f15d6e1429c7af1141798f95, type: 2}
@@ -7141,7 +7145,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: d70de8d2edb37444c9b9437e75d16cdd, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: aa9cdc47f8f9ded44b6b33afe3cbc0d6, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -11030,7 +11034,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1709288258}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6330e7d3a3b8a7744a47d8ed500eee5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 0918ee1d66461eb4593c0dea5007870e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SkillInstruction: {fileID: 1063872505}

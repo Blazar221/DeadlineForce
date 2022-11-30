@@ -7121,7 +7121,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Wellcome to Sample Scene\ncollect  <sprite index=0> <sprite index=0> <sprite
+  m_text: "Wellcome to Level 2\ncollect  <sprite index=0> <sprite index=0> <sprite
     index=0> to Shadow clone \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c502d3b2f15d6e1429c7af1141798f95, type: 2}
@@ -7141,7 +7141,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: d70de8d2edb37444c9b9437e75d16cdd, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 07806bee3ee817a4fa5f4ecf82cd0703, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -10886,7 +10886,7 @@ GameObject:
   - component: {fileID: 1709288259}
   - component: {fileID: 1709288264}
   - component: {fileID: 1709288265}
-  - component: {fileID: 1709288266}
+  - component: {fileID: 1709288267}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -11021,7 +11021,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1709288266
+--- !u!114 &1709288267
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11030,7 +11030,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1709288258}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6330e7d3a3b8a7744a47d8ed500eee5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 30da9f0db48cb08419c7eec39c4074c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SkillInstruction: {fileID: 1063872505}
