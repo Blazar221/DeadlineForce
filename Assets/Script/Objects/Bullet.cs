@@ -47,7 +47,7 @@ public class Bullet : MonoBehaviour
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if(distance < 1.2f)
         {
-            PlayerHealth.Instance.TakeDamage(30);
+            PlayerHealth.Instance.TakeDamage(25);
             Destroy(gameObject);
             if(alertLine!=-1)
             {

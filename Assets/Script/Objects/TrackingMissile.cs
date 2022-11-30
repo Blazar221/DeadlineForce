@@ -20,7 +20,7 @@ public class TrackingMissile : MonoBehaviour
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if(distance < 1.2f)
         {
-            PlayerHealth.Instance.TakeDamage(40);
+            PlayerHealth.Instance.TakeDamage(30);
             Destroy(gameObject);
         }
     }

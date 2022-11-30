@@ -57,19 +57,19 @@ public class BossBehavior : MonoBehaviour
             case "BigRed":
                 bossMoveSpeed = 0.1f;
                 bossAttackPeriod = 8f;
-                bossMeleeHarm = 20;
+                bossMeleeHarm = 15;
                 bossAttackPoint = 0.1f;
                 break;
             case "Orc":
                 bossMoveSpeed = 0.3f;
                 bossAttackPeriod = 7f;
-                bossMeleeHarm = 20;
+                bossMeleeHarm = 15;
                 bossAttackPoint = 0.3f;
                 break;
             case "Rebo":
                 bossMoveSpeed = 0.3f;
                 bossAttackPeriod = 7f;
-                bossMeleeHarm = 20;
+                bossMeleeHarm = 15;
                 bossAttackPoint = 0.0f;
                 break;
             case "Tank":

@@ -103,7 +103,7 @@ public class PlayerAttack : MonoBehaviour
             }
             else if (canGetLongScore == false){
                 if(!isClone){
-                    PlayerHealth.Instance.TakeDamage(5, false);
+                    PlayerHealth.Instance.TakeDamage(3, false);
                 }
             }
             if (canAvoidDamage){
