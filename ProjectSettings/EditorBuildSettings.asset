@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: b872e03ab88b9d240bd44c9ba4a20963
   - enabled: 1
-    path: Assets/Scenes/LevelMenu.unity
-    guid: aa0875531daab28458655b09354588b8
-  - enabled: 1
     path: Assets/Scenes/CollectTutorial.unity
     guid: 3e889da0a3850234785ef2fd1205b49a
   - enabled: 1
@@ -35,24 +32,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level4.unity
     guid: d62bcc47ae570f84fb3e895fe08f1ea1
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Level5.unity
     guid: f8114b0d077af5a45958c0959df50e05
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/LevelMenu.unity
+    guid: aa0875531daab28458655b09354588b8
   - enabled: 1
     path: Assets/Scenes/GameOverMenu.unity
     guid: 2924e9f21ac92934c9b88b0cee9b882c

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!21 &-6021799263011049410
+--- !u!21 &-332427431737741479
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 1
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: bc8501866cde1fa4f9f990283f9ea6d7, type: 3}
+        m_Texture: {fileID: 2800000, guid: c74f82d4befb39b4593cf913cf085c27, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -36,7 +36,7 @@ Material:
     - _UseUIAlphaClip: 0
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
-    - _Color: {r: 1, g: 0.7914926, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -48,10 +48,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84a92b25f83d49b9bc132d206b370281, type: 3}
-  m_Name: rockgem
+  m_Name: fire
   m_EditorClassIdentifier: 
-  hashCode: -1527862118
-  material: {fileID: -6021799263011049410}
+  hashCode: 3711640
+  material: {fileID: -332427431737741479}
   materialHashCode: 0
   m_Version: 1.1.0
   m_FaceInfo:
@@ -75,29 +75,29 @@ MonoBehaviour:
     m_StrikethroughOffset: 0
     m_StrikethroughThickness: 0
     m_TabWidth: 0
-  spriteSheet: {fileID: 2800000, guid: bc8501866cde1fa4f9f990283f9ea6d7, type: 3}
+  spriteSheet: {fileID: 2800000, guid: c74f82d4befb39b4593cf913cf085c27, type: 3}
   m_SpriteCharacterTable:
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 0
     m_Scale: 1
-    m_Name: rockgem
-    m_HashCode: -1527862118
+    m_Name: fire
+    m_HashCode: 3711640
   m_SpriteGlyphTable:
   - m_Index: 0
     m_Metrics:
-      m_Width: 26
-      m_Height: 21
-      m_HorizontalBearingX: -13
-      m_HorizontalBearingY: 10.5
-      m_HorizontalAdvance: 26
+      m_Width: 240
+      m_Height: 240
+      m_HorizontalBearingX: -120
+      m_HorizontalBearingY: 120
+      m_HorizontalAdvance: 240
     m_GlyphRect:
       m_X: 0
       m_Y: 0
-      m_Width: 26
-      m_Height: 21
+      m_Width: 240
+      m_Height: 240
     m_Scale: 1
     m_AtlasIndex: 0
-    sprite: {fileID: 21300000, guid: bc8501866cde1fa4f9f990283f9ea6d7, type: 3}
+    sprite: {fileID: 21300000, guid: c74f82d4befb39b4593cf913cf085c27, type: 3}
   spriteInfoList: []
   fallbackSpriteAssets: []
