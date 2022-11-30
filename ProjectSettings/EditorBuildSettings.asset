@@ -24,19 +24,19 @@ EditorBuildSettings:
     path: Assets/Scenes/TryoutTutorial.unity
     guid: 245c8d6530698054096262a4643b46b2
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
+    path: Assets/Scenes/1.unity
     guid: b0b1d3cb53f431b4eb225ae1190f5b8c
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
+    path: Assets/Scenes/2.unity
     guid: f26f2ad838c1849448000a85c3e2b2fe
   - enabled: 1
-    path: Assets/Scenes/Level3.unity
+    path: Assets/Scenes/3.unity
     guid: 38009c983308777418d9bac48efd96f6
   - enabled: 1
-    path: Assets/Scenes/Level4.unity
+    path: Assets/Scenes/4.unity
     guid: d70b30b7a881ac9409b6489a7c51c2ae
   - enabled: 1
-    path: Assets/Scenes/Level5.unity
+    path: Assets/Scenes/5.unity
     guid: ec94496502ff4a24b924c4b391f854c4
   - enabled: 1
     path: Assets/Scenes/GameOverMenu.unity
