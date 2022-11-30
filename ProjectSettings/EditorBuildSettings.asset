@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: b872e03ab88b9d240bd44c9ba4a20963
   - enabled: 1
-    path: Assets/Scenes/CollectTutorial.unity
+    path: Assets/Scenes/OldCollectTutorial.unity
     guid: 3e889da0a3850234785ef2fd1205b49a
   - enabled: 1
     path: Assets/Scenes/AttackTutorial.unity

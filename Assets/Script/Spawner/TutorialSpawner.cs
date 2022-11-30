@@ -20,7 +20,7 @@ public class TutorialSpawner : MonoBehaviour
 
     [SerializeField] private GameObject longNote;
     
-    [SerializeField] private GameObject bandit;
+    //[SerializeField] private GameObject bandit;
     [SerializeField] private GameObject bgm;
     [SerializeField] private TextAsset Jsonfile;
 
@@ -28,7 +28,7 @@ public class TutorialSpawner : MonoBehaviour
 
     private Vector3 spawnPos;
 
-    private Bandit blockHandler;
+    //private Bandit blockHandler;
     
     private Diamond fireDiamondHandler;
     private Diamond waterDiamondHandler;
@@ -64,8 +64,8 @@ public class TutorialSpawner : MonoBehaviour
         grassDiamondHandler.SetSpeed(moveSpeed);
         rockDiamondHandler.SetSpeed(moveSpeed);
 
-        blockHandler = bandit.GetComponent<Bandit>();
-        blockHandler.SetSpeed(moveSpeed);
+        //blockHandler = bandit.GetComponent<Bandit>();
+        //blockHandler.SetSpeed(moveSpeed);
         
         playerHadler = player.GetComponent<PlayerMovement>();
         _bgmHandler = bgm.GetComponent<BgmController>();
