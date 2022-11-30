@@ -87,15 +87,15 @@ public class CollectionController : MonoBehaviour
         rockBar.SetValue(rockCount);
     }
     
-    public void SetFireFull()
+    public void SetFireAlmostFull()
     {
-        fireCount = 9;
+        fireCount = 4;
         fireBar.SetValue(fireCount);
     }
     
-    public void SetGrassAlmostFull()
+    public void SetGrassFull()
     {
-        grassCount = 4;
+        grassCount = 5;
         grassBar.SetValue(grassCount);
     }
     

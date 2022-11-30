@@ -9,17 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: b872e03ab88b9d240bd44c9ba4a20963
   - enabled: 1
-    path: Assets/Scenes/OldCollectTutorial.unity
-    guid: 3e889da0a3850234785ef2fd1205b49a
+    path: Assets/Scenes/CollectTutorial.unity
+    guid: c587f6dc564e0f642bd5351a936849cc
   - enabled: 1
     path: Assets/Scenes/AttackTutorial.unity
-    guid: a2e6b50105719434fb15023b05408d7f
+    guid: a678f67f0bff48448ae01c1d481bb9e5
   - enabled: 1
     path: Assets/Scenes/MoveTutorial.unity
-    guid: d1f20f62fdbcea343be4b11da8968a89
-  - enabled: 1
-    path: Assets/Scenes/TryoutTutorial.unity
-    guid: 245c8d6530698054096262a4643b46b2
+    guid: dc3d94fde576b8e4894e3f3ed533fbd2
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 6d60f2b0f5948e54db3223b889e158d4

@@ -21,6 +21,7 @@ public class AttackTutorial : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ContinueInstruction;
     [SerializeField] private TextMeshProUGUI SkillInstruction;
     [SerializeField] private TextMeshProUGUI CdInstruction;
+    [SerializeField] private Image LeftArrow;
     [SerializeField] private UnityEngine.Rendering.Universal.Light2D GlobalLight;
     [SerializeField] private UnityEngine.Rendering.Universal.Light2D DiamondBarSpotLight;
     [SerializeField] private UnityEngine.Rendering.Universal.Light2D BossSpotLight;
@@ -55,10 +56,10 @@ public class AttackTutorial : MonoBehaviour
     private float t5ShortNoteTime = 9f;
     private float t6ShortNoteTime = 10f;
     
-    private float selfdamageTime = 11f;
-    private float pointtoselfTime = 12f;
+    private float selfdamageTime = 6f;
+    private float pointtoselfTime = 7f;
     
-    private float finishTime = 13f;
+    private float finishTime = 8f;
     
     // Start is called before the first frame update
     void Start()
@@ -74,13 +75,14 @@ public class AttackTutorial : MonoBehaviour
         ContinueInstruction.enabled = false;
         SkillInstruction.enabled = false;
         CdInstruction.enabled = false;
+        LeftArrow.enabled = false;
         
         GlobalLight.enabled = false;
         DiamondBarSpotLight.enabled = false;
         BossSpotLight.enabled = false;
         TargetPanelSpotLight.enabled = false;
-        CollectionController.Instance.SetFireFull();
-        CollectionController.Instance.SetGrassAlmostFull();
+        CollectionController.Instance.SetFireAlmostFull();
+        CollectionController.Instance.SetGrassFull();
         CollectionController.Instance.SetWaterAlmostFull();
         CollectionController.Instance.SetRockAlmostFull();
     }
@@ -109,12 +111,12 @@ public class AttackTutorial : MonoBehaviour
         if(!shortNoteLearned && Time.timeSinceLevelLoad >= firstShortNoteTime){
             Time.timeScale = 0f;
             StartInstruction.enabled = true;
+            LeftArrow.enabled = true;
             PressJInstruction.enabled = true;
             GlobalLight.enabled = true;
             DiamondBarSpotLight.enabled = true;
             if (Input.GetKeyDown(KeyCode.Space)) {
                 shortNoteLearned = true;
-                StartInstruction.enabled = false;
                 PressJInstruction.enabled = false;
                 Time.timeScale = 1f;
             }
@@ -135,17 +137,20 @@ public class AttackTutorial : MonoBehaviour
          if(!tripleLearned3 && Time.timeSinceLevelLoad >= t3ShortNoteTime){
             Time.timeScale = 0f;
             PressJInstruction.enabled = true;
+            StartInstruction.enabled = false;
             DamageInstruction.enabled=true;
             BossSpotLight.enabled = true;
             if (Input.GetKeyDown(KeyCode.Space)) {
                 tripleLearned3 = true;
                 PressJInstruction.enabled = false;
                 DamageInstruction.enabled=false;
+                LeftArrow.enabled = false;
                 DiamondBarSpotLight.enabled = false;
                 Time.timeScale = 1f;
             }
         }
         
+        /*
         if(!skillLearned && Time.timeSinceLevelLoad >= skillTime){
             Time.timeScale = 0f;
             SkillInstruction.enabled = true;
@@ -190,6 +195,7 @@ public class AttackTutorial : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
+        */
         if(!selfdamageLearned && Time.timeSinceLevelLoad >= selfdamageTime){
             Time.timeScale = 0f;
             
@@ -218,9 +224,10 @@ public class AttackTutorial : MonoBehaviour
                 DiamondBarSpotLight.enabled = false;
 
                 Time.timeScale = 1f;
+                SceneManager.LoadScene("MoveTutorial");
             }
         }
-        
+        /*
         if(Time.timeSinceLevelLoad >= finishTime){
             Time.timeScale = 0f;
             GlobalLight.enabled = true;
@@ -230,6 +237,7 @@ public class AttackTutorial : MonoBehaviour
                 SceneManager.LoadScene("MoveTutorial");
             }
         }
+        */
     }
 
 }
