@@ -7122,7 +7122,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Wellcome to Level 2\ncollect  <sprite index=0> <sprite index=0> <sprite
-    index=0> to Shadow clone \n"
+    index=0> to Shadow clone \nclone can help you collect gems"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c502d3b2f15d6e1429c7af1141798f95, type: 2}
   m_sharedMaterial: {fileID: 3660396930450974010, guid: c502d3b2f15d6e1429c7af1141798f95, type: 2}

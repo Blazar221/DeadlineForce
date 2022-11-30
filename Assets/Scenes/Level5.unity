@@ -7098,7 +7098,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0.422, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -612, y: -172}
+  m_AnchoredPosition: {x: -612, y: -185}
   m_SizeDelta: {x: 1073.3, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1063872505
@@ -7108,7 +7108,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063872503}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -7124,7 +7124,9 @@ MonoBehaviour:
   m_text: 'Wellcome to Level 5
 
     collect  <sprite index=0> <sprite index=0> <sprite
-    index=0> to use fire ball!'
+    index=0> to use fire ball!
+
+    fire ball deal huge damage t boss'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c502d3b2f15d6e1429c7af1141798f95, type: 2}
   m_sharedMaterial: {fileID: 3660396930450974010, guid: c502d3b2f15d6e1429c7af1141798f95, type: 2}
