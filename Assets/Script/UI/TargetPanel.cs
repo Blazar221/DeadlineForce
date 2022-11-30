@@ -110,6 +110,9 @@ public class TargetPanel : MonoBehaviour
         _shield = items[2];
         _freeze = items[3];
         
+        _objectLines = new List<ObjectLine>();
+        _targetCounter = 1;
+        
         switch (scene.name)
         {
             case "Level2":
@@ -143,8 +146,7 @@ public class TargetPanel : MonoBehaviour
                 _targets = _level5Target;
                 break;
         }
-        _objectLines = new List<ObjectLine>();
-        _targetCounter = 1;
+
     }
 
 
@@ -152,7 +154,7 @@ public class TargetPanel : MonoBehaviour
     {       
         // skip level1 
         var scene  = SceneManager.GetActiveScene();
-        if(scene.name != "Level1")
+        if(scene.name != "Level1" && scene.name != "CollectTutorial" && scene.name != "MoveTutorial" && scene.name != "TryoutTutorial")
             SetNextTarget();
     }
 
