@@ -4632,7 +4632,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fd93013d313716e4ca516062a3103fc3, type: 2}
+  - {fileID: 2100000, guid: c431b85a909845a45a66be93ca7804e0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7126,7 +7126,7 @@ MonoBehaviour:
     collect  <sprite index=0> <sprite index=0> <sprite
     index=0> to freeze boss
 
-'
+    freeze spell will slow the action of boss'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c502d3b2f15d6e1429c7af1141798f95, type: 2}
   m_sharedMaterial: {fileID: 3660396930450974010, guid: c502d3b2f15d6e1429c7af1141798f95, type: 2}
