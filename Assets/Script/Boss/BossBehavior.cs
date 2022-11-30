@@ -55,10 +55,10 @@ public class BossBehavior : MonoBehaviour
         switch(name)
         {
             case "BigRed":
-                bossMoveSpeed = 0.3f;
+                bossMoveSpeed = 0.1f;
                 bossAttackPeriod = 8f;
                 bossMeleeHarm = 20;
-                bossAttackPoint = 0.0f;
+                bossAttackPoint = 0.1f;
                 break;
             case "Orc":
                 bossMoveSpeed = 0.3f;

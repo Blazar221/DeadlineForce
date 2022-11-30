@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CongratsMenu.unity
     guid: 437014170aee82940bb21485b0d0db87
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: ef7091d4df3854e108e988c0adb0a27d
   m_configObjects: {}
