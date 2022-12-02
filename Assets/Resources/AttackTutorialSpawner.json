@@ -1,1 +1,44 @@
-﻿{"Items":[{"timeStamp":[0.0,0.0],"type":1,"pos":1,"color":1,"isMain":false},{"timeStamp":[0.0,0.0],"type":1,"pos":1,"color":0,"isMain":false},{"timeStamp":[1.0,1.0],"type":1,"pos":1,"color":1,"isMain":false},{"timeStamp":[2.0,2.0],"type":1,"pos":1,"color":2,"isMain":false},{"timeStamp":[3.0,3.0],"type":1,"pos":1,"color":3,"isMain":false},{"timeStamp":[6.0,6.0],"type":1,"pos":1,"color":0,"isMain":false},{"timeStamp":[7.0,7.0],"type":1,"pos":1,"color":0,"isMain":false},{"timeStamp":[8.0,8.0],"type":1,"pos":1,"color":0,"isMain":false},{"timeStamp":[9.0,9.0],"type":1,"pos":1,"color":0,"isMain":false}]}
+﻿{
+  "Items": [
+    {
+      "timeStamp": [
+        0,
+        0
+      ],
+      "type": 1,
+      "pos": 1,
+      "color": 1,
+      "isMain": false
+    },
+    {
+      "timeStamp": [
+        0,
+        0
+      ],
+      "type": 1,
+      "pos": 1,
+      "color": 0,
+      "isMain": false
+    },
+    {
+      "timeStamp": [
+        1,
+        1
+      ],
+      "type": 1,
+      "pos": 1,
+      "color": 1,
+      "isMain": false
+    },
+    {
+      "timeStamp": [
+        2,
+        2
+      ],
+      "type": 1,
+      "pos": 1,
+      "color": 3,
+      "isMain": false
+    }
+  ]
+}
